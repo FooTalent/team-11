@@ -10,7 +10,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     @Value("${server.port:8080}")
     private String serverPort;
 
-    @Value("${springdoc.api-docs.path}")
+    @Value("${springdoc.swagger-ui.path}")
     private String apiDocsPath;
 
     @Override

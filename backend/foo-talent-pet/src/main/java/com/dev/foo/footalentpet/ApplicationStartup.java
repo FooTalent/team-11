@@ -15,6 +15,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
-        System.out.println("Documentation available on: http://localhost:" + serverPort + apiDocsPath);
+        System.out.println("Documentation available on: http://localhost:" + serverPort + "/api" + apiDocsPath);
     }
 }

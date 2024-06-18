@@ -6,16 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "images")
+@Table(name = "tags")
 @Entity
-public class Image implements Serializable {
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,9 +23,6 @@ public class Image implements Serializable {
 
     private String name;
 
-    private String url;
-
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
+    @ManyToMany(mappedBy = "tags")
+    private Set<Post> posts;
 }

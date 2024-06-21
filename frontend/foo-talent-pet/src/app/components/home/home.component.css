@@ -1,0 +1,54 @@
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../../assets/Gris_0.png');
+    background-size: cover;
+    background-position: center;
+  }
+  /* Hero Left */
+  .hero-left {
+    width: 50%;
+    padding: 40px;
+  }
+  .hero-left h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  .hero-left span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+  }
+  .hero-left p {
+    inline-size: 450px;
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .hero-right {
+    width: 50%;
+    padding: 40px;
+  }
+  .regtangleHeader2
+    {
+    height: 300px;
+   
+    background: #D9D9D9;
+    border-radius: 20px;
+    padding: 5px;
+
+    }
+
+    .quienes-somos{
+        
+        background: #D9D9D9;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }

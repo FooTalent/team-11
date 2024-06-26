@@ -4,8 +4,8 @@ package com.dev.foo.footalentpet.model.entity;
 import com.dev.foo.footalentpet.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -47,7 +47,6 @@ public class User implements UserDetails, Serializable {
     private String city;
 
     private Boolean enabled;
-    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

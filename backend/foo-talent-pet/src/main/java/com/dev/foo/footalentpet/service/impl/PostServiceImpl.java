@@ -1,7 +1,8 @@
 package com.dev.foo.footalentpet.service.impl;
 
 import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.request.PostRequest;
+import com.dev.foo.footalentpet.model.request.PostRequestDTO;
+import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 import com.dev.foo.footalentpet.repository.PostRepository;
 import com.dev.foo.footalentpet.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PostImplementation implements PostService {
+public class PostServiceImpl implements PostService {
     @Autowired
     private ModelMapper modelMapper;
 
@@ -19,8 +20,9 @@ public class PostImplementation implements PostService {
     private PostRepository postRepository;
 
     @Override
-    public Post create(PostRequest postDTO) {
+    public PostResponseDTO create(PostRequestDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
-        return postRepository.save(post);
+        Post savedPost = postRepository.save(post);
+        return modelMapper.map(savedPost, PostResponseDTO.class);
     }
 }

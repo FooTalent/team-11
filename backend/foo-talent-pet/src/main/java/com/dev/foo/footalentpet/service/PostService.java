@@ -1,8 +1,9 @@
 package com.dev.foo.footalentpet.service;
 
 import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.request.PostRequest;
+import com.dev.foo.footalentpet.model.request.PostRequestDTO;
+import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 
 public interface PostService {
-    Post create(PostRequest postDTO);
+    PostResponseDTO create(PostRequestDTO postDTO);
 }

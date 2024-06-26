@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-public record PostRequest(
+public record PostRequestDTO(
         UUID id,
         String name,
         String description,

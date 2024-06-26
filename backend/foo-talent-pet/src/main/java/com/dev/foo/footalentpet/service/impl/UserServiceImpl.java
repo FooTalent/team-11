@@ -1,7 +1,7 @@
 package com.dev.foo.footalentpet.service.impl;
 
-
-import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.helper.GenericMapperUtil;
+import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.UserRepository;
 import com.dev.foo.footalentpet.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +14,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private final UserRepository userRepository;
+    private final GenericMapperUtil mapperUtil;
+
+
 
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserResponseDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(match -> mapperUtil.mapToDto(match, UserResponseDTO.class))
+                .toList();
     }
 
 

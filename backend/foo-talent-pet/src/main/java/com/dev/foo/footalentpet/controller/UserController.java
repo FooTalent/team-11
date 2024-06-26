@@ -2,6 +2,7 @@ package com.dev.foo.footalentpet.controller;
 
 
 import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,8 @@ public class UserController {
     private  UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllMatches() {
-        List<User> userList = userService.getAllUsers();
+    public ResponseEntity<List<UserResponseDTO>> getAllMatches() {
+        List<UserResponseDTO> userList = userService.getAllUsers();
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 

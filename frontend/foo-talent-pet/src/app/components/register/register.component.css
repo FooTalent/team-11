@@ -1,0 +1,8 @@
+.formulario-register {
+    width: 50%;
+    background-color: aliceblue;
+    margin-top: 8%;
+    margin-left: calc(50% - 25%);
+    padding: 2%;
+    border-radius: 5%;
+}

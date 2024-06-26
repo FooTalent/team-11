@@ -3,15 +3,16 @@ package com.dev.foo.footalentpet.helper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class GenericMapperUtil {
-
 
     private final ModelMapper modelMapper;
 
     public GenericMapperUtil(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     public <D, T> D mapToDto(T entity, Class<D> outclass) {
         return modelMapper.map(entity, outclass);
     }

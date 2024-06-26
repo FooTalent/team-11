@@ -16,7 +16,4 @@ public record PostResponseDTO(
         UUID userId/*,
        Set<UUID> tagIds */
 ) {
-    /*public PostResponseDTO(Post post) {
-        this(post.getId(), post.getName(), post.getDescription(), post.getDate(), post.getStatus(), post.getUser().getId());
-    }*/
 }

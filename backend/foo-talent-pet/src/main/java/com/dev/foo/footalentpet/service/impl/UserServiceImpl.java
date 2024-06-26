@@ -21,8 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponseDTO> getAllUsers() {
-        return userRepository.findAll().stream()
-                .map(match -> mapperUtil.mapToDto(match, UserResponseDTO.class))
+        return userRepository.findAll()
+                .stream()
+                .map(UserResponseDTO::new)
                 .toList();
     }
 

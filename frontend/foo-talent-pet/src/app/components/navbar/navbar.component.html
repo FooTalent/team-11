@@ -1,14 +1,30 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          
-          <a class="nav-link" routerLink="#">Inicio</a>
-          <a class="nav-link" routerLink="/preguntasFrecuentes">Preguntas Frecuentes</a>
-          <a class="nav-link" routerLink="/login">login</a>
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home">Logo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="#">Quiénes somos? </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="#">FAQ</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="" role="button" data-toggle="dropdown" aria-expanded="false">
+          Ver publicaciones
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="#">Mascotas perdidas</a>
+          <a class="dropdown-item" routerLink="#">Mascotas encontradas</a>
+          <a class="dropdown-item" routerLink="#">Mascotas en adopción</a>
         </div>
-      </div>
-    </div>
-  </nav>
+      </li>
+    </ul>
+    
+      <button type="button" class="btn btn-dark" routerLink="/login">iniciar sesión</button>
+    
+  </div>
+</nav>

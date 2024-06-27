@@ -6,3 +6,11 @@
     padding: 2%;
     border-radius: 5%;
 }
+.btn-cont{
+  text-align: center;
+  margin-bottom: .7rem;
+}
+
+.btn{
+  margin-bottom: .5rem;
+}

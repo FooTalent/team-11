@@ -1,8 +1,8 @@
 package com.dev.foo.footalentpet.service.impl;
 
+import com.dev.foo.footalentpet.exception.NotFoundException;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 import com.dev.foo.footalentpet.repository.PostRepository;
@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService {
     public PostResponseDTO create(PostRequestDTO postDTO) {
         Post post = postDTOMapper.postResponseDtoToPost(postDTO);
         if (Objects.isNull(post.getUser())) {
-            throw new IllegalArgumentException("User not found");
+            throw new NotFoundException("404", "User not found");
         }
         Post savedPost = postRepository.save(post);
         return postDTOMapper.postToPostResponseDto(savedPost);
@@ -51,5 +51,10 @@ public class PostServiceImpl implements PostService {
         return postList.stream()
                 .map(postDTOMapper::postToPostResponseDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(UUID id) {
+        postRepository.deleteById(id);
     }
 }

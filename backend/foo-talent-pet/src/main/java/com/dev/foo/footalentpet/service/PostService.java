@@ -13,4 +13,7 @@ public interface PostService {
     PostResponseDTO findById(UUID id);
 
     List<PostResponseDTO> findAll();
+
+    void delete(UUID id);
+
 }

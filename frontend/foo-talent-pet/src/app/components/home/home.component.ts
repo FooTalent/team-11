@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { PetQuestService } from '../../services/pet-quest.service';
+import { PetQuestService } from '../../service/pet-quest.service';
 
 @Component({
   selector: 'app-home',

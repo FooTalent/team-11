@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService {
     public PostResponseDTO create(PostRequestDTO postDTO) {
         Post post = postDTOMapper.postResponseDtoToPost(postDTO);
         if (Objects.isNull(post.getUser())) {
-            throw new NotFoundException("404", "User not found");
+            throw new NotFoundException("User not found");
         }
         Post savedPost = postRepository.save(post);
         return postDTOMapper.postToPostResponseDto(savedPost);

@@ -2,7 +2,9 @@ package com.dev.foo.footalentpet.exception;
 
 public class NotFoundException extends BaseException {
 
-    public NotFoundException(String code, String message) {
-        super(code, message);
+    private static final String CODE = "404";
+
+    public NotFoundException(String message) {
+        super(CODE, message);
     }
 }

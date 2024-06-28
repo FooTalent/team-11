@@ -81,4 +81,25 @@
     align-items: center;
 }
 
+.suscribirse{
+  background: #D9D9D9;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 245px;
+}
+
+h3.titulo {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+small#emailHelp {
+  margin-left: -116px;
+}
+
+
+
     

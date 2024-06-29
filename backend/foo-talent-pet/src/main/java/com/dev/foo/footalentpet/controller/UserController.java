@@ -16,19 +16,12 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private  UserService userService;
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> getAllMatches() {
         List<UserResponseDTO> userList = userService.getAllUsers();
         return new ResponseEntity<>(userList, HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<UserResponseDTO> createMatch(@RequestBody UserRequestDTO userRequestDTO) {
-        UserResponseDTO user = userService.saveUser(userRequestDTO);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
-
     }
 
 }

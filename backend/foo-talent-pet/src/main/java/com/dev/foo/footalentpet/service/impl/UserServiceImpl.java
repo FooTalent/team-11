@@ -2,6 +2,7 @@ package com.dev.foo.footalentpet.service.impl;
 
 import com.dev.foo.footalentpet.mapper.UserDTOMapper;
 import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.request.UserRequestDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.UserRepository;
@@ -9,6 +10,7 @@ import com.dev.foo.footalentpet.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,18 +22,9 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
     private UserDTOMapper userDTOMapper;
-
-
-    @Override
-    public UserResponseDTO saveUser(UserRequestDTO userDTO) {
-        User user = userDTOMapper.userRequestDtoToUser(userDTO);
-        User savedUser = userRepository.save(user);
-        return userDTOMapper.userToUserResponseDto(savedUser);
-    }
-
 
     @Override
     public List<UserResponseDTO> getAllUsers() {

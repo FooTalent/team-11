@@ -10,5 +10,4 @@ import java.util.List;
 @Service
 public interface UserService {
     List<UserResponseDTO> getAllUsers();
-    UserResponseDTO saveUser(UserRequestDTO userDTO);
 }

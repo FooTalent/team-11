@@ -21,7 +21,7 @@ import java.util.UUID;
 
 @Tag(name = "Post", description = "Post operations")
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
     @Autowired
@@ -38,11 +38,12 @@ public class PostController {
         return ResponseEntity.ok(post);
     }
 
-    @GetMapping("/{id}")
+
     @Operation(summary = "Get post by id", description = "Get post by id with data", responses = {
             @ApiResponse(responseCode = "200", description = "Successfully get post"),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
+    @GetMapping("/{id}")
     public ResponseEntity<PostResponseDTO> findById(@PathVariable UUID id) {
         return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
     }

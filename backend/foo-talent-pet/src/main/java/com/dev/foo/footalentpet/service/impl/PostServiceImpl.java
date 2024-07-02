@@ -1,15 +1,15 @@
 package com.dev.foo.footalentpet.service.impl;
 
 import com.dev.foo.footalentpet.exception.NotFoundException;
+import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Post;
 import com.dev.foo.footalentpet.model.entity.PostTag;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
+import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
+import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
-import com.dev.foo.footalentpet.repository.PostRepository;
-import com.dev.foo.footalentpet.repository.PostTagRepository;
-import com.dev.foo.footalentpet.repository.TagRepository;
-import com.dev.foo.footalentpet.repository.UserRepository;
+import com.dev.foo.footalentpet.repository.*;
 import com.dev.foo.footalentpet.service.PostService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +40,10 @@ public class PostServiceImpl implements PostService {
     private TagRepository tagRepository;
     @Autowired
     private PostTagRepository postTagRepository;
+    @Autowired
+    private CommentRepository commentRepository;
+    @Autowired
+    private CommentDTOMapper commentDTOMapper;
 
     @Override
     public PostResponseDTO create(PostRequestDTO postDTO) {
@@ -61,10 +65,16 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponseDTO findById(UUID id) {
+    public PostCommentResponseDTO findById(UUID id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
-        return postDTOMapper.postToPostResponseDto(post);
+
+        PostResponseDTO postResponseDTO = postDTOMapper.postToPostResponseDto(post);
+
+        List<CommentResponseDTO> comments = commentRepository.findByPostId(id).stream()
+                .map(commentDTOMapper::toDTO)
+                .toList();
+        return new PostCommentResponseDTO(postResponseDTO, comments);
     }
 
     @Override

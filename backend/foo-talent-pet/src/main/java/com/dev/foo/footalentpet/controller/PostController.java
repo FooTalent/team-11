@@ -3,6 +3,7 @@ package com.dev.foo.footalentpet.controller;
 import com.dev.foo.footalentpet.exception.ErrorResponse;
 import com.dev.foo.footalentpet.model.entity.Post;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
+import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 import com.dev.foo.footalentpet.service.PostService;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -44,7 +45,7 @@ public class PostController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping("/{id}")
-    public ResponseEntity<PostResponseDTO> findById(@PathVariable UUID id) {
+    public ResponseEntity<PostCommentResponseDTO> findById(@PathVariable UUID id) {
         return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
     }
 

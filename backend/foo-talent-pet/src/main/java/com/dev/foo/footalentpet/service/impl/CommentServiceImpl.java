@@ -10,9 +10,12 @@ import com.dev.foo.footalentpet.repository.CommentRepository;
 import com.dev.foo.footalentpet.service.CommentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -20,6 +23,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional
 public class CommentServiceImpl implements CommentService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PostServiceImpl.class);
 
     @Autowired
     private CommentRepository commentRepository;
@@ -33,12 +38,18 @@ public class CommentServiceImpl implements CommentService {
             throw new NotFoundException("Post not found");
         }
         Comment savedComment = commentRepository.save(comment);
+        savedComment.setCreatedAt(LocalDateTime.now());
         return commentDTOMapper.toDTO(savedComment);
     }
-    
+
     @Override
     public CommentResponseDTO getCommentById(UUID id) {
         Comment comment = commentRepository.findById(id).orElseThrow(() -> new NotFoundException("Comment not found"));
         return commentDTOMapper.toDTO(comment);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        commentRepository.deleteById(id);
     }
 }

@@ -46,4 +46,14 @@ public class CommentController {
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
+    @Operation(summary = "Delete comment by id", description = "Delete comment by id", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully delete comment"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteComment(@PathVariable UUID id) {
+        commentService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }

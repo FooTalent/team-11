@@ -10,4 +10,6 @@ public interface CommentService {
     CommentResponseDTO createComment(CommentRequestDTO comment);
 
     CommentResponseDTO getCommentById(UUID id);
+
+    void delete(UUID id);
 }

@@ -2,7 +2,8 @@ package com.dev.foo.footalentpet.auth;
 
 import com.dev.foo.footalentpet.exception.ErrorResponse;
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
-import com.dev.foo.footalentpet.model.request.UserRequestDTO;
+import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
+import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,21 +31,21 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO) {
+    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO userRequestDTO) {
         UserResponseDTO user = authService.register(userRequestDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
 
     }
 
     @Operation(summary = "Authenticate user", description = "Authenticate user and return data", responses = {
-            @ApiResponse(responseCode = "201", description = "Successfully authenticate user"),
+            @ApiResponse(responseCode = "201", description = "Successfully authenticate user", content = @Content(schema = @Schema(implementation = LoginResponseDTO.class))),
             @ApiResponse(responseCode = "401", description = "Invalid credentials", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "404", description = "User Not found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @PostMapping("/login")
-    public ResponseEntity<UserResponseDTO> login(@RequestBody LoginRequestDTO loginDto) {
-        UserResponseDTO user = authService.login(loginDto);
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginDto) {
+        LoginResponseDTO user = authService.login(loginDto);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }

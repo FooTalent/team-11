@@ -64,7 +64,6 @@ public class PostServiceImpl implements PostService {
     public PostResponseDTO findById(UUID id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Post not found"));
-        //logger.info(post.toString());
         return postDTOMapper.postToPostResponseDto(post);
     }
 

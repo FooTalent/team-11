@@ -1,0 +1,105 @@
+.hero {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url('../../../assets/Gris_0.png');
+    background-size: cover;
+    background-position: center;
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 3%;
+    
+  }
+  /* Hero Left */
+  .hero-left {
+    width: 50%;
+    padding: 40px;
+  }
+  .hero-left h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  .hero-left span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+  }
+  .hero-left p {
+    inline-size: 450px;
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .hero-right {
+    width: 50%;
+    padding: 40px;
+  }
+  .regtangleHeader2
+    {
+    height: 200px;
+    width: 200px;
+    background: #D9D9D9;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 10px;
+
+    }
+  
+    h3.text-center {
+      padding-top: 27px;
+  }
+
+    .quienes-somos{
+        background: #D9D9D9;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        height: 245px;
+    }
+
+    .nuestra-comunidad{
+      background: #D9D9D9;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        height: 245px;
+    }
+
+    p.comunidad {
+      padding: 3%;
+  }
+
+  button.btn.btn-outline-dark {
+    align-items: center;
+}
+
+.suscribirse{
+  background: #D9D9D9;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 245px;
+}
+
+h3.titulo {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+small#emailHelp {
+  margin-left: -116px;
+}
+
+
+
+    

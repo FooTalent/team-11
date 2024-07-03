@@ -5,6 +5,7 @@ import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Post;
 import com.dev.foo.footalentpet.model.entity.PostTag;
+import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
@@ -14,6 +15,8 @@ import com.dev.foo.footalentpet.service.PostService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,10 +50,12 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostResponseDTO create(PostRequestDTO postDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
         Post post = postDTOMapper.postResponseDtoToPost(postDTO);
-        if (Objects.isNull(post.getUser())) {
-            throw new NotFoundException("User not found");
-        }
+
+        post.setUser(currentUser);
         Post savedPost = postRepository.save(post);
 
         List<PostTag> postTags = post.getPostTags().stream()

@@ -1,7 +1,6 @@
 package com.dev.foo.footalentpet.controller;
 
 import com.dev.foo.footalentpet.exception.ErrorResponse;
-import com.dev.foo.footalentpet.model.entity.Post;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,7 +34,7 @@ public class PostController {
     @PostMapping
     public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) {
         PostResponseDTO post = postService.create(postRequestDTO);
-        return ResponseEntity.ok(post);
+        return new ResponseEntity<>(post, HttpStatus.CREATED);
     }
 
 

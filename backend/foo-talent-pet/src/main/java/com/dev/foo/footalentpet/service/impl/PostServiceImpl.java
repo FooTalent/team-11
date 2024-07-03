@@ -4,6 +4,7 @@ import com.dev.foo.footalentpet.exception.NotFoundException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Post;
+import com.dev.foo.footalentpet.model.entity.PostColor;
 import com.dev.foo.footalentpet.model.entity.PostTag;
 import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
@@ -22,7 +23,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.HashSet;
 
@@ -62,9 +62,14 @@ public class PostServiceImpl implements PostService {
                 .map(tagId -> new PostTag(savedPost, tagId.getTag()))
                 .toList();
 
+        List<PostColor> postColors = post.getPostColors().stream()
+                .map(color -> new PostColor(savedPost, color.getColor()))
+                .toList();
+
         postTagRepository.saveAll(postTags);
 
         savedPost.setPostTags(new HashSet<>(postTags));
+        savedPost.setPostColors(new HashSet<>(postColors));
 
         return postDTOMapper.postToPostResponseDto(savedPost);
     }

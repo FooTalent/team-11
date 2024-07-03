@@ -1,11 +1,9 @@
 package com.dev.foo.footalentpet.mapper;
 
-import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.entity.PostTag;
-import com.dev.foo.footalentpet.model.entity.Tag;
-import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.entity.*;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
+import com.dev.foo.footalentpet.repository.ColorRepository;
 import com.dev.foo.footalentpet.repository.UserRepository;
 import com.dev.foo.footalentpet.repository.TagRepository;
 import org.mapstruct.Mapper;
@@ -28,14 +26,17 @@ public abstract class PostDTOMapper {
 
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private ColorRepository colorRepository;
 
     @Mapping(source = "user", target = "user")
     @Mapping(source = "postTags", target = "tags", qualifiedByName = "mapPostTagToTag")
+    @Mapping(source = "postColors", target = "colors", qualifiedByName = "mapPostColorToColor")
     public abstract PostResponseDTO postToPostResponseDto(Post post);
 
+    @Mapping(qualifiedByName = "mapPostColors", source = "colors", target = "postColors")
     @Mapping(qualifiedByName = "mapPostTags", source = "tags", target = "postTags")
     public abstract Post postResponseDtoToPost(PostRequestDTO postRequestDTO);
-
 
     @Named("mapPostTags")
     protected Set<PostTag> mapPostTagsByIds(List<UUID> tags) {
@@ -46,10 +47,26 @@ public abstract class PostDTOMapper {
                 .collect(Collectors.toSet());
     }
 
+    @Named("mapPostColors")
+    protected Set<PostColor> mapPostColorsByIds(List<UUID> colors) {
+        return colors.stream()
+                .map(colorRepository::findById)
+                .filter(Optional::isPresent)
+                .map(color -> new PostColor(null, color.get()))
+                .collect(Collectors.toSet());
+    }
+
     @Named("mapPostTagToTag")
     protected Tag mapPostTagToTag(PostTag postTag) {
         Tag tag = postTag.getTag();
         tag.setPostTags(null);
         return tag;
+    }
+
+    @Named("mapPostColorToColor")
+    protected Color mapPostColorToColor(PostColor postColor) {
+        Color color = postColor.getColor();
+        color.setPostColors(null);
+        return color;
     }
 }

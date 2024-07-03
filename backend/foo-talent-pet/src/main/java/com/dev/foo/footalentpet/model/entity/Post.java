@@ -40,4 +40,8 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     private Set<PostTag> postTags = new HashSet<>();
+
+    @OneToMany(mappedBy = "post")
+    @JsonManagedReference
+    private Set<PostColor> postColors = new HashSet<>();
 }

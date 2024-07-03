@@ -11,7 +11,6 @@ public record PostRequestDTO(
         String description,
         Date date,
         PostStatus status,
-        UUID user,
         List<UUID> tags
 ) {
 

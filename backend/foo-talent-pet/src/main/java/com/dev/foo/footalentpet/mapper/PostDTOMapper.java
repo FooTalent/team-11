@@ -33,14 +33,9 @@ public abstract class PostDTOMapper {
     @Mapping(source = "postTags", target = "tags", qualifiedByName = "mapPostTagToTag")
     public abstract PostResponseDTO postToPostResponseDto(Post post);
 
-    @Mapping(qualifiedByName = "map", source = "user", target = "user")
     @Mapping(qualifiedByName = "mapPostTags", source = "tags", target = "postTags")
     public abstract Post postResponseDtoToPost(PostRequestDTO postRequestDTO);
 
-    @Named("map")
-    protected User map(UUID id) {
-        return userRepository.findById(id).orElse(null);
-    }
 
     @Named("mapPostTags")
     protected Set<PostTag> mapPostTagsByIds(List<UUID> tags) {

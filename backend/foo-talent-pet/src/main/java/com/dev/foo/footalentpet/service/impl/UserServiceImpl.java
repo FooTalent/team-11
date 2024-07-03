@@ -2,16 +2,15 @@ package com.dev.foo.footalentpet.service.impl;
 
 import com.dev.foo.footalentpet.mapper.UserDTOMapper;
 import com.dev.foo.footalentpet.model.entity.User;
-import com.dev.foo.footalentpet.model.enums.Role;
-import com.dev.foo.footalentpet.model.request.UserRequestDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.UserRepository;
 import com.dev.foo.footalentpet.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,5 +33,11 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public UserResponseDTO getMe() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+        return userDTOMapper.userToUserResponseDto(currentUser);
+    }
 
 }

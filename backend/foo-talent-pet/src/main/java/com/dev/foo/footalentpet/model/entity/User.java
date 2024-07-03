@@ -47,6 +47,7 @@ public class User implements UserDetails, Serializable {
     private String city;
 
     private Boolean enabled;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -54,7 +55,7 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public String getUsername() {
-        return "";
+        return email;
     }
 
     @Override

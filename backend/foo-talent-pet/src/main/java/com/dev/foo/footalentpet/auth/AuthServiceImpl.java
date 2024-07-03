@@ -7,16 +7,16 @@ import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
 import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
-import com.dev.foo.footalentpet.model.request.UserRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.UserRepository;
-import com.dev.foo.footalentpet.security.JwtUtil;
+import com.dev.foo.footalentpet.service.JwtService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,9 +28,11 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private UserDTOMapper userDTOMapper;
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
     @Autowired
-    private JwtUtil jwtUtil;
+    private JwtService jwtService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Override
     public UserResponseDTO register(RegisterRequestDTO userDTO) {
@@ -51,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
             throw new UnauthorizedException("Invalid credentials");
         }
         UserResponseDTO userResponseDTO = userDTOMapper.userToUserResponseDto(user);
-        String token = jwtUtil.generateToken(userResponseDTO);
+        String token = jwtService.generateToken(user);
         return new LoginResponseDTO(userResponseDTO, token);
     }
 }

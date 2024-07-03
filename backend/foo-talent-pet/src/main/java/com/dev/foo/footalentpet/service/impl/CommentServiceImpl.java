@@ -24,7 +24,7 @@ import java.util.UUID;
 @Transactional
 public class CommentServiceImpl implements CommentService {
 
-    private static final Logger logger = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CommentServiceImpl.class);
 
     @Autowired
     private CommentRepository commentRepository;

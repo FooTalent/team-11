@@ -4,6 +4,7 @@ package com.dev.foo.footalentpet.service.impl;
 import com.dev.foo.footalentpet.exception.NotFoundException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Comment;
+import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.request.CommentRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.repository.CommentRepository;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,10 +36,14 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentResponseDTO createComment(CommentRequestDTO commentDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
         Comment comment = commentDTOMapper.toEntity(commentDTO);
         if (Objects.isNull(comment.getPost())) {
             throw new NotFoundException("Post not found");
         }
+        comment.setUser(currentUser);
         Comment savedComment = commentRepository.save(comment);
         savedComment.setCreatedAt(LocalDateTime.now());
         return commentDTOMapper.toDTO(savedComment);

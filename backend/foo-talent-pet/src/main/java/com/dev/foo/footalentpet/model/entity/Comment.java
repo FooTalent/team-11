@@ -34,9 +34,10 @@ public class Comment {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-/*    @ManyToOne
+
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;*/
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)

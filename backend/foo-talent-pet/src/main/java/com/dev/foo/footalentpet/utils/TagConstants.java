@@ -8,6 +8,6 @@ public class TagConstants {
     public static final Set<String> PREDEFINED_TAGS;
 
     static {
-        PREDEFINED_TAGS = Set.of("Manchado", "Negro", "Blanco");
+        PREDEFINED_TAGS = Set.of("Manchas", "Cicatriz", "Cola cortada");
     }
 }

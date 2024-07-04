@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:4200/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module" src="./Pet quest_files/client"></script>
+
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./Pet quest_files/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Pet quest_files/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Pet quest</title>
+    <!--<base href="/">--><base href=".">
+  <link rel="stylesheet" href="./Pet quest_files/styles.css"><style ng-style-reused="">@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
+
+
+[_ngcontent-ng-c582112353]:root {
+  --titulo: "Poppins", sans-serif;
+  --texto: "Inter", sans-serif;
+  --fontWeight: 700;
+  --colorNavBar: #277380;
+  --colorFondo: #f9f9ed;
+  --colorBtnLogin: #ef783d;
+  --colorBtnPublicaciones: #feb941;
+  --colorBtnPublicar: #6dc5d1;
+  --colorTitulo: #277380;
+  --colorSeleccionNavBar: #fde49e;
+  --colorImgCards: #ef783d;
+  --colorFondoCards: #d9eff2;
+  --colorTituloComunidad: #dd761c;
+  --colorBtnRegistrarme: #feb941;
+  --colorBtnVerMas: #fde49d;
+}
+
+
+
+.color[_ngcontent-ng-c582112353] {
+  background-color: var(--colorFondo) !important;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100%;
+}
+.hero[_ngcontent-ng-c582112353] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--colorFondo) !important;
+  background-size: cover;
+  background-position: center;
+  width: 94%;
+  margin-left: 3%;
+  margin-top: 3%;
+  color: var(--colorNavBar);
+}
+h1[_ngcontent-ng-c582112353] {
+  font-family: var(--titulo);
+  font-weight: var(--fontWeight);
+}
+p[_ngcontent-ng-c582112353] {
+  font-family: var(--texto);
+}
+#btn1[_ngcontent-ng-c582112353] {
+  background-color: var(--colorBtnPublicar);
+  color: black;
+  font-family: var(--texto);
+}
+#btn2[_ngcontent-ng-c582112353] {
+  background-color: var(--colorBtnPublicaciones);
+  color: black;
+  font-family: var(--texto);
+}
+.hero-left[_ngcontent-ng-c582112353] {
+  width: 50%;
+  padding: 40px;
+}
+.hero-left[_ngcontent-ng-c582112353]   h1[_ngcontent-ng-c582112353] {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+.hero-left[_ngcontent-ng-c582112353]   span[_ngcontent-ng-c582112353] {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+.hero-left[_ngcontent-ng-c582112353]   p[_ngcontent-ng-c582112353] {
+  inline-size: 450px;
+  text-align: justify;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.hero-right[_ngcontent-ng-c582112353] {
+  width: 50%;
+  padding: 40px;
+}
+.regtangleHeader2[_ngcontent-ng-c582112353] {
+  height: 200px;
+  width: 200px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 10px;
+  background-color: var(--colorFondoCards);
+}
+h3.text-center[_ngcontent-ng-c582112353] {
+  padding-top: 27px;
+}
+.nuestra-comunidad[_ngcontent-ng-c582112353] {
+  background: #D9D9D9;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 245px;
+}
+p.comunidad[_ngcontent-ng-c582112353] {
+  padding: 3%;
+}
+button.btn.btn-outline-dark[_ngcontent-ng-c582112353] {
+  align-items: center;
+}
+.suscribirse[_ngcontent-ng-c582112353] {
+  background: #D9D9D9;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 245px;
+}
+h3.titulo[_ngcontent-ng-c582112353] {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+small#emailHelp[_ngcontent-ng-c582112353] {
+  margin-left: -116px;
+}
+/*# sourceMappingURL=home.component.css.map */</style><style ng-style-reused="">@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
+
+
+[_ngcontent-ng-c582137170]:root {
+  --titulo: "Poppins", sans-serif;
+  --texto: "Inter", sans-serif;
+  --fontWeight: 700;
+  --colorNavBar: #277380;
+  --colorFondo: #f9f9ed;
+  --colorBtnLogin: #ef783d;
+  --colorBtnPublicaciones: #feb941;
+  --colorBtnPublicar: #6dc5d1;
+  --colorTitulo: #277380;
+  --colorSeleccionNavBar: #fde49e;
+  --colorImgCards: #ef783d;
+  --colorFondoCards: #d9eff2;
+  --colorTituloComunidad: #dd761c;
+  --colorBtnRegistrarme: #feb941;
+  --colorBtnVerMas: #fde49d;
+}
+
+
+
+.container[_ngcontent-ng-c582137170] {
+  margin-left: 16px;
+}
+img[_ngcontent-ng-c582137170] {
+  width: 179px;
+  height: 47px;
+  margin-top: 10px;
+  margin-left: 16px;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light[_ngcontent-ng-c582137170] {
+  font-family: var(--titulo);
+  justify-content: space-around;
+  padding:
+    17px,
+    96px,
+    17px,
+    96px;
+  height: fixed(93px);
+  gap: 10px;
+  background-color: var(--colorNavBar) !important;
+}
+.nav-link[_ngcontent-ng-c582137170] {
+  color: var(--colorFondo) !important;
+}
+.nav-link[_ngcontent-ng-c582137170]:hover {
+  color: var(--colorSeleccionNavBar) !important;
+}
+.btn[_ngcontent-ng-c582137170] {
+  padding: 10px 14px;
+  border: none;
+  gap: 10px;
+  border-radius: 40px !important;
+  box-shadow: 0 5px 3.4px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+}
+#btnLogin[_ngcontent-ng-c582137170] {
+  background-color: var(--colorBtnLogin) !important;
+  border-radius: 15px;
+}
+@media (min-width: 1200px) {
+  .navbar-nav[_ngcontent-ng-c582137170] {
+    margin-left: 12rem;
+  }
+  .nav-item[_ngcontent-ng-c582137170] {
+    margin-left: 3rem;
+  }
+  .container[_ngcontent-ng-c582137170] {
+    padding-left: 0;
+  }
+}
+/*# sourceMappingURL=navbar.component.css.map */</style><style ng-style-reused="">@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
+
+
+[_ngcontent-ng-c3526715036]:root {
+  --titulo: "Poppins", sans-serif;
+  --texto: "Inter", sans-serif;
+  --fontWeight: 700;
+  --colorNavBar: #277380;
+  --colorFondo: #f9f9ed;
+  --colorBtnLogin: #ef783d;
+  --colorBtnPublicaciones: #feb941;
+  --colorBtnPublicar: #6dc5d1;
+  --colorTitulo: #277380;
+  --colorSeleccionNavBar: #fde49e;
+  --colorImgCards: #ef783d;
+  --colorFondoCards: #d9eff2;
+  --colorTituloComunidad: #dd761c;
+  --colorBtnRegistrarme: #feb941;
+  --colorBtnVerMas: #fde49d;
+}
+
+
+
+.quienes-somos[_ngcontent-ng-c3526715036] {
+  border-radius: 20px;
+  padding: 5px;
+  margin: 20px auto;
+  height: auto;
+  width: 100%;
+  display: block;
+}
+h1[_ngcontent-ng-c3526715036] {
+  font-family: var(--titulo);
+  font-weight: var(--fontWeight);
+}
+label[_ngcontent-ng-c3526715036], 
+select[_ngcontent-ng-c3526715036] {
+  font-family: var(--texto);
+}
+.title[_ngcontent-ng-c3526715036] {
+  margin: 0 2px 39px 0;
+  display: inline-block;
+  overflow-wrap: break-word;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 39.8px;
+  color: #277380;
+}
+.full-width-container[_ngcontent-ng-c3526715036] {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.full-width-container[_ngcontent-ng-c3526715036]   .fix[_ngcontent-ng-c3526715036]   img[_ngcontent-ng-c3526715036] {
+  margin-top: -150px;
+}
+/*# sourceMappingURL=landing-aboutus.component.css.map */</style><style ng-style-reused="">@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
+
+
+[_ngcontent-ng-c3423540045]:root {
+  --titulo: "Poppins", sans-serif;
+  --texto: "Inter", sans-serif;
+  --fontWeight: 700;
+  --colorNavBar: #277380;
+  --colorFondo: #f9f9ed;
+  --colorBtnLogin: #ef783d;
+  --colorBtnPublicaciones: #feb941;
+  --colorBtnPublicar: #6dc5d1;
+  --colorTitulo: #277380;
+  --colorSeleccionNavBar: #fde49e;
+  --colorImgCards: #ef783d;
+  --colorFondoCards: #d9eff2;
+  --colorTituloComunidad: #dd761c;
+  --colorBtnRegistrarme: #feb941;
+  --colorBtnVerMas: #fde49d;
+}
+
+
+
+.testimonial-card[_ngcontent-ng-c3423540045] {
+  border-radius: 24px;
+  background: var(--colorprimary-blue-200, #B8E4E9);
+  padding: 16px;
+  width: 416px;
+  box-sizing: border-box;
+}
+.casos-de-exito[_ngcontent-ng-c3423540045] {
+  margin: 0 auto 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.casos-dexito[_ngcontent-ng-c3423540045] {
+  margin: 0 2px 39px 0;
+  display: inline-block;
+  overflow-wrap: break-word;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 39.8px;
+  color: #277380;
+}
+.contents[_ngcontent-ng-c3423540045] {
+  box-shadow: 0px 8px 24px 0px rgba(229, 69, 69, 0.04);
+  border-radius: 16px;
+  background: #FFFFFF;
+  position: relative;
+  padding: 32px;
+  box-sizing: border-box;
+}
+.client-proffesion[_ngcontent-ng-c3423540045] {
+  overflow-wrap: break-word;
+  color: var(--gray-500, #838E9E);
+}
+.client-photo[_ngcontent-ng-c3423540045] {
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.carousel-indicators[_ngcontent-ng-c3423540045] {
+  border: 2px solid #000;
+  background-color: #f8f9fa;
+}
+.btn-testimonial[_ngcontent-ng-c3423540045] {
+  background-color: #dddddd;
+  border: none;
+  border-radius: 8.1px;
+  margin: 16.3px;
+  width: 16.3px;
+  height: 16.3px;
+}
+.btn-testimonial[_ngcontent-ng-c3423540045]:active {
+  background-color: #dd7616;
+}
+.btn-testimonial[_ngcontent-ng-c3423540045]:hover {
+  background-color: #dd7616;
+}
+.btn-testimonial[_ngcontent-ng-c3423540045]:focus {
+  background-color: #dd7616;
+}
+.comilllas[_ngcontent-ng-c3423540045] {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+/*# sourceMappingURL=landing-testimonial.component.css.map */</style><style ng-style-reused="">@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
+
+
+[_ngcontent-ng-c2817614630]:root {
+  --titulo: "Poppins", sans-serif;
+  --texto: "Inter", sans-serif;
+  --fontWeight: 700;
+  --colorNavBar: #277380;
+  --colorFondo: #f9f9ed;
+  --colorBtnLogin: #ef783d;
+  --colorBtnPublicaciones: #feb941;
+  --colorBtnPublicar: #6dc5d1;
+  --colorTitulo: #277380;
+  --colorSeleccionNavBar: #fde49e;
+  --colorImgCards: #ef783d;
+  --colorFondoCards: #d9eff2;
+  --colorTituloComunidad: #dd761c;
+  --colorBtnRegistrarme: #feb941;
+  --colorBtnVerMas: #fde49d;
+}
+
+
+
+.row[_ngcontent-ng-c2817614630] {
+  background-color: var(--colorNavBar) !important;
+}
+p[_ngcontent-ng-c2817614630] {
+  color: var(--colorFondo) !important;
+}
+#columna-derecha[_ngcontent-ng-c2817614630] {
+  color: var(--colorFondo) !important;
+}
+#columna-izquierda-copy[_ngcontent-ng-c2817614630] {
+  margin-top: px;
+}
+hr[_ngcontent-ng-c2817614630] {
+  border-color: #B8E4E9 !important;
+  border: 3px solid;
+}
+/*# sourceMappingURL=footer.component.css.map */</style></head>
+  <body><!--nghm-->
+    <app-root _nghost-ng-c3984273398="" ng-version="18.0.3" ng-server-context="ssr"><router-outlet _ngcontent-ng-c3984273398=""></router-outlet><app-home _nghost-ng-c582112353="" ng-version="18.0.3"><app-navbar _ngcontent-ng-c582112353="" _nghost-ng-c582137170=""><nav _ngcontent-ng-c582137170="" class="navbar navbar-expand-lg navbar-light bg-light"><div _ngcontent-ng-c582137170="" class="container"><a _ngcontent-ng-c582137170="" routerlink="/home" class="navbar-brand" ng-reflect-router-link="/home" href="http://localhost:4200/home"><img _ngcontent-ng-c582137170="" src="./Pet quest_files/Logo.svg" alt="" class="d-inline-block align-top"></a><button _ngcontent-ng-c582137170="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span _ngcontent-ng-c582137170="" class="navbar-toggler-icon"></span></button><div _ngcontent-ng-c582137170="" id="navbarSupportedContent" class="collapse navbar-collapse"><ul _ngcontent-ng-c582137170="" class="navbar-nav mr-auto"><li _ngcontent-ng-c582137170="" class="nav-item active"><a _ngcontent-ng-c582137170="" routerlink="/about-us" class="nav-link" ng-reflect-router-link="/about-us" href="http://localhost:4200/about-us">¿Quiénes somos? </a></li><li _ngcontent-ng-c582137170="" class="nav-item active"><a _ngcontent-ng-c582137170="" routerlink="/preguntas-Frecuentes" class="nav-link" ng-reflect-router-link="/preguntas-Frecuentes" href="http://localhost:4200/preguntas-Frecuentes">FAQ</a></li><li _ngcontent-ng-c582137170="" class="nav-item active dropdown"><a _ngcontent-ng-c582137170="" role="button" data-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle"> Ver publicaciones </a><div _ngcontent-ng-c582137170="" class="dropdown-menu"><a _ngcontent-ng-c582137170="" routerlink="/mascotas-perdidas" class="dropdown-item" ng-reflect-router-link="/mascotas-perdidas" href="http://localhost:4200/mascotas-perdidas">Mascotas perdidas</a><a _ngcontent-ng-c582137170="" routerlink="/mascotas-encontradas" class="dropdown-item" ng-reflect-router-link="/mascotas-encontradas" href="http://localhost:4200/mascotas-encontradas">Mascotas encontradas</a><a _ngcontent-ng-c582137170="" routerlink="/mascotas-adopcion" class="dropdown-item" ng-reflect-router-link="/mascotas-adopcion" href="http://localhost:4200/mascotas-adopcion">Mascotas en adopción</a></div></li></ul><button _ngcontent-ng-c582137170="" type="button" id="btnLogin" routerlink="/login" class="btn btn-dark" tabindex="0" ng-reflect-router-link="/login">iniciar sesión</button></div></div></nav></app-navbar><div _ngcontent-ng-c582112353="" class="color"><section _ngcontent-ng-c582112353="" class="hero"><div _ngcontent-ng-c582112353="" class="hero-left"><h1 _ngcontent-ng-c582112353="">Encuentra a tu </h1><h1 _ngcontent-ng-c582112353="">mejor amigo </h1><p _ngcontent-ng-c582112353=""> Un lugar para reunir mascotas perdidas con sus hogares y dar una segunda oportunidad a aquellas que esperan ser adoptadas. </p><p _ngcontent-ng-c582112353=""> ¡Juntos, podemos hacer la diferencia! </p><div _ngcontent-ng-c582112353=""><a _ngcontent-ng-c582112353="" href="http://localhost:4200/#" class="btn"><button _ngcontent-ng-c582112353="" type="button" id="btn1" class="btn btn-primary">Publicar</button></a><a _ngcontent-ng-c582112353="" href="http://localhost:4200/#"><button _ngcontent-ng-c582112353="" type="button" id="btn2" class="btn btn-primary">Ver publicaciones</button></a></div></div><div _ngcontent-ng-c582112353="" class="hero-right"><div _ngcontent-ng-c582112353="" class="right-top"><img _ngcontent-ng-c582112353="" src="./Pet quest_files/Landing page 1.png" width="100" height="100" alt=""></div></div></section><section _ngcontent-ng-c582112353="" class="row d-flex justify-content-center"><h3 _ngcontent-ng-c582112353="" class="col-12 text-center">Cómo funciona Pet Quest</h3><div _ngcontent-ng-c582112353="" class="regtangleHeader2 col-12 col-sm-6 col-md-3 col-lg-3"></div><div _ngcontent-ng-c582112353="" class="regtangleHeader2 col-12 col-sm-6 col-md-3 col-lg-3"></div><div _ngcontent-ng-c582112353="" class="regtangleHeader2 col-12 col-sm-6 col-md-3 col-lg-3"></div><div _ngcontent-ng-c582112353="" class="regtangleHeader2 col-12 col-sm-6 col-md-3 col-lg-3"></div></section><app-landing-aboutus _ngcontent-ng-c582112353="" _nghost-ng-c3526715036=""><div _ngcontent-ng-c3526715036="" class="quienes-somos container-fluid"><div _ngcontent-ng-c3526715036="" class="d-flex justify-content-center"><h3 _ngcontent-ng-c3526715036="" class="title">Quienes Somos</h3></div><div _ngcontent-ng-c3526715036="" class="full-width-container row"><div _ngcontent-ng-c3526715036="" class="col fix"><img _ngcontent-ng-c3526715036="" src="./Pet quest_files/Mask group L.png" alt="l"></div><div _ngcontent-ng-c3526715036="" class="col d-flex justify-content-start"><p _ngcontent-ng-c3526715036=""> En Pet Quest creemos que cada mascota merece un hogar lleno de amor y seguridad. Somos un equipo apasionado, amantes de los animales y voluntarios dedicados a reunir a las mascotas perdidas con sus familias y a encontrar nuevos hogares para aquellas que han sido rescatadas. </p></div><div _ngcontent-ng-c3526715036="" class="col d-flex justify-content-end"><img _ngcontent-ng-c3526715036="" src="./Pet quest_files/Mask group R.png" alt="r"></div></div></div></app-landing-aboutus><app-landing-testimonial _ngcontent-ng-c582112353="" _nghost-ng-c3423540045=""><section _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="casos-de-exito"><div _ngcontent-ng-c3423540045="" class="casos-dexito"> Casos de éxito </div><div _ngcontent-ng-c3423540045="" id="carouselTestimonial" class="carousel slide container-fluid"><div _ngcontent-ng-c3423540045="" class="carousel-inner"><div _ngcontent-ng-c3423540045="" class="carousel-item active"><div _ngcontent-ng-c3423540045="" class="container row"><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Estoy sorprendido, reuní a un perrito perdido con su familia en pocas horas. ¡Excelente plataforma, recomiendo!”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> Emiliano </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Parque Patricios, CABA / Julio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a la plataforma hoy tengo un nuevo amigo, adopté a Samba, un gatito adorable. ¡Adopta, no compres!”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> Tamara </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Quilmes, Buenos Aires / Julio 2024 </span></div></div></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="carousel-item"><div _ngcontent-ng-c3423540045="" class="container row"><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="carousel-item"><div _ngcontent-ng-c3423540045="" class="container row"><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div><div _ngcontent-ng-c3423540045="" class="testimonial-card col m-2"><div _ngcontent-ng-c3423540045="" class="contents"><div _ngcontent-ng-c3423540045="" class="container"><div _ngcontent-ng-c3423540045=""><div _ngcontent-ng-c3423540045="" class="comillas"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/comilla.png" class="quotes m-2"></div><p _ngcontent-ng-c3423540045=""><span _ngcontent-ng-c3423540045="">“Gracias a todos por acompañar mi busqueda, en especial a Florencia por cuidarlo. ¡Ramón ya esta en casa!.”</span></p></div><div _ngcontent-ng-c3423540045="" class="row"><div _ngcontent-ng-c3423540045="" class="col-2"><img _ngcontent-ng-c3423540045="" src="./Pet quest_files/Gris_0.png" alt="" class="client-photo"></div><div _ngcontent-ng-c3423540045="" class="col ml-3"><div _ngcontent-ng-c3423540045=""> María y Ramón </div><span _ngcontent-ng-c3423540045="" class="client-proffesion"> Las Heras, Mendoza / Junio 2024 </span></div></div></div></div></div></div></div></div><button _ngcontent-ng-c3423540045="" type="button" data-bs-target="#carouselTestimonial" data-bs-slide="prev" class="carousel-control-prev"><span _ngcontent-ng-c3423540045="" aria-hidden="true" class="carousel-control-prev-icon"></span><span _ngcontent-ng-c3423540045="" class="visually-hidden">Previous</span></button><button _ngcontent-ng-c3423540045="" type="button" data-bs-target="#carouselTestimonial" data-bs-slide="next" class="carousel-control-next"><span _ngcontent-ng-c3423540045="" aria-hidden="true" class="carousel-control-next-icon"></span><span _ngcontent-ng-c3423540045="" class="visually-hidden">Next</span></button></div><div _ngcontent-ng-c3423540045=""><button _ngcontent-ng-c3423540045="" type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="0" aria-label="Slide 1" aria-current="true" class="active btn-testimonial"></button><button _ngcontent-ng-c3423540045="" type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="1" aria-label="Slide 2" class="btn-testimonial"></button><button _ngcontent-ng-c3423540045="" type="button" data-bs-target="#carouselTestimonial" data-bs-slide-to="2" aria-label="Slide 3" class="btn-testimonial"></button></div></div></section></app-landing-testimonial><section _ngcontent-ng-c582112353=""><div _ngcontent-ng-c582112353="" class="nuestra-comunidad d-flex flex-column align-items-center"><p _ngcontent-ng-c582112353="" class="comunidad"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae inventore tempore velit, assumenda iste unde vitae! Maxime deserunt aut minus ea corporis vero voluptatem doloremque impedit dolore, eius tempora deleniti. </p><div _ngcontent-ng-c582112353=""><button _ngcontent-ng-c582112353="" type="button" routerlink="/register" class="btn btn-outline-dark" tabindex="0" ng-reflect-router-link="/register">Registrarme</button></div></div></section><section _ngcontent-ng-c582112353=""><div _ngcontent-ng-c582112353="" class="suscribirse d-flex flex-column align-items-center"><h3 _ngcontent-ng-c582112353="" class="titulo">¡Recibí nuestras alertas por email! </h3><div _ngcontent-ng-c582112353="" class="form-inline"><div _ngcontent-ng-c582112353="" class="form-group mx-sm-3 mb-2"><label _ngcontent-ng-c582112353="" for="inputPassword2" class="sr-only">Password</label><input _ngcontent-ng-c582112353="" type="password" id="inputPassword2" placeholder="Ingresa tu email" class="form-control"></div><button _ngcontent-ng-c582112353="" type="submit" class="btn btn-warning mb-2"><b _ngcontent-ng-c582112353="">Suscribirme</b></button></div><div _ngcontent-ng-c582112353=""><small _ngcontent-ng-c582112353="" id="emailHelp" class="form-text text-muted">Por favor, ingresá un email válido</small></div></div></section><app-footer _ngcontent-ng-c582112353="" _nghost-ng-c2817614630=""><div _ngcontent-ng-c2817614630="" class="container-fluid"><div _ngcontent-ng-c2817614630="" class="row p-5 bg-light"><div _ngcontent-ng-c2817614630="" id="columna-izquierda" class="col-sm-12 col-md-6 col-lg-6"><img _ngcontent-ng-c2817614630="" src="./Pet quest_files/Logo.svg" alt="logo"><br _ngcontent-ng-c2817614630=""><a _ngcontent-ng-c2817614630="" href="http://localhost:4200/" class="redes"><img _ngcontent-ng-c2817614630="" src="./Pet quest_files/Facebook.png" alt="facebook"></a><a _ngcontent-ng-c2817614630="" href="http://localhost:4200/" class="redes"><img _ngcontent-ng-c2817614630="" src="./Pet quest_files/Instagram.png" alt="Instagram"></a></div><div _ngcontent-ng-c2817614630="" id="columna-derecha" class="col-sm-12 col-md-6 col-lg-6 d-flex justify-content-end"><ul _ngcontent-ng-c2817614630=""><li _ngcontent-ng-c2817614630=""><span _ngcontent-ng-c2817614630="">Quiénes somos</span></li><li _ngcontent-ng-c2817614630=""><span _ngcontent-ng-c2817614630="">FAQ</span></li><li _ngcontent-ng-c2817614630=""><span _ngcontent-ng-c2817614630="">Contacto</span></li></ul></div><hr _ngcontent-ng-c2817614630=""><div _ngcontent-ng-c2817614630="" class="row"><div _ngcontent-ng-c2817614630="" id="columna-izquierda-copy" class="col-sm-12 col-md-6 col-lg-6"><p _ngcontent-ng-c2817614630=""><b _ngcontent-ng-c2817614630="">©2024. Todos los derechos reservados</b></p></div><div _ngcontent-ng-c2817614630="" id="columna-derecha-copy" class="col-sm-12 col-md-6 col-lg-6"><p _ngcontent-ng-c2817614630=""><b _ngcontent-ng-c2817614630="">Política de privacidad</b></p><p _ngcontent-ng-c2817614630=""><b _ngcontent-ng-c2817614630="">Términos y condiciones</b></p></div></div></div></div></app-footer></div></app-home><!--container--></app-root>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="./Pet quest_files/jquery.slim.min.js.descarga" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="./Pet quest_files/bootstrap.bundle.min.js.descarga" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+  <script src="./Pet quest_files/polyfills.js.descarga" type="module"></script><script src="./Pet quest_files/scripts.js.descarga" defer=""></script><script src="./Pet quest_files/main.js.descarga" type="module"></script>
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"c":{"0":[{"i":"c582112353","r":1}]}}]}</script></body></html>

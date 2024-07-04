@@ -6,9 +6,13 @@
 p{
     color: var(--colorFondo) !important;
 }
-#columna-derecha{
+
+
+hr{
+    border-color:#B8E4E9 !important;
+    border: 3px solid;
+}   
+a{
     color: var(--colorFondo) !important;
-}
-#columna-izquierda-copy{
-    margin-top: px;
+    text-decoration: none;
 }

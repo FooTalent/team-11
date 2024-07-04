@@ -1,6 +1,8 @@
 package com.dev.foo.footalentpet.model.entity;
 
+import com.dev.foo.footalentpet.model.enums.Gender;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
+import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,6 +34,20 @@ public class Post implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private PostStatus status;
+
+    @Enumerated(EnumType.STRING)
+    private SpeciesType speciesType;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    private String province;
+
+    private String city;
+
+    private String locality;
+
+    private String contact;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

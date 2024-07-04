@@ -1,4 +1,17 @@
+@import url('../../../styles.css');
+
 nav.navbar.navbar-expand-lg.navbar-light.bg-light {
     padding-left: 25px;
     padding-right: 25px;
+    background-color: var(--colorNavBar) !important;
+}
+.nav-link{
+    color: var(--colorFondo) !important;
+}
+.nav-link:hover{
+    color: var(--colorSeleccionNavBar) !important;
+}
+#btnLogin{
+    background-color: var(--colorBtnLogin) !important;
+    border-radius: 15px;
 }

@@ -1,0 +1,14 @@
+@import url('../../../styles.css');
+
+.row {
+    background-color: var(--colorNavBar) !important;
+}
+p{
+    color: var(--colorFondo) !important;
+}
+#columna-derecha{
+    color: var(--colorFondo) !important;
+}
+#columna-izquierda-copy{
+    margin-top: px;
+}

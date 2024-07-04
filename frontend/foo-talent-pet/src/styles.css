@@ -11,6 +11,7 @@
     /*texto*/
     --titulo: "Poppins", sans-serif;
     --texto: "Inter", sans-serif;
+    --fontWeight: 700;
 
     /*paleta de colores*/
     --colorNavBar: #277380;
@@ -20,7 +21,7 @@
     --colorBtnPublicar: #6dc5d1;
     --colorTitulo: #277380;
     --colorSeleccionNavBar: #fde49e;
-
+    
     /*testimonial_cardas*/
     --colorImgCards: #ef783d;
     --colorFondoCards: #d9eff2;

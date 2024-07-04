@@ -1,19 +1,36 @@
+@import url('../../../styles.css');
 body{
-  background-color: #f9f9ed;;
+  background-color: var(--colorFondo) !important;
 }
-.hero {
-    
+.hero {  
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: url('../../../assets/Gris_0.png');
+    background-color: var(--colorFondo) !important;
     background-size: cover;
     background-position: center;
     width: 94%;
     margin-left: 3%;
     margin-top: 3%;
-    
+    color: var(--colorNavBar);
   }
+h1{
+  font-family: var(--titulo);
+  font-weight: var(--fontWeight);
+}
+p{
+  font-family: var(--texto);
+}
+#btn1{
+  background-color: var(--colorBtnPublicar);
+  color: black;
+  font-family: var(--texto);
+}
+#btn2{
+  background-color: var(--colorBtnPublicaciones);
+  color: black;
+  font-family: var(--texto);
+}
   /* Hero Left */
   .hero-left {
     width: 50%;
@@ -49,6 +66,7 @@ body{
     border-radius: 20px;
     padding: 5px;
     margin: 10px;
+    background-color: var(--colorFondoCards);
 
     }
   

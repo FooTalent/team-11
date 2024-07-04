@@ -1,17 +1,52 @@
 @import url('../../../styles.css');
-
-nav.navbar.navbar-expand-lg.navbar-light.bg-light {
-    padding-left: 25px;
-    padding-right: 25px;
-    background-color: var(--colorNavBar) !important;
+.container{
+  /* padding-left: 3rem; */
+  margin-left: 16px;
 }
+img{
+  width: 179px;
+  height: 47px;
+  margin-top: 10px;
+  margin-left: 16px;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+  font-family: var(--titulo);
+  justify-content: space-around;
+  padding: 17px, 96px, 17px, 96px;
+  height: fixed(93px);
+  gap: 10px;
+  background-color: var(--colorNavBar) !important;
+}
+
 .nav-link{
     color: var(--colorFondo) !important;
 }
 .nav-link:hover{
     color: var(--colorSeleccionNavBar) !important;
 }
+.btn {
+  padding: 10px 14px;
+  border: none;
+  gap: 10px;
+  /* height: 51px; */
+  border-radius: 40px !important;
+  box-shadow: 0 5px 3.4px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+}
 #btnLogin{
     background-color: var(--colorBtnLogin) !important;
     border-radius: 15px;
+}
+
+@media (min-width: 1200px) {
+  .navbar-nav {
+    margin-left: 12rem;
+
+  }
+  .nav-item{
+    margin-left: 3rem;
+  }
+  .container{
+    padding-left: 0;
+  }
 }

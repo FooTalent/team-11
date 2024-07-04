@@ -27,13 +27,13 @@ label, select {
     color: #277380;
     
 }
-.background-image-left {
-    background-image: url('../../../assets/Mask\ group\ L.png');
-    background-size: cover;
-    background-position: left;
+
+.full-width-container {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
-.background-image-right {
-    background-image: url('../../../assets/Mask\ group\ R.png');
-    background-size: cover;
-    background-position: right;
+
+.full-width-container .fix img {
+  margin-top: -150px; /* Ajusta este valor según sea necesario */
 }

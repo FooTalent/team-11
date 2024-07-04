@@ -1,6 +1,10 @@
 @import url('../../../styles.css');
-body{
+.color{
   background-color: var(--colorFondo) !important;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100%;
 }
 .hero {  
     display: flex;

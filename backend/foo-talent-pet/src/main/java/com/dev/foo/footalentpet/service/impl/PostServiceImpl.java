@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.HashSet;
@@ -71,6 +72,7 @@ public class PostServiceImpl implements PostService {
         savedPost.setPostTags(new HashSet<>(postTags));
         savedPost.setPostColors(new HashSet<>(postColors));
 
+        savedPost.setCreatedAt(LocalDateTime.now());
         return postDTOMapper.postToPostResponseDto(savedPost);
     }
 

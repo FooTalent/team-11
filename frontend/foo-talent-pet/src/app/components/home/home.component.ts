@@ -3,11 +3,13 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
+import { OnInit } from '@angular/core';
+import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink],
+  imports: [NavbarComponent, FooterComponent, RouterLink,LandingTestimonialComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

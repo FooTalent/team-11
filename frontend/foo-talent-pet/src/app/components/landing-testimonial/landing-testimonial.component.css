@@ -74,10 +74,10 @@
     background-color: #dd7616;
   }
 .comilllas {
-    width: 40px; /* Corrige el espacio entre el valor y la unidad */
-    height: 40px; /* Corrige el espacio entre el valor y la unidad */
-    display: flex; /* Usa flexbox para centrar el contenido */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    object-fit: contain; /* Asegura que la imagen se ajuste sin perder sus proporciones */
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    object-fit: contain; 
 }

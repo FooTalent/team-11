@@ -5,11 +5,12 @@ import { RouterLink } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
 import { OnInit } from '@angular/core';
 import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
+import { LandingAboutusComponent } from '../landing-aboutus/landing-aboutus.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink,LandingTestimonialComponent],
+  imports: [NavbarComponent, FooterComponent, RouterLink,LandingTestimonialComponent,LandingAboutusComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

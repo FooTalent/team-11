@@ -1,1 +1,39 @@
 @import url('../../../styles.css');
+
+.quienes-somos {
+    border-radius: 20px;
+    padding: 5px;
+    margin: 20px auto; 
+    height: auto;
+    width: 100%;
+    display: block; 
+}
+
+h1 {
+  font-family: var(--titulo);
+  font-weight: var(--fontWeight);
+}
+
+label, select {
+  font-family: var(--texto);
+}
+.title{
+    margin: 0 2px 39px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 39.8px;
+    color: #277380;
+    
+}
+.background-image-left {
+    background-image: url('../../../assets/Mask\ group\ L.png');
+    background-size: cover;
+    background-position: left;
+}
+.background-image-right {
+    background-image: url('../../../assets/Mask\ group\ R.png');
+    background-size: cover;
+    background-position: right;
+}

@@ -1,8 +1,8 @@
 @import url('../../../styles.css');
 
 #area{
-    width: 100%;
-    height: auto;
+    width: var(--ancho);
+    height: var(--alto);
     background-color: var(--colorFondo);
 }
 .container-img{
@@ -20,8 +20,8 @@
     height: auto;
 }
 .encabezado{
-    margin-bottom: 4rem;
-    padding-top: 4rem;
+    margin-bottom: var(--espacioTituloAbajo);
+    padding-top: var(--espacioTituloAbajo);
 }
 .subtitle{
     margin: 4rem 0 2rem 0;

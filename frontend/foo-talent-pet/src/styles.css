@@ -12,6 +12,8 @@
     --titulo: "Poppins", sans-serif;
     --texto: "Inter", sans-serif;
     --fontWeight: 700;
+    --espacioTituloArriba: 4rem;
+    --espacioTituloAbajo: 4rem;
 
     /*paleta de colores*/
     --colorNavBar: #277380;
@@ -33,4 +35,8 @@
 
     /*ver publicaciones*/
     --colorBtnVerMas: #fde49d;
+
+    /*dimensiones area de fondo*/
+    --ancho: 100%;
+    --alto: auto;
 }

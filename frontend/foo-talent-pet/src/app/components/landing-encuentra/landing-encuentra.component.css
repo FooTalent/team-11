@@ -1,67 +1,55 @@
 @import url('../../../styles.css');
-.color{
-  background-color: var(--colorFondo) !important;
-  margin: 0%;
-  padding: 0%;
-  width: 100%;
-  height: 100%;
-}
-.hero {  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--colorFondo) !important;
-  
-    background-size: cover;
-    background-position: center;
-    width: 94%;
-    margin-left: 3%;
+.contenedor{
     margin-top: 3%;
-    color: var(--colorNavBar);
-  }
-h1{
-  font-family: var(--titulo);
-  font-weight: var(--fontWeight);
+    margin-bottom: 3%;
+    
 }
-p{
-  font-family: var(--texto);
+.title-bienvenida{
+    color: var(--colorNavBar);
+    font-family: var(--titulo);
+    font-weight: var(--fontWeight);
+}
+.imagen-landing{
+    width: 90%;
+    height: auto;
+}
+#img-land{
+    display: flex;
+    align-items: end;
+    align-content: end;
+    justify-content: end;
+    flex-direction: column-reverse;
+}
+#contenedor-bienvenida{
+    padding-top: 15%;
+    padding-left: 15%;
+    
+}
+#btns{
+    margin-left: 20%;
+    padding-top: 3%;
+    margin-bottom: 5%;
 }
 #btn1{
-  background-color: var(--colorBtnPublicar);
-  color: black;
-  font-family: var(--texto);
+    background-color: var(--colorBtnPublicar);
+    border-radius: 25px;
+    width: 30%;
+    margin-right: 3%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;;
 }
 #btn2{
-  background-color: var(--colorBtnPublicaciones);
-  color: black;
-  font-family: var(--texto);
+    background-color: var(--colorBtnPublicaciones);
+    border-radius: 25px;
+    width: 30%;
+    margin-left: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;
 }
-  /* Hero Left */
-  .hero-left {
-    width: 50%;
-    padding: 40px;
-  }
-  .hero-left h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-  }
-  .hero-left span {
-    display: block;
-    width: 30px;
-    height: 3px;
-    background-color: #ffffff;
-    margin-bottom: 20px;
-  }
-  .hero-left p {
-    inline-size: 450px;
-    text-align: justify;
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-
-  .hero-right {
-    
-  
-    width: 50%;
-    padding: 40px;
-  }
+@media(max-width: 650px){
+    .row{
+        display:flex ;
+        flex-direction: column-reverse;
+    }
+    img{
+        width: 80%;
+    }
+}

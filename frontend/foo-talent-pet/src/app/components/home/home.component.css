@@ -1,4 +1,7 @@
 @import url('../../../styles.css');
+body{
+  background-color: var(--colorFondo);
+}
 .color{
   background-color: var(--colorFondo) !important;
   margin: 0%;

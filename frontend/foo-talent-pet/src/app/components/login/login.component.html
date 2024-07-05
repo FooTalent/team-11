@@ -1,21 +1,23 @@
-<app-navbar></app-navbar>
-<div class="formulario-login">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Correo</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
+<div class="conteiner-login">
+  
+    <div> <button >x</button></div>
+    <div><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/Logo LUPA.svg" alt=""></div>
+   <div>Iniciar Sesión</div>
+   <form>
+    <div class="mb-3">
+      <label for="InputEmail1" class="form-label">Correo Electronico</label>
+      <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label for="InputPassword1" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="InputPassword1">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
-    </div>
-    <div class="btn-cont">
-      <button type="submit" class="btn btn-primary">Iniciar sesion</button>
-      <p class="text"><b>¿No tienes Cuenta? </b><a routerLink="/register">Registrate</a></p>
-    </div>
-    <!-- <div><p><b>¿No tienes Cuenta? </b><a routerLink="/register">Registrate</a></p></div> -->
-  </div>
+    <div class="row">
+      <button type="submit" class="btn-pet col">Iniciar Sesión</button>
+    <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
+ </div>
+     </form>
+   <div>No tienes cuenta? <a href="">Registrate aqui</a></div>
+  
+</div>

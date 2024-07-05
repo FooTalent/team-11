@@ -10,5 +10,5 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
+  static isVisible: boolean = false;
 }

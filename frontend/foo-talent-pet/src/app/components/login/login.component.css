@@ -1,11 +1,4 @@
-.formulario-login {
-    width: 50%;
-    background-color: aliceblue;
-    margin-top: 8%;
-    margin-left: calc(50% - 25%);
-    padding: 2%;
-    border-radius: 5%;
-}
+
 .btn-cont{
   text-align: center;
   margin-bottom: .7rem;
@@ -13,4 +6,41 @@
 
 .btn{
   margin-bottom: .5rem;
+}
+
+.container-login{
+  position: absolute;
+  width: 576px;
+  height: 905px;
+  right: 0px;
+  background-color: #F9F9ED; 
+}
+.btn-pet{
+    border-radius: 50px;
+    background: #EF783D;
+    margin: 0 0 26px 3px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 12px 0.1px 12px 0;
+    width: 217px;
+    box-sizing: border-box;
+    font-family: var(--titulo);
+    color: #F9F9ED; 
+    text-decoration: none; 
+}
+.btn-pet-google{
+  border-radius: 50px;
+  border: #EF783D solid 1px;
+  margin: 0 0 26px 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding: 12px 0.1px 12px 0;
+  width: 217px;
+  height: 43px; 
+  box-sizing: border-box;
+  font-family: var(--titulo);
+  color:  #1D1D1D; 
+  text-decoration: none; 
 }

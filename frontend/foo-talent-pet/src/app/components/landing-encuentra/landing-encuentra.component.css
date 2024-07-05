@@ -1,1 +1,67 @@
 @import url('../../../styles.css');
+.color{
+  background-color: var(--colorFondo) !important;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100%;
+}
+.hero {  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorFondo) !important;
+  
+    background-size: cover;
+    background-position: center;
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 3%;
+    color: var(--colorNavBar);
+  }
+h1{
+  font-family: var(--titulo);
+  font-weight: var(--fontWeight);
+}
+p{
+  font-family: var(--texto);
+}
+#btn1{
+  background-color: var(--colorBtnPublicar);
+  color: black;
+  font-family: var(--texto);
+}
+#btn2{
+  background-color: var(--colorBtnPublicaciones);
+  color: black;
+  font-family: var(--texto);
+}
+  /* Hero Left */
+  .hero-left {
+    width: 50%;
+    padding: 40px;
+  }
+  .hero-left h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  .hero-left span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+  }
+  .hero-left p {
+    inline-size: 450px;
+    text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .hero-right {
+    
+  
+    width: 50%;
+    padding: 40px;
+  }

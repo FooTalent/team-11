@@ -1,6 +1,9 @@
 @import url('../../../styles.css');
-body{
+#area{
+  width: var(--ancho);
+  height: var(--alto);
   background-color: var(--colorFondo);
+  overflow: hidden;
 }
 .color{
   background-color: var(--colorFondo) !important;

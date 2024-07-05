@@ -1,7 +1,8 @@
 @import url('../../../styles.css');
 .contenedor{
-    margin-top: 3%;
+    margin-top: 0%;
     margin-bottom: 3%;
+    padding-top: 3%;
     
 }
 .title-bienvenida{

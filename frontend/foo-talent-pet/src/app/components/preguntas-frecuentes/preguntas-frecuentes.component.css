@@ -14,6 +14,7 @@
     padding-top: var(--espacioTituloArriba);
     color: var(--colorNavBar);
     font-family: var(--titulo);
+    font-weight: var(--fontWeight);
 }
 
 p {

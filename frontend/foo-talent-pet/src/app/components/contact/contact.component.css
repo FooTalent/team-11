@@ -82,3 +82,28 @@ input {
 .contact-form button:hover {
   background-color: #ca632f;
 }
+
+@media (max-width: 600px){
+  .sections{
+    /* justify-content: flex-start; */
+    flex-direction: column;
+  }
+  .image{
+    /* margin: 0 1.2rem; */
+    max-width: 100%;
+  }
+  .contact-form {
+    height: 470px;
+    text-align: center;
+    margin: .5rem 1rem;
+    padding: 5px 30px;
+    width: 90%;
+  }
+  .contact-form button {
+    width: 150px;
+    padding: 10px 15px;
+    font-size: 12px;
+
+
+  }
+}

@@ -1,27 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
-import { OnInit } from '@angular/core';
+// import { OnInit } from '@angular/core';
 import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
 import { LandingAboutusComponent } from '../landing-aboutus/landing-aboutus.component';
-import { LandingComofuncionaComponent } from '../landing-comofunciona/landing-comofunciona.component';
 import { LandingEncuentraComponent } from '../landing-encuentra/landing-encuentra.component';
 import { LandingUneteComponent } from '../landing-unete/landing-unete.component';
+import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-comofunciona.component";
+
+
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink, LandingTestimonialComponent, LandingAboutusComponent, LandingEncuentraComponent, LandingComofuncionaComponent, LandingUneteComponent],
+  imports: [NavbarComponent, FooterComponent, RouterLink,LandingTestimonialComponent,LandingAboutusComponent, LandingEncuentraComponent,LandingComofuncionaComponent,LandingUneteComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   data: any;
 
-  
+
   constructor(private petQuestService: PetQuestService) { }
 
 

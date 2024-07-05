@@ -1,15 +1,30 @@
 @import url('../../../styles.css');
 
 .filter-container {
+  top: 300px;
+  gap: 33px;
   margin-left:  56px;
   width: 307px;
   height: 658px;
 }
-
+.cont {
+  margin-top: 2rem;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  /* justify-content: center; */
+}
+.filterimg {
+  margin: 0 .5rem 1.2rem 0;
+  /* margin-bottom: 1.2rem;
+  margin-right: .5rem; */
+}
 h1 {
   text-align: center;
   font-family: var(--titulo);
+  font-weight: bold;
   margin-bottom: 20px;
+  font-size: 24px;
 }
 
 .filter-section {
@@ -18,13 +33,14 @@ h1 {
 
 label {
   font-family: var(--titulo);
-  color: rgba(0, 0, 0, 0.717);
+  /* color: rgba(0, 0, 0, 0.717); */
+  color: #344054;
   padding: .5rem;
   border-radius: 7px;
   display: block;
   font-weight: bold;
   margin-bottom: 0;
-  background-color: var(--colorBtnPublicar);
+  background-color: #B8E4E9;
 }
 
 select {

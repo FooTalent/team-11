@@ -1,1 +1,144 @@
-<p>form-plublication works!</p>
+<app-navbar></app-navbar>
+<div id="area">
+    <div class="container-img">
+        <img src="../../../assets/quienes somos Der 1.png" alt="imagen esquinera" class="imagen-lateral">
+    </div>
+    <div class="container">
+        <h1 class="encabezado">Publicá una mascota que encontraste</h1>
+    <div  class="nav">
+        <ul class="nav-list">
+            <li class="nab-item"><a routerLink="/mascotas-perdidas"  class="navs">Perdidas</a></li>
+            <li class="nab-item"><a routerLink="/mascotas-encontradas"  class="navs">Encontradas</a></li>
+            <li class="nab-item"><a routerLink="/mascotas-adopcion"  class="navs">En adopción</a></li>
+        </ul>
+    </div>
+    <h2 class="subtitle">Detalles Básicos</h2>
+    <div class="row">
+        <div class=" class col-6 col-md-6 col-sm-12">
+            <div class="row">
+                <div class="class col-6 ">
+                    <h3>Especie de animal *</h3>
+                    <p>Seleccioná el tipo de mascota que vas a publicar</p>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-outline-dark">Perro</button>
+                            <button type="button" class="btn btn-outline-dark">Gato</button>
+                            <button type="button" class="btn btn-outline-dark">Otro</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="class col-6 col-md-6 col-sm-12">
+                    <h3>Sexo *</h3>
+                    <p>Seleccioná el sexo</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-outline-dark">Macho</button>
+                            <button type="button" class="btn btn-outline-dark">Hembra</button>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">No lo sé</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4>Nombre del animal</h4>
+                    <small id="inputText" class="form-text text-muted">Indicá el nombre de la mascota, si no lo sabes puedes saltarte este campo</small>
+                    <input type="text" class="form-control" id="exampleInputText" aria-describedby="inputText">
+                </div>
+                <h4>Ubicación*</h4>
+                <p>Indicá la ubicación que mejor corresponda a la situación</p>
+                <div class="row">
+                    <div class="form-group col-md-4 ">
+                        <select id="inputState" class="form-control" >
+                          <option selected >Provincia</option>
+                          <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        
+                        <select id="inputState" class="form-control">
+                          <option selected>Ciudad</option>
+                          <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        
+                        <select id="inputState" class="form-control">
+                          <option selected>Localidad</option>
+                          <option>...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h4>Fecha*</h4>
+                    <small id="inputText" class="form-text text-muted">Indicá la fecha en la que perdiste, encontraste o das en adopcion a la mascota</small>
+                    <input type="text" class="form-control" id="exampleInputText" aria-describedby="inputText">
+                </div>
+                <div class="form-group">
+                    <h4>Color de animal*</h4>
+                    <small id="inputText" class="form-text text-muted">Seleccioná el color que mas se adapte a la mascota</small>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-outline-dark">Negro</button>
+                            <button type="button" class="btn btn-outline-dark">Blanco</button>
+                            <button type="button" class="btn btn-outline-dark">Gris</button>
+                            <button type="button" class="btn btn-outline-dark">Marrón</button>
+                            <button type="button" class="btn btn-outline-dark">Amarillo/Beige</button>
+                            <button type="button" class="btn btn-outline-dark">Multicolor</button>
+                            <button type="button" class="btn btn-outline-dark">Otro</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4>Contacto*</h4>
+                    <small id="inputText" class="form-text text-muted">Indicá el medio por el cual te gustaría ser contactado, podés incluir tu número o gmail</small>
+                    <input type="text" class="form-control" id="exampleInputText" aria-describedby="inputText">
+                </div>
+            </div>
+        </div>
+        <div class=" class col-12 col-md-6">
+            <h4>Agregar Fotos*</h4>
+            <p>Agregá hasta 3 fotos de la mascota para brindar más detalles sobre el aspecto de la misma.</p>
+            <div class="espacio-fotos">
+                <img src="../../../assets/Rectangle 23864.png" alt="">
+            </div>
+
+            <h4>Descripción</h4>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Escribí información adicional que consideres necesaria sobre la mascota</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <small id="limit-words" class="form-text text-muted">0/500</small>
+            </div>
+
+            <h4>Palabras claves*</h4>
+            <p> Seleccioná algunas palabras claves con rasgos caracteristicos de la mascota</p>
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-outline-dark">Manchas</button>
+                    <button type="button" class="btn btn-outline-dark">Cicatriz</button>
+                    <button type="button" class="btn btn-outline-dark">Cola Cortada</button>
+                    <button type="button" class="btn btn-outline-dark">Orejas Caídas</button>
+                    <button type="button" class="btn btn-outline-dark">Adulto</button>
+                    <button type="button" class="btn btn-outline-dark">Cachorro</button>
+                    <button type="button" class="btn btn-outline-dark">Orejas erguidas</button>
+                    <button type="button" class="btn btn-outline-dark">Vacunado</button>
+                    <button type="button" class="btn btn-outline-dark">Desparasitado</button>
+                    <button type="button" class="btn btn-outline-dark">Tratamiento especial</button>
+                    <button type="button" class="btn btn-outline-dark">Discapacidad</button>
+                    <button type="button" class="btn btn-outline-dark">Pelo corto</button>
+                    <button type="button" class="btn btn-outline-dark">Pelo largo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-publicar-center">
+        <button type="button" class="btn btn-light-publicar">Publicar</button>
+    </div>
+    
+    </div>
+</div>
+<app-footer></app-footer>

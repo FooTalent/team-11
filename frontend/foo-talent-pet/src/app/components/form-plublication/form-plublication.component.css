@@ -1,0 +1,80 @@
+@import url('../../../styles.css');
+
+#area{
+    width: 100%;
+    height: auto;
+    background-color: var(--colorFondo);
+}
+.container-img{
+    position: relative;
+    width: 20%;
+    margin-left: 80%;
+    background-color: var(--colorFondo);
+}
+.imagen-lateral{
+    position: absolute;
+    top: 10vh;
+    right: 0px;
+    max-width: 20vh;
+    width: auto;
+    height: auto;
+}
+.encabezado{
+    margin-bottom: 4rem;
+    padding-top: 4rem;
+}
+.subtitle{
+    margin: 4rem 0 2rem 0;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+}
+.nav-list{
+    list-style: none;
+    display: flex;
+}
+.nav-item{
+    margin: 0 15px;
+    
+}
+.navs{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    font-size: larger;
+}
+.btn{
+    background-color: var(--colorFondo);
+    margin-left: 1rem;
+    margin-top: 1vh;
+}
+.btn:hover{
+    
+    color: black;
+}
+.form-control{
+    background-color: var(--colorFondoForms);
+}
+.btn-light-publicar{
+    width: 10rem;
+    border-radius: 20px;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    background-color: var( --colorBtnPublicaciones);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;
+}
+.btn-publicar-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#limit-words{
+    text-align: end;
+}
+.espacio-fotos {
+    margin: 2rem 4rem 2rem 4rem;
+    width: auto;
+    height: 30vh;
+    background-size: cover;
+}

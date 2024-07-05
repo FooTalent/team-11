@@ -7,6 +7,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { MascotasperdidasComponent } from './components/mascotasperdidas/mascotasperdidas.component';
 import { MascotasencontradasComponent } from './components/mascotasencontradas/mascotasencontradas.component';
 import { MascotasadopcionComponent } from './components/mascotasadopcion/mascotasadopcion.component';
+import { FormPlublicationComponent } from './components/form-plublication/form-plublication.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'about-us', component:AboutUsComponent},
     {path: 'mascotas-perdidas', component: MascotasperdidasComponent},
     {path: 'mascotas-encontradas', component: MascotasencontradasComponent},
-    {path: 'mascotas-adopcion', component: MascotasadopcionComponent}
+    {path: 'mascotas-adopcion', component: MascotasadopcionComponent},
+    {path: 'form-publication', component: FormPlublicationComponent}
 ];

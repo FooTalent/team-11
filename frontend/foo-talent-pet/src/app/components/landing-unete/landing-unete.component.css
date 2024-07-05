@@ -1,1 +1,54 @@
 @import url('../../../styles.css');
+.suscribirse{
+    background: #D9D9D9;
+      border-radius: 20px;
+      padding: 5px;
+      margin: 20px;
+      margin-left: 50px;
+      margin-right: 50px;
+      height: 245px;
+  }
+  
+  h3.titulo {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  small#emailHelp {
+    margin-left: -116px;
+  }
+  
+  h1{
+font-family: Poppins;
+font-size: 39.81px;
+font-weight: 600;
+line-height: 63.7px;
+letter-spacing: -0.02em;
+text-align: center;
+color:  #DD761C;
+/* box-shadow: 1px 4px 6px 0px #C8B3A4CC; */
+
+;
+  }
+
+p{
+font-family: Inter;
+font-size: 19.02px;
+font-weight: 500;
+line-height: 30.43px;
+letter-spacing: -0.02em;
+text-align: center;
+
+}
+button{
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+    border-radius: 50px;
+    background: #FEB941;
+    margin-right: auto; 
+    margin-left: auto;
+    display: flex;
+    padding: 14px 0;
+    width: 222px;
+    box-sizing: border-box;
+    justify-content: center;
+}

@@ -4,9 +4,38 @@
   top: 300px;
   gap: 33px;
   margin-left:  56px;
-  width: 307px;
+  width: 416px;
   height: 658px;
+  /* padding-top: 1rem; */
 }
+.publicar{
+  width: 416px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  border: solid 1px #FEB941;
+  margin-top: 1rem;
+}
+.publicar-p{
+  text-align: center;
+  font-family: "Inter";
+  font-size: 13px;
+  font-weight: 600;
+}
+.publicar-btn{
+  width: 130px;
+  border: none;
+  padding: 8px;
+  border-radius: 40px;
+  background-color: #FEB941;
+  color: #F9F9ED;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
 .cont {
   margin-top: 2rem;
   display: flex;

@@ -1,9 +1,6 @@
 <app-navbar></app-navbar>
 <div class="section">
-  <app-filtroperdidas></app-filtroperdidas>
-  <!-- <app-pets-card class="card"></app-pets-card>
-
-  -->
+  <app-filtroperdidas class="filtro"></app-filtroperdidas>
 
   <div *ngFor="let pet of pets">
     <app-pets-card class="card" [pet]="pet"></app-pets-card>

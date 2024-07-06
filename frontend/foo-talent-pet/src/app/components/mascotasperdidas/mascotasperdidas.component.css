@@ -1,9 +1,13 @@
 .section{
   display: flex;
-  /* justify-content: space-around; */
 }
 .card{
   border: none;
-  /* text-align: center; */
   margin: 5rem ;
+}
+
+@media (max-width: 500px) {
+  .section {
+    flex-direction: column;
+  }
 }

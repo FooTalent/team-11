@@ -1,4 +1,49 @@
+/* Clase personalizada para el modal-dialog */
+.modal-dialog-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  margin: 0;
+}
 
+.modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+/* styles.css */
+/* .modal-dialog {
+  position: absolute;
+  /* top: 50%; */
+  /* left: 89%; */
+  /* transform: translate(-50%, -50%); */
+/* } */ 
+
+/* .modal-right {
+  left: auto;
+  right: 0;
+  transform: none;
+} */
+
+/* .modal-left {
+  left: 0;
+  right: auto;
+  transform: none;
+} */
+
+
+
+
+/* 
 .btn-cont{
   text-align: center;
   margin-bottom: .7rem;
@@ -43,4 +88,4 @@
   font-family: var(--titulo);
   color:  #1D1D1D; 
   text-decoration: none; 
-}
+} */

@@ -87,7 +87,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "plugin angular-polyfills"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [

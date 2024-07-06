@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
+// import { BtnLoginService } from '../../service/btn-login.service';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; 
 
 @Component({
   selector: 'app-login',
@@ -10,5 +12,14 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  static isVisible: boolean = false;
+  
+  // constructor(private btnLoginService: BtnLoginService) {}
+  
+  // openModal(content:any){
+  //   this.btnLoginService.openLogin(content);
+  // }
+
+  // close(){
+  //   this.btnLoginService.closeLogin();
+  // }
 }

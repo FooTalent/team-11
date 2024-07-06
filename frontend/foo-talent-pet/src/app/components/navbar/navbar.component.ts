@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
-
+import { BtnLoginService } from '../../service/btn-login.service';
 
 
 
@@ -13,13 +13,10 @@ import { LoginComponent } from '../login/login.component';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  // constructor(private btnLoginService: BtnLoginService){}
 
-  openSlidebar() {
-    LoginComponent.isVisible = true; 
-  }
-  
-   closeSlidebar() {
-    
-  }
+  // openLogin(LoginContent:any){
+  //   this.btnLoginService.openLogin(LoginContent);
+  // }
 }
 

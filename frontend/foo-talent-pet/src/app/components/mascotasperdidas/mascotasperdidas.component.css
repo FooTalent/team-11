@@ -1,9 +1,38 @@
 .section{
   display: flex;
 }
+.cont{
+  display: flex;
+  flex-wrap: wrap;
+}
+.filtro {
+  /* position: relative; */
+  max-width: 416px;
+  margin-right: 3rem;
+}
+.contenedor{
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem
+}
+
 .card{
+  flex: 1 1 calc(33.33% - 2rem);
+  max-width: 307px ;
+  max-height: 405px;
+  text-align: center;
   border: none;
-  margin: 5rem ;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .filtro {
+    max-width: 100%;
+    margin-right: 0;
+  }
+  .card {
+    flex: 1 1 calc(50% - 2rem); /* 50% para dos cards por fila con espacio */
+  }
 }
 
 @media (max-width: 500px) {

@@ -1,12 +1,13 @@
 .card {
   width: 307px;
+  height: 405px;
   background-color: #F4F4DC;
   padding: 10px 0px;
   border-radius: 10px;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   text-align: center;
+  /* margin: 1rem; */
 }
 .card img {
   width: 287px;

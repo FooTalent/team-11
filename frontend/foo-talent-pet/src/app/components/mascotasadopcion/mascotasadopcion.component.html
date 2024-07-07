@@ -1,4 +1,10 @@
 <app-navbar></app-navbar>
-<p>mascotasadopcion works!</p>
-<app-filtroperdidas></app-filtroperdidas>
+<div class="section">
+  <app-filtroperdidas class="filtro"></app-filtroperdidas>
+  <div class="cont">
+    <div class="contenedor" *ngFor="let pet of pets">
+      <app-pets-card class="card" [pet]="pet"></app-pets-card>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>

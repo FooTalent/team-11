@@ -1,9 +1,28 @@
+@import url('../../../styles.css');
 .section{
   display: flex;
+  padding-top: 2rem;
+  background-color: var(--colorFondo);
 }
 .cont{
   display: flex;
   flex-wrap: wrap;
+  /* padding-top: 2rem; */
+}
+.info-pet{
+  margin: 1rem 2rem;
+}
+.info-pet p{
+  font-weight: 400;
+  font-size: 13px;
+  font-family: var(--texto);
+}
+h1 {
+  font-family: var(--titulo);
+  font-size: 39px;
+  font-weight: 600;
+  letter-spacing: 2%;
+
 }
 .filtro {
   /* position: relative; */

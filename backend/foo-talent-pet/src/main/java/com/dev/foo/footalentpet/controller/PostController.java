@@ -1,6 +1,5 @@
 package com.dev.foo.footalentpet.controller;
 
-import com.dev.foo.footalentpet.exception.ErrorResponse;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
@@ -11,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,8 +31,8 @@ public class PostController {
 
     @Operation(summary = "Create a new post", description = "Creates a new post and returns the post data", responses = {
             @ApiResponse(responseCode = "201", description = "Successfully created post"),
-            @ApiResponse(responseCode = "404", description = "User Not found", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "User Not found", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping
     public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) {
@@ -43,7 +43,7 @@ public class PostController {
 
     @Operation(summary = "Get post by id", description = "Get post by id with data", responses = {
             @ApiResponse(responseCode = "200", description = "Successfully get post"),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @GetMapping("/{id}/comments")
     public ResponseEntity<PostCommentResponseDTO> findById(@PathVariable UUID id) {
@@ -52,7 +52,7 @@ public class PostController {
 
     @Operation(summary = "Get all posts", description = "Get all post with data", responses = {
             @ApiResponse(responseCode = "200", description = "Successfully get posts"),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @GetMapping("/{status}")
     public ResponseEntity<List<PostResponseDTO>> findAll(@PathVariable PostStatus status,
@@ -63,7 +63,7 @@ public class PostController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete post by id", description = "Delete post by id", responses = {
             @ApiResponse(responseCode = "200", description = "Successfully delete post"),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         postService.delete(id);

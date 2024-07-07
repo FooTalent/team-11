@@ -7,6 +7,8 @@ import com.dev.foo.footalentpet.model.entity.Post;
 import com.dev.foo.footalentpet.model.entity.PostColor;
 import com.dev.foo.footalentpet.model.entity.PostTag;
 import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.enums.PostStatus;
+import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
@@ -16,14 +18,17 @@ import com.dev.foo.footalentpet.service.PostService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.dev.foo.footalentpet.repository.specification.PostSpecifications;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.HashSet;
 
@@ -90,8 +95,16 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostResponseDTO> findAll() {
-        return postRepository.findAll().stream()
+    public List<PostResponseDTO> findAll(PostStatus status, Optional<SpeciesType> speciesType) {
+        Specification<Post> spec = Specification.where(null);
+
+        spec = spec.and(PostSpecifications.hasStatus(status));
+
+        if (speciesType.isPresent()) {
+            spec = spec.and(PostSpecifications.hasSpeciesType(speciesType.get()));
+        }
+
+        return postRepository.findAll(spec).stream()
                 .map(postDTOMapper::postToPostResponseDto)
                 .toList();
     }

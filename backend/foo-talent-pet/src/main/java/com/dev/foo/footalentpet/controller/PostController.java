@@ -1,6 +1,8 @@
 package com.dev.foo.footalentpet.controller;
 
 import com.dev.foo.footalentpet.exception.ErrorResponse;
+import com.dev.foo.footalentpet.model.enums.PostStatus;
+import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
@@ -16,6 +18,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Tag(name = "Post", description = "Post operations")
@@ -42,7 +45,7 @@ public class PostController {
             @ApiResponse(responseCode = "200", description = "Successfully get post"),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/comments")
     public ResponseEntity<PostCommentResponseDTO> findById(@PathVariable UUID id) {
         return new ResponseEntity<>(postService.findById(id), HttpStatus.OK);
     }
@@ -51,9 +54,10 @@ public class PostController {
             @ApiResponse(responseCode = "200", description = "Successfully get posts"),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
-    @GetMapping
-    public ResponseEntity<List<PostResponseDTO>> findAll() {
-        return new ResponseEntity<>(postService.findAll(), HttpStatus.OK);
+    @GetMapping("/{status}")
+    public ResponseEntity<List<PostResponseDTO>> findAll(@PathVariable PostStatus status,
+                                                         @RequestParam(required = false) SpeciesType speciesType) {
+        return new ResponseEntity<>(postService.findAll(status, Optional.ofNullable(speciesType)), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

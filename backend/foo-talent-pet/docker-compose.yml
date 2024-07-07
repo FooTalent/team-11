@@ -2,9 +2,9 @@ version: '3.8'
 services:
   app:
     container_name: pet-quest
-    image: adriandelosreyes/pet-quest:latest
     build: .
     ports:
       - "8080:8080"
     env_file:
       - .env
+    image: adriandelosreyes/pet-quest:latest

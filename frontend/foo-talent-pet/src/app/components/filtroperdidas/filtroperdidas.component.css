@@ -15,12 +15,12 @@
   align-items: center;
   padding: 8px;
   border-radius: 10px;
-  border: solid 1px #FEB941;
+  border: solid 1px var(--colorBtnPublicaciones);
   margin-top: 1rem;
 }
 .publicar-p{
   text-align: center;
-  font-family: "Inter";
+  font-family: var(--texto);
   font-size: 13px;
   font-weight: 600;
 }
@@ -29,8 +29,8 @@
   border: none;
   padding: 8px;
   border-radius: 40px;
-  background-color: #FEB941;
-  color: #F9F9ED;
+  background-color: var(--colorBtnPublicaciones);
+  color: var(--colorFondo);
   font-size: 16px;
   font-weight: 600;
 
@@ -57,7 +57,7 @@ h1 {
 }
 .cont-label{
   margin: 0;
-  background-color: #B8E4E9;
+  background-color: var(--colorFondoForms);
   color: #344054;
   padding: 8px 12px;
   border-radius: 6px;
@@ -71,11 +71,10 @@ label {
   display: block;
   font-weight: bold;
   margin-bottom: 0;
-  background-color: #B8E4E9;
+  background-color: var();
 }
 select {
   font-family: var(--texto);
-
   width: 100%;
   margin-bottom: .5rem;
   padding: 8px;
@@ -92,7 +91,7 @@ select {
   margin: 1rem .2rem;
   padding: 10px;
   gap: 10px;
-  background-color: #FEB941;
+  background-color: var(--colorBtnRegistrarme);
   color: #344054;
   font-weight: bold;
   border-radius: 6px;

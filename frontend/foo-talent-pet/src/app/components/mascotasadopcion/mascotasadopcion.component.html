@@ -2,6 +2,11 @@
 <div class="section">
   <app-filtroperdidas class="filtro"></app-filtroperdidas>
   <div class="cont">
+    <div class="info-pet">
+      <h1>Mascotas en Adopcion</h1>
+      <p>Aquí encontrarás publicaciones de personas que han encontrado mascotas perdidas en la calle.</p>
+    </div>
+    <hr>
     <div class="contenedor" *ngFor="let pet of pets">
       <app-pets-card class="card" [pet]="pet"></app-pets-card>
     </div>

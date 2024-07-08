@@ -39,6 +39,26 @@ label, select {
 }
 
 .full-width-container .fix img {
-  margin-top: -130px; /* Ajusta este valor según sea necesario */
+  margin-top: -130px; 
   margin-left: 0px;
+}
+.img-l{
+  position: absolute;
+  left: 0;
+}
+
+.img-r{
+  position: absolute;
+  right: 0;
+}
+.conteiner-text { 
+
+  z-index: 10;
+  width: 100px; 
+  margin: 0 auto;
+  display: block; 
+  white-space: normal; 
+  text-align: center;
+  padding: 0 20px;
+  margin-left: 250px;
 }

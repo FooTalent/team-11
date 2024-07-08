@@ -40,3 +40,16 @@
     --ancho: 100%;
     --alto: auto;
 }
+.btn-pet{
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+    border-radius: 50px;
+    background: #FEB941;
+    margin-right: auto; 
+    margin-left: auto;
+    display: flex;
+    padding: 14px 0;
+    width: 222px;
+    box-sizing: border-box;
+    justify-content: center;
+    border: none;
+}

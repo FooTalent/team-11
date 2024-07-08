@@ -1,5 +1,10 @@
 @import url('../../../styles.css');
 
+.container{
+  text-align: center;
+  /* margin: 0 auto; */
+  padding: 0;
+}
 .card {
   width: 307px;
   height: 405px;
@@ -9,7 +14,7 @@
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  /* margin: 1rem; */
+  /* margin: 0; */
 }
 .card img {
   width: 287px;

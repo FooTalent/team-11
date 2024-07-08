@@ -4,6 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
+import { FoundpetsService } from '../../service/foundpets.service';
 
 @Component({
   selector: 'app-mascotasencontradas',
@@ -14,11 +15,17 @@ import { CommonModule } from '@angular/common';
 })
 export class MascotasencontradasComponent {
 
-  pets = [
-    { name: 'Perro', age: 4 },
-    { name: 'Gato', age: 2 },
-    { name: 'Pájaro', age: 1 },
-    { name: 'salmon', age: 1 },
-    { name: 'delfin', age: 1 }
-  ];
+  pets: any;
+
+  constructor(private foundServices: FoundpetsService) {}
+
+  ngOnInit() {
+    this.foundServices.getHealth().subscribe(response => {
+      this.pets = response;
+      console.log(this.pets);
+
+    }, error => {
+      console.error('Error fetching data', error);
+    });
+  }
 }

@@ -11,6 +11,7 @@
 .cont{
   display: flex;
   flex-wrap: wrap;
+  margin-left: 2rem;
 }
 .info-pet{
   margin: 1rem 2rem;
@@ -26,10 +27,7 @@ h1 {
   font-weight: 600;
   letter-spacing: 2%;
 }
-/* .filtro {
-  max-width: 416px;
-  margin-right: 3rem;
-} */
+
 .contenedor{
   margin: 2rem;
   display: flex;
@@ -53,6 +51,9 @@ h1 {
   }
   .filtro {
     flex-direction: column;
+  }
+  .cont{
+  margin-left: 0;
   }
   .info-pet{
     margin: 1rem .5rem;

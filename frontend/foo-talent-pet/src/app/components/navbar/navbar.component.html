@@ -26,8 +26,9 @@
           </div>
         </li>
       </ul>
-
-        <button type="button" class="btn btn-dark" id="btnLogin" routerLink="/login">Iniciar sesión</button>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">a</button> -->
+        <app-login class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-login>
+        <button type="button" class="btn btn-dark" id="btnLogin" data-bs-toggle="modal" data-bs-target="#myModal">Iniciar sesión</button>
 
     </div>
   </div>

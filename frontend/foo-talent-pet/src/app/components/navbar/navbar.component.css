@@ -3,6 +3,9 @@
 .container{
   margin-left: 16px;
 }
+.modal{
+  position: absolute;
+}
 .navbar-collapse {
   margin-left: 1.8rem;
 }

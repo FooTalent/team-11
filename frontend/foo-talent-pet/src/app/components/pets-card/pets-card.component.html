@@ -1,24 +1,22 @@
-<div class="container">
-  <div class="card">
-    <img src=".../../../../../assets/perrito.png" alt="Ciro">
-    <div class="card-content">
-        <div class="cont">
-          <img class="img" src="../../../assets/onecard.png" alt="">
-          <h2>{{pet.name}}</h2>
-        </div>
-        <div class="info">
-            <div class="cont">
-              <img class="img" src="../../../assets/twocard.png" alt="">
-              <p class="info-p">Visto por última vez: 15/6/24</p>
-            </div>
-            <div class="cont">
-              <img class="img img-lugar" src="../../../assets/trecard.png" alt="">
-              <p class="info-p info-lugar">Lugar: {{pet.locality}}</p>
-            </div>
-        </div>
-        <h3>Descripcion:</h3>
-        <p class="description">{{pet.description}}</p>
-        <button>Ver más</button>
-    </div>
+<div class="card">
+  <img class="img__card" src=".../../../../../assets/perrito.png" alt="Ciro">
+  <div class="pet">
+      <div class="name__pet">
+        <img class="img__pet" src="../../../assets/onecard.png" alt="">
+        <h2>{{pet.name}}</h2>
+      </div>
+      <div class="info__pet">
+          <div class="name__pet">
+            <img class="img__pet" src="../../../assets/twocard.png" alt="">
+            <p class="text__pet">Visto por última vez: 15/6/24</p>
+          </div>
+          <div class="name__pet">
+            <img class="img__pet img--lugar" src="../../../assets/trecard.png" alt="">
+            <p class="text__pet text--lugar">Lugar: {{pet.locality}}</p>
+          </div>
+      </div>
+      <h3>Descripcion:</h3>
+      <p class="description">{{pet.description}}</p>
+      <button>Ver más</button>
   </div>
 </div>

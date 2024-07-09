@@ -22,7 +22,7 @@ export class MascotasperdidasComponent {
   ngOnInit() {
     this.LostService.getHealth().subscribe(response => {
       this.pets = response;
-      console.log(this.pets);
+      // console.log(this.pets);
 
     }, error => {
       console.error('Error fetching data', error);

@@ -16,7 +16,7 @@
   /* margin: 0; */
 }
 .img__card{
-  width: 287px;
+  /* width: 287px; */
   border-radius: 10px;
   height: auto;
   margin: 0 .5rem;
@@ -90,4 +90,32 @@ h3{
 
 .pet button:hover {
   background-color: #da9928ef; /* Color de fondo al pasar el mouse */
+}
+@media (width < 700px) {
+  .card {
+    margin: 0;
+    max-width: 250px;
+    height: auto;
+    padding: 2px;
+    /* margin: 0; */
+  }
+  .img__card{
+    max-width: 240px;
+    margin:.2rem;
+
+  }
+
+}
+@media (width < 500px) {
+  .card {
+    max-width: 220px;
+    padding: 2px;
+    /* margin: 0; */
+  }
+  .img__card{
+    max-width: 210px;
+    margin:.3rem;
+
+  }
+
 }

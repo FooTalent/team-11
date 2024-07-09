@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
 <div class="section">
-  <div class="section-filter">
+  <div class="filter__section">
     <app-filtroperdidas class="filtro"></app-filtroperdidas>
   </div>
-  <div class="cont">
-    <div class="info-pet">
+  <div class="pet__section">
+    <div class="pet__info">
       <h1>Mascotas Perdidas</h1>
       <p>Aquí encontrarás publicaciones de personas que han encontrado mascotas perdidas en la calle.</p>
     </div>
-    <hr>
+    <!-- <hr> -->
     <div class="contenedor" *ngFor="let pet of pets">
       <app-pets-card class="card" [pet]="pet"></app-pets-card>
     </div>

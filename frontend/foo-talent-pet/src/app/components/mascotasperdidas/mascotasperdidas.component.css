@@ -23,6 +23,7 @@
   font-family: var(--texto);
 }
 h1 {
+  color:var(--colorNavBar);
   font-family: var(--titulo);
   font-size: 39px;
   font-weight: 600;
@@ -50,9 +51,9 @@ h1 {
     text-align: center;
     margin: .5rem auto;
   }
-  .filtro {
+  /* .filtro {
     flex-direction: column;
-  }
+  } */
   .cont{
   margin: 0;
   }

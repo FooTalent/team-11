@@ -9,8 +9,11 @@
       <p>Aquí encontrarás publicaciones de personas que han encontrado mascotas perdidas en la calle.</p>
     </div>
     <!-- <hr> -->
-    <div class="contenedor">
+    <div class="contenedor" *ngIf="pets && pets.length > 0">
       <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet"></app-pets-card>
+    </div>
+    <div *ngIf="!(pets && pets.length > 0)">
+      <p>No se encontraron mascotas perdidas.</p>
     </div>
   </div>
 </div>

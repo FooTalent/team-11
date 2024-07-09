@@ -108,14 +108,33 @@ h3{
 }
 @media (width < 500px) {
   .card {
-    max-width: 190px;
-    padding: 2px;
-    /* margin: 0; */
+    max-width: 165px;
+    padding: 1.5px;
+
   }
   .img__card{
-    max-width: 180px;
+    max-width: 158px;
     margin:.3rem;
 
   }
+  .info__pet {
+    margin: 3px 0;
+  }
+  .text__pet{
+    font-size: 10px;
+    letter-spacing: 0.1px;
+    line-height: 12px;
+    margin: .4rem 0;
+  }
+  .img__pet {
+    margin: 0 .3rem;
+  }
+  .text--lugar{
+    margin-left: .3rem;
+  }
+  .pet button {
+    padding: 6px 19px;
+    font-size: 14px;
 
+  }
 }

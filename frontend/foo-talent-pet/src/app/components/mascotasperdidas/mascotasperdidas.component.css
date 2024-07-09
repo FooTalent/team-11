@@ -74,9 +74,11 @@ h1 {
     font-size: 30px;
   }
   .contenedor{
-    /* justify-content: center; */
     margin: .5rem;
     gap: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .card{
     margin: .5rem .3rem;
@@ -88,10 +90,14 @@ h1 {
 }
 @media (width < 500px){
   .card{
-    max-width: 190px ;
+    /* max-width: 190px ; */
+    max-width: 165px;
+
   }
   .contenedor{
     margin: .3rem;
-    gap: .5rem;
+    gap: .3rem;
+    /* max-width: 220px ; */
   }
+
 }

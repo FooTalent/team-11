@@ -74,9 +74,17 @@ h1 {
     font-size: 30px;
   }
   .contenedor{
+<<<<<<< HEAD
     /* justify-content: center; */
     margin: .5rem;
     gap: 1rem;
+=======
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+>>>>>>> 9a18e39d2a4fe356cc605222108bb3330c9cdaa4
   }
   .card{
     margin: .5rem .3rem;
@@ -88,10 +96,18 @@ h1 {
 }
 @media (width < 500px){
   .card{
+<<<<<<< HEAD
     max-width: 190px ;
   }
   .contenedor{
     margin: .3rem;
     gap: .5rem;
+=======
+    max-width: 220px ;
+  }
+  .contenedor{
+    margin: .53em;
+    gap: .8rem;
+>>>>>>> 9a18e39d2a4fe356cc605222108bb3330c9cdaa4
   }
 }

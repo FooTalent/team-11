@@ -4,6 +4,7 @@ import com.dev.foo.footalentpet.exception.NotFoundException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.*;
+import com.dev.foo.footalentpet.model.enums.Gender;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
@@ -26,10 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.HashSet;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -115,13 +113,39 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostResponseDTO> findAll(PostStatus status, Optional<SpeciesType> speciesType) {
+    public List<PostResponseDTO> findAll(PostStatus status,
+                                         Optional<SpeciesType> speciesType,
+                                         Optional<Gender> gender,
+                                         Optional<String> province,
+                                         Optional<String> city,
+                                         Optional<String> locality,
+                                         Optional<Date> date) {
         Specification<Post> spec = Specification.where(null);
 
         spec = spec.and(PostSpecifications.hasStatus(status));
 
         if (speciesType.isPresent()) {
             spec = spec.and(PostSpecifications.hasSpeciesType(speciesType.get()));
+        }
+
+        if (gender.isPresent()) {
+            spec = spec.and(PostSpecifications.hasGender(gender.get()));
+        }
+
+        if (province.isPresent()) {
+            spec = spec.and(PostSpecifications.hasProvince(province.get()));
+        }
+
+        if (city.isPresent()) {
+            spec = spec.and(PostSpecifications.hasCity(city.get()));
+        }
+
+        if (locality.isPresent()) {
+            spec = spec.and(PostSpecifications.hasLocality(locality.get()));
+        }
+
+        if (date.isPresent()) {
+            spec = spec.and(PostSpecifications.hasDateAfter(date.get()));
         }
 
         return postRepository.findAll(spec).stream()

@@ -48,6 +48,8 @@ public class User implements UserDetails, Serializable {
 
     private Boolean enabled;
 
+    private UUID tokenSecurity;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

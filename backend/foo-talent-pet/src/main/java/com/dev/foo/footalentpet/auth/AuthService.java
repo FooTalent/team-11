@@ -11,4 +11,6 @@ public interface AuthService {
     UserResponseDTO register(RegisterRequestDTO userDTO);
 
     LoginResponseDTO login(LoginRequestDTO userDTO);
+
+    void activateAccount(String token);
 }

@@ -1,5 +1,6 @@
 package com.dev.foo.footalentpet.controller;
 
+import com.dev.foo.footalentpet.model.enums.Gender;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
@@ -9,6 +10,7 @@ import com.dev.foo.footalentpet.service.PostService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -62,8 +65,21 @@ public class PostController {
     })
     @GetMapping("/{status}")
     public ResponseEntity<List<PostResponseDTO>> findAll(@PathVariable PostStatus status,
-                                                         @RequestParam(required = false) SpeciesType speciesType) {
-        return new ResponseEntity<>(postService.findAll(status, Optional.ofNullable(speciesType)), HttpStatus.OK);
+                                                         @RequestParam(required = false) SpeciesType speciesType,
+                                                         @RequestParam(required = false) Gender gender,
+                                                         @RequestParam(required = false) String province,
+                                                         @RequestParam(required = false) String city,
+                                                         @RequestParam(required = false) String locality,
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date) {
+        return new ResponseEntity<>(postService.findAll(
+                status,
+                Optional.ofNullable(speciesType),
+                Optional.ofNullable(gender),
+                Optional.ofNullable(province),
+                Optional.ofNullable(city),
+                Optional.ofNullable(locality),
+                Optional.ofNullable(date)),
+                HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

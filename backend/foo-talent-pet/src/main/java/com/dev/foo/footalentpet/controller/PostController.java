@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +41,11 @@ public class PostController {
         return new ResponseEntity<>(post, HttpStatus.CREATED);
     }
 
+    @PostMapping(value = "/{id}/images", consumes = {"multipart/form-data"})
+    public ResponseEntity<PostResponseDTO> uploadImage(@PathVariable UUID id, @RequestPart(value = "images", required = false) List<MultipartFile> images) {
+        PostResponseDTO postResponseDTO = postService.uploadImages(id, images);
+        return new ResponseEntity<>(postResponseDTO, HttpStatus.CREATED);
+    }
 
     @Operation(summary = "Get post by id", description = "Get post by id with data", responses = {
             @ApiResponse(responseCode = "200", description = "Successfully get post"),

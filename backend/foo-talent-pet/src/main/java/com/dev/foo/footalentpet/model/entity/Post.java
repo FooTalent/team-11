@@ -71,4 +71,8 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     private Set<PostColor> postColors = new HashSet<>();
+
+    @OneToMany(mappedBy = "post")
+    @JsonManagedReference
+    private Set<Image> images = new HashSet<>();
 }

@@ -30,6 +30,7 @@ public abstract class PostDTOMapper {
     private ColorRepository colorRepository;
 
     @Mapping(source = "user", target = "user")
+    @Mapping(source = "images", target = "images", qualifiedByName = "mapImage")
     @Mapping(source = "postTags", target = "tags", qualifiedByName = "mapPostTagToTag")
     @Mapping(source = "postColors", target = "colors", qualifiedByName = "mapPostColorToColor")
     public abstract PostResponseDTO postToPostResponseDto(Post post);
@@ -68,5 +69,11 @@ public abstract class PostDTOMapper {
         Color color = postColor.getColor();
         color.setPostColors(null);
         return color;
+    }
+
+    @Named("mapImage")
+    protected Image mapImage(Image image) {
+        image.setPost(null);
+        return image;
     }
 }

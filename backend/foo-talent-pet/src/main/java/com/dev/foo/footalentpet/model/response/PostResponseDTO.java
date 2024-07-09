@@ -1,6 +1,7 @@
 package com.dev.foo.footalentpet.model.response;
 
 import com.dev.foo.footalentpet.model.entity.Color;
+import com.dev.foo.footalentpet.model.entity.Image;
 import com.dev.foo.footalentpet.model.entity.Tag;
 import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.enums.Gender;
@@ -27,6 +28,7 @@ public record PostResponseDTO(
         LocalDateTime createdAt,
         User user,
         List<Tag> tags,
-        List<Color> colors
+        List<Color> colors,
+        List<Image> images
 ) {
 }

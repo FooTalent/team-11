@@ -9,13 +9,13 @@ import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.UserRepository;
+import com.dev.foo.footalentpet.service.EmailService;
 import com.dev.foo.footalentpet.service.JwtService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +33,8 @@ public class AuthServiceImpl implements AuthService {
     private JwtService jwtService;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserResponseDTO register(RegisterRequestDTO userDTO) {
@@ -54,6 +56,7 @@ public class AuthServiceImpl implements AuthService {
         }
         UserResponseDTO userResponseDTO = userDTOMapper.userToUserResponseDto(user);
         String token = jwtService.generateToken(user);
+        //emailService.sendSimpleMessage("adriandelosreyes2013@gmail.com", "Login", "User with email " + user.getUsername() + " has logged in");
         return new LoginResponseDTO(userResponseDTO, token);
     }
 }

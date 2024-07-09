@@ -3,10 +3,7 @@ package com.dev.foo.footalentpet.service.impl;
 import com.dev.foo.footalentpet.exception.NotFoundException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
-import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.entity.PostColor;
-import com.dev.foo.footalentpet.model.entity.PostTag;
-import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.entity.*;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
@@ -25,7 +22,9 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.dev.foo.footalentpet.repository.specification.PostSpecifications;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +52,10 @@ public class PostServiceImpl implements PostService {
     private CommentRepository commentRepository;
     @Autowired
     private CommentDTOMapper commentDTOMapper;
+    @Autowired
+    private CloudinaryServiceImpl cloudinaryService;
+    @Autowired
+    private ImageRepository imageRepository;
 
     @Override
     public PostResponseDTO create(PostRequestDTO postDTO) {
@@ -79,6 +82,23 @@ public class PostServiceImpl implements PostService {
 
         savedPost.setCreatedAt(LocalDateTime.now());
         return postDTOMapper.postToPostResponseDto(savedPost);
+    }
+
+    @Override
+    public PostResponseDTO uploadImages(UUID id, List<MultipartFile> images) {
+        try {
+            Post post = postRepository.findById(id)
+                    .orElseThrow(() -> new NotFoundException("Post not found"));
+            List<String> imageUrls = cloudinaryService.uploadFiles(images);
+            List<Image> imagesSaved = imageRepository.saveAll(imageUrls.stream()
+                    .map(url -> new Image(post, url))
+                    .toList());
+            post.setImages(new HashSet<>(imagesSaved));
+            return postDTOMapper.postToPostResponseDto(post);
+        } catch (IOException e) {
+            logger.error("Failed to upload image", e);
+            throw new NotFoundException("Failed to upload image");
+        }
     }
 
     @Override

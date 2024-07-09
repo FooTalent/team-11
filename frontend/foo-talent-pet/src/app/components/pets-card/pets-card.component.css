@@ -110,10 +110,11 @@ h3{
   .card {
     max-width: 165px;
     padding: 1.5px;
-
   }
   .img__card{
     max-width: 158px;
+    max-width: 190px;
+    padding: 2px;
     margin:.3rem;
 
   }

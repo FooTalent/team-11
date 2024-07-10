@@ -52,8 +52,9 @@
                                 <input type="checkbox" class="custom-control-input" id="customSwitch1" (change)="toggleComponentOpciones($event)">
                                 <label class="custom-control-label" for="customSwitch1">Recibir notificaciones de comentarios</label>
                             </div>
-                            <app-toggle-opciones *ngIf="IsComponentVisible"></app-toggle-opciones>
-                        </div>
+                            @if (true) {<app-toggle-opciones ></app-toggle-opciones>}
+                           
+                        </div> 
                         <div class="btn">
                             <button>Guardar</button>
                         </div>

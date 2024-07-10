@@ -22,9 +22,9 @@ export class PruebaComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.modalSS.$modal.subscribe((valor) => {
-      this.modalSwitch = valor
-    });
+    // this.modalSS.$modal.subscribe((valor) => {
+    //   this.modalSwitch = valor
+    // });
 
   }
 

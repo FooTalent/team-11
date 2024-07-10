@@ -20,6 +20,17 @@
             </div>
         }
         @else {
+            <div class="input-comentario">
+                <span class="profile-img"><img src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg" alt=""></span>
+                <form action="">
+                    <input type="text" placeholder="Dejar un comentario">
+                </form>
+            </div>
+            <div class="input-comentario">
+                <p> *Deberás registarte o iniciar sesión para comentar</p>
+                <button disabled class="btn-pet" style="background:  #98A2B3;
+;">Comentar</button>
+            </div>
         
         }
             
@@ -43,20 +54,50 @@
         </div>
     </div>
     <div class="col-6">
-        <div class="container">
-            <p>lorem </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quaerat inventore. Sit eveniet expedita eaque!
-            </p>
+        <div class="container-name">
+            <div class="container-shadow">
+                @if (true) {
+                    <img src="../../../assets/logo gato  dets.png" alt="gato">
+                } @else {
+                    <img src="../../../assets/ph_dog.png" alt="perro">
+                }
+                <h5>Nombre</h5>
+            </div>
+            <div class="row-fix">
+                <img src="../../../assets/twocard.png" alt="eye">
+                <p>Visto por última vez: 02 / 07 / 2024</p>
+
+                
+            </div>
+            <div class="row-fix">
+                <img src="../../../assets/ubication.png" alt="place">
+                <p>Palermo. Capital federal</p>
+            </div>
+            
+            
         </div>
-        <hr>
-        <div class="container">
-            <p>lorem </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quaerat inventore. Sit eveniet expedita eaque!
-            </p>
+        <br>
+        
+        <div class="container-details">
+            <div class="row">
+                <div class="col-3">
+                    <span class="profile-img"><img src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg" alt=""></span>
+                </div>
+                <div class="col-9">
+                    <p>Nombre</p>
+                    <p>ultima Actualizacion xx/xx/xx</p>
+                    <hr>
+                </div>
+            </div>
+            <div class="align">
+                <img  src="../../../assets/email-address-svgrepo-com 1.png" alt="email"> <p>emaildsdsd</p>
+            </div>
+            <div class="align">
+                <img   src="../../../assets/cellphone.png" alt="cell"> <p>123456789</p>
+            </div>
+            <p>Descripción</p>
             <hr>
-            <p>lorem </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quaerat inventore. Sit eveniet expedita eaque!
-            </p>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic distinctio magnam eaque? Modi neque nobis qui aliquid ipsam consequatur repudiandae fuga quas sint minus amet vero consectetur dolore iste voluptates sit aspernatur quo soluta, eum eaque aperiam temporibus velit. Quos quis laborum sint blanditiis ipsam iste, unde esse eaque ratione earum, temporibus molestias voluptate consequatur voluptates quae maxime libero error, eum labore iure. Neque odio rerum culpa officia reiciendis delectus quae ad magni nesciunt suscipit maxime sequi totam eligendi quod inventore et asperiores, a aperiam sunt temporibus eveniet. Molestias facilis officia numquam cumque dolorem suscipit perspiciatis necessitatibus! Illum, nihil amet. </p>
             <hr>
             <p>lorem </p>
             <hr>
@@ -67,12 +108,13 @@
         </div>
     </div>
     <div class="col-12">
-        <div class="container">
-            <h1>Lorem u harum.</h1>
-        <span><img src="../../../assets/perrito.png" alt="perrito"></span>
-        <span><img src="../../../assets/perrito.png" alt="perrito"></span>
-        <span><img src="../../../assets/perrito.png" alt="perrito"></span>
-        <span><img src="../../../assets/perrito.png" alt="perrito"></span>
+       <h1>Ver Mascotas encontradas</h1> 
+        <div class="container d-flex m-3">
+           
+<app-pets-card></app-pets-card>
+<app-pets-card></app-pets-card>
+<app-pets-card></app-pets-card>
+<app-pets-card></app-pets-card>
         </div>
     </div>
 </div>

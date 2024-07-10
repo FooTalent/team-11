@@ -9,6 +9,7 @@ import com.dev.foo.footalentpet.model.request.CommentRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.repository.CommentRepository;
 import com.dev.foo.footalentpet.service.CommentService;
+import com.dev.foo.footalentpet.service.EmailService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
     @Autowired
     private CommentDTOMapper commentDTOMapper;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public CommentResponseDTO createComment(CommentRequestDTO commentDTO) {
@@ -46,6 +49,7 @@ public class CommentServiceImpl implements CommentService {
         comment.setUser(currentUser);
         Comment savedComment = commentRepository.save(comment);
         savedComment.setCreatedAt(LocalDateTime.now());
+        emailService.sendSimpleMessage(comment.getPost().getUser().getEmail(), "New comment", "You have a new comment in your post");
         return commentDTOMapper.toDTO(savedComment);
     }
 

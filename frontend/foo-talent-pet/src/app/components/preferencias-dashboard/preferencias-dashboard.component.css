@@ -1,0 +1,133 @@
+@import url('../../../styles.css');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#area{
+    width: var(--ancho);
+    height: var(--alto);
+    background-color: var(--colorFondo);
+}
+.img-lateral-izq{
+    position: absolute;
+    top: 13%;
+    left: 0;
+    height: 100%;    
+}
+.img-lateral-der{
+    position: absolute;
+    top: 14%;
+    right: 0;
+    height: 100%;    
+}
+.fixed-image{
+    max-width: 100%;
+    height: auto;
+}
+.contenedor {
+    padding-bottom: 15%;
+    /* margin-left: 200px; 
+    padding: 20px; */
+}
+@media (max-width: 768px) {
+    .content {
+      margin-left: 150px; /* Ajusta esto según el tamaño de tu imagen */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content {
+      margin-left: 100px; /* Ajusta esto según el tamaño de tu imagen */
+    }
+  }
+
+/* texto mensaje de bienvenida*/
+
+.texto{
+    text-align: center;
+    padding-top: 5%;
+}
+h1{
+    color: var(--coloTitulo) !important;
+}
+.texto h2{
+    color: var(--colorBtnPublicar);
+}
+
+
+/*navegacion*/
+.navegacion{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+.nav-list{
+    list-style: none;
+    display: flex;
+}
+.nav-item{
+    margin: 0 15px;
+    
+}
+.navs{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    font-size: larger;
+}
+
+/*formulario general*/
+.formulario{
+    margin-top: 2%;
+    padding-top: 4%;
+}
+
+/*formulario izquierdo*/
+.info{
+    margin: 0 5% 0 10%;
+    padding: 8%;
+    border-radius: 22px;
+    border: 1px solid var(--colorBtnRegistrarme);
+}
+.info h2{
+    margin-bottom: 4%;
+    color: var(--colorBtnPublicaciones);
+}
+.form-group{
+    margin-bottom: 2%;
+}
+.form-group label{
+    font-family: var(--texto);
+    font-size: larger;
+    font-weight: 300;
+}
+.form-group input{
+    background-color: var( --colorInputFormProfile);
+}
+.btn{
+    display: flex;
+    justify-content: end;
+}
+
+/*formulario derecho*/
+
+#izquierdo{
+    border: 1px solid black;
+}
+
+.notificaciones{
+    margin: 0 10% 0 5%;
+    padding: 7% 8% 7% 8%;
+    border-radius: 22px;
+    border: 1px solid var(--colorBtnRegistrarme);
+}
+
+.notificaciones  h2{
+    color: var(--colorBtnPublicaciones);
+}
+.foto  h2{
+    color: var(--colorBtnPublicaciones);
+}
+
+

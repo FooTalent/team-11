@@ -1,17 +1,46 @@
+@import url('../../../styles.css');
 /* Clase personalizada para el modal-dialog */
+#myRegister{
+  z-index: 10;
+}
+
 .modal-dialog-right {
   position: fixed;
   top: 0;
   right: 0;
   height: 100%;
   margin: 0;
+  
 }
 
 .modal-content {
   height: 100%;
   border-radius: 0;
+  padding: 3%;
+  background-color: var(--colorFondo);
 }
 
+.lupa{
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  display: flex;
+  justify-content: center;
+}
+
+#title{
+  text-align: center;
+  margin-bottom: 5vh;
+}
+#botones{
+  margin-top: 10vh;
+}
+.opciones{
+  margin-top: 5vh;
+  text-align: center;
+}
+.forget-password{
+  text-align: end;
+}
 
 
 

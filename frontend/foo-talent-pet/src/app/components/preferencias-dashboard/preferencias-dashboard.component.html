@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<div id="area">
+    <div class="contenedor">
+        <div class="img-lateral-izq">
+            <img src="../../../assets/izq_bienvenida.png" alt="" class="fixed-image">
+        </div>
+        <div class="img-lateral-der">
+            <img src="../../../assets/der_bienvenida.png" alt="">
+        </div>
+        <div class="texto">
+            <h1>BIENVENIDO</h1>
+            <h2>Gracias por sumarte a la comunidad</h2>
+        </div>
+        <div  class="navegacion">
+            <ul class="nav-list">
+                <li class="nab-item"><a routerLink="/info"  class="navs">Mis datos</a></li>
+                <li class="nab-item"><a routerLink="/bienvenida"  class="navs">Mis publicaciones</a></li>
+                <li class="nab-item"><a routerLink="/preferencias"  class="navs">Preferencias</a></li>
+            </ul>
+        </div>
+        <div class="formulario">
+            <div class="row">
+                <div class="class col-6 col-md-6 col-sm-12">
+                    
+                    <div class="info">
+                        <H2>Método de contacto</H2>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mail</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Teléfono</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="btn">
+                            <button>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class col-6 col-md-6 col-sm-12">
+                    <div class="notificaciones">
+                        <h2>Notificaciones</h2>
+                        <div class="toggles">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1">Recibir alertas de publicaciones por mail</label>
+                                <small id="emailHelp" class="form-text text-muted">Podes personalizar tus alerta usando filtros</small>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" (change)="toggleComponentOpciones($event)">
+                                <label class="custom-control-label" for="customSwitch1">Recibir notificaciones de comentarios</label>
+                            </div>
+                            <app-toggle-opciones *ngIf="IsComponentVisible"></app-toggle-opciones>
+                        </div>
+                        <div class="btn">
+                            <button>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+

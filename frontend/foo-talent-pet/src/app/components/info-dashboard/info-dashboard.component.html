@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<div id="area">
+    <div class="contenedor">
+        <div class="img-lateral-izq">
+            <img src="../../../assets/izq_bienvenida.png" alt="" class="fixed-image">
+        </div>
+        <div class="img-lateral-der">
+            <img src="../../../assets/der_bienvenida.png" alt="">
+        </div>
+        <div class="texto">
+            <h1>BIENVENIDO</h1>
+            <h2>Gracias por sumarte a la comunidad</h2>
+        </div>
+        <div  class="navegacion">
+            <ul class="nav-list">
+                <li class="nab-item"><a routerLink="/info"  class="navs">Mis datos</a></li>
+                <li class="nab-item"><a routerLink="/bienvenida"  class="navs">Mis publicaciones</a></li>
+                <li class="nab-item"><a routerLink="/preferencias"  class="navs">Preferencias</a></li>
+            </ul>
+        </div>
+        <div class="formulario">
+            <div class="row">
+                <div class="class col-6 col-md-6 col-sm-12">
+                    
+                    <div class="info">
+                        <H2>Información personal</H2>
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Nombre *</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Provincia</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Ciudad</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Localidad / Barrio</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText"><b>Teléfono</b></label>
+                            <input type="text" class="form-control" id="exampleInputText">
+                        </div>
+                        <div class="btn">
+                            <button>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class col-6 col-md-6 col-sm-12">
+                    <div class="foto">
+                        <div class="row">
+                            <div class="class col-6 " id="zquierdo">
+                                <h2>Foto perfil</h2>
+                                <button type="button">Subir</button>
+                            </div>
+                            <div class="class col-6 " id="derecho">
+                                <img src="../../../assets/Rectangle 23864.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cuenta">
+                        <h2>Mi cuenta</h2>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="btn">
+                            <button>Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

@@ -6,13 +6,17 @@
 <div>
   <div class="modal-dialog modal-dialog-right">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header border-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="contenedor-login">
-          <div><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/Logo LUPA.svg" alt=""></div>
-          <div>Iniciar Sesión</div>
+          <div class="lupa">
+            <img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/Logo LUPA.svg" alt="">
+          </div>
+          <div id="title">
+            <h1>Iniciar Sesión</h1>
+          </div>
 
           <div class="mb-3">
             <label for="InputEmail1" class="form-label">Correo Electronico</label>
@@ -21,12 +25,19 @@
           <div class="mb-3">
             <label for="InputPassword1" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="InputPassword1">
+            <div class="forget-password">
+              <small id="emailHelp" class="form-text text-muted"><a href="">Olvidé mi contraseña</a></small>
+            </div>
           </div>
-          <div class="row">
-            <button type="submit" class="btn-pet col">Iniciar Sesión</button>
+          <div class="row" id="botones">
+            <button type="submit" class="btn-registro col">Iniciar Sesión</button>
             <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
           </div>
-          <div>No tienes cuenta? <a routerLink="">Registrate aqui</a></div>
+
+          <app-register class="modal fade" id="myRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-register>
+
+          <div class="opciones">No tienes cuenta? <button type="button" class="btn btn-dark" id="btnRegister" data-bs-toggle="modal" data-bs-target="#myRegister" data-bs-dismiss="modal" >
+            >Registrate aqui</button></div>
         </div>
       </div>
     </div>

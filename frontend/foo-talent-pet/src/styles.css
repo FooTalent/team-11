@@ -24,6 +24,7 @@
     --colorTitulo: #277380;
     --colorSeleccionNavBar: #fde49e;
     --colorFondoForms: #B8E4E9;
+    --colorInputFormProfile: #FDF1CE;
 
     /*testimonial_cardas*/
     --colorImgCards: #ef783d;
@@ -40,6 +41,17 @@
     --ancho: 100%;
     --alto: auto;
 }
+.btn-registro{
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+    border-radius: 50px;
+    background-color: #EF783D;
+    box-sizing: border-box;
+    justify-content: center;
+    border: none;
+    width: 222px;
+    height: auto;
+    color: white;
+}
 .btn-pet{
     box-shadow: 3px 4px 6px 1px #BEBEB2;
     border-radius: 50px;
@@ -53,3 +65,18 @@
     justify-content: center;
     border: none;
 }
+.btn-pet-google{
+    border-radius: 50px;
+    border: #EF783D solid 1px;
+    margin: 0 0 26px 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 12px 0.1px 12px 0;
+    width: 217px;
+    height: 43px; 
+    box-sizing: border-box;
+    font-family: var(--titulo);
+    color:  #1D1D1D; 
+    text-decoration: none; 
+  }

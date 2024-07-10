@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { RegisterComponent } from '../register/register.component';
 // import { BtnLoginService } from '../../service/btn-login.service';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, NavbarComponent],
+  imports: [RouterLink, NavbarComponent, RegisterComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

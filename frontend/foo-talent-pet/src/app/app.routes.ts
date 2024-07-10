@@ -18,6 +18,13 @@ import { LandingUneteComponent } from './components/landing-unete/landing-unete.
 import { PetsCardComponent } from './components/pets-card/pets-card.component';
 import { PetsDetailsComponent } from './components/pets-details/pets-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FormEncontradasComponent } from './components/form-encontradas/form-encontradas.component';
+import { FormEnadopComponent } from './components/form-enadop/form-enadop.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
+import { BienvenidaDashboardComponent } from './components/bienvenida-dashboard/bienvenida-dashboard.component';
+import { InfoDashboardComponent } from './components/info-dashboard/info-dashboard.component';
+import { PreferenciasDashboardComponent } from './components/preferencias-dashboard/preferencias-dashboard.component';
+
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -30,6 +37,8 @@ export const routes: Routes = [
     {path: 'mascotas-encontradas', component: MascotasencontradasComponent},
     {path: 'mascotas-adopcion', component: MascotasadopcionComponent},
     {path: 'form-publication', component: FormPlublicationComponent},
+    {path: 'form-encontradas', component: FormEncontradasComponent},
+    {path: 'form-adopcion', component: FormEnadopComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'filtro-perdidas', component: FiltroperdidasComponent},
     {path: 'land-about', component: LandingAboutusComponent},
@@ -39,5 +48,9 @@ export const routes: Routes = [
     {path: 'land-unete', component: LandingUneteComponent},
     {path: 'pets-card', component: PetsCardComponent},
     {path: 'pets-details', component: PetsDetailsComponent},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent},
+    {path: 'pruebas', component: PruebaComponent},
+    {path: 'bienvenida', component: BienvenidaDashboardComponent},
+    {path: 'info', component: InfoDashboardComponent},
+    {path: 'preferencias', component: PreferenciasDashboardComponent}
 ];

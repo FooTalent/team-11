@@ -106,7 +106,7 @@ background: #F4F4DC;
 .align{
     gap: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .align img {

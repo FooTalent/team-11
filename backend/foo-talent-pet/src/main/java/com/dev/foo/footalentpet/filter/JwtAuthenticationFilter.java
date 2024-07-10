@@ -24,8 +24,6 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
-
     @Autowired
     HandlerExceptionResolver handlerExceptionResolver;
 
@@ -76,7 +74,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             filterChain.doFilter(request, response);
         } catch (Exception exception) {
-            logger.error("Error while processing JWT: {}", exception.getMessage());
             handlerExceptionResolver.resolveException(request, response, null, exception);
         }
     }

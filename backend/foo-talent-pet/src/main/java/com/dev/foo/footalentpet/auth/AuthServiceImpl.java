@@ -66,6 +66,10 @@ public class AuthServiceImpl implements AuthService {
         if (!passwordEncoder.matches(userDTO.password(), user.getPassword())) {
             throw new BadCredentialsException("Invalid credentials");
         }
+        if (!user.getEnabled()) {
+            throw new AccountStatusException("User not activated") {
+            };
+        }
         UserResponseDTO userResponseDTO = userDTOMapper.userToUserResponseDto(user);
         String token = jwtService.generateToken(user);
         return new LoginResponseDTO(userResponseDTO, token);

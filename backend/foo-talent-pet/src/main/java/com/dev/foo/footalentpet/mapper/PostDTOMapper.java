@@ -3,6 +3,7 @@ package com.dev.foo.footalentpet.mapper;
 import com.dev.foo.footalentpet.model.entity.*;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
+import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import com.dev.foo.footalentpet.repository.ColorRepository;
 import com.dev.foo.footalentpet.repository.UserRepository;
 import com.dev.foo.footalentpet.repository.TagRepository;
@@ -23,13 +24,14 @@ public abstract class PostDTOMapper {
 
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private TagRepository tagRepository;
     @Autowired
     private ColorRepository colorRepository;
+    @Autowired
+    private UserDTOMapper userDTOMapper;
 
-    @Mapping(source = "user", target = "user")
+    @Mapping(source = "user", target = "user", qualifiedByName = "mapUser")
     @Mapping(source = "images", target = "images", qualifiedByName = "mapImage")
     @Mapping(source = "postTags", target = "tags", qualifiedByName = "mapPostTagToTag")
     @Mapping(source = "postColors", target = "colors", qualifiedByName = "mapPostColorToColor")
@@ -69,6 +71,11 @@ public abstract class PostDTOMapper {
         Color color = postColor.getColor();
         color.setPostColors(null);
         return color;
+    }
+
+    @Named("mapUser")
+    protected UserResponseDTO mapUser(User user) {
+        return userDTOMapper.userToUserResponseDto(user);
     }
 
     @Named("mapImage")

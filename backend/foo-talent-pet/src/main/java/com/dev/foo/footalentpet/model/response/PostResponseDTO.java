@@ -26,7 +26,7 @@ public record PostResponseDTO(
         String locality,
         String contact,
         LocalDateTime createdAt,
-        User user,
+        UserResponseDTO user,
         List<Tag> tags,
         List<Color> colors,
         List<Image> images

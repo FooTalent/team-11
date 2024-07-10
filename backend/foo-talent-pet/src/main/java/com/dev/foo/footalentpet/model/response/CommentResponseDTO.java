@@ -7,7 +7,7 @@ import java.util.Date;
 
 public record CommentResponseDTO(
         String content,
-        User user,
+        UserResponseDTO user,
         LocalDateTime createdAt
 ) {
 }

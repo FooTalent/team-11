@@ -13,4 +13,8 @@ public interface AuthService {
     LoginResponseDTO login(LoginRequestDTO userDTO);
 
     void activateAccount(String token);
+
+    void forgotPassword(String email);
+
+    void resetPassword(String token, String password);
 }

@@ -55,4 +55,28 @@ public class AuthController {
         authService.activateAccount(token);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Operation(summary = "Forgot password", description = "Forgot password", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully sent email"),
+            @ApiResponse(responseCode = "403", description = "User not activated", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "404", description = "User not found", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PostMapping("/forgot-password")
+    public ResponseEntity<Void> forgotPassword(@RequestParam String email) {
+        authService.forgotPassword(email);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Operation(summary = "Reset password", description = "Reset password", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully reset password"),
+            @ApiResponse(responseCode = "403", description = "Token expired", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "404", description = "User not found", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PostMapping("/reset-password/{token}")
+    public ResponseEntity<Void> resetPassword(@PathVariable String token, @RequestParam String password) {
+        authService.resetPassword(token, password);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

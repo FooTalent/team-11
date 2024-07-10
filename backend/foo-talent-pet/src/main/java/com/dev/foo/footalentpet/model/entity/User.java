@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,6 +50,8 @@ public class User implements UserDetails, Serializable {
     private Boolean enabled;
 
     private UUID tokenSecurity;
+
+    private Date expirationTokenDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

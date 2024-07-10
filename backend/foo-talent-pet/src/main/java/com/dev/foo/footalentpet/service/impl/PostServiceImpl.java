@@ -47,6 +47,8 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private PostTagRepository postTagRepository;
     @Autowired
+    private PostColorRepository postColorRepository;
+    @Autowired
     private CommentRepository commentRepository;
     @Autowired
     private CommentDTOMapper commentDTOMapper;
@@ -74,6 +76,7 @@ public class PostServiceImpl implements PostService {
                 .toList();
 
         postTagRepository.saveAll(postTags);
+        postColorRepository.saveAll(postColors);
 
         savedPost.setPostTags(new HashSet<>(postTags));
         savedPost.setPostColors(new HashSet<>(postColors));

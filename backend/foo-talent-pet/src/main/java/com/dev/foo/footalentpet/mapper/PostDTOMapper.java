@@ -73,7 +73,10 @@ public abstract class PostDTOMapper {
 
     @Named("mapImage")
     protected Image mapImage(Image image) {
-        image.setPost(null);
-        return image;
+        Image image1 = new Image();
+        image1.setId(image.getId());
+        image1.setUrl(image.getUrl());
+        image1.setPost(null);
+        return image1;
     }
 }

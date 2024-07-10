@@ -73,10 +73,9 @@ public abstract class PostDTOMapper {
 
     @Named("mapImage")
     protected Image mapImage(Image image) {
-        Image image1 = new Image();
-        image1.setId(image.getId());
-        image1.setUrl(image.getUrl());
-        image1.setPost(null);
-        return image1;
+        Image imageCopy = new Image();
+        imageCopy.setId(image.getId());
+        imageCopy.setUrl(image.getUrl());
+        return imageCopy;
     }
 }

@@ -72,7 +72,7 @@ public class Post implements Serializable {
     @JsonManagedReference
     private Set<PostColor> postColors = new HashSet<>();
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<Image> images = new HashSet<>();
 }

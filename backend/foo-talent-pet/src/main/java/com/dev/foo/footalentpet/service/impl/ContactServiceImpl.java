@@ -13,7 +13,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void sendContactMessage(ContactRequestDTO contactRequestDTO) {
-        String messageHtml = "<h1>Mensaje de contacto</h1><p>Nombre: " + contactRequestDTO.name() + "</p><p>Email: " + contactRequestDTO.email() + "</p><p>Mensaje: " + contactRequestDTO.message() + "</p>";
+        String messageHtml = "<h1>Mensaje desde Pet Quest</h1><p>Nombre: " + contactRequestDTO.name() + "</p><p>Email: " + contactRequestDTO.email() + "</p><p>Mensaje: " + contactRequestDTO.message() + "</p>";
         emailService.sendHtmlMessage("petquest11@gmail.com", "Mensaje de contacto de " + contactRequestDTO.name(), messageHtml);
     }
 }

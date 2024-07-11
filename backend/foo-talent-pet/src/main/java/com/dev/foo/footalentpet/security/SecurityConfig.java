@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/tags/**", "/health/**", "/colors/**", "/contact/**", "swagger-ui.html", "swagger-ui/**", "api-docs/**").permitAll()
+                        .requestMatchers("/tags/**", "/health/**", "/colors/**", "/contact/**", "/swagger-ui.html", "/swagger-ui/**", "/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/comments/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()

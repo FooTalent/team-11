@@ -2,9 +2,11 @@ package com.dev.foo.footalentpet.service.impl;
 
 
 import com.dev.foo.footalentpet.exception.NotFoundException;
+import com.dev.foo.footalentpet.exception.UnauthorizedException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.model.entity.Comment;
 import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.request.CommentRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.repository.CommentRepository;
@@ -61,6 +63,14 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void delete(UUID id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new NotFoundException("Comment not found"));
+
+        if (!comment.getUser().getId().equals(currentUser.getId()) && !currentUser.getRole().equals(Role.ADMIN)) {
+            throw new UnauthorizedException("You are not allowed to delete this comment");
+        }
         commentRepository.deleteById(id);
     }
 }

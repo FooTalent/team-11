@@ -23,6 +23,7 @@ public interface PostService {
     PostCommentResponseDTO findById(UUID id);
 
     List<PostResponseDTO> findAll(PostStatus status,
+                                  boolean recent,
                                   Optional<SpeciesType> speciesType,
                                   Optional<Gender> gender,
                                   Optional<String> province,

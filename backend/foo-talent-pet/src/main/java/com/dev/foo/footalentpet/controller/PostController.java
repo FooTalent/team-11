@@ -65,6 +65,7 @@ public class PostController {
     })
     @GetMapping("/{status}")
     public ResponseEntity<List<PostResponseDTO>> findAll(@PathVariable PostStatus status,
+                                                         @RequestParam(required = true) boolean recent,
                                                          @RequestParam(required = false) SpeciesType speciesType,
                                                          @RequestParam(required = false) Gender gender,
                                                          @RequestParam(required = false) String province,
@@ -73,6 +74,7 @@ public class PostController {
                                                          @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date) {
         return new ResponseEntity<>(postService.findAll(
                 status,
+                recent,
                 Optional.ofNullable(speciesType),
                 Optional.ofNullable(gender),
                 Optional.ofNullable(province),

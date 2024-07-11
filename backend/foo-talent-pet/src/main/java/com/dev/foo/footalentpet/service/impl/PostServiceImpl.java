@@ -1,11 +1,13 @@
 package com.dev.foo.footalentpet.service.impl;
 
 import com.dev.foo.footalentpet.exception.NotFoundException;
+import com.dev.foo.footalentpet.exception.UnauthorizedException;
 import com.dev.foo.footalentpet.mapper.CommentDTOMapper;
 import com.dev.foo.footalentpet.mapper.PostDTOMapper;
 import com.dev.foo.footalentpet.model.entity.*;
 import com.dev.foo.footalentpet.model.enums.Gender;
 import com.dev.foo.footalentpet.model.enums.PostStatus;
+import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
@@ -16,6 +18,7 @@ import com.dev.foo.footalentpet.service.PostService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -109,7 +112,7 @@ public class PostServiceImpl implements PostService {
 
         PostResponseDTO postResponseDTO = postDTOMapper.postToPostResponseDto(post);
 
-        List<CommentResponseDTO> comments = commentRepository.findByPostId(id).stream()
+        List<CommentResponseDTO> comments = commentRepository.findByPostIdOrderByCreatedAtDesc(id).stream()
                 .map(commentDTOMapper::toDTO)
                 .toList();
         return new PostCommentResponseDTO(postResponseDTO, comments);
@@ -117,6 +120,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostResponseDTO> findAll(PostStatus status,
+                                         boolean recent,
                                          Optional<SpeciesType> speciesType,
                                          Optional<Gender> gender,
                                          Optional<String> province,
@@ -151,13 +155,24 @@ public class PostServiceImpl implements PostService {
             spec = spec.and(PostSpecifications.hasDateAfter(date.get()));
         }
 
-        return postRepository.findAll(spec).stream()
+        Sort sort = recent ? Sort.by("date").descending() : Sort.by("date").ascending();
+
+        return postRepository.findAll(spec, sort).stream()
                 .map(postDTOMapper::postToPostResponseDto)
                 .toList();
     }
 
     @Override
     public void delete(UUID id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Post not found"));
+
+        if (!post.getUser().getId().equals(currentUser.getId()) && !currentUser.getRole().equals(Role.ADMIN)) {
+            throw new UnauthorizedException("You are not allowed to delete this post");
+        }
         postRepository.deleteById(id);
     }
 }

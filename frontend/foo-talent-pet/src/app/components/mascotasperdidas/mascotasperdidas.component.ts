@@ -20,12 +20,16 @@ export class MascotasperdidasComponent {
   constructor(private LostService: LostpetsService) {}
 
   ngOnInit() {
-    this.LostService.getHealth().subscribe(response => {
-      this.pets = response;
-      // console.log(this.pets);
-
-    }, error => {
-      console.error('Error fetching data', error);
+    this.LostService.getHealth().subscribe({
+      next: (response) => {
+        this.pets = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Observable completado');
+      },
     });
   }
 }

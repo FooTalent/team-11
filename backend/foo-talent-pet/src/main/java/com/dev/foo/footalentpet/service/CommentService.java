@@ -1,8 +1,15 @@
 package com.dev.foo.footalentpet.service;
 
 
-import com.dev.foo.footalentpet.model.entity.Comment;
+import com.dev.foo.footalentpet.model.request.CommentRequestDTO;
+import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
+
+import java.util.UUID;
 
 public interface CommentService {
-    Comment createComment(Comment comment);
+    CommentResponseDTO createComment(CommentRequestDTO comment);
+
+    CommentResponseDTO getCommentById(UUID id);
+
+    void delete(UUID id);
 }

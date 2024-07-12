@@ -3,12 +3,13 @@ import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-pets-details',
   standalone: true,
-  imports: [FooterComponent, NavbarComponent, RouterLink, PetsCardComponent],
+  imports: [FooterComponent, NavbarComponent, RouterLink, PetsCardComponent,CommonModule],
   templateUrl: './pets-details.component.html',
   styleUrl: './pets-details.component.css'
 })

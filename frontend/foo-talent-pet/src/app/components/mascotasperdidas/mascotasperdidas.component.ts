@@ -4,7 +4,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
-import { LostpetsService } from '../../service/lostpets.service';
+import { LostpetsService } from '../../service/posts/lostpets.service';
 
 @Component({
   selector: 'app-mascotasperdidas',

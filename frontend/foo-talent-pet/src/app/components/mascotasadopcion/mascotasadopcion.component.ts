@@ -4,7 +4,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
 import { CommonModule } from '@angular/common';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
-import { AdoptionpetService } from '../../service/adoptionpet.service';
+import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
+
 
 @Component({
   selector: 'app-mascotasadopcion',

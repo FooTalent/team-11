@@ -40,3 +40,7 @@ export interface Pet {
 
 export const pets: Pet[] = [
 ];
+export interface Login   {
+  email: string;
+  password: string;
+}

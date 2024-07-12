@@ -6,7 +6,9 @@
                 <p>Un lugar para reunir mascotas perdidas con sus hogares y dar una segunda oportunidad a aquellas que esperan ser adoptadas. </p>
                 <p>¡Juntos, podemos hacer la diferencia!</p>
                 <div id="btns">
-                    <button type="button" class="btn-pet " id="btn1">Publicar</button>
+                   @if (true) {<button type="button" class="btn-pet " id="btn1" data-bs-toggle="modal" data-bs-target="#myModal">Publicar</button>}
+                   @else {<button type="button" class="btn-pet " id="btn1" disabled >Publicar</button>}
+                  
                     <button type="button" class="btn-pet" id="btn2" routerLink="/mascotas-perdidas">Ver publicaciones</button>
                 </div>
             </div>

@@ -11,7 +11,7 @@ export class PetQuestService {
   
   constructor(private http: HttpClient) { }
 
-  login(payload:any): Observable<any> {
+  login(payload:any){
 	return this.http.post(this.baseUrl, payload);
   }
 }

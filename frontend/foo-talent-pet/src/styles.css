@@ -48,8 +48,8 @@
     box-sizing: border-box;
     justify-content: center;
     border: none;
-    width: 222px;
-    height: auto;
+    width: 250px;
+    height: 55px; 
     color: white;
 }
 .btn-pet{
@@ -68,13 +68,13 @@
 .btn-pet-google{
     border-radius: 50px;
     border: #EF783D solid 1px;
-    margin: 0 0 26px 3px;
+    margin: 0 0 26px 7px;
     display: flex;
     justify-content: center;
     align-items: center; 
-    padding: 12px 0.1px 12px 0;
-    width: 217px;
-    height: 43px; 
+    /* padding: 12px 0.1px 12px 0; */
+    width: 250px;
+    height: 55px; 
     box-sizing: border-box;
     font-family: var(--titulo);
     color:  #1D1D1D; 

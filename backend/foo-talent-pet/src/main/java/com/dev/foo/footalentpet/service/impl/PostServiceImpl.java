@@ -126,7 +126,9 @@ public class PostServiceImpl implements PostService {
                                          Optional<String> province,
                                          Optional<String> city,
                                          Optional<String> locality,
-                                         Optional<Date> date) {
+                                         Optional<Date> date,
+                                         Optional<List<UUID>> colorIds,
+                                         Optional<List<UUID>> tagIds) {
         Specification<Post> spec = Specification.where(null);
 
         spec = spec.and(PostSpecifications.hasStatus(status));
@@ -153,6 +155,14 @@ public class PostServiceImpl implements PostService {
 
         if (date.isPresent()) {
             spec = spec.and(PostSpecifications.hasDateAfter(date.get()));
+        }
+
+        if (colorIds.isPresent() && !colorIds.get().isEmpty()) {
+            spec = spec.and(PostSpecifications.hasAllColorIds(colorIds.get()));
+        }
+
+        if (tagIds.isPresent() && !tagIds.get().isEmpty()) {
+            spec = spec.and(PostSpecifications.hasAllTagsIds(tagIds.get()));
         }
 
         Sort sort = recent ? Sort.by("date").descending() : Sort.by("date").ascending();

@@ -71,7 +71,9 @@ public class PostController {
                                                          @RequestParam(required = false) String province,
                                                          @RequestParam(required = false) String city,
                                                          @RequestParam(required = false) String locality,
-                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date) {
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date,
+                                                         @RequestParam(required = false) List<UUID> colorIds,
+                                                         @RequestParam(required = false) List<UUID> tagIds) {
         return new ResponseEntity<>(postService.findAll(
                 status,
                 recent,
@@ -80,7 +82,9 @@ public class PostController {
                 Optional.ofNullable(province),
                 Optional.ofNullable(city),
                 Optional.ofNullable(locality),
-                Optional.ofNullable(date)),
+                Optional.ofNullable(date),
+                Optional.ofNullable(colorIds),
+                Optional.ofNullable(tagIds)),
                 HttpStatus.OK);
     }
 

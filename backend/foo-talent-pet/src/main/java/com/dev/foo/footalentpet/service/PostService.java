@@ -29,7 +29,9 @@ public interface PostService {
                                   Optional<String> province,
                                   Optional<String> city,
                                   Optional<String> locality,
-                                  Optional<Date> date);
+                                  Optional<Date> date,
+                                  Optional<List<UUID>> colorIds,
+                                  Optional<List<UUID>> tagIds);
 
     void delete(UUID id);
 

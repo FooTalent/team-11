@@ -11,8 +11,11 @@ import {
   Validators,
   Validator,
 } from '@angular/forms'
-import { Login } from "../../interfaces/interfaces";
+import { Login, registro } from "../../interfaces/interfaces";
 import { Router } from '@angular/router';
+import { RegistroService } from '../../service/registro.service';
+import { response } from 'express';
+
 
 
 @Component({
@@ -30,12 +33,41 @@ export class LoginComponent {
     email: new FormControl('', Validators.required), // Asumiendo que ya tienes un campo de email
     password: new FormControl('', Validators.required) // Asegúrate de agregar el campo de contraseña
   })
-  
-    // credenciales = new FormGroup({
-    //   nombreUsuario: new FormControl('', Validators.required),
-    //   contrasenia: new FormControl('', Validators.required),
-    // });
-  constructor(private petQuestService: PetQuestService, ) {}
+
+  userRegister = new FormGroup({
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required), // Asumiendo que ya tienes un campo de email
+    password: new FormControl('', Validators.required), // Asegúrate de agregar el campo de contraseña
+    rePassword: new FormControl('', Validators.required)
+  })
+
+  constructor(private petQuestService: PetQuestService, private registroService: RegistroService) {}
+
+  Registrarse(){
+    console.log("probando registro")
+    console.log(this.userRegister.value)
+
+    if(typeof this.userRegister.value.name === 'string' &&
+      typeof this.userRegister.value.email === 'string' &&
+      typeof this.userRegister.value.password === 'string' &&
+      typeof this.userRegister.value.rePassword=== 'string'){
+        const datos: registro = {
+          name: this.userRegister.value.name,
+          email: this.userRegister.value.email,
+          password: this.userRegister.value.password,
+          rePassword: this.userRegister.value.rePassword,
+        }
+        this.registroService.register(datos).subscribe((response: any) =>{
+          console.log(response)
+          console.log('registro hecho')
+        })
+        console.log(datos)
+      }
+      
+      else{
+        console.log("error de registro")
+      }
+  }
 
   clickLogin(){
 
@@ -94,6 +126,7 @@ console.log(userCredentialsTest+"hola");
     }
   }
 
+  
 oninit(){
    
 }

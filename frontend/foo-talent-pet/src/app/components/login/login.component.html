@@ -56,30 +56,31 @@
             <div id="title">
               <h1>Registrate</h1>
             </div>
-  
-            <div class="mb-3">
-              <label for="formGroupExampleInput"><b>Nombre</b></label>
-              <input type="text" class="form-control" id="formGroupExampleInput" >
+              <form [formGroup]="userRegister" (ngSubmit)="Registrarse()">
+                <div class="mb-3">
+                  <label for="formGroupExampleInput" ><b>Nombre</b></label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" formControlName="name">
+                </div>
+                <div class="mb-3">
+                  <label for="InputEmail1" class="form-label" ><b>Correo Electrónico</b></label>
+                  <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="email">
+                </div>
+                <div class="mb-3">
+                  <label for="InputPassword1" class="form-label" ><b>Contraseña</b></label>
+                  <input type="password" class="form-control" id="InputPassword1" formControlName="password">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"><b>Repetir Contraseña</b></label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" formControlName="rePassword">
+                </div>
+      
+                <div class="row" id="botones">
+                  <button type="submit" class="btn-registro col" (click)="redireccionLogin()">Iniciar Sesión</button>
+                  <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
+                </div>
+                <div class="opciones"><b>Ya tienes cuenta?  </b> <a [routerLink]="" (click)="redireccionLogin()" id="login">Iniciar sesión aquí</a></div>
+              </form>
             </div>
-            <div class="mb-3">
-              <label for="InputEmail1" class="form-label"><b>Correo Electrónico</b></label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-              <label for="InputPassword1" class="form-label"><b>Contraseña</b></label>
-              <input type="password" class="form-control" id="InputPassword1">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"><b>Repetir Contraseña</b></label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-  
-            <div class="row" id="botones">
-              <button type="submit" class="btn-registro col" (click)="redireccionLogin()">Iniciar Sesión</button>
-              <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
-            </div>
-            <div class="opciones"><b>Ya tienes cuenta?  </b> <a [routerLink]="" (click)="redireccionLogin()" id="login">Iniciar sesión aquí</a></div>
-          </div>
         </div>
       </div>
     </div>

@@ -37,7 +37,6 @@ h1 {
   gap: 1.5rem;
 }
 .card{
-  /* flex: 1 1 calc(33.33% - 2rem); */
   margin: .5rem;
   max-width: 307px ;
   width: 100%;
@@ -52,9 +51,9 @@ h1 {
   .section {
     padding: 0;
     flex-direction: column;
-    /* display: block; */
   }
   .filter__section, .pet__section{
+  flex-wrap: nowrap;
     text-align: center;
     margin: .5rem auto;
   }
@@ -74,12 +73,8 @@ h1 {
     font-size: 30px;
   }
   .contenedor{
-    gap: 1rem;
     margin: .5rem;
-    gap: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: .5rem;
   }
   .card{
     margin: .5rem .3rem;
@@ -97,7 +92,6 @@ h1 {
   .contenedor{
     margin: .3rem;
     gap: .3rem;
-    max-width: 190px ;
   }
 
 }

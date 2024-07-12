@@ -1,13 +1,9 @@
 
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-  Abrir Login
-</button> -->
-
-<div>
+<div>@if (register == true) {
   <div class="modal-dialog modal-dialog-right">
     <div class="modal-content">
       <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
       </div>
       <div class="modal-body">
         <div class="contenedor-login">
@@ -19,11 +15,11 @@
           </div>
 
           <div class="mb-3">
-            <label for="InputEmail1" class="form-label">Correo Electronico</label>
+            <label for="InputEmail1" class="form-label"><b>Correo Electrónico</b></label>
             <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="InputPassword1" class="form-label">Contraseña</label>
+            <label for="InputPassword1" class="form-label"><b>Contraseña</b></label>
             <input type="password" class="form-control" id="InputPassword1">
             <div class="forget-password">
               <small id="emailHelp" class="form-text text-muted"><a href="">Olvidé mi contraseña</a></small>
@@ -36,14 +32,62 @@
 
           <app-register class="modal fade" id="myRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-register>
 
-          <div class="opciones">No tienes cuenta? <button type="button" class="btn btn-dark" id="btnRegister" data-bs-toggle="modal" data-bs-target="#myRegister" data-bs-dismiss="modal" >
-            >Registrate aqui</button></div>
+          <div class="opciones">No tienes cuenta?  <a [routerLink]="" (click)="clickRegister()"  id="btnRegister" >
+            Registrate aqui</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+}@else {
+  <div>
+    <div class="modal-dialog modal-dialog-right" id="myRegister">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cerrarTodo()">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="contenedor-register">
+            <div class="lupa">
+              <img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/Logo LUPA.svg" alt="">
+            </div>
+            <div id="title">
+              <h1>Registrate</h1>
+            </div>
+  
+            <div class="mb-3">
+              <label for="formGroupExampleInput"><b>Nombre</b></label>
+              <input type="text" class="form-control" id="formGroupExampleInput" >
+            </div>
+            <div class="mb-3">
+              <label for="InputEmail1" class="form-label"><b>Correo Electrónico</b></label>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="InputPassword1" class="form-label"><b>Contraseña</b></label>
+              <input type="password" class="form-control" id="InputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"><b>Repetir Contraseña</b></label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+  
+            <div class="row" id="botones">
+              <button type="submit" class="btn-pet col" (click)="redireccionLogin()">Iniciar Sesión</button>
+              <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
+            </div>
+            <div class="opciones"><b>Ya tienes cuenta?  </b> <a [routerLink]="" (click)="redireccionLogin()" id="login">Iniciar sesión aquí</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+  
+<!-- <div #mostrarRegistro>
+  <app-register></app-register>
+</div> -->
 
 
 

@@ -80,3 +80,22 @@
     color:  #1D1D1D; 
     text-decoration: none; 
   }
+.custom-popup-if{
+    padding:0;
+    margin: 0;
+    
+}
+.titulo-pop{
+    color: #feb941;
+    font-family: var(--titulo);
+}
+.cancelBtn-pop{
+    color: black;
+    border-radius: 25px;
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+}
+.confirmBtn-pop{
+    color: black;
+    border-radius: 25px;
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+}

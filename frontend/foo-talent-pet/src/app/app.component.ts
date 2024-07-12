@@ -5,12 +5,14 @@ import { PreferenciasDashboardComponent } from './components/preferencias-dashbo
 import { ToggleOpcionesComponent } from './components/toggle-opciones/toggle-opciones.component';
 import { SwitchService } from './service/switch.service';
 import { Observable } from 'rxjs';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, PreferenciasDashboardComponent, ToggleOpcionesComponent],
+  imports: [CommonModule, RouterOutlet, PreferenciasDashboardComponent, ToggleOpcionesComponent, NavbarComponent, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers:[SwitchService]

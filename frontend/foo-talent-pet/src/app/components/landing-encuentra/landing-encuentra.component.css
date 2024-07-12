@@ -21,6 +21,7 @@
     justify-content: end;
     flex-direction: column-reverse;
 }
+div#tex {margin-right: 54px;margin-left: -22px;}
 #contenedor-bienvenida{
     padding-top: 15%;
     padding-left: 15%;

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 
 
@@ -12,6 +12,14 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
   templateUrl: './pets-details.component.html',
   styleUrl: './pets-details.component.css'
 })
-export class PetsDetailsComponent {
+export class PetsDetailsComponent  implements OnInit{
 
+  pet: any;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.pet = history.state.pet;
+    console.log(this.pet); // Aquí tendrás los datos de la mascota
+  }
 }

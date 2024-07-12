@@ -47,7 +47,7 @@ export const routes: Routes = [
     {path: 'land-testimonial', component: LandingTestimonialComponent},
     {path: 'land-unete', component: LandingUneteComponent},
     {path: 'pets-card', component: PetsCardComponent},
-    {path: 'pets-details', component: PetsDetailsComponent},
+    {path: 'pets-details/:id', component: PetsDetailsComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'pruebas', component: PruebaComponent},
     {path: 'bienvenida', component: BienvenidaDashboardComponent},

@@ -10,11 +10,11 @@
     </div>
     <!-- <hr> -->
     <div class="contenedor" *ngIf="pets && pets.length > 0">
-      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet"></app-pets-card>
+      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pets"></app-pets-card>
     </div>
-    <!-- <div *ngIf="!(pets && pets.length > 0)">
+    <div *ngIf="!(pets && pets.length > 0)">
       <p>No se encontraron mascotas perdidas.</p>
-    </div> -->
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

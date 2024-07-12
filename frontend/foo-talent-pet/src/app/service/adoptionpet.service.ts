@@ -13,6 +13,6 @@ export class AdoptionpetService {
   apiUrl: string = environment.apiUrl;
 
   getHealth(): Observable<any> {
-    return this.http.get<any>(this.apiUrl+"ADOPTION");
+    return this.http.get<any>(this.apiUrl+"posts/ADOPTION?recent=true");
   }
 }

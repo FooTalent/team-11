@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
@@ -13,19 +13,23 @@ import { FoundpetsService } from '../../service/foundpets.service';
   templateUrl: './mascotasencontradas.component.html',
   styleUrl: './mascotasencontradas.component.css'
 })
-export class MascotasencontradasComponent {
+export class MascotasencontradasComponent implements OnInit{
 
   pets: any;
 
   constructor(private foundServices: FoundpetsService) {}
 
   ngOnInit() {
-    this.foundServices.getHealth().subscribe(response => {
-      this.pets = response;
-      console.log(this.pets);
-
-    }, error => {
-      console.error('Error fetching data', error);
+    this.foundServices.getHealth().subscribe({
+      next: (response) => {
+        this.pets = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Observable completado');
+      },
     });
   }
 }

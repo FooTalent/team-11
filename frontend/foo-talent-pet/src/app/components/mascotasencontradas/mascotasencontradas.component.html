@@ -1,16 +1,19 @@
 <app-navbar></app-navbar>
 <div class="section">
-  <div class="section-filter">
+  <div class="filter__section">
     <app-filtroperdidas class="filtro"></app-filtroperdidas>
   </div>
-  <div class="cont">
-    <div class="info-pet">
+  <div class="pet__section">
+    <div class="pet__info">
       <h1>Mascotas Encontradas</h1>
       <p>Aquí encontrarás publicaciones de personas que han encontrado mascotas perdidas en la calle.</p>
     </div>
-    <hr>
-    <div class="contenedor" *ngFor="let pet of pets">
-      <app-pets-card class="card" [pet]="pet"></app-pets-card>
+    <!-- <hr> -->
+    <div class="contenedor" *ngIf="pets && pets.length > 0">
+      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pets"></app-pets-card>
+    </div>
+    <div *ngIf="!(pets && pets.length > 0)">
+      <p>No tenemos mascotas Encontradas .</p>
     </div>
   </div>
 </div>

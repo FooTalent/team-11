@@ -5,6 +5,7 @@ import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.compon
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
+import { EventEmitter } from 'node:stream';
 
 @Component({
   selector: 'app-mascotasperdidas',
@@ -15,14 +16,21 @@ import { LostpetsService } from '../../service/posts/lostpets.service';
 })
 export class MascotasperdidasComponent implements OnInit{
   // todo: crear interfaz de pets
-
+  appliedFilters: any;
   pets: any;
 
   constructor(private LostService: LostpetsService) {}
 
+  receiveFilters(filters: any) {
+    this.appliedFilters = filters;
+    // Aquí puedes hacer lo que necesites con los filtros aplicados
+    console.log('Filtros aplicados:', this.appliedFilters);
+  }
+
   ngOnInit() {
     this.LostService.getHealth().subscribe({
       next: (response) => {
+        console.time()
         this.pets = response;
       },
       error: (error) => {
@@ -30,6 +38,7 @@ export class MascotasperdidasComponent implements OnInit{
       },
       complete: () => {
         console.log('Observable completado');
+        console.timeEnd()
       },
     });
   }

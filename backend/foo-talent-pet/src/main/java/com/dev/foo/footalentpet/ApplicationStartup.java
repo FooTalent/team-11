@@ -2,6 +2,7 @@ package com.dev.foo.footalentpet;
 
 import com.dev.foo.footalentpet.model.request.TagRequestDTO;
 import com.dev.foo.footalentpet.service.ColorService;
+import com.dev.foo.footalentpet.service.LocationService;
 import com.dev.foo.footalentpet.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +24,8 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private TagService tagService;
     @Autowired
     private ColorService colorService;
+    @Autowired
+    private LocationService locationService;
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
@@ -30,5 +33,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         tagService.createTags();
         colorService.createColors();
+        locationService.uploadProvinces();
     }
 }

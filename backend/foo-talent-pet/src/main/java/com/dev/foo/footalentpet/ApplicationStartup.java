@@ -24,8 +24,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private TagService tagService;
     @Autowired
     private ColorService colorService;
-    @Autowired
-    private LocationService locationService;
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
@@ -33,6 +31,5 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         tagService.createTags();
         colorService.createColors();
-        locationService.uploadProvinces();
     }
 }

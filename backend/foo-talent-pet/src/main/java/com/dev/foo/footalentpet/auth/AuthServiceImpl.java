@@ -94,7 +94,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void forgotPassword(String email) {
+    public void forgotPassword(String email) throws IOException {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new NotFoundException("User not found"));
         if (!user.getEnabled()) {
@@ -107,8 +107,11 @@ public class AuthServiceImpl implements AuthService {
         calendar.add(Calendar.HOUR, 24);
         Date expirationDate = calendar.getTime();
         user.setExpirationTokenDate(expirationDate);
-        userRepository.save(user);
-        emailService.sendSimpleMessage(user.getEmail(), "Forgot Password", "Please click on the following link to reset your password: " + frontendUrl + "/api/auth/reset-password/" + user.getTokenSecurity());
+        User savedUser = userRepository.save(user);
+        String message = new String(Files.readAllBytes(new File("src/main/resources/templates/recovery.html").toPath()));
+        message = message.replace("{frontendUrl}", frontendUrl);
+        message = message.replace("{tokenSecurity}", savedUser.getTokenSecurity().toString());
+        emailService.sendHtmlMessage(user.getEmail(), "Recuperar contraseña", message);
     }
 
     @Override

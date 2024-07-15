@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class PostController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping
-    public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) {
+    public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) throws IOException {
         PostResponseDTO post = postService.create(postRequestDTO);
         return new ResponseEntity<>(post, HttpStatus.CREATED);
     }

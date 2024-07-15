@@ -23,6 +23,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
@@ -105,10 +108,8 @@ public class PreferenceServinceImpl implements PreferenceService {
     }
 
     @Override
-    public void sendEmailToUsers(PreferenceRequestDTO preferenceRequestDTO, UUID postId) {
+    public void sendEmailToUsers(PreferenceRequestDTO preferenceRequestDTO, UUID postId) throws IOException {
         List<UserResponseDTO> users = getUserByPreference(preferenceRequestDTO);
-        String message = "<h1>Nueva publicacion basado en tus preferencias</h1><br><a href='" + frontendUrl + "/" + postId + "'>Ver publicacion</a>";
-
         List<String> emails = users.stream()
                 .map(UserResponseDTO::email)
                 .toList();
@@ -116,6 +117,9 @@ public class PreferenceServinceImpl implements PreferenceService {
         if (emails.isEmpty()) {
             return;
         }
+        String message = new String(Files.readAllBytes(new File("src/main/resources/templates/notification.html").toPath()));
+        message = message.replace("{frontendUrl}", frontendUrl);
+        message = message.replace("{postId}", postId.toString());
         emailService.sendHtmlMessageToUsers(emails, "Nueva publicacion - Pet Quest", message);
     }
 }

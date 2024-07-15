@@ -17,7 +17,7 @@ public interface AuthService {
 
     void activateAccount(String token);
 
-    void forgotPassword(String email);
+    void forgotPassword(String email) throws IOException;
 
     void resetPassword(String token, PasswordRequestDTO passwordRequestDTO);
 }

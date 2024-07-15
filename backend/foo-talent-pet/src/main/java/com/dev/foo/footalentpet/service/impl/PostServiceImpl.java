@@ -67,7 +67,7 @@ public class PostServiceImpl implements PostService {
     private PreferenceService preferenceService;
 
     @Override
-    public PostResponseDTO create(PostRequestDTO postDTO) {
+    public PostResponseDTO create(PostRequestDTO postDTO) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = (User) authentication.getPrincipal();
 

@@ -66,7 +66,7 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/forgot-password")
-    public ResponseEntity<Void> forgotPassword(@RequestParam String email) {
+    public ResponseEntity<Void> forgotPassword(@RequestParam String email) throws IOException {
         authService.forgotPassword(email);
         return new ResponseEntity<>(HttpStatus.OK);
     }

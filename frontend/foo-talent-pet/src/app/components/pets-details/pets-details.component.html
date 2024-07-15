@@ -1,11 +1,39 @@
 <app-navbar></app-navbar>
-<div class="container-fluid row">
-    <div class="col-6">
+<div class="container-fluid row ">
+    <div class="col-lg-6 col-sm-12 ">
         <h1>Mascotas perdidas</h1>
-        <img src="../../../assets/perrito.png" alt="test">
-        <div class="container white-section">
-            <p>Si tenes información para aportar no dudes en dejar tu comentario</p>
-            <hr>
+
+        <div id="carouselPetDetails" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselPetDetails" data-bs-slide-to="0" class="active btn-testimonial" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselPetDetails" data-bs-slide-to="1" aria-label="Slide 2" class="btn-testimonial"></button>
+              <button type="button" data-bs-target="#carouselPetDetails" data-bs-slide-to="2" aria-label="Slide 3" class="btn-testimonial"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../../../assets/perrito.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../assets/perrito.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../assets/perrito.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPetDetails" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselPetDetails" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+        <!-- <img src="../../../assets/perrito.png" alt="test">-->
+        <div class="container white-section ">
+         <p>Si tenes información para aportar no dudes en dejar tu comentario</p>
+            <hr> 
            
         @if (true) { 
             <div class="input-comentario">
@@ -37,23 +65,25 @@
             @if (true) {
                 <hr>
                 <div class="comentario row">
-                    <div class="col-3"> 
+                    <div id="fix" class="col-3"> 
                         <span class="profile-img"><img src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg" alt=""></span>
                         
                     </div>
                     <div class="col-9">
-                        <h4>Nombre</h4>
-                        <p>Comentario</p> 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quis itaque fugit nesciunt vel repudiandae.</p>
-                    </div>
-                  
+                        <div class="comentario-texto">
+                        <h6>Nombre</h6>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, quibusdam!</p>
+                        <span class="">fecha xx/xx/xx · 20h</span> 
+                        <a href="" class="m">Reportar comentario</a>
+                        </div>  </div>
+                        <hr style="width: 90%;margin-left: 10px;" >
                 </div>
-                <hr>
+                
             }
 
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-lg-6 col-sm-12">
         <div class="container-name">
             <div class="container-shadow">
                 @if (true) {
@@ -61,17 +91,17 @@
                 } @else {
                     <img src="../../../assets/ph_dog.png" alt="perro">
                 }
-                <h5>Nombre</h5>
+                <h5>{{ this.pet.name }}</h5>
             </div>
             <div class="row-fix">
                 <img src="../../../assets/twocard.png" alt="eye">
-                <p>Visto por última vez: 02 / 07 / 2024</p>
+                <p>Visto por última vez:{{ pet.date }} </p>
 
                 
             </div>
             <div class="row-fix">
                 <img src="../../../assets/ubication.png" alt="place">
-                <p>Palermo. Capital federal</p>
+                <p>{{ pet.city }}</p>
             </div>
             
             
@@ -84,38 +114,67 @@
                     <span class="profile-img"><img src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg" alt=""></span>
                 </div>
                 <div class="col-9">
-                    <p>Nombre</p>
-                    <p>ultima Actualizacion xx/xx/xx</p>
+                    <p>{{ pet.user.name }}</p>
+                    <p>ultima Actualizacion {{pet}}</p>
                     <hr>
                 </div>
             </div>
-            <div class="align">
-                <img  src="../../../assets/email-address-svgrepo-com 1.png" alt="email"> <p>emaildsdsd</p>
+            <div class="row-fix">
+                <!-- email -->
+                <img  src="../../../assets/email-address-svgrepo-com 1.png" alt="email"> <p>{{ pet.user.email }}</p>
             </div>
-            <div class="align">
-                <img   src="../../../assets/cellphone.png" alt="cell"> <p>123456789</p>
+            <div class="row-fix">
+                <img   src="../../../assets/cellphone.png" alt="cell"> <p>{{ pet.user.phone }}</p>
             </div>
-            <p>Descripción</p>
+            <h5 class="d-flex align-content-start">Descripción</h5>
             <hr>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic distinctio magnam eaque? Modi neque nobis qui aliquid ipsam consequatur repudiandae fuga quas sint minus amet vero consectetur dolore iste voluptates sit aspernatur quo soluta, eum eaque aperiam temporibus velit. Quos quis laborum sint blanditiis ipsam iste, unde esse eaque ratione earum, temporibus molestias voluptate consequatur voluptates quae maxime libero error, eum labore iure. Neque odio rerum culpa officia reiciendis delectus quae ad magni nesciunt suscipit maxime sequi totam eligendi quod inventore et asperiores, a aperiam sunt temporibus eveniet. Molestias facilis officia numquam cumque dolorem suscipit perspiciatis necessitatibus! Illum, nihil amet. </p>
+      <p>{{ this.pet.description }}</p>
             <hr>
-            <p>lorem </p>
+            <div class="caract">
+                <h5>Sexo</h5> <p>●</p>
+                <div class="caracteristic">{{ pet.gender}}</div>
+            </div>
+            <div class="caract">
+                <h5>Color</h5> <p>●</p>
+                <div class="caracteristic">{{ pet.color}}</div>
+            </div>
             <hr>
+            <div class="d-flex" *ngFor="let caracteristic of pet.tags">
+                <div class="caracteristic">{{ caracteristic.name}}</div>         
+            </div>
         </div>
 
-        <div class="container">
-            <p>contatatnos</p>
+        <div class="container-contacus">
+            <h5>Compartir</h5>
+            <hr>
+            <div class="row">
+                <div class="col">¡Comparte la publicación en tus redes 
+                    para aumentar la difusión!</div>
+                <div class="col d-flex">
+                    <a href="https://web.whatsapp.com/"><img src="../../../assets/whatsapp.png" alt="whatsapp"></a>
+                    <a href="https://www.facebook.com/"><img src="../../../assets/facebook.png" alt="facebook"></a>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="col-12">
-       <h1>Ver Mascotas encontradas</h1> 
-        <div class="container d-flex m-3">
+        <div id="fix-responsive">
+            <h1>Ver Mascotas encontradas</h1> 
+        <div class="responsive">
            
-<app-pets-card></app-pets-card>
-<app-pets-card></app-pets-card>
-<app-pets-card></app-pets-card>
-<app-pets-card></app-pets-card>
+<app-pets-card class="m-2"></app-pets-card >
+<app-pets-card class=" m-2"></app-pets-card >
+<app-pets-card class=" m-2"></app-pets-card >
+<app-pets-card class=" m-2"></app-pets-card >
+    <app-pets-card class=" m-2"></app-pets-card >
+        <app-pets-card class=" m-2"></app-pets-card >
+        <app-pets-card class=" m-2"></app-pets-card >
         </div>
-    </div>
+    </div></div>
+       
 </div>
 <app-footer></app-footer>
+
+
+ 

@@ -48,8 +48,8 @@
     box-sizing: border-box;
     justify-content: center;
     border: none;
-    width: 222px;
-    height: auto;
+    width: 250px;
+    height: 55px; 
     color: white;
 }
 .btn-pet{
@@ -68,15 +68,34 @@
 .btn-pet-google{
     border-radius: 50px;
     border: #EF783D solid 1px;
-    margin: 0 0 26px 3px;
+    margin: 0 0 26px 7px;
     display: flex;
     justify-content: center;
     align-items: center; 
-    padding: 12px 0.1px 12px 0;
-    width: 217px;
-    height: 43px; 
+    /* padding: 12px 0.1px 12px 0; */
+    width: 250px;
+    height: 55px; 
     box-sizing: border-box;
     font-family: var(--titulo);
     color:  #1D1D1D; 
     text-decoration: none; 
   }
+.custom-popup-if{
+    padding:0;
+    margin: 0;
+    
+}
+.titulo-pop{
+    color: #feb941;
+    font-family: var(--titulo);
+}
+.cancelBtn-pop{
+    color: black;
+    border-radius: 25px;
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+}
+.confirmBtn-pop{
+    color: black;
+    border-radius: 25px;
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+}

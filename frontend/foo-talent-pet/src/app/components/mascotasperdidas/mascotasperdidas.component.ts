@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
-import { LostpetsService } from '../../service/lostpets.service';
+import { LostpetsService } from '../../service/posts/lostpets.service';
+import { EventEmitter } from 'node:stream';
 
 @Component({
   selector: 'app-mascotasperdidas',
@@ -13,19 +14,38 @@ import { LostpetsService } from '../../service/lostpets.service';
   templateUrl: './mascotasperdidas.component.html',
   styleUrl: './mascotasperdidas.component.css'
 })
-export class MascotasperdidasComponent {
+export class MascotasperdidasComponent implements OnInit{
   // todo: crear interfaz de pets
+  appliedFilters: any;
   pets: any;
 
   constructor(private LostService: LostpetsService) {}
 
-  ngOnInit() {
-    this.LostService.getHealth().subscribe(response => {
-      this.pets = response;
-      // console.log(this.pets);
+  receiveFilters(filters: any) {
+    this.appliedFilters = filters;
+    // Aquí puedes hacer lo que necesites con los filtros aplicados
+    console.log('Filtros aplicados:', this.appliedFilters);
+  }
 
-    }, error => {
-      console.error('Error fetching data', error);
+  ngOnInit() {
+    this.LostService.getHealth().subscribe({
+      next: (response) => {
+        console.time()
+        this.pets = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Observable completado');
+        console.timeEnd()
+      },
     });
   }
+
+  // ngOnDestroy() {
+  //   if (this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
 }

@@ -4,7 +4,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.component';
 import { CommonModule } from '@angular/common';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
-import { AdoptionpetService } from '../../service/adoptionpet.service';
+import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
+
 
 @Component({
   selector: 'app-mascotasadopcion',
@@ -19,13 +20,16 @@ export class MascotasadopcionComponent {
   constructor(private adoptionServices: AdoptionpetService) {}
 
   ngOnInit() {
-    this.adoptionServices.getHealth().subscribe(response => {
-      this.pets = response;
-      console.log(this.pets);
-
-    }, error => {
-      console.error('Error fetching data', error);
+    this.adoptionServices.getHealth().subscribe({
+      next: (response) => {
+        this.pets = response;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log('Observable completado');
+      },
     });
   }
-
 }

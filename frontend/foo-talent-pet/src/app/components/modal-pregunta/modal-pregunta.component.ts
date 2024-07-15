@@ -1,22 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { SwitchService } from '../../service/switch.service';
+import { Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-modal-pregunta',
   standalone: true,
   imports: [],
   templateUrl: './modal-pregunta.component.html',
-  styleUrl: './modal-pregunta.component.css'
+  styleUrl: './modal-pregunta.component.css',
+  
 })
-export class ModalPreguntaComponent implements OnInit {
+export class ModalPreguntaComponent {
 
-  // constructor(private modalSS: SwitchService){ }
-
-  ngOnInit(): void {
-    
-  }
-
-  // closeModal(){
-  //   this.modalSS.$modal.emit(false)
-  // }
+ 
 }

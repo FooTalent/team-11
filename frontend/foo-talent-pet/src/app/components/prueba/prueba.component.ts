@@ -1,36 +1,20 @@
-import { Component, OnInit} from '@angular/core';
-import { ModalPreguntaComponent } from "../modal-pregunta/modal-pregunta.component";
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SwitchService } from '../../service/switch.service';
+import { ModalPreguntaComponent } from '../modal-pregunta/modal-pregunta.component';
+
 
 @Component({
   selector: 'app-prueba',
   standalone: true,
-  imports: [ModalPreguntaComponent, CommonModule],
+  imports: [ CommonModule, ModalPreguntaComponent ],
   templateUrl: './prueba.component.html',
   styleUrl: './prueba.component.css'
 })
-export class PruebaComponent implements OnInit{
+export class PruebaComponent {
 
-  modalSwitch!: boolean;
-
-
-  constructor(private modalSS: SwitchService){
+  constructor(){
 
   }
 
-
-  ngOnInit(): void {
-    
-    // this.modalSS.$modal.subscribe((valor) => {
-    //   this.modalSwitch = valor
-    // });
-
-  }
-
-
-  openModal(){
-    this.modalSwitch = true;
-  }
 
 }

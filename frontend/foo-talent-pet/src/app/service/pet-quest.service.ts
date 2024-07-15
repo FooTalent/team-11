@@ -7,11 +7,11 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PetQuestService {
-  private baseUrl = 'https://notable-viva-adriansft-15c2b044.koyeb.app/api/auth/login';
-
+  private baseUrl = 'https://pet-quest.azurewebsites.net/api/auth/login';
+  
   constructor(private http: HttpClient) { }
 
-  login(payload:any): Observable<any> {
+  login(payload:any){
 	return this.http.post(this.baseUrl, payload);
   }
 }

@@ -10,7 +10,6 @@
   right: 0;
   height: 100%;
   margin: 0;
-  
 }
 
 .modal-content {
@@ -41,7 +40,20 @@
 .forget-password{
   text-align: end;
 }
-
+#btnRegister{
+  text-decoration: underline;
+  cursor: pointer;
+  color: #0D6EFD;
+}
+#login{
+  text-decoration: underline;
+  cursor: pointer;
+  color: #0D6EFD;
+}
+input{
+  background-color: var(--colorInputFormProfile);
+  border-radius: 12px;
+}
 
 
 

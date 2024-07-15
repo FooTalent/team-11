@@ -84,19 +84,6 @@
 /*css personalizado modal*/
 
 
-.modal-content{
-    background-color: var(--colorFondoCards);
-}
-
-.modal-body{
-    text-align: center;
-}
-.modal-footer{
-    justify-content: center;
-}
-#b1{
-    background-color: var(--colorBtnPublicaciones) !important;
-}
-#b2{
-    background-color: var(--colorSeleccionNavBar) !important;
+.custom-popup{
+color: black;
 }

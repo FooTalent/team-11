@@ -16,6 +16,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Tag(name = "Auth", description = "Auth operations")
 @RestController
 @RequestMapping("/auth")
@@ -29,7 +31,7 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO userRequestDTO) {
+    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO userRequestDTO) throws IOException {
         UserResponseDTO user = authService.register(userRequestDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
 

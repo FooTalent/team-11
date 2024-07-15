@@ -23,14 +23,20 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class AuthServiceImpl implements AuthService {
+
+    Logger logger = Logger.getLogger(AuthServiceImpl.class.getName());
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -48,7 +54,7 @@ public class AuthServiceImpl implements AuthService {
     private String frontendUrl;
 
     @Override
-    public UserResponseDTO register(RegisterRequestDTO userDTO) {
+    public UserResponseDTO register(RegisterRequestDTO userDTO) throws IOException {
         User user = userDTOMapper.registerRequestDtoToUser(userDTO);
         user.setEnabled(false);
         user.setProfilePicture("default.jpg");
@@ -56,7 +62,10 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(passwordEncoder.encode(userDTO.password()));
         user.setTokenSecurity(UUID.randomUUID());
         User savedUser = userRepository.save(user);
-        emailService.sendSimpleMessage(user.getEmail(), "Welcome", "Welcome to our platform, please click on the following link to activate your account: " + frontendUrl + "/api/auth/activate/" + user.getTokenSecurity());
+        String message = new String(Files.readAllBytes(new File("src/main/resources/templates/activate.html").toPath()));
+        message = message.replace("{frontendUrl}", frontendUrl);
+        message = message.replace("{tokenSecurity}", savedUser.getTokenSecurity().toString());
+        emailService.sendHtmlMessage(user.getEmail(), "Bienvenido a Pet-Quest", message);
         return userDTOMapper.userToUserResponseDto(savedUser);
     }
 

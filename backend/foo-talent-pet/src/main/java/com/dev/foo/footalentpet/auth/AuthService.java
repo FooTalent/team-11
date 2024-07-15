@@ -7,9 +7,11 @@ import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public interface AuthService {
-    UserResponseDTO register(RegisterRequestDTO userDTO);
+    UserResponseDTO register(RegisterRequestDTO userDTO) throws IOException;
 
     LoginResponseDTO login(LoginRequestDTO userDTO);
 

@@ -11,10 +11,15 @@ import {
   Validators,
   Validator,
 } from '@angular/forms'
-import { Login, registro } from "../../interfaces/interfaces";
+import { Login, registro,LoginResponse} from "../../interfaces/interfaces";
 import { Router } from '@angular/router';
 import { RegistroService } from '../../service/registro.service';
 import { response } from 'express';
+import Modal from 'bootstrap/js/dist/modal';
+// ngrx bullshit
+import { Store, select } from '@ngrx/store';
+import { logIn,logOut } from "../../store/tasks.actions";
+import { AppState } from "../../app.state";
 
 
 
@@ -30,18 +35,19 @@ export class LoginComponent {
   router = inject(Router);  
 
   userCredentials = new FormGroup({
-    email: new FormControl('', Validators.required), // Asumiendo que ya tienes un campo de email
-    password: new FormControl('', Validators.required) // Asegúrate de agregar el campo de contraseña
+    email: new FormControl('', Validators.required), 
+    password: new FormControl('', Validators.required) 
   })
 
   userRegister = new FormGroup({
     name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required), // Asumiendo que ya tienes un campo de email
-    password: new FormControl('', Validators.required), // Asegúrate de agregar el campo de contraseña
+    email: new FormControl('', Validators.required), 
+    password: new FormControl('', Validators.required),
     rePassword: new FormControl('', Validators.required)
   })
+    credentials: LoginResponse|undefined;
 
-  constructor(private petQuestService: PetQuestService, private registroService: RegistroService) {}
+  constructor(private petQuestService: PetQuestService, private registroService: RegistroService,private store: Store<AppState>) {}
 
   Registrarse(){
     console.log("probando registro")
@@ -71,30 +77,25 @@ export class LoginComponent {
 
   clickLogin(){
 
-    const userCredentialsTest = {
-      email: "pirlo1121s@gmail.com",
-      password: "12345"
-    };
-    console.log("clickLogin");
-    console.log(this.userCredentials.value);
-console.log(userCredentialsTest+"hola");
-
    if (typeof this.userCredentials.value.email === 'string' &&
     typeof this.userCredentials.value.password === 'string') {
-      console.log('string');
+  
        const credenciales: Login = {
       
       email:  this.userCredentials.value.email,
       password: this.userCredentials.value.password
     };
-    console.log(credenciales);
-    this.petQuestService.login(credenciales).subscribe((response: any) => {
-    console.log(response);
-    console.log('login');
+    // console.log(credenciales);
+    this.petQuestService.login(credenciales).subscribe((response:any) => {
+      this.credentials = response;
+    // console.log(response);
+    // console.log('login');
     this.router.navigate(['/mascotas-perdidas']).then(() => {
-      // Forzar la recarga de la página
-      location.reload();
+    //   // Forzar la recarga de la página
+    //   //location.reload();
     });
+    //ngrx
+    this.store.dispatch(logIn({ loginResponse: response }));
    });
    
    } else {
@@ -132,6 +133,18 @@ oninit(){
 }
 
 
+
+
+test(){
+  console.log('test');
+// const miModal = new Modal(document.getElementsByClassName('modal-dialog')[0]);
+  // const modalElement = document.getElementById('modal-test');
+  // if (modalElement) {
+  //   const miModal = new Modal(modalElement);
+  //   miModal.hide();
+  // }
+ 
+}
 
 // ngOnInit() {
 //   this.modalLoginService.modalState$.subscribe(state => {

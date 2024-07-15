@@ -9,6 +9,8 @@ import { StoreModule, provideState, provideStore } from '@ngrx/store';
 import { tasksReducer } from './store/tasks.reducer';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideHttpClient(withFetch()), provideStore(),
-    provideState({ name: 'task', reducer: tasksReducer }),]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideHttpClient(withFetch()), 
+    // ngrx
+    provideStore(),
+    provideState({ name: 'loggedIn', reducer: tasksReducer }),]
 };

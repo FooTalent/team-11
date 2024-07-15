@@ -52,3 +52,8 @@ export  interface registro{
   password:string;
   rePassword:string;
 }
+
+export interface LoginResponse {
+  user: User;
+  token: string;
+}

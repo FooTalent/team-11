@@ -1,4 +1,6 @@
-import { Task } from './tasks/tasks.model';
+import { LoginResponse } from "./interfaces/interfaces";
+
+
 export interface AppState {
-readonly tasks: Task[];
+readonly loggedIn:LoginResponse ;
 }

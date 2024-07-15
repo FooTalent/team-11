@@ -1,4 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { Task } from '../tasks/tasks.model'
-export const addTask = createAction("[Task Component] Add task",
-props<{ task: Task }>());
+import { LoginResponse } from '../interfaces/interfaces';
+
+
+export const logIn = createAction("[Login Component] Login success",
+props<{ loginResponse:LoginResponse }>());
+
+export const logOut = createAction("[Login Component] logOut");

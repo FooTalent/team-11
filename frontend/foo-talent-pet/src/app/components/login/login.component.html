@@ -1,6 +1,7 @@
 
-<div>@if (register == true) {
-  <div class="modal-dialog modal-dialog-right">
+<!-- <button (click)="test()">hola</button> -->
+<div>@if (register == true) { 
+  <div class="modal-dialog modal-dialog-right" >
     <div class="modal-content">
       <div class="modal-header border-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
@@ -27,12 +28,10 @@
             </div>
           </div>
           <div class="row" id="botones">
-            <button type="submit" class="btn-registro col"  >Iniciar Sesión</button>
+            <button type="submit" class="btn-registro col" data-bs-dismiss="modal" >Iniciar Sesión</button>
             <button type="submit" class="btn-pet-google col"> <span><img src="../../../assets/SVG - PNG FRONT/2 - INICIAR SESIÓN- REGISTRATE/logo google.png" alt="logoGoogle"></span> Iniciar Sesión con google</button>
           </div>
-</form>
-          
-
+          </form>
           <div class="opciones">No tienes cuenta?  <a [routerLink]="" (click)="clickRegister()"  id="btnRegister" >
             Registrate aqui</a>
           </div>
@@ -40,6 +39,7 @@
       </div>
     </div>
   </div>
+
 }@else {
   <div>
     <div class="modal-dialog modal-dialog-right" id="myRegister">

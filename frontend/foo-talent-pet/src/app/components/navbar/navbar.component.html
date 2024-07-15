@@ -26,9 +26,20 @@
           </div>
         </li>
       </ul>
+      @if (credentials?.token === "") {
         <app-login class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-login> 
         <button type="button" class="btn btn-dark" id="btnLogin" data-bs-toggle="modal" data-bs-target="#myModal">Iniciar sesión</button> 
         <!-- <button type="button" class="btn btn-dark" id="btnLogin" (click)="openLoginModal()">Iniciar sesión</button> -->
+        }
+         @else {
+          <div class="d-flex justify-content-center align-items-center text-white" >
+              <!-- <a class="nav-link p-2" routerLink="/profile">Perfil</a> -->
+              <a class="nav-link p-2" routerLink="/home" (click)="logOut()">Cerrar sesión</a>|
+              <img src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg" alt="profile-img" class="client-photo" (click)="ClickProfile()">
+          </div>
+          
+         }
+        
 
     </div>
   </div>

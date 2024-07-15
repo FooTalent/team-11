@@ -6,7 +6,11 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
 import { EventEmitter } from 'node:stream';
-
+// ngrx bullshit
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
+import { LoginResponse } from "../../interfaces/interfaces";
+import { select } from '@ngrx/store';
 @Component({
   selector: 'app-mascotasperdidas',
   standalone: true,
@@ -19,7 +23,7 @@ export class MascotasperdidasComponent implements OnInit{
   appliedFilters: any;
   pets: any;
 
-  constructor(private LostService: LostpetsService) {}
+  constructor(private LostService: LostpetsService,private store: Store<AppState>) {}
 
   receiveFilters(filters: any) {
     this.appliedFilters = filters;
@@ -28,9 +32,14 @@ export class MascotasperdidasComponent implements OnInit{
   }
 
   ngOnInit() {
+
+
+    //ngrx bullshit
+   
+
     this.LostService.getHealth().subscribe({
       next: (response) => {
-        console.time()
+        // console.time()
         this.pets = response;
       },
       error: (error) => {
@@ -38,7 +47,7 @@ export class MascotasperdidasComponent implements OnInit{
       },
       complete: () => {
         console.log('Observable completado');
-        console.timeEnd()
+        // console.timeEnd()
       },
     });
   }

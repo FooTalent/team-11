@@ -1,6 +1,7 @@
 package com.dev.foo.footalentpet.auth;
 
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
+import com.dev.foo.footalentpet.model.request.PasswordRequestDTO;
 import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
@@ -75,8 +76,8 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/reset-password/{token}")
-    public ResponseEntity<Void> resetPassword(@PathVariable String token, @RequestParam String password) {
-        authService.resetPassword(token, password);
+    public ResponseEntity<Void> resetPassword(@PathVariable String token, @RequestBody PasswordRequestDTO passwordRequestDTO) {
+        authService.resetPassword(token, passwordRequestDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

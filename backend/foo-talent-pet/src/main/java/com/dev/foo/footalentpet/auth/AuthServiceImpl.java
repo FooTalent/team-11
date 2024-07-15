@@ -5,6 +5,7 @@ import com.dev.foo.footalentpet.mapper.UserDTOMapper;
 import com.dev.foo.footalentpet.model.entity.User;
 import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
+import com.dev.foo.footalentpet.model.request.PasswordRequestDTO;
 import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
@@ -102,13 +103,13 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void resetPassword(String token, String password) {
+    public void resetPassword(String token, PasswordRequestDTO passwordRequestDTO) {
         User user = userRepository.findByTokenSecurity(UUID.fromString(token))
                 .orElseThrow(() -> new NotFoundException("User not found"));
         if (user.getExpirationTokenDate().before(new Date())) {
             throw new ExpiredJwtException(null, null, "Token expired");
         }
-        user.setPassword(passwordEncoder.encode(password));
+        user.setPassword(passwordEncoder.encode(passwordRequestDTO.password()));
         user.setExpirationTokenDate(null);
         user.setTokenSecurity(null);
         userRepository.save(user);

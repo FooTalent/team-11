@@ -97,4 +97,23 @@ public class PostController {
         postService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Operation(summary = "Update post by id", description = "Update post by id", responses = {
+            @ApiResponse(responseCode = "201", description = "Successfully update post"),
+            @ApiResponse(responseCode = "404", description = "Post not found", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<PostResponseDTO> update(@PathVariable UUID id, @RequestBody PostRequestDTO postRequestDTO) {
+        return new ResponseEntity<>(postService.update(id, postRequestDTO), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Get all posts by user", description = "Get all post with data by user", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully get posts"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @GetMapping("/user")
+    public ResponseEntity<List<PostResponseDTO>> findByUser() {
+        return new ResponseEntity<>(postService.findByUser(), HttpStatus.OK);
+    }
 }

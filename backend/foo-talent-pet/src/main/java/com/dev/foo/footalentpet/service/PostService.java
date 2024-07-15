@@ -35,4 +35,7 @@ public interface PostService {
 
     void delete(UUID id);
 
+    PostResponseDTO update(UUID id, PostRequestDTO postDTO);
+
+    List<PostResponseDTO> findByUser();
 }

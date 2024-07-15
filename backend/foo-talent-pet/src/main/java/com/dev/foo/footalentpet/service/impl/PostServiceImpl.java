@@ -10,11 +10,13 @@ import com.dev.foo.footalentpet.model.enums.PostStatus;
 import com.dev.foo.footalentpet.model.enums.Role;
 import com.dev.foo.footalentpet.model.enums.SpeciesType;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
+import com.dev.foo.footalentpet.model.request.PreferenceRequestDTO;
 import com.dev.foo.footalentpet.model.response.CommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostCommentResponseDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 import com.dev.foo.footalentpet.repository.*;
 import com.dev.foo.footalentpet.service.PostService;
+import com.dev.foo.footalentpet.service.PreferenceService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,8 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private TagRepository tagRepository;
     @Autowired
+    private ColorRepository colorRepository;
+    @Autowired
     private PostTagRepository postTagRepository;
     @Autowired
     private PostColorRepository postColorRepository;
@@ -59,6 +63,8 @@ public class PostServiceImpl implements PostService {
     private CloudinaryServiceImpl cloudinaryService;
     @Autowired
     private ImageRepository imageRepository;
+    @Autowired
+    private PreferenceService preferenceService;
 
     @Override
     public PostResponseDTO create(PostRequestDTO postDTO) {
@@ -85,6 +91,16 @@ public class PostServiceImpl implements PostService {
         savedPost.setPostColors(new HashSet<>(postColors));
 
         savedPost.setCreatedAt(LocalDateTime.now());
+        preferenceService.sendEmailToUsers(new PreferenceRequestDTO(savedPost.getStatus(), savedPost.getSpeciesType(), savedPost.getGender(), savedPost.getProvince(), savedPost.getCity(), savedPost.getLocality(),
+                savedPost.getPostColors().stream()
+                        .map(PostColor::getColor)
+                        .map(Color::getId)
+                        .toList()
+                , savedPost.getPostTags().stream()
+                .map(PostTag::getTag)
+                .map(Tag::getId)
+                .toList()
+        ), savedPost.getId());
         return postDTOMapper.postToPostResponseDto(savedPost);
     }
 
@@ -184,5 +200,61 @@ public class PostServiceImpl implements PostService {
             throw new UnauthorizedException("You are not allowed to delete this post");
         }
         postRepository.deleteById(id);
+    }
+
+    @Override
+    public PostResponseDTO update(UUID id, PostRequestDTO postDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Post not found"));
+
+        if (!post.getUser().getId().equals(currentUser.getId()) && !currentUser.getRole().equals(Role.ADMIN)) {
+            throw new UnauthorizedException("You are not allowed to update this post");
+        }
+
+        post.setName(postDTO.name());
+        post.setDescription(postDTO.description());
+        post.setDate(postDTO.date());
+        post.setStatus(postDTO.status());
+        post.setSpeciesType(postDTO.speciesType());
+        post.setGender(postDTO.gender());
+        post.setProvince(postDTO.province());
+        post.setCity(postDTO.city());
+        post.setLocality(postDTO.locality());
+        post.setContact(postDTO.contact());
+
+        if (postDTO.tags() != null) {
+            post.getPostTags().clear();
+            List<PostTag> postTags = postDTO.tags().stream()
+                    .map(tagId -> new PostTag(post, tagRepository.findById(tagId)
+                            .orElseThrow(() -> new NotFoundException("Tag not found"))))
+                    .toList();
+            postTagRepository.saveAll(postTags);
+            post.setPostTags(new HashSet<>(postTags));
+        }
+        if (postDTO.colors() != null) {
+            post.getPostColors().clear();
+            List<PostColor> postColors = postDTO.colors().stream()
+                    .map(color -> new PostColor(post, colorRepository.findById(color)
+                            .orElseThrow(() -> new NotFoundException("Tag not found"))))
+                    .toList();
+            postColorRepository.saveAll(postColors);
+            post.setPostColors(new HashSet<>(postColors));
+        }
+
+        postRepository.save(post);
+        return postDTOMapper.postToPostResponseDto(post);
+    }
+
+    @Override
+    public List<PostResponseDTO> findByUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        return postRepository.findByUser(currentUser).stream()
+                .map(postDTOMapper::postToPostResponseDto)
+                .toList();
     }
 }

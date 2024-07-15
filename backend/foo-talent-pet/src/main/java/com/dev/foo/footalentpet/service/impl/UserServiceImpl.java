@@ -60,13 +60,22 @@ public class UserServiceImpl implements UserService {
         currentUser.setProvince(updateRequestDTO.province());
         currentUser.setCity(updateRequestDTO.city());
 
-        try {
-            String imageUrl = cloudinaryService.uploadFile(updateRequestDTO.profilePicture());
-            currentUser.setProfilePicture(imageUrl);
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error uploading image");
+        if (updateRequestDTO.profilePicture() != null) {
+            try {
+                String currentProfilePicture = currentUser.getProfilePicture();
+                String imageUrl = cloudinaryService.uploadFile(updateRequestDTO.profilePicture());
+                currentUser.setProfilePicture(imageUrl);
+
+                if (currentProfilePicture != null) {
+                    String publicId = currentProfilePicture.substring(currentProfilePicture.lastIndexOf("/") + 1, currentProfilePicture.lastIndexOf("."));
+                    cloudinaryService.deleteFile(publicId);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Error uploading image");
+            }
         }
+
         userRepository.save(currentUser);
         String token = jwtService.generateToken(currentUser);
         UserResponseDTO userResponseDTO = userDTOMapper.userToUserResponseDto(currentUser);

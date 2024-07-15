@@ -1,6 +1,7 @@
 package com.dev.foo.footalentpet.auth;
 
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
+import com.dev.foo.footalentpet.model.request.PasswordRequestDTO;
 import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
@@ -16,5 +17,5 @@ public interface AuthService {
 
     void forgotPassword(String email);
 
-    void resetPassword(String token, String password);
+    void resetPassword(String token, PasswordRequestDTO passwordRequestDTO);
 }

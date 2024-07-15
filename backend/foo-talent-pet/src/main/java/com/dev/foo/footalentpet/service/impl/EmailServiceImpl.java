@@ -9,6 +9,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmailServiceImpl implements EmailService {
 
@@ -31,6 +33,22 @@ public class EmailServiceImpl implements EmailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             helper.setFrom("petquest11@gmail.com");
             helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlText, true);
+
+            emailSender.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void sendHtmlMessageToUsers(List<String> to, String subject, String htmlText) {
+        try {
+            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom("petquest11@gmail.com");
+            helper.setTo(to.toArray(new String[0]));
             helper.setSubject(subject);
             helper.setText(htmlText, true);
 

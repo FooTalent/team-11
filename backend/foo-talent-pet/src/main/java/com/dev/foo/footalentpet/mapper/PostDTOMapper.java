@@ -63,6 +63,7 @@ public abstract class PostDTOMapper {
     protected Tag mapPostTagToTag(PostTag postTag) {
         Tag tag = postTag.getTag();
         tag.setPostTags(null);
+        tag.setPreferenceTags(null);
         return tag;
     }
 
@@ -70,6 +71,7 @@ public abstract class PostDTOMapper {
     protected Color mapPostColorToColor(PostColor postColor) {
         Color color = postColor.getColor();
         color.setPostColors(null);
+        color.setPreferenceColors(null);
         return color;
     }
 

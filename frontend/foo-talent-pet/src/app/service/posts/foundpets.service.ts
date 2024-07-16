@@ -12,6 +12,6 @@ export class FoundpetsService {
   apiUrl: string = environment.apiUrl;
 
   getHealth(): Observable<any> {
-    return this.http.get<any>(this.apiUrl+"posts/FOUND?recent=true");
+    return this.http.get<any>(this.apiUrl+"/posts/FOUND?recent=true");
   }
 }

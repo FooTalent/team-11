@@ -13,11 +13,11 @@ export class ActivateTokenService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    // private route: ActivatedRoute,
+    private route: ActivatedRoute,
   ) { }
 
   activateAccount(token: string): void {
-    const activationUrl = `${this.apiUrl}auth/activate/${token}`;
+    const activationUrl = `${this.apiUrl}/auth/activate/${token}`;
 
     this.http.post(activationUrl, {}).subscribe({
       next: (response) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
 // import { OnInit } from '@angular/core';
 import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
@@ -9,6 +9,7 @@ import { LandingAboutusComponent } from '../landing-aboutus/landing-aboutus.comp
 import { LandingEncuentraComponent } from '../landing-encuentra/landing-encuentra.component';
 import { LandingUneteComponent } from '../landing-unete/landing-unete.component';
 import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-comofunciona.component";
+import { ActivateTokenService } from '../../service/activate-token.service';
 
 
 
@@ -20,23 +21,20 @@ import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-co
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  data: any;
+export class HomeComponent implements OnInit{
 
+  constructor(
+    private route: ActivatedRoute,
+    private authService: ActivateTokenService
+  ) {}
 
-  constructor(private petQuestService: PetQuestService) { }
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const token = params['token'];
+      if (token) {
+        this.authService.activateAccount(token);
+      }
+    });
+  }
 
-
-  //Agregar el método ngOnInit() que se encargará de obtener los datos de la API y mostrarlos en la consola.
-// ngOnInit(): void {
-//     this.petQuestService.getEndpointData('health').subscribe({
-//       next: (data) => {
-//         this.data = data;
-//         console.log('Data:', data);
-//       },
-//       error: (error) => {
-//         console.error('There was an error!', error);
-//       }
-//     });
-//   }
 }

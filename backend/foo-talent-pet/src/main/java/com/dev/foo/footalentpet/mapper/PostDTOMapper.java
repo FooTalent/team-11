@@ -1,11 +1,10 @@
 package com.dev.foo.footalentpet.mapper;
 
-import com.dev.foo.footalentpet.model.entity.Post;
-import com.dev.foo.footalentpet.model.entity.PostTag;
-import com.dev.foo.footalentpet.model.entity.Tag;
-import com.dev.foo.footalentpet.model.entity.User;
+import com.dev.foo.footalentpet.model.entity.*;
 import com.dev.foo.footalentpet.model.request.PostRequestDTO;
 import com.dev.foo.footalentpet.model.response.PostResponseDTO;
+import com.dev.foo.footalentpet.model.response.UserResponseDTO;
+import com.dev.foo.footalentpet.repository.ColorRepository;
 import com.dev.foo.footalentpet.repository.UserRepository;
 import com.dev.foo.footalentpet.repository.TagRepository;
 import org.mapstruct.Mapper;
@@ -25,22 +24,22 @@ public abstract class PostDTOMapper {
 
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private ColorRepository colorRepository;
+    @Autowired
+    private UserDTOMapper userDTOMapper;
 
-    @Mapping(source = "user", target = "user")
+    @Mapping(source = "user", target = "user", qualifiedByName = "mapUser")
+    @Mapping(source = "images", target = "images", qualifiedByName = "mapImage")
     @Mapping(source = "postTags", target = "tags", qualifiedByName = "mapPostTagToTag")
+    @Mapping(source = "postColors", target = "colors", qualifiedByName = "mapPostColorToColor")
     public abstract PostResponseDTO postToPostResponseDto(Post post);
 
-    @Mapping(qualifiedByName = "map", source = "user", target = "user")
+    @Mapping(qualifiedByName = "mapPostColors", source = "colors", target = "postColors")
     @Mapping(qualifiedByName = "mapPostTags", source = "tags", target = "postTags")
     public abstract Post postResponseDtoToPost(PostRequestDTO postRequestDTO);
-
-    @Named("map")
-    protected User map(UUID id) {
-        return userRepository.findById(id).orElse(null);
-    }
 
     @Named("mapPostTags")
     protected Set<PostTag> mapPostTagsByIds(List<UUID> tags) {
@@ -51,10 +50,39 @@ public abstract class PostDTOMapper {
                 .collect(Collectors.toSet());
     }
 
+    @Named("mapPostColors")
+    protected Set<PostColor> mapPostColorsByIds(List<UUID> colors) {
+        return colors.stream()
+                .map(colorRepository::findById)
+                .filter(Optional::isPresent)
+                .map(color -> new PostColor(null, color.get()))
+                .collect(Collectors.toSet());
+    }
+
     @Named("mapPostTagToTag")
     protected Tag mapPostTagToTag(PostTag postTag) {
         Tag tag = postTag.getTag();
         tag.setPostTags(null);
         return tag;
+    }
+
+    @Named("mapPostColorToColor")
+    protected Color mapPostColorToColor(PostColor postColor) {
+        Color color = postColor.getColor();
+        color.setPostColors(null);
+        return color;
+    }
+
+    @Named("mapUser")
+    protected UserResponseDTO mapUser(User user) {
+        return userDTOMapper.userToUserResponseDto(user);
+    }
+
+    @Named("mapImage")
+    protected Image mapImage(Image image) {
+        Image imageCopy = new Image();
+        imageCopy.setId(image.getId());
+        imageCopy.setUrl(image.getUrl());
+        return imageCopy;
     }
 }

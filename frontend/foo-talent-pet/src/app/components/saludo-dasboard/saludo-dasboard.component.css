@@ -1,0 +1,74 @@
+@import url('../../../styles.css');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#area{
+    width: var(--ancho);
+    height: var(--alto);
+    background-color: var(--colorFondo);
+}
+.img-lateral-izq{
+    position: absolute;
+    top: 13%;
+    left: 0;
+    height: 100%;    
+}
+.img-lateral-der{
+    position: absolute;
+    top: 14%;
+    right: 0;
+    height: 100%;    
+}
+.fixed-image{
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .content {
+      margin-left: 150px; /* Ajusta esto según el tamaño de tu imagen */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content {
+      margin-left: 100px; /* Ajusta esto según el tamaño de tu imagen */
+    }
+  }
+  /* texto mensaje de bienvenida*/
+
+.texto{
+    text-align: center;
+    padding-top: 5%;
+}
+h1{
+    color: var(--coloTitulo) !important;
+}
+.texto h2{
+    color: var(--colorBtnPublicar);
+}
+
+
+/*navegacion*/
+.navegacion{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+.nav-list{
+    list-style: none;
+    display: flex;
+}
+.nav-item{
+    margin: 0 15px;
+    
+}
+.navs{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    font-size: larger;
+}

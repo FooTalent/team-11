@@ -10,6 +10,7 @@ export const initState: LoginResponse = {
         country: '',
         province: '',
         city: '',
+        locality: '',
         phone: '',
         profilePicture: ''
     },

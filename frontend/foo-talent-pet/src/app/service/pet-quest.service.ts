@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class PetQuestService {
   private baseUrl = 'https://pet-quest.azurewebsites.net/api/auth/login';
-  
+
   constructor(private http: HttpClient) { }
 
   login(payload:any){

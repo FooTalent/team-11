@@ -28,6 +28,7 @@ import { PreferenciasDashboardComponent } from './components/preferencias-dashbo
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'activate/:token', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'preguntas-Frecuentes', component: PreguntasFrecuentesComponent},
     {path: 'login', component: LoginComponent},

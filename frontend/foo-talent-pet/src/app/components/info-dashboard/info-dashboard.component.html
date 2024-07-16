@@ -42,7 +42,7 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <select class="form-control" [(ngModel)]="selectedLocality" name="locality" (change)="getLocalities(selectedLocality)">
+                        <select class="form-control" [(ngModel)]="selectedLocality" name="locality">
                           <option value="" disabled selected>Seleccione una localidad / barrio</option>
                           <option *ngFor="let Locality of localities" [value]="Locality.name">{{Locality.name}}</option>
                         </select>
@@ -78,17 +78,19 @@
                     <div class="cuenta">
                         <h2>Mi cuenta</h2>
                         <p class="mt-2 mb-4 email">{{user.email}}</p>
-                        <div class="form-group">
+                        <form [formGroup]="userPassword" (ngSubmit)="savePassword()">
+                          <div class="form-group">
                             <label for="exampleInputPassword1">Nueva contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                          </div>
+                          <div class="form-group">
                             <label for="exampleInputPassword2">Repetir contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2">
-                        </div>
-                        <div class="btn">
-                            <button>Guardar</button>
-                        </div>
+                            <input type="password" class="form-control" id="exampleInputPassword2" formControlName="rePassword">
+                          </div>
+                          <div class="btn">
+                              <button type="submit">Guardar</button>
+                          </div>
+                        </form>
                     </div>
                 </div>
             </div>

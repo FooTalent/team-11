@@ -4,7 +4,13 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { User } from '../../interfaces/interfaces';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { LocationService } from '../../service/location.service';
 import { Location } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
@@ -18,6 +24,7 @@ import { CommonModule } from '@angular/common';
     RouterLink,
     FormsModule,
     CommonModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './info-dashboard.component.html',
   styleUrl: './info-dashboard.component.css',
@@ -34,6 +41,11 @@ export class InfoDashboardComponent {
     phone: '',
     profilePicture: '',
   };
+
+  userPassword = new FormGroup({
+    password: new FormControl('', Validators.required),
+    rePassword: new FormControl('', Validators.required),
+  });
 
   provinces: Location[] = [];
   cities: Location[] = [];
@@ -113,7 +125,7 @@ export class InfoDashboardComponent {
       this.user.city = this.selectedCity;
       this.user.locality = this.selectedLocality;
 
-      this.userService.saveUser(this.user, token, null).subscribe((data) => {
+      this.userService.saveUser(this.user, token).subscribe((data) => {
         const newUser: User = data.user;
         this.user = {
           id: newUser.id || '',
@@ -130,6 +142,35 @@ export class InfoDashboardComponent {
         const newToken = data.token;
         localStorage.setItem('token', newToken);
       });
+    }
+  }
+
+  savePassword() {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return;
+      }
+      const password = this.userPassword.value.password;
+      const rePassword = this.userPassword.value.rePassword;
+      if (password !== rePassword) {
+        return;
+      }
+      if (this.userPassword.value.password) {
+        if (
+          this.userPassword.value.password ===
+            this.userPassword.value.rePassword &&
+          this.userPassword.value.password.length >= 8
+        ) {
+          this.userService
+            .updatePassword(this.userPassword.value.password, token)
+            .subscribe((data) => {
+              const newToken = data.token;
+              localStorage.setItem('token', newToken);
+              this.userPassword.reset();
+            });
+        }
+      }
     }
   }
 

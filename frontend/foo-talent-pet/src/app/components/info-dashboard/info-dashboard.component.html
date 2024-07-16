@@ -21,31 +21,38 @@
         <div class="formulario">
             <div class="row">
                 <div class="class col-6 col-md-6 col-sm-12">
-                    
+
                     <div class="info">
                         <H2>Información personal</H2>
                         <div class="form-group">
-                            <label for="exampleInputText"><b>Nombre *</b></label>
-                            <input type="text" class="form-control" id="exampleInputText">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputText"><b>Provincia</b></label>
-                            <input type="text" class="form-control" id="exampleInputText">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputText"><b>Ciudad</b></label>
-                            <input type="text" class="form-control" id="exampleInputText">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputText"><b>Localidad / Barrio</b></label>
-                            <input type="text" class="form-control" id="exampleInputText">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputText"><b>Teléfono</b></label>
-                            <input type="text" class="form-control" id="exampleInputText">
-                        </div>
+                          <label for="inputName"><b>Nombre *</b></label>
+                          <input type="text" class="form-control" id="inputName" [(ngModel)]="user.name" name="name">
+                      </div>
+                      <div class="form-group">
+                          <label for="inputProvince"><b>Provincia</b></label>
+                          <select class="form-control" [(ngModel)]="selectedProvince" name="province" (change)="getCities(selectedProvince)">
+                            <option value="" disabled selected>Seleccione una provincia</option>
+                            <option *ngFor="let province of provinces" [value]="province.name">{{province.name}}</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control" [(ngModel)]="selectedCity" name="city" (change)="getLocalities(selectedCity)">
+                          <option value="" disabled selected>Seleccione una ciudad</option>
+                          <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control" [(ngModel)]="selectedLocality" name="locality">
+                          <option value="" disabled selected>Seleccione una localidad / barrio</option>
+                          <option *ngFor="let Locality of localities" [value]="Locality.name">{{Locality.name}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputPhone"><b>Teléfono</b></label>
+                          <input type="text" class="form-control" id="inputPhone" [(ngModel)]="user.phone" name="phone">
+                      </div>
                         <div class="btn">
-                            <button>Guardar</button>
+                            <button (click)="saveUser()">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -53,29 +60,37 @@
                 <div class="class col-6 col-md-6 col-sm-12">
                     <div class="foto">
                         <div class="row">
-                            <div class="class col-6 " id="zquierdo">
+                            <div class="class col-6" id="zquierdo">
                                 <h2>Foto perfil</h2>
-                                <button type="button">Subir</button>
+                                <div class="btn justify-content-start">
+                                  <button type="button">Subir</button>
+                                </div>
                             </div>
                             <div class="class col-6 " id="derecho">
-                                <img src="../../../assets/Rectangle 23864.png" alt="">
+                              <img *ngIf="user.profilePicture != ''; else defaultImage" class="profilePicture" src="{{user.profilePicture}}" alt="Profile Picture">
+                              <ng-template #defaultImage>
+                                <img src="../../../assets/Rectangle 23864.png" class="profilePicture" alt="">
+                              </ng-template>
                             </div>
                         </div>
                     </div>
 
                     <div class="cuenta">
                         <h2>Mi cuenta</h2>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Confirmar contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="btn">
-                            <button>Guardar</button>
-                        </div>
+                        <p class="mt-2 mb-4 email">{{user.email}}</p>
+                        <form [formGroup]="userPassword" (ngSubmit)="savePassword()">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Nueva contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword2">Repetir contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword2" formControlName="rePassword">
+                          </div>
+                          <div class="btn">
+                              <button type="submit">Guardar</button>
+                          </div>
+                        </form>
                     </div>
                 </div>
             </div>

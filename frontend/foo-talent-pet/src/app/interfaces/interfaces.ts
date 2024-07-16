@@ -5,6 +5,7 @@ export interface User {
   country: string | null;
   province: string | null;
   city: string | null;
+  locality: string | null;
   phone: string | null;
   profilePicture: string;
 }
@@ -56,4 +57,8 @@ export  interface registro{
 export interface LoginResponse {
   user: User;
   token: string;
+}
+
+export interface Location {
+  name: string;
 }

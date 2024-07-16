@@ -8,8 +8,8 @@ import { registro } from '../interfaces/interfaces';
 })
 export class RegistroService {
 
-private baseUrl = 'https://pet-quest.azurewebsites.net/api/auth/register';
-  
+private baseUrl = 'https://alive-barby-adriansft-7f7abc1b.koyeb.app/api/auth/register';
+
 
   constructor(private http: HttpClient) { }
   register(payload:any): Observable<registro>{

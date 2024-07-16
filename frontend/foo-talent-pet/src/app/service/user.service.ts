@@ -49,4 +49,16 @@ export class UserService {
     return this.http.put<LoginResponse>(this.apiUrl + 'users', formData, options);
   }
 
+  updatePassword(password: string, token: string): Observable<LoginResponse> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const options = {
+      headers: headers
+    };
+
+    return this.http.put<LoginResponse>(this.apiUrl + 'users/password', {password}, options);
+  }
+
 }

@@ -13,19 +13,23 @@ export class ActivateTokenService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    // private route: ActivatedRoute,
+    private route: ActivatedRoute,
   ) { }
 
   activateAccount(token: string): void {
+    const activationUrl = `${this.apiUrl}/auth/activate/${token}`;
 
-    this.http.post(this.apiUrl, { token: token }).subscribe(
-      response => {
+    this.http.post(activationUrl, {}).subscribe({
+      next: (response) => {
         console.log('Account activated successfully', response);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       },
-      error => {
+      error: (error) => {
         console.error('Activation error', error);
+      },
+      complete: () => {
+        console.log('Activation request completed');
       }
-    );
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink, Router } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
 // import { OnInit } from '@angular/core';
 import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
@@ -10,6 +10,7 @@ import { LandingEncuentraComponent } from '../landing-encuentra/landing-encuentr
 import { LandingUneteComponent } from '../landing-unete/landing-unete.component';
 import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-comofunciona.component";
 import { ActivateTokenService } from '../../service/activate-token.service';
+// import { Router } from 'express';
 
 
 
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private authService: ActivateTokenService
+    private authService: ActivateTokenService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit{
       const token = params['token'];
       if (token) {
         this.authService.activateAccount(token);
+        // this.router.navigate(['/home']);
       }
     });
   }

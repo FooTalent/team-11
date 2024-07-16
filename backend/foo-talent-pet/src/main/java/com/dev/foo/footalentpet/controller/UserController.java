@@ -1,6 +1,7 @@
 package com.dev.foo.footalentpet.controller;
 
 
+import com.dev.foo.footalentpet.model.request.PasswordRequestDTO;
 import com.dev.foo.footalentpet.model.request.UpdateUserRequestDTO;
 import com.dev.foo.footalentpet.model.request.UserRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
@@ -49,15 +50,30 @@ public class UserController {
             @ApiResponse(responseCode = "201", description = "Successfully updated user"),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
-    @PutMapping(consumes = {"multipart/form-data"})
-    public ResponseEntity<LoginResponseDTO> update(@RequestPart(value = "name", required = false) String name,
-                                                   @RequestPart(value = "phone", required = false) String phone,
-                                                   @RequestPart(value = "country", required = false) String country,
-                                                   @RequestPart(value = "province", required = false) String province,
-                                                   @RequestPart(value = "city", required = false) String city,
-                                                   @RequestPart(value = "image", required = false) MultipartFile profilePicture) {
-        UpdateUserRequestDTO userRequestDTO = new UpdateUserRequestDTO(name, phone, country, province, city, profilePicture);
+    @PutMapping
+    public ResponseEntity<LoginResponseDTO> update(@RequestBody UpdateUserRequestDTO userRequestDTO) {
+        ;
         LoginResponseDTO loginResponseDTO = userService.update(userRequestDTO);
         return new ResponseEntity<>(loginResponseDTO, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Update user password", description = "Update user password and returns the user data", responses = {
+            @ApiResponse(responseCode = "201", description = "Successfully updated password user"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PutMapping("/password")
+    public ResponseEntity<LoginResponseDTO> updatePassword(@RequestBody PasswordRequestDTO passwordRequestDTO) {
+        LoginResponseDTO loginResponseDTO = userService.updatePassword(passwordRequestDTO);
+        return new ResponseEntity<>(loginResponseDTO, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Update user profile picture", description = "Update user profile picture and returns the user data", responses = {
+            @ApiResponse(responseCode = "201", description = "Successfully updated profile picture user"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PutMapping(value = "/profile-picture", consumes = {"multipart/form-data"})
+    public ResponseEntity<UserResponseDTO> updateProfilePicture(@RequestParam("profilePicture") MultipartFile profilePicture) {
+        UserResponseDTO userResponseDTO = userService.updateProfilePicture(profilePicture);
+        return new ResponseEntity<>(userResponseDTO, HttpStatus.CREATED);
     }
 }

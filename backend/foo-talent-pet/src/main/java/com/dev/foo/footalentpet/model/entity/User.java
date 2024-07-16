@@ -42,7 +42,7 @@ public class User implements UserDetails, Serializable {
 
     private String phone;
 
-    private String country;
+    private String locality;
 
     private String province;
 

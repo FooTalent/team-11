@@ -9,19 +9,23 @@
   </div>
   <div class="container">
     <h1 class="encabezado">Publicá una mascota que perdiste</h1>
-    <div class="nav">
-      <ul class="nav-list">
-        <li class="nab-item">
-          <a routerLink="/form-publication" class="navs">Perdidas</a>
-        </li>
-        <li class="nab-item">
-          <a routerLink="/form-encontradas" class="navs">Encontradas</a>
-        </li>
-        <li class="nab-item">
-          <a routerLink="/form-adopcion" class="navs">En adopción</a>
-        </li>
-      </ul>
-    </div>
+
+    <div class="form-group d-flex justify-content-center ">
+      
+      <div class="form-check test">
+        <input type="radio" class="form-check-input test" id="lost" name="publicationType" (click)="pet.status = 'LOST'" value="lost">
+        <label class="form-check-label text-status" for="lost">Perdidos</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="found" name="publicationType" (click)="pet.speciesType = 'FOUND'"value="found">
+        <label class="form-check-label text-status" for="found">Encontrado</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="adoption" name="publicationType" (click)="pet.speciesType = 'ADOPTION'" value="adoption">
+        <label class="form-check-label text-status" for="adoption">Adopcion</label>
+      </div>
+  </div>
+    
     <h2 class="subtitle">Detalles Básicos</h2>
     <div class="row">
       <div class="class col-6 col-md-6 col-sm-12">
@@ -31,11 +35,11 @@
             <p>Seleccioná el tipo de mascota que vas a publicar</p>
             <div class="row">
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark" (click)="pet.speciesType = 'DOG'" >
+                <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedSpecies === 'DOG'"  (click)= butonSpeciesDog() >
                   Perro
                 </button>
-                <button type="button" class="btn btn-outline-dark"  data-value="CAT" (click)="pet.speciesType = 'CAT'" >Gato</button>
-                <button type="button" class="btn btn-outline-dark"  data-value="OTHER" (click)="pet.speciesType = 'OTHER'" >Otro</button>
+                <button type="button" class="btn btn-outline-dark"  data-value="CAT" [class.btn-pressed]="selectedSpecies === 'CAT'" (click)=butonSpeciesCat() >Gato</button>
+                <button type="button" class="btn btn-outline-dark"  data-value="OTHER" [class.btn-pressed]="selectedSpecies === 'OTHER'" (click)=butonSpeciesOther() >Otro</button>
               </div>
             </div>
           </div>
@@ -44,10 +48,10 @@
             <p>Seleccioná el sexo</p>
             <div class="row">
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark"  (click)="pet.gender= 'MASCULINO'" >
+                <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedGender === 'MASCULINO'" (click)=ButonGenderMale() >
                   Macho
                 </button>
-                <button type="button" class="btn btn-outline-dark" data-value="FEMENINO" (click)="pet.gender= 'FEMENINO'" >
+                <button type="button" class="btn btn-outline-dark" data-value="FEMENINO"[class.btn-pressed]="selectedGender === 'FEMENINO'" (click)=ButonGenderFemale() >
                   Hembra
                 </button>
                 <div class="form-group form-check"> 
@@ -150,7 +154,7 @@
               <div class="col-12">
                 @for (color of colors ; track $index) {
 
-                  <button type="button" class="btn btn-outline-dark" (click)="fillColorArray(color)">
+                  <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="colorPressed[color.name]"(click)="fillColorArray(color)">
                     {{color.name}}
                   </button>
                 }
@@ -180,8 +184,35 @@
           aspecto de la misma.
         </p>
         <div class="row">
-          <input type="file">
-          <div class="espacio-fotos">
+          <div class="input-fix">          
+            <input type="file" id="fileInput" data-multiple-caption="{count} archivos seleccionados">
+        
+          </div>
+          <div id="imageContainerFix"></div>
+         
+         <script>
+            document.getElementById('fileInput').addEventListener('change', function(event) {
+              const files = event.target.files;
+              const imageContainer = document.getElementById('imageContainer');
+              imageContainer.innerHTML = ''; // Limpiar el contenedor de imágenes previas
+          
+              for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  const img = document.createElement('img');
+                  img.src = e.target.result;
+                  img.style.width = '100px'; // Establece el tamaño de la imagen
+                  img.style.height = '100px'; // Establece el tamaño de la imagen
+                  img.style.margin = '5px'; // Añade un margen a la imagen
+                  imageContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+          </script>
+
+
+          <!-- <div class="espacio-fotos">
             <img src="../../../assets/Rectangle 23864.png" alt="" />
           </div>
           <div class="espacio-fotos">
@@ -190,7 +221,7 @@
           <div class="espacio-fotos">
             <img src="../../../assets/Rectangle 23864.png" alt="" />
           </div>
-        </div>
+        </div> -->
 
         <h4>Descripción</h4>
         <div class="form-group">
@@ -215,14 +246,14 @@
         <div class="row">
           <div class="col-12">
             @for (tag of tags; track $index) {
-              <button type="button" class="btn btn-outline-dark"  (click)="fillTagsArray(tag)">{{tag.name}} </button>
+              <button type="button" class="btn btn-outline-dark"  [class.btn-pressed]="tagsPressed[tag.name]" (click)="fillTagsArray(tag)">{{tag.name}} </button>
             }
           </div>
         </div>
       </div>
     </div>
     <div class="btn-publicar-center">
-      <button (click)="test()">test</button>
+      <!-- <button (click)="test()">test</button> -->
       <button
         type="button"
         class="btn btn-light-publicar"

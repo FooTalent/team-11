@@ -67,6 +67,8 @@ export class FiltroperdidasComponent {
   applyFilters() {
     const animal = (document.getElementById('animal') as HTMLSelectElement)
       .value;
+    const genero = (document.getElementById('genero') as HTMLSelectElement)
+      .value;
     const provincia = (
       document.getElementById('provincia') as HTMLSelectElement
     ).value;
@@ -75,15 +77,18 @@ export class FiltroperdidasComponent {
     const localidad = (
       document.getElementById('localidad') as HTMLSelectElement
     ).value;
-    const fecha = (document.getElementById('fecha') as HTMLSelectElement).value;
+    let fecha = (document.getElementById('fecha') as HTMLSelectElement).value;
     //const colors = (document.getElementById('color') as HTMLSelectElement).value;
 
+    let date = fecha ? new Date(fecha).toISOString() : null;
+    console.log(date)
     const filters: Filters = {
       animal,
+      gender: genero,
       province: provincia,
       city: ciudad,
       locality: localidad,
-      date: fecha,
+      date: date,
       colors: null,
       tags: null,
     };

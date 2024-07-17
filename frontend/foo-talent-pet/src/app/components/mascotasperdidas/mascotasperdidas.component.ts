@@ -28,6 +28,7 @@ export class MascotasperdidasComponent implements OnInit {
   // todo: crear interfaz de pets
   appliedFilters: Filters = {
     animal: null,
+    gender: null,
     province: null,
     city: null,
     locality: null,

@@ -14,7 +14,7 @@
         <label for="animal">Especie de animal</label>
       </div>
       <select id="animal">
-          <option value="" disabled selected>Seleccionar una especie</option>
+          <option value="" disabled selected>Seleccionar</option>
           <option value="DOG">Perro</option>
           <option value="CAT">Gato</option>
           <option value="OTHER">Otro</option>
@@ -22,22 +22,35 @@
   </div>
 
   <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/gender.png" alt="">
+      <label for="genero">Sexo</label>
+    </div>
+    <select id="genero">
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="MASCULINO">Masculino</option>
+        <option value="FEMENINO">Femenino</option>
+        <option value="OTRO">Otro</option>
+    </select>
+</div>
+
+  <div class="filter-section">
       <div class="cont cont-label">
         <img class="iconLabel" src="../../../assets/ubication.png" alt="">
         <label for="provincia">Ubicación</label>
       </div>
       <select class="ubicacion" [(ngModel)]="selectedProvince" name="province" id="provincia" (change)="getCities(selectedProvince)">
-        <option value="" disabled selected>Seleccione una provincia</option>
+        <option value="" disabled selected>Provincia</option>
         <option *ngFor="let province of provinces" [value]="province.name">{{province.name}}</option>
       </select>
 
       <select class="ubicacion" [(ngModel)]="selectedCity" name="city" id="ciudad" (change)="getLocalities(selectedCity)">
-        <option value="" disabled selected>Seleccione una ciudad</option>
+        <option value="" disabled selected>Ciudad</option>
         <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
       </select>
 
       <select class="ubicacion" [(ngModel)]="selectedLocality" name="locality" id="localidad">
-        <option value="" disabled selected>Seleccione una localidad / barrio</option>
+        <option value="" disabled selected>Localidad/Barrio</option>
         <option *ngFor="let Locality of localities" [value]="Locality.name">{{Locality.name}}</option>
       </select>
   </div>
@@ -48,11 +61,7 @@
         <img class="iconLabel" src="../../../assets/date.png" alt="">
         <label for="fecha">Fecha</label>
       </div>
-      <select id="fecha">
-          <option value="" disabled selected>Seleccionar</option>
-          <option value="esta-semana">Esta semana</option>
-          <option value="este-mes">Este mes</option>
-      </select>
+      <input type="date" id="fecha">
   </div>
 
   <div class="filter-section">

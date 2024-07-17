@@ -73,6 +73,7 @@ export interface Tag {
 
 export interface Filters {
   animal: string | null;
+  gender: string | null;
   province: string | null;
   city: string | null;
   locality: string | null;

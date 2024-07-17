@@ -19,6 +19,9 @@ export class LostpetsService {
     if (filters.animal) {
       query += `&speciesType=${filters.animal}`;
     }
+    if (filters.gender) {
+      query += `&gender=${filters.gender}`;
+    }
     if (filters.province) {
       query += `&province=${filters.province}`;
     }

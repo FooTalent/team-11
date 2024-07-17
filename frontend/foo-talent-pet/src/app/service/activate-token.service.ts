@@ -9,7 +9,6 @@ import { environment } from '../../environments/environments';
 export class ActivateTokenService {
 
   apiUrl = environment.apiUrl;
-
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -17,7 +16,7 @@ export class ActivateTokenService {
   ) { }
 
   activateAccount(token: string): void {
-    const activationUrl = `${this.apiUrl}/auth/activate/${token}`;
+    const activationUrl = `${this.apiUrl}auth/activate/${token}`;
 
     this.http.post(activationUrl, {}).subscribe({
       next: (response) => {

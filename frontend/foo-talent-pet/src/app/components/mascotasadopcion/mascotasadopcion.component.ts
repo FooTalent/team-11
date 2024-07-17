@@ -15,9 +15,16 @@ import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
   styleUrl: './mascotasadopcion.component.css'
 })
 export class MascotasadopcionComponent {
+  appliedFilters: any;
   pets: any;
 
   constructor(private adoptionServices: AdoptionpetService) {}
+
+  receiveFilters(filters: any) {
+    this.appliedFilters = filters;
+    console.log('Filtros aplicados:', this.appliedFilters);
+  }
+
 
   ngOnInit() {
     this.adoptionServices.getHealth().subscribe({

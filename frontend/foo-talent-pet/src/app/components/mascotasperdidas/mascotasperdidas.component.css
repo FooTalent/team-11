@@ -9,7 +9,7 @@
   margin-right: 3rem;
 }
 .pet__section{
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   margin: 1.5rem;
 }

@@ -14,10 +14,16 @@ import { FoundpetsService } from '../../service/posts/foundpets.service';
   styleUrl: './mascotasencontradas.component.css'
 })
 export class MascotasencontradasComponent implements OnInit{
-
+  appliedFilters: any;
   pets: any;
 
   constructor(private foundServices: FoundpetsService) {}
+
+  receiveFilters(filters: any) {
+    this.appliedFilters = filters;
+    console.log('Filtros aplicados:', this.appliedFilters);
+  }
+
 
   ngOnInit() {
     this.foundServices.getHealth().subscribe({

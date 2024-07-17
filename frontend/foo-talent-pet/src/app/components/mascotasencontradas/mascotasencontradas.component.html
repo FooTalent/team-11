@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="section">
   <div class="filter__section">
-    <app-filtroperdidas class="filtro"></app-filtroperdidas>
+    <app-filtroperdidas class="filtro" (filtersApplied)="receiveFilters($event)"></app-filtroperdidas>
   </div>
   <div class="pet__section">
     <div class="pet__info">
@@ -10,7 +10,7 @@
     </div>
     <!-- <hr> -->
     <div class="contenedor" *ngIf="pets && pets.length > 0">
-      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pets"></app-pets-card>
+      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet"></app-pets-card>
     </div>
     <div *ngIf="!(pets && pets.length > 0)">
       <p>No tenemos mascotas Encontradas .</p>

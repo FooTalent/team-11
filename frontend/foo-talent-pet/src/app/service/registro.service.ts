@@ -9,7 +9,7 @@ import { environment } from "../../environments/environments";
 })
 export class RegistroService {
 
-private baseUrl = environment.apiUrl + 'registro';
+private baseUrl = environment.apiUrl + 'auth/register';
   
 
   constructor(private http: HttpClient) { }

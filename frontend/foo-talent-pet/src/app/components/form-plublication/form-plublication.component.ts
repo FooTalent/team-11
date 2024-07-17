@@ -173,12 +173,12 @@ onLocalidadChange(event: any) {
 
 fillColorArray(color: any) {
   
-   this.pet.colors.push(color);
+   this.pet.colors.push(color.id);
   
 
 }
 fillTagsArray(tag: any) {
-  this.pet.tags.push(tag);
+  this.pet.tags.push(tag.id);
 }
 
 PostPet(){

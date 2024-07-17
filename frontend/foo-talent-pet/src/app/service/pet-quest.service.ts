@@ -29,7 +29,7 @@ export class PetQuestService {
         name: payload.name,
         description: payload.description,
         date: payload.date,
-        status: payload.status,
+        status: payload.status || "LOST",
         speciesType: payload.speciesType,
         gender: payload.gender,
         province: payload.province,
@@ -38,8 +38,6 @@ export class PetQuestService {
         contact: payload.contact,
         tags: payload.tags,
         colors: payload.colors,
-      
-
     }
     console.log(pet);
     const headers = new HttpHeaders({

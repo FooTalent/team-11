@@ -91,3 +91,58 @@ color: black ;
 option{
     color: black;
 }
+
+/* checkbox */
+.text-status{
+    font-size: 1.4rem;
+}
+
+.form-check-input {
+    display: none;
+}
+
+/* Estilo por defecto del label */
+.form-check-label {
+    cursor: pointer;
+}
+
+/* Cuando el checkbox está seleccionado, subraya el label */
+.form-check-input:checked + .form-check-label {
+    padding-bottom: 0.5rem;
+    text-decoration: underline #277380 5px!important; 
+
+}
+
+ .form-check-label:hover {
+    text-decoration: underline;
+} 
+
+/* estilo para input de tipo file */
+input[type="file"] {
+    opacity: 0;
+  width: 100%; /* Ancho del cuadro */
+  height: 100%; /* Altura del cuadro */
+  border-radius: 10px; 
+ background-color: #D9D9D9;
+ background-position: center;
+  cursor: pointer; 
+
+ 
+}
+.input-fix{
+    width: 200px; /* Ancho del cuadro */
+    height: 200px;
+    border-radius: 10px;
+    background-image: url(../../../assets/img\ input.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #D9D9D9;
+
+}
+
+.btn-pressed {
+    background-color: #FEB941 !important;
+    ; /* Un color de fondo diferente para indicar que está presionado */
+   
+  
+  }

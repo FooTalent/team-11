@@ -29,7 +29,7 @@ export class PetQuestService {
         name: payload.name,
         description: payload.description,
         date: payload.date,
-        status: payload.status || "LOST",
+        status: payload.status ,
         speciesType: payload.speciesType,
         gender: payload.gender,
         province: payload.province,

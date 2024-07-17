@@ -45,14 +45,16 @@ export class FormPlublicationComponent  {
 
  provincia: string = "";
   city: string = "";
-  localidad: string = "";
+localidad: string = "";
 provincias : any;
 ciudades: any;
 localidades: any;
 value: any;
 colors: any;
 tags: any;
-
+isbuttonActive: boolean = false;
+tagsPressed: { [key: string]: boolean } = {};
+colorPressed: { [key: string]: boolean } = {};
 
   constructor(private store: Store<AppState>,private locationService: LocationService,private petquestService:PetQuestService ) {}
  
@@ -174,11 +176,15 @@ onLocalidadChange(event: any) {
 fillColorArray(color: any) {
   
    this.pet.colors.push(color.id);
-  
+   this.colorPressed[color.name] = !this.colorPressed[color.name];
 
 }
+
 fillTagsArray(tag: any) {
   this.pet.tags.push(tag.id);
+  this.tagsPressed[tag.name] = !this.tagsPressed[tag.name];
+ 
+
 }
 
 PostPet(){
@@ -190,6 +196,41 @@ PostPet(){
   console.log(this.credentials?.token);
    console.log(this.pet);
  }
+ selectedSpecies: string = '';
+ isButtonMale=false;
+ selectedGender: string = '';
+ ButonGenderMale(){
+  this.pet.gender = 'MASCULINO';
+  this.isButtonMale = !this.isButtonMale;
+  this.selectedGender = 'MASCULINO'
+
+ }
+ isButtonFemale=false;
+  ButonGenderFemale(){
+    this.pet.gender= 'FEMENINO';
+    this.selectedGender = 'FEMENINO'
+  }
+  ButonGenderOther(){
+
+  }
+isButtonDog=false;
+  butonSpeciesDog(){
+    this.pet.speciesType = 'DOG';
+    this.isButtonDog = !this.isButtonDog;
+    this.selectedSpecies = 'DOG'
+  };
+isButtonCat=false;
+  butonSpeciesCat(){
+    this.pet.speciesType = 'CAT';
+    this.isButtonCat = !this.isButtonCat;
+    this.selectedSpecies = 'CAT'
+  };
+isButtonOther=false;
+  butonSpeciesOther(){
+    this.pet.speciesType = 'OTHER';
+    this.isButtonOther = !this.isButtonOther
+    this.selectedSpecies = 'OTHER'
+  };
 
  
 }

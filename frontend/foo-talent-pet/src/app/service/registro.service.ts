@@ -10,7 +10,7 @@ import { environment } from "../../environments/environments";
 export class RegistroService {
 
 private baseUrl = environment.apiUrl + 'auth/register';
-  
+
 
   constructor(private http: HttpClient) { }
   register(payload:any): Observable<registro>{

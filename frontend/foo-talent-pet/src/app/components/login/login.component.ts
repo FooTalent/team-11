@@ -32,16 +32,16 @@ import { AppState } from "../../app.state";
 })
 export class LoginComponent {
 
-  router = inject(Router);  
+  router = inject(Router);
 
   userCredentials = new FormGroup({
-    email: new FormControl('', Validators.required), 
-    password: new FormControl('', Validators.required) 
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
   userRegister = new FormGroup({
     name: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required), 
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     rePassword: new FormControl('', Validators.required)
   })
@@ -69,7 +69,7 @@ export class LoginComponent {
         })
         console.log(datos)
       }
-      
+
       else{
         console.log("error de registro")
       }
@@ -79,9 +79,9 @@ export class LoginComponent {
 
    if (typeof this.userCredentials.value.email === 'string' &&
     typeof this.userCredentials.value.password === 'string') {
-  
+
        const credenciales: Login = {
-      
+
       email:  this.userCredentials.value.email,
       password: this.userCredentials.value.password
     };
@@ -90,6 +90,7 @@ export class LoginComponent {
       this.credentials = response;
     // console.log(response);
     // console.log('login');
+    localStorage.setItem('token', response.token);
     this.router.navigate(['/mascotas-perdidas']).then(() => {
     //   // Forzar la recarga de la página
     //   //location.reload();
@@ -97,10 +98,10 @@ export class LoginComponent {
     //ngrx
     this.store.dispatch(logIn({ loginResponse: response }));
    });
-   
+
    } else {
     console.log('Error en las credenciales');
-    
+
    }
   }
 
@@ -127,9 +128,9 @@ export class LoginComponent {
     }
   }
 
-  
+
 oninit(){
-   
+
 }
 
 
@@ -143,7 +144,7 @@ test(){
   //   const miModal = new Modal(modalElement);
   //   miModal.hide();
   // }
- 
+
 }
 
 // ngOnInit() {
@@ -158,5 +159,5 @@ test(){
 //   isOpen = false;
 
 
-  
+
 }

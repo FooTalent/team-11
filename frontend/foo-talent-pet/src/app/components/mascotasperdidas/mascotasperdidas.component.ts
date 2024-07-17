@@ -9,37 +9,51 @@ import { EventEmitter } from 'node:stream';
 // ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { LoginResponse } from "../../interfaces/interfaces";
+import { Filters, LoginResponse } from '../../interfaces/interfaces';
 import { select } from '@ngrx/store';
 @Component({
   selector: 'app-mascotasperdidas',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, FiltroperdidasComponent, PetsCardComponent, CommonModule],
+  imports: [
+    NavbarComponent,
+    FooterComponent,
+    FiltroperdidasComponent,
+    PetsCardComponent,
+    CommonModule,
+  ],
   templateUrl: './mascotasperdidas.component.html',
-  styleUrl: './mascotasperdidas.component.css'
+  styleUrl: './mascotasperdidas.component.css',
 })
-export class MascotasperdidasComponent implements OnInit{
+export class MascotasperdidasComponent implements OnInit {
   // todo: crear interfaz de pets
-  appliedFilters: any;
+  appliedFilters: Filters = {
+    animal: null,
+    province: null,
+    city: null,
+    locality: null,
+    date: null,
+    colors: null,
+    tags: null,
+  };
+
   pets: any;
+  order: boolean = true;
 
-  constructor(private LostService: LostpetsService,private store: Store<AppState>) {}
+  constructor(
+    private LostService: LostpetsService,
+    private store: Store<AppState>
+  ) {}
 
-  receiveFilters(filters: any) {
+  receiveFilters(filters: Filters) {
     this.appliedFilters = filters;
     // Aquí puedes hacer lo que necesites con los filtros aplicados
     console.log('Filtros aplicados:', this.appliedFilters);
+    this.getPets();
   }
 
-  ngOnInit() {
-
-
-    //ngrx bullshit
-   
-
-    this.LostService.getHealth().subscribe({
+  getPets(){
+    this.LostService.getPets(this.appliedFilters, this.order).subscribe({
       next: (response) => {
-        // console.time()
         this.pets = response;
       },
       error: (error) => {
@@ -47,9 +61,18 @@ export class MascotasperdidasComponent implements OnInit{
       },
       complete: () => {
         console.log('Observable completado');
-        // console.timeEnd()
       },
     });
+  }
+
+  onOrderChange(order: boolean) {
+    if(this.order === order) return;
+    this.order = order;
+    this.getPets();
+  }
+
+  ngOnInit() {
+    this.getPets();
   }
 
   // ngOnDestroy() {

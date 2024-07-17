@@ -62,3 +62,23 @@ export interface LoginResponse {
 export interface Location {
   name: string;
 }
+
+export interface Color {
+  id: string;
+  name: string;
+}
+
+export interface Tag {
+  id: string;
+  name: string;
+}
+
+export interface Filters {
+  animal: string | null;
+  province: string | null;
+  city: string | null;
+  locality: string | null;
+  date: string | null;
+  colors: string[] | null;
+  tags: string[] | null;
+}

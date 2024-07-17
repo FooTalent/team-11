@@ -14,38 +14,32 @@
         <label for="animal">Especie de animal</label>
       </div>
       <select id="animal">
-          <option value="" disabled selected>Seleccionar</option>
-          <option value="perro">Perro</option>
-          <option value="gato">Gato</option>
-          <option value="pajaro">Pájaro</option>
+          <option value="" disabled selected>Seleccionar una especie</option>
+          <option value="DOG">Perro</option>
+          <option value="CAT">Gato</option>
+          <option value="OTHER">Otro</option>
       </select>
   </div>
 
   <div class="filter-section">
       <div class="cont cont-label">
         <img class="iconLabel" src="../../../assets/ubication.png" alt="">
-        <label for="provincia">ubicacion</label>
+        <label for="provincia">Ubicación</label>
       </div>
-      <select class="ubicacion" id="provincia">
-          <option value="" disabled selected>provincia</option>
-          <option value="provincia1">Provincia 1</option>
-          <option value="provincia2">Provincia 2</option>
-          <option value="provincia3">Provincia 3</option>
+      <select class="ubicacion" [(ngModel)]="selectedProvince" name="province" id="provincia" (change)="getCities(selectedProvince)">
+        <option value="" disabled selected>Seleccione una provincia</option>
+        <option *ngFor="let province of provinces" [value]="province.name">{{province.name}}</option>
       </select>
 
-      <select class="ubicacion" id="ciudad">
-        <option value="" disabled selected>ciudad</option>
-        <option value="ciudad1">Ciudad 1</option>
-        <option value="ciudad2">Ciudad 2</option>
-        <option value="ciudad3">Ciudad 3</option>
-    </select>
+      <select class="ubicacion" [(ngModel)]="selectedCity" name="city" id="ciudad" (change)="getLocalities(selectedCity)">
+        <option value="" disabled selected>Seleccione una ciudad</option>
+        <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+      </select>
 
-    <select class="ubicacion" id="localidad">
-      <option value="" disabled selected>localidad</option>
-      <option value="localidad1">Localidad 1</option>
-      <option value="localidad2">Localidad 2</option>
-      <option value="localidad3">Localidad 3</option>
-  </select>
+      <select class="ubicacion" [(ngModel)]="selectedLocality" name="locality" id="localidad">
+        <option value="" disabled selected>Seleccione una localidad / barrio</option>
+        <option *ngFor="let Locality of localities" [value]="Locality.name">{{Locality.name}}</option>
+      </select>
   </div>
 
 

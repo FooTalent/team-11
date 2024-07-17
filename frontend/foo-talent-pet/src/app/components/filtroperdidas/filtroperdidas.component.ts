@@ -4,7 +4,15 @@ import { ColorService } from '../../service/color.service';
 import { LocationService } from '../../service/location.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TagService } from '../../service/tags.service';
 // import { EventEmitter } from 'node:stream';
+
+interface ColorSelected extends Color {
+  selected: boolean;
+}
+interface TagSelected extends Tag {
+  selected: boolean;
+}
 
 @Component({
   selector: 'app-filtroperdidas',
@@ -21,9 +29,14 @@ export class FiltroperdidasComponent {
   selectedProvince: string = '';
   selectedCity: string = '';
   selectedLocality: string = '';
+  selectedColors: string[] = [];
+  selectedTags: string[] = [];
 
-  colors: Color[] = [];
-  tags: Tag[] = [];
+  colors: ColorSelected[] = [];
+  tags: TagSelected[] = [];
+
+  isColorsDropdownVisible: boolean = false;
+  isTagsDropdownVisible: boolean = false
 
   filters: Filters = {
     animal: null,
@@ -40,6 +53,7 @@ export class FiltroperdidasComponent {
 
   constructor(
     private colorService: ColorService,
+    private tagService: TagService,
     private locationService: LocationService
   ) {}
 
@@ -63,13 +77,17 @@ export class FiltroperdidasComponent {
 
   getColors() {
     this.colorService.getColors().subscribe((colors) => {
-      this.colors = colors;
+      this.colors = colors.map((color) => {
+        return { ...color, selected: false };
+      });
     });
   }
 
   getTags() {
-    this.colorService.getColors().subscribe((tags) => {
-      this.tags = tags;
+    this.tagService.getTags().subscribe((tags) => {
+      this.tags = tags.map((tag) => {
+        return { ...tag, selected: false };
+      });
     });
   }
 
@@ -91,6 +109,14 @@ export class FiltroperdidasComponent {
 
     let date = fecha ? new Date(fecha).toISOString() : null;
 
+    this.selectedColors = this.colors
+      .filter((color) => color.selected)
+      .map((color) => color.id);
+
+    this.selectedTags = this.tags
+      .filter((tag) => tag.selected)
+      .map((tag) => tag.id);
+
     this.filters = {
       animal,
       gender: genero,
@@ -98,8 +124,8 @@ export class FiltroperdidasComponent {
       city: ciudad,
       locality: localidad,
       date: date,
-      colors: null,
-      tags: null,
+      colors: this.selectedColors,
+      tags: this.selectedTags,
     };
 
     this.filtersApplied.emit(this.filters);
@@ -118,6 +144,14 @@ export class FiltroperdidasComponent {
     };
 
     this.filtersApplied.emit(this.filters);
+  }
+
+  toggleColorsDropdown() {
+    this.isColorsDropdownVisible = !this.isColorsDropdownVisible;
+  }
+
+  toggleTagsDropdown() {
+    this.isTagsDropdownVisible = !this.isTagsDropdownVisible;
   }
 
   ngOnInit() {

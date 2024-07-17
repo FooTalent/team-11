@@ -84,6 +84,20 @@ select {
   -moz-appearance: none;
 }
 
+.toggle {
+  font-family: var(--texto);
+  width: 100%;
+  margin-bottom: .5rem;
+  padding: 8px;
+  border-radius: 7px;
+  border: 1px solid var(--colorBtnPublicar);
+  background-color: #f9f9f9;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: start;
+}
+
 .btn {
   width: 110;
   margin: 1rem .2rem;

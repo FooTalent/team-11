@@ -34,6 +34,12 @@ export class LostpetsService {
     if (filters.date) {
       query += `&date=${filters.date}`;
     }
+    if (filters.colors) {
+      query += `&colorIds=${filters.colors}`;
+    }
+    if (filters.tags) {
+      query += `&tagIds=${filters.tags}`;
+    }
     return this.http.get<any>((`${this.apiUrl}posts/LOST?${query}`));
   }
 

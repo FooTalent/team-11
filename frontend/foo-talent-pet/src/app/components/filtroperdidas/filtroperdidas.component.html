@@ -4,80 +4,119 @@
     <button class="publicar-btn">Publicar</button>
   </div>
   <div class="cont">
-    <img class="filterimg" src="../../../assets/filter2.png" alt="">
+    <img class="filterimg" src="../../../assets/filter2.png" alt="" />
     <h1>Filtrar</h1>
   </div>
 
   <div class="filter-section">
-      <div class="cont cont-label">
-        <img class="iconLabel" src="../../../assets/pet.png" alt="">
-        <label for="animal">Especie de animal</label>
-      </div>
-      <select id="animal">
-          <option value="" disabled selected>Seleccionar</option>
-          <option value="DOG">Perro</option>
-          <option value="CAT">Gato</option>
-          <option value="OTHER">Otro</option>
-      </select>
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/pet.png" alt="" />
+      <label for="animal">Especie de animal</label>
+    </div>
+    <select id="animal">
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="DOG">Perro</option>
+      <option value="CAT">Gato</option>
+      <option value="OTHER">Otro</option>
+    </select>
   </div>
 
   <div class="filter-section">
     <div class="cont cont-label">
-      <img class="iconLabel" src="../../../assets/gender.png" alt="">
+      <img class="iconLabel" src="../../../assets/gender.png" alt="" />
       <label for="genero">Sexo</label>
     </div>
     <select id="genero">
-        <option value="" disabled selected>Seleccionar</option>
-        <option value="MASCULINO">Masculino</option>
-        <option value="FEMENINO">Femenino</option>
-        <option value="OTRO">Otro</option>
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="MASCULINO">Masculino</option>
+      <option value="FEMENINO">Femenino</option>
+      <option value="OTRO">Otro</option>
     </select>
-</div>
-
-  <div class="filter-section">
-      <div class="cont cont-label">
-        <img class="iconLabel" src="../../../assets/ubication.png" alt="">
-        <label for="provincia">Ubicación</label>
-      </div>
-      <select class="ubicacion" [(ngModel)]="selectedProvince" name="province" id="provincia" (change)="getCities(selectedProvince)">
-        <option value="" disabled selected>Provincia</option>
-        <option *ngFor="let province of provinces" [value]="province.name">{{province.name}}</option>
-      </select>
-
-      <select class="ubicacion" [(ngModel)]="selectedCity" name="city" id="ciudad" (change)="getLocalities(selectedCity)">
-        <option value="" disabled selected>Ciudad</option>
-        <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
-      </select>
-
-      <select class="ubicacion" [(ngModel)]="selectedLocality" name="locality" id="localidad">
-        <option value="" disabled selected>Localidad/Barrio</option>
-        <option *ngFor="let Locality of localities" [value]="Locality.name">{{Locality.name}}</option>
-      </select>
-  </div>
-
-
-  <div class="filter-section">
-      <div class="cont cont-label">
-        <img class="iconLabel" src="../../../assets/date.png" alt="">
-        <label for="fecha">Fecha</label>
-      </div>
-      <input type="date" id="fecha">
   </div>
 
   <div class="filter-section">
-      <div class="cont cont-label">
-        <img class="iconLabel" src="../../../assets/Vector.png" alt="">
-        <label for="color">Color</label>
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/ubication.png" alt="" />
+      <label for="provincia">Ubicación</label>
+    </div>
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedProvince"
+      name="province"
+      id="provincia"
+      (change)="getCities(selectedProvince)"
+    >
+      <option value="" disabled selected>Provincia</option>
+      <option *ngFor="let province of provinces" [value]="province.name">
+        {{ province.name }}
+      </option>
+    </select>
 
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedCity"
+      name="city"
+      id="ciudad"
+      (change)="getLocalities(selectedCity)"
+    >
+      <option value="" disabled selected>Ciudad</option>
+      <option *ngFor="let city of cities" [value]="city.name">
+        {{ city.name }}
+      </option>
+    </select>
+
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedLocality"
+      name="locality"
+      id="localidad"
+    >
+      <option value="" disabled selected>Localidad/Barrio</option>
+      <option *ngFor="let Locality of localities" [value]="Locality.name">
+        {{ Locality.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/date.png" alt="" />
+      <label for="fecha">Fecha</label>
+    </div>
+    <input type="date" id="fecha" />
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/Vector.png" alt="" />
+      <label for="color">Color</label>
+    </div>
+    <div>
+      <button (click)="toggleColorsDropdown()" class="toggle">Seleccionar</button>
+    </div>
+    <div *ngIf="isColorsDropdownVisible">
+      <div *ngFor="let color of colors" class="d-flex">
+        <input type="checkbox" [id]="color.id" [(ngModel)]="color.selected" />
+        <label [for]="color.id">{{ color.name }}</label>
       </div>
-      <select id="color">
-          <option value="" disabled selected>Seleccionar</option>
-          <option value="rojo">Rojo</option>
-          <option value="azul">Azul</option>
-          <option value="verde">Verde</option>
-      </select>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/Vector.png" alt="" />
+      <label for="color">Etiquetas</label>
+    </div>
+    <div>
+      <button (click)="toggleTagsDropdown()" class="toggle">Seleccionar</button>
+    </div>
+    <div *ngIf="isTagsDropdownVisible">
+      <div *ngFor="let tag of tags" class="d-flex">
+        <input type="checkbox" [id]="tag.id" [(ngModel)]="tag.selected" />
+        <label [for]="tag.id">{{ tag.name }}</label>
+      </div>
+    </div>
   </div>
   <button class="btn" (click)="applyFilters()">Aplicar filtros</button>
   <button class="btn" (click)="deleteFilters()">Borrar filtros</button>
-
 </div>

@@ -25,4 +25,13 @@ export class LocationService {
     return this.http.get<Location[]>(this.apiUrl + `location/${city}/localities`);
   }
 
+  getColors() {
+    return this.http.get(this.apiUrl + 'colors');
+  }
+  getTags() {
+    return this.http.get(this.apiUrl + 'tags');
+  }
+
 }
+
+

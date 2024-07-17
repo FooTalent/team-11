@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservedValueOf } from 'rxjs';
 import { registro } from '../interfaces/interfaces';
+import { environment } from "../../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
 
-private baseUrl = 'https://pet-quest.azurewebsites.net/api/auth/register';
+private baseUrl = environment.apiUrl + 'registro';
   
 
   constructor(private http: HttpClient) { }

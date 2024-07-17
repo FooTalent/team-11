@@ -86,7 +86,7 @@ export class LoginComponent {
       password: this.userCredentials.value.password
     };
     // console.log(credenciales);
-    this.petQuestService.login(credenciales).subscribe((response:any) => {
+    this.petQuestService.login(credenciales,).subscribe((response:any) => {
       this.credentials = response;
     // console.log(response);
     // console.log('login');

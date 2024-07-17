@@ -31,11 +31,11 @@
             <p>Seleccioná el tipo de mascota que vas a publicar</p>
             <div class="row">
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark">
+                <button type="button" class="btn btn-outline-dark" (click)="pet.speciesType = 'DOG'" >
                   Perro
                 </button>
-                <button type="button" class="btn btn-outline-dark">Gato</button>
-                <button type="button" class="btn btn-outline-dark">Otro</button>
+                <button type="button" class="btn btn-outline-dark"  data-value="CAT" (click)="pet.speciesType = 'CAT'" >Gato</button>
+                <button type="button" class="btn btn-outline-dark"  data-value="OTHER" (click)="pet.speciesType = 'OTHER'" >Otro</button>
               </div>
             </div>
           </div>
@@ -44,17 +44,19 @@
             <p>Seleccioná el sexo</p>
             <div class="row">
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark">
+                <button type="button" class="btn btn-outline-dark"  (click)="pet.gender= 'MASCULINO'" >
                   Macho
                 </button>
-                <button type="button" class="btn btn-outline-dark">
+                <button type="button" class="btn btn-outline-dark" data-value="FEMENINO" (click)="pet.gender= 'FEMENINO'" >
                   Hembra
                 </button>
-                <div class="form-group form-check">
+                <div class="form-group form-check"> 
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    id="exampleCheck1"
+                
+                   
+                    
                   />
                   <label class="form-check-label" for="exampleCheck1"
                     >No lo sé</label
@@ -74,28 +76,50 @@
               class="form-control"
               id="exampleInputText"
               aria-describedby="inputText"
+              [(ngModel)]="pet.name"
             />
           </div>
           <h4>Ubicación*</h4>
           <p>Indicá la ubicación que mejor corresponda a la situación</p>
           <div class="row">
             <div class="form-group col-md-4">
-              <select id="inputState" class="form-control">
-                <option selected>Provincia</option>
-                <option>...</option>
+              <select id="inputState" class="form-control"[(ngModel)]="provincia" (change)="onProvinciaChange($event)">
+                <option selected >Provincia</option>
+                @for (provincia of provincias; track $index) {
+                  <option aria-placeholder="Provincia" value="{{provincia.name}}">{{provincia.name}}</option>
+                }
               </select>
             </div>
             <div class="form-group col-md-4">
-              <select id="inputState" class="form-control">
+              @if (provincia == "" ) {<select disabled id="inputState" class="form-control">
                 <option selected>Ciudad</option>
-                <option>...</option>
+                
+              </select>}@else {<select  id="inputState" class="form-control" (change)="onCityChange($event)">
+                <option selected>Ciudad</option>
+                @for (ciudad of ciudades; track $index) {
+                  <option>{{ciudad.name}}</option>
+                }
               </select>
+                
+              }
+              
             </div>
+
             <div class="form-group col-md-4">
-              <select id="inputState" class="form-control">
-                <option selected>Localidad</option>
-                <option>...</option>
-              </select>
+              @if (provincia == "" && city == "") {
+                <select disabled id="inputState" class="form-control">
+                  <option selected>Localidad</option>
+                  <option>...</option>
+                </select>
+              }@else {
+                <select id="inputState" class="form-control" (change)="onLocalidadChange($event)">
+                  <option selected>Localidad</option>
+                  @for (Localidad of localidades; track $index) {
+                    <option >{{Localidad.name}}</option>
+                  }
+                </select>
+              }
+              
             </div>
           </div>
 
@@ -113,6 +137,8 @@
               value="2024-07-08"
               min="2018-01-01"
               max="2024-12-31"
+              [(ngModel)]="pet.date"
+
             />
           </div>
           <div class="form-group">
@@ -122,23 +148,12 @@
             >
             <div class="row">
               <div class="col-12">
-                <button type="button" class="btn btn-outline-dark">
-                  Negro
-                </button>
-                <button type="button" class="btn btn-outline-dark">
-                  Blanco
-                </button>
-                <button type="button" class="btn btn-outline-dark">Gris</button>
-                <button type="button" class="btn btn-outline-dark">
-                  Marrón
-                </button>
-                <button type="button" class="btn btn-outline-dark">
-                  Amarillo/Beige
-                </button>
-                <button type="button" class="btn btn-outline-dark">
-                  Multicolor
-                </button>
-                <button type="button" class="btn btn-outline-dark">Otro</button>
+                @for (color of colors ; track $index) {
+
+                  <button type="button" class="btn btn-outline-dark" (click)="fillColorArray(color)">
+                    {{color.name}}
+                  </button>
+                }
               </div>
             </div>
           </div>
@@ -153,6 +168,7 @@
               class="form-control"
               id="exampleInputText"
               aria-describedby="inputText"
+              [(ngModel)]="pet.contact"
             />
           </div>
         </div>
@@ -164,6 +180,7 @@
           aspecto de la misma.
         </p>
         <div class="row">
+          <input type="file">
           <div class="espacio-fotos">
             <img src="../../../assets/Rectangle 23864.png" alt="" />
           </div>
@@ -185,6 +202,7 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            [(ngModel)]="pet.description"
           ></textarea>
           <small id="limit-words" class="form-text text-muted">0/500</small>
         </div>
@@ -196,40 +214,15 @@
         </p>
         <div class="row">
           <div class="col-12">
-            <button type="button" class="btn btn-outline-dark">Manchas</button>
-            <button type="button" class="btn btn-outline-dark">Cicatriz</button>
-            <button type="button" class="btn btn-outline-dark">
-              Cola Cortada
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              Orejas Caídas
-            </button>
-            <button type="button" class="btn btn-outline-dark">Adulto</button>
-            <button type="button" class="btn btn-outline-dark">Cachorro</button>
-            <button type="button" class="btn btn-outline-dark">
-              Orejas erguidas
-            </button>
-            <button type="button" class="btn btn-outline-dark">Vacunado</button>
-            <button type="button" class="btn btn-outline-dark">
-              Desparasitado
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              Tratamiento especial
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              Discapacidad
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              Pelo corto
-            </button>
-            <button type="button" class="btn btn-outline-dark">
-              Pelo largo
-            </button>
+            @for (tag of tags; track $index) {
+              <button type="button" class="btn btn-outline-dark"  (click)="fillTagsArray(tag)">{{tag.name}} </button>
+            }
           </div>
         </div>
       </div>
     </div>
     <div class="btn-publicar-center">
+      <button (click)="test()">test</button>
       <button
         type="button"
         class="btn btn-light-publicar"

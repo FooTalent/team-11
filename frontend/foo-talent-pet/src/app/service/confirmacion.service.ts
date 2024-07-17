@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 })
 export class ConfirmacionService {
 
-  public mostrarConfirmacion(): void{
+  public mostrarConfirmacion( ): void{
+    
     Swal.fire({
       title: "Ya casi....",
       text: "¿Querés subir la publicación? ",
@@ -25,6 +26,7 @@ export class ConfirmacionService {
         
     }).then((result) => {
       if (result.isConfirmed) {
+        
         Swal.fire({
           title: "Genial",
           background: "#B8E4E9",

@@ -9,11 +9,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-filtroperdidas',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
-  ],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './filtroperdidas.component.html',
   styleUrl: './filtroperdidas.component.css',
 })
@@ -29,9 +25,23 @@ export class FiltroperdidasComponent {
   colors: Color[] = [];
   tags: Tag[] = [];
 
+  filters: Filters = {
+    animal: null,
+    gender: null,
+    province: null,
+    city: null,
+    locality: null,
+    date: null,
+    colors: null,
+    tags: null,
+  };
+
   @Output() filtersApplied = new EventEmitter<any>();
 
-  constructor(private colorService: ColorService, private locationService: LocationService) {}
+  constructor(
+    private colorService: ColorService,
+    private locationService: LocationService
+  ) {}
 
   getPronvinces() {
     this.locationService.getProvinces().subscribe((provinces) => {
@@ -50,7 +60,6 @@ export class FiltroperdidasComponent {
       this.localities = localities;
     });
   }
-
 
   getColors() {
     this.colorService.getColors().subscribe((colors) => {
@@ -81,8 +90,8 @@ export class FiltroperdidasComponent {
     //const colors = (document.getElementById('color') as HTMLSelectElement).value;
 
     let date = fecha ? new Date(fecha).toISOString() : null;
-    console.log(date)
-    const filters: Filters = {
+
+    this.filters = {
       animal,
       gender: genero,
       province: provincia,
@@ -93,7 +102,22 @@ export class FiltroperdidasComponent {
       tags: null,
     };
 
-    this.filtersApplied.emit(filters);
+    this.filtersApplied.emit(this.filters);
+  }
+
+  deleteFilters() {
+    this.filters = {
+      animal: null,
+      gender: null,
+      province: null,
+      city: null,
+      locality: null,
+      date: null,
+      colors: null,
+      tags: null,
+    };
+
+    this.filtersApplied.emit(this.filters);
   }
 
   ngOnInit() {

@@ -57,7 +57,6 @@ tags: any;
   constructor(private store: Store<AppState>,private locationService: LocationService,private petquestService:PetQuestService ) {}
  
     pet:Pet = {
-    id: "",
     name: "",
     description: "",
     date: "",
@@ -68,18 +67,7 @@ tags: any;
     city: "",
     locality: "",
     contact: "",
-    createdAt: "",
-    user: {
-      id: "",
-      email: "",
-      name: "",
-      country: "",
-      province: "",
-      city: "",
-      phone: "",
-      locality: "",
-      profilePicture: ""
-    }, 
+    
     tags: [], 
     colors: [], 
     images: []
@@ -132,18 +120,11 @@ tags: any;
 
         if (this.credentials?.token) {
           this.petquestService.PostPet(this.pet,this.credentials.token).subscribe({
-            next: (response) => {
-              console.log('Función correctamente', response);
-            },
-            error: (error) => {
-              console.error('Error al enviar el formulario', error);
-            },
-            complete: () => {
-              console.log('Envío del formulario completado');
-            }
-          })
+          
+          })   
+          
         }
-     
+  
         Swal.fire({
           title: "Genial",
           background: "#B8E4E9",
@@ -205,7 +186,8 @@ PostPet(){
 }
 
  test(){
-
+  console.log(this.credentials);
+  console.log(this.credentials?.token);
    console.log(this.pet);
  }
 

@@ -21,19 +21,17 @@ export interface Color {
 }
 
 export interface Pet {
-  id: string;
-  name: string;
-  description: string;
-  date: string;
-  status: string;
-  speciesType: string;
-  gender: string;
-  province: string;
-  city: string;
-  locality: string;
-  contact: string;
-  createdAt: string;
-  user: User;
+  name?: string;
+  description?: string;
+  date?: string;
+  status?: string;
+  speciesType?: string;
+  gender?: string;
+  province?: string;
+  city?: string;
+  locality?: string;
+  contact?: string;
+  createdAt?: string;
   tags: Tag[];
   colors: Color[];
   images: string[];

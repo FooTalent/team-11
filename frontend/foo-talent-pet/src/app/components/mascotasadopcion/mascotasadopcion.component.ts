@@ -5,6 +5,8 @@ import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.compon
 import { CommonModule } from '@angular/common';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
+import { LostpetsService } from '../../service/posts/lostpets.service';
+import { Filters } from '../../interfaces/interfaces';
 
 
 @Component({
@@ -15,28 +17,51 @@ import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
   styleUrl: './mascotasadopcion.component.css'
 })
 export class MascotasadopcionComponent {
-  appliedFilters: any;
-  pets: any;
+  appliedFilters: Filters = {
+    animal: null,
+    gender: null,
+    province: null,
+    city: null,
+    locality: null,
+    date: null,
+    colors: null,
+    tags: null,
+  };
 
-  constructor(private adoptionServices: AdoptionpetService) {}
+  pets: any;
+  order: boolean = true;
+
+  constructor(private lostService: LostpetsService) {}
 
   receiveFilters(filters: any) {
     this.appliedFilters = filters;
-    console.log('Filtros aplicados:', this.appliedFilters);
+    this.getPets();
   }
 
 
+  getPets() {
+    this.lostService.getPets('ADOPTION', this.appliedFilters, this.order).subscribe(
+      {
+        next: (response) => {
+          this.pets = response;
+        },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => {
+          console.log('Observable completado');
+        },
+      }
+    );
+  }
+
+  onOrderChange(order: boolean) {
+    if(this.order === order) return;
+    this.order = order;
+    this.getPets();
+  }
+
   ngOnInit() {
-    this.adoptionServices.getHealth().subscribe({
-      next: (response) => {
-        this.pets = response;
-      },
-      error: (error) => {
-        console.error(error);
-      },
-      complete: () => {
-        console.log('Observable completado');
-      },
-    });
+    this.getPets();
   }
 }

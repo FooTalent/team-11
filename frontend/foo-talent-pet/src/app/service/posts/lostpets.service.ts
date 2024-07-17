@@ -14,7 +14,7 @@ export class LostpetsService {
 
   apiUrl: string = environment.apiUrl;
 
-  getPets(filters: Filters, order: boolean): Observable<any> {
+  getPets(status:string, filters: Filters, order: boolean): Observable<any> {
     let query = `recent=${order}`;
     if (filters.animal) {
       query += `&speciesType=${filters.animal}`;
@@ -34,13 +34,13 @@ export class LostpetsService {
     if (filters.date) {
       query += `&date=${filters.date}`;
     }
-    if (filters.colors) {
+    if (filters.colors && filters.colors.length > 0) {
       query += `&colorIds=${filters.colors}`;
     }
-    if (filters.tags) {
+    if (filters.tags && filters.tags.length > 0) {
       query += `&tagIds=${filters.tags}`;
     }
-    return this.http.get<any>((`${this.apiUrl}posts/LOST?${query}`));
+    return this.http.get<any>((`${this.apiUrl}posts/${status}?${query}`));
   }
 
 }

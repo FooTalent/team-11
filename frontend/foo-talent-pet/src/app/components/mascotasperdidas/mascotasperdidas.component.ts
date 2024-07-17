@@ -47,13 +47,11 @@ export class MascotasperdidasComponent implements OnInit {
 
   receiveFilters(filters: Filters) {
     this.appliedFilters = filters;
-    // Aquí puedes hacer lo que necesites con los filtros aplicados
-    console.log('Filtros aplicados:', this.appliedFilters);
     this.getPets();
   }
 
   getPets(){
-    this.LostService.getPets(this.appliedFilters, this.order).subscribe({
+    this.LostService.getPets('LOST',this.appliedFilters, this.order).subscribe({
       next: (response) => {
         this.pets = response;
       },

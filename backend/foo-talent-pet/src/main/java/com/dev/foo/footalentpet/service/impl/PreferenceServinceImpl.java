@@ -18,6 +18,7 @@ import com.dev.foo.footalentpet.service.PreferenceService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +27,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
@@ -117,7 +120,10 @@ public class PreferenceServinceImpl implements PreferenceService {
         if (emails.isEmpty()) {
             return;
         }
-        String message = new String(Files.readAllBytes(new File("src/main/resources/templates/notification.html").toPath()));
+        //String message = new String(Files.readAllBytes(new File("src/main/resources/templates/notification.html").toPath()));
+        ClassPathResource classPathResource = new ClassPathResource("templates/notification.html");
+        Path path = Paths.get(classPathResource.getURI());
+        String message = new String(Files.readAllBytes(path));
         message = message.replace("{frontendUrl}", frontendUrl);
         message = message.replace("{postId}", postId.toString());
         emailService.sendHtmlMessageToUsers(emails, "Nueva publicacion - Pet Quest", message);

@@ -70,6 +70,8 @@ export class PetsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.pet = history.state.pet;
+    console.log(this.pet);
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       this.router.navigate(['/']);

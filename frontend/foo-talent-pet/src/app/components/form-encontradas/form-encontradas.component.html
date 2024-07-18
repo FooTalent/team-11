@@ -11,7 +11,7 @@
     <h1 class="encabezado">Publicá una mascota que encontraste</h1>
 
     <div class="form-group d-flex justify-content-center ">
-      
+
       <div class="form-check test">
         <input type="radio" routerLink="/form-publication" class="form-check-input test" id="lost" name="publicationType" (click)="pet.status = 'LOST'" value="lost">
         <label class="form-check-label text-status" for="lost">Perdidos</label>
@@ -25,7 +25,7 @@
         <label class="form-check-label text-status" for="adoption">Adopcion</label>
       </div>
   </div>
-    
+
     <h2 class="subtitle">Detalles Básicos</h2>
     <div class="row">
       <div class="class col-6 col-md-6 col-sm-12">
@@ -54,13 +54,13 @@
                 <button type="button" class="btn btn-outline-dark" data-value="FEMENINO"[class.btn-pressed]="selectedGender === 'FEMENINO'" (click)=ButonGenderFemale() >
                   Hembra
                 </button>
-                <div class="form-group form-check"> 
+                <div class="form-group form-check">
                   <input
                     type="checkbox"
                     class="form-check-input"
-                
-                   
-                    
+
+
+
                   />
                   <label class="form-check-label" for="exampleCheck1"
                     >No lo sé</label
@@ -97,16 +97,16 @@
             <div class="form-group col-md-4">
               @if (provincia == "" ) {<select disabled id="inputState" class="form-control">
                 <option selected>Ciudad</option>
-                
+
               </select>}@else {<select  id="inputState" class="form-control" (change)="onCityChange($event)">
                 <option selected>Ciudad</option>
                 @for (ciudad of ciudades; track $index) {
                   <option>{{ciudad.name}}</option>
                 }
               </select>
-                
+
               }
-              
+
             </div>
 
             <div class="form-group col-md-4">
@@ -123,7 +123,7 @@
                   }
                 </select>
               }
-              
+
             </div>
           </div>
 
@@ -184,26 +184,29 @@
           aspecto de la misma.
         </p>
         <div class="row">
-          <div class="input-fix">          
-            <input type="file" id="fileInput" data-multiple-caption="{count} archivos seleccionados">
-        
+          <div class="input-fix">
+            <input type="file" id="fileInput" data-multiple-caption="{count} archivos seleccionados" multiple (change)="onFileSelected($event)">
           </div>
-          <div id="imageContainerFix"></div>
-         
-         <script>
+          <div id="imageContainerFix">
+            <img *ngFor="let image of images" [src]="image" style="width: 100px; height: 100px; margin: 5px;">
+          </div>
+
+          <script>
             document.getElementById('fileInput').addEventListener('change', function(event) {
               const files = event.target.files;
-              const imageContainer = document.getElementById('imageContainer');
-              imageContainer.innerHTML = ''; // Limpiar el contenedor de imágenes previas
-          
-              for (const file of files) {
+              const imageContainer = document.getElementById('imageContainerFix');
+              imageContainer.innerHTML = '';
+
+              const filesToProcess = Array.from(files).slice(0, 3);
+
+              for (const file of filesToProcess) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                   const img = document.createElement('img');
                   img.src = e.target.result;
-                  img.style.width = '100px'; // Establece el tamaño de la imagen
-                  img.style.height = '100px'; // Establece el tamaño de la imagen
-                  img.style.margin = '5px'; // Añade un margen a la imagen
+                  img.style.width = '100px';
+                  img.style.height = '100px';
+                  img.style.margin = '5px';
                   imageContainer.appendChild(img);
                 };
                 reader.readAsDataURL(file);

@@ -24,6 +24,10 @@ export class PetsDetailsComponent implements OnInit {
   btnReport: boolean = false;
   btnConfirmReport = false;
 
+
+  
+ 
+
   reportComent() {
     this.btnReport = true;
     console.log('reporta comentario');

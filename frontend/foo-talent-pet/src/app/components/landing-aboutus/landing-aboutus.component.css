@@ -1,5 +1,6 @@
 @import url('../../../styles.css');
 
+
 .quienes-somos {
     border-radius: 20px;
     padding: 5px;
@@ -61,4 +62,11 @@ label, select {
   text-align: center;
   padding: 0 20px;
   margin-left: 250px;
+}
+#texto{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-family: var(--texto);
+  font-size: larger;
+  text-align: center;
 }

@@ -26,7 +26,8 @@
           </div>
         </li>
       </ul>
-      @if (credentials?.token === "") {
+      
+      @if (!verifyToken) {
         <app-login class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-login> 
         <button type="button" class="btn btn-dark" id="btnLogin" data-bs-toggle="modal" data-bs-target="#myModal">Iniciar sesión</button> 
         <!-- <button type="button" class="btn btn-dark" id="btnLogin" (click)="openLoginModal()">Iniciar sesión</button> -->

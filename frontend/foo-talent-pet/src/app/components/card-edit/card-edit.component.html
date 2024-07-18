@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="btn-edit-container"><a ><img src="../../../assets/edit.png"  class="btn-edit "></a></div>
+    <div class="btn-delate-container"><a  (click)="delatePost(pet)"><img src="../../../assets/trash can.png" alt="btn-delate"></a></div>
+    
+    
+    <img class="img__card" src=".../../../../../assets/perrito.png" alt="Ciro">
+    <div class="pet">
+        <div class="name__pet">
+          <img class="img__pet" src="../../../assets/onecard.png" alt="">
+          <h2>{{pet.name}}</h2>
+          <br>
+          <h3>{{pet.status}}</h3>
+        </div>
+        <div class="info__pet">
+            <div class="name__pet">
+              <img class="img__pet" src="../../../assets/twocard.png" alt="">
+              <p class="text__pet">Visto por última vez: 15/6/24</p>
+            </div>
+            <div class="name__pet">
+              <img class="img__pet img--lugar" src="../../../assets/trecard.png" alt="">
+              <p class="text__pet text--lugar">Lugar: {{pet.locality}}</p>
+            </div>
+        </div>
+        <h3>Descripcion:</h3>
+        <p class="description">{{pet.description}}</p>
+        <button (click)="viewPet(pet)">Ver más</button>
+    </div>
+  </div>
+  

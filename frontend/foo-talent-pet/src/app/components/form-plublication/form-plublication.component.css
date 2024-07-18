@@ -113,8 +113,10 @@ option{
 
 }
 
- .form-check-label:hover {
-    text-decoration: underline;
+.form-check-label:hover {
+    text-decoration: underline #277380 5px!important;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 8px;
 } 
 
 /* estilo para input de tipo file */

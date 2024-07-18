@@ -1,10 +1,16 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, inject } from '@angular/core';
 import { Color, Filters, Location, Tag } from '../../interfaces/interfaces';
 import { ColorService } from '../../service/color.service';
 import { LocationService } from '../../service/location.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TagService } from '../../service/tags.service';
+import { RouterLink } from '@angular/router';
+import { LoginResponse } from '../../interfaces/interfaces';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
+import { select } from '@ngrx/store';
 // import { EventEmitter } from 'node:stream';
 
 interface ColorSelected extends Color {
@@ -17,11 +23,17 @@ interface TagSelected extends Tag {
 @Component({
   selector: 'app-filtroperdidas',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './filtroperdidas.component.html',
   styleUrl: './filtroperdidas.component.css',
 })
 export class FiltroperdidasComponent {
+
+  credentials: LoginResponse|undefined;
+  router = inject(Router); 
+
+  
+
   provinces: Location[] = [];
   cities: Location[] = [];
   localities: Location[] = [];
@@ -54,7 +66,8 @@ export class FiltroperdidasComponent {
   constructor(
     private colorService: ColorService,
     private tagService: TagService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private store: Store<AppState>
   ) {}
 
   getPronvinces() {
@@ -154,9 +167,19 @@ export class FiltroperdidasComponent {
     this.isTagsDropdownVisible = !this.isTagsDropdownVisible;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getPronvinces();
     this.getColors();
     this.getTags();
+
+    console.log(this.credentials)
+    console.log(this.store)
+    this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
+        this.credentials = response;
+  });
+
+
+
   }
+
 }

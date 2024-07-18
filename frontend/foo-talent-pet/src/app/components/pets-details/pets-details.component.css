@@ -185,6 +185,16 @@
     display: flex;
     overflow: scroll;
 }
+a{
+    cursor: pointer;
+}
+#ModalReport{
+    background-color: var(--colorFondoCards);
+    border-radius: 15px;
+}
+.modal-header{
+    margin-bottom: 8px;
+}
 
 @media (max-width: 991px) {
     .white-section {

@@ -13,15 +13,15 @@
     <div class="form-group d-flex justify-content-center ">
       
       <div class="form-check test">
-        <input type="radio" class="form-check-input test" id="lost" name="publicationType" (click)="pet.status = 'LOST'" value="lost">
+        <input type="radio" routerLink="/form-publication" class="form-check-input test" id="lost" name="publicationType" (click)="pet.status = 'LOST'" value="lost">
         <label class="form-check-label text-status" for="lost">Perdidos</label>
       </div>
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="found" name="publicationType" (click)="pet.speciesType = 'FOUND'"value="found">
+        <input type="radio" routerLink="/form-encontradas" class="form-check-input" id="found" name="publicationType" (click)="pet.speciesType = 'FOUND'"value="found">
         <label class="form-check-label text-status" for="found">Encontrado</label>
       </div>
       <div class="form-check">
-        <input type="radio" class="form-check-input" id="adoption" name="publicationType" (click)="pet.speciesType = 'ADOPTION'" value="adoption">
+        <input type="radio" routerLink="/form-adopcion" class="form-check-input" id="adoption" name="publicationType" (click)="pet.speciesType = 'ADOPTION'" value="adoption">
         <label class="form-check-label text-status" for="adoption">Adopcion</label>
       </div>
   </div>

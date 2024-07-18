@@ -15,6 +15,19 @@ import { CommonModule } from '@angular/common';
 })
 export class PetsDetailsComponent  implements OnInit{
 
+  btnReport:boolean = false;
+  btnConfirmReport:boolean = false;
+
+  reportComent(){
+    this.btnReport = true;
+    console.log(this.btnReport);
+  }
+
+  confirmReport(){
+    this.btnConfirmReport = true;
+    console.log(this.btnConfirmReport);
+  }
+
   pet: any;
 
   constructor(private route: ActivatedRoute) { }

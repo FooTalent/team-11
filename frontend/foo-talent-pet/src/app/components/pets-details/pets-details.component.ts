@@ -29,9 +29,10 @@ export class PetsDetailsComponent implements OnInit {
     console.log('reporta comentario');
   }
 
-  confirmReport() {
-    this.btnConfirmReport = !this.btnConfirmReport;
-    console.log('confirma reporte comentario');
+  confirmReport(){
+    this.btnReport = !this.btnReport;
+    // this.btnnConfirmReportConfirmReport = !this.btnConfirmReport;
+    console.log("esto debe lanzar el modal " + this.btnReport);
   }
 
   pet: PetResponse = {
@@ -70,6 +71,8 @@ export class PetsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.pet = history.state.pet;
+    console.log(this.pet);
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       this.router.navigate(['/']);

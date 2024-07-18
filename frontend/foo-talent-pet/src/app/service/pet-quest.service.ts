@@ -5,24 +5,28 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
 import { Pet, PetResponse, PetWithComments } from '../interfaces/interfaces';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class PetQuestService {
-  private baseUrl = environment.apiUrl+'auth/login';
-  private baseUrl1 = environment.apiUrl+'posts';
-  private apiUrl = environment.apiUrl;
+  private baseUrl = environment.apiUrl;
+  
+
 
 
   constructor(private http: HttpClient) { }
 
   login(payload:any){
 
-	return this.http.post(this.baseUrl, payload);
+
+	return this.http.post(this.baseUrl+'auth/login', payload);
   }
 
 
   PostPet(payload:Pet,token:string) : Observable<PetResponse>{
+    console.log(token);
+    console.log(payload);
     const pet = {
         name: payload.name,
         description: payload.description,
@@ -46,10 +50,10 @@ export class PetQuestService {
     };
 
 
-    return this.http.post<PetResponse>(this.baseUrl1, pet,options);
+    return this.http.post<PetResponse>(this.baseUrl+'posts', pet,options);
   }
 
-  postImage(images:File [],id: string,token:string){
+  getPostUser(token:string){
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -57,16 +61,40 @@ export class PetQuestService {
     const options = {
       headers: headers,
     };
+    return this.http.get(this.baseUrl+'posts/user',options);
+  }
 
-    const formData = new FormData();
-    images.forEach((image) => {
-      formData.append('images', image);
+  DelatePost(id:string,token:string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post(`${this.baseUrl1}/${id}/images`, formData,options);
+    const options = {
+      headers: headers,
+    };
+    return this.http.delete(this.baseUrl+'posts/'+id,options);
   }
 
-  getPet(id:string): Observable<PetWithComments>{
-    return this.http.get<PetWithComments>(`${this.baseUrl1}/${id}/comments`);
-  }
+ 
+
+postImage(images:File [],id: string,token:string){
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+
+  const options = {
+    headers: headers,
+  };
+
+  const formData = new FormData();
+  images.forEach((image) => {
+    formData.append('images', image);
+  });
+
+  return this.http.post(`${this.baseUrl}post/${id}/images`, formData,options);
+}
+
+getPet(id:string): Observable<PetWithComments>{
+  return this.http.get<PetWithComments>(`${this.baseUrl}post/${id}/comments`);
+}
 }

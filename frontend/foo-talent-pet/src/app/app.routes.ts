@@ -24,11 +24,11 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { BienvenidaDashboardComponent } from './components/bienvenida-dashboard/bienvenida-dashboard.component';
 import { InfoDashboardComponent } from './components/info-dashboard/info-dashboard.component';
 import { PreferenciasDashboardComponent } from './components/preferencias-dashboard/preferencias-dashboard.component';
-
+import { PetDetailsEdidComponent } from "./components/pet-details-edid/pet-details-edid.component";
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'auth/activate/:token', component: HomeComponent},
+    { path: 'activate/:token', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'preguntas-Frecuentes', component: PreguntasFrecuentesComponent},
     {path: 'login', component: LoginComponent},
@@ -53,5 +53,6 @@ export const routes: Routes = [
     {path: 'pruebas', component: PruebaComponent},
     {path: 'bienvenida', component: BienvenidaDashboardComponent},
     {path: 'info', component: InfoDashboardComponent},
-    {path: 'preferencias', component: PreferenciasDashboardComponent}
+    {path: 'preferencias', component: PreferenciasDashboardComponent},
+    {path: 'pet-details-edit', component: PetDetailsEdidComponent}
 ];

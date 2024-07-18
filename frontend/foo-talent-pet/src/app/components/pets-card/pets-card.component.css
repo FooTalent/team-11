@@ -1,10 +1,7 @@
-@import url('../../../styles.css');
-
-/* .container{
-  text-align: center;
-  padding: 0;
-} */
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 307px;
   height: 415px;
   background-color: #F4F4DC;
@@ -13,43 +10,48 @@
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  /* margin: 0; */
 }
-.img__card{
-  /* width: 287px; */
+
+.img__card {
   border-radius: 10px;
   height: auto;
   margin: 0 .5rem;
 }
+
 .pet {
   padding: 10px 7px;
   text-align: start;
+  flex: 1; /* Para que el contenido de la mascota ocupe todo el espacio disponible */
 }
-.name__pet{
+
+.name__pet {
   margin: 0;
   display: flex;
   align-items: center;
 }
+
 .img__pet {
   max-width: 22px;
   max-height: 20px;
   margin: 0 .5rem;
 }
-.img--lugar{
+
+.img--lugar {
   max-width: 18px;
   max-height: 20px;
-  /* margin-right: 2px; */
 }
+
 h2 {
   margin: 0;
   font-weight: 700;
   font-size: 19px;
 }
+
 .info__pet {
   margin: 6px 0;
 }
 
-.text__pet{
+.text__pet {
   color: black;
   font-family: var(--texto);
   font-weight: 700;
@@ -58,24 +60,29 @@ h2 {
   line-height: 18.66px;
   margin: .6rem 0;
 }
-.text--lugar{
+
+.text--lugar {
   margin-left: 4px;
 }
-h3, .description{
+
+h3, .description {
   margin-left: .4rem;
 }
-h3{
+
+h3 {
   color: black;
   font-size: 13px;
   font-weight: 700;
   line-height: 15.55px;
 }
-.description{
+
+.description {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2px;
   line-height: 13.45px;
 }
+
 .pet button {
   font-family: var(--texto);
   background-color: var(--colorBtnPublicaciones);
@@ -86,56 +93,61 @@ h3{
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: auto; /* Esto empuja el botón al final */
 }
 
 .pet button:hover {
   background-color: #da9928ef; /* Color de fondo al pasar el mouse */
 }
+
 @media (width < 700px) {
   .card {
     margin: 0;
     max-width: 250px;
     height: auto;
     padding: 2px;
-    /* margin: 0; */
   }
-  .img__card{
+
+  .img__card {
     max-width: 240px;
-    margin:.2rem;
-
+    margin: .2rem;
   }
-
 }
+
 @media (width < 500px) {
   .card {
     max-width: 165px;
     padding: 1.5px;
+    height: 340px;
   }
-  .img__card{
-    max-width: 158px;
-    max-width: 190px;
-    padding: 2px;
-    margin:.3rem;
 
+  .img__card {
+    max-width: 158px;
+    padding: 2px;
+    margin: .3rem;
   }
+
   .info__pet {
     margin: 3px 0;
   }
-  .text__pet{
+
+  .text__pet {
     font-size: 10px;
     letter-spacing: 0.1px;
     line-height: 12px;
     margin: .4rem 0;
   }
+
   .img__pet {
     margin: 0 .3rem;
   }
-  .text--lugar{
+
+  .text--lugar {
     margin-left: .3rem;
   }
+
   .pet button {
     padding: 6px 19px;
     font-size: 14px;
-
   }
 }

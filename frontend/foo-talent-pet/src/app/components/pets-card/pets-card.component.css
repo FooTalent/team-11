@@ -19,6 +19,7 @@
   /* width: 287px; */
   border-radius: 10px;
   height: auto;
+  max-height: 167px;
   margin: 0 .5rem;
 }
 .pet {

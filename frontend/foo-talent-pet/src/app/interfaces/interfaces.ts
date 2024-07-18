@@ -37,12 +37,46 @@ export interface Pet {
   images: string[];
 }
 
+export interface PetResponse {
+  id: string;
+  name: string;
+  description: string;
+  date: string;
+  status: string;
+  speciesType: string;
+  gender?: string;
+  province?: string;
+  city?: string;
+  locality?: string;
+  contact?: string;
+  createdAt: string;
+  user: User;
+  tags: Tag[];
+  colors: Color[];
+  images: Image[];
+}
+
+export interface Image {
+  id: string;
+  url: string;
+}
+
+export interface PetWithComments {
+  post: PetResponse;
+  comments: Comment[];
+}
 export const pets: Pet[] = [
 ];
 
 export interface Login   {
   email: string;
   password: string;
+}
+
+export interface Comment {
+    content: string,
+    user: User,
+    createdAt: string,
 }
 
 export  interface registro{

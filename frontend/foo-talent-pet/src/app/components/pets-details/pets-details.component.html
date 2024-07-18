@@ -70,64 +70,57 @@
                         <span class="">fecha xx/xx/xx · 20h</span>
                         <a  class="m" (click)="reportComent()" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Reportar comentario</a>
 
-                        @if(btnReport == true){
+                        
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" >
                                   <div class="modal-content" id="ModalReport">
-                                    <div class="modal-header border-0 d-flex">
-                                        <div class="d-flex justify-content-center">
-                                            <h5 class="modal-title text-center " id="exampleModalLabel" >Reportar</h5>
-                                        </div>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-
+                                    @if (btnReport == true) {
+                                      <div class="modal-header border-0 d-flex" >
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="modal-body ">
-                                        <p class="text-center">Si creés que algún contenido no es adecuado, por favor reportalo para que podamos revisarlo y tomar las medidas necesarias</p>
 
+                                    <div class="modal-body ">
+                                      <div class="tituloModal">
+                                        <h5 class="modal-title text-center " id="tituloModal-1" >Reportar</h5>
+                                      </div>
+                                        <p class="text-center">Si creés que algún contenido no es adecuado, por favor reportalo para que podamos revisarlo y tomar las medidas necesarias</p>
                                       <div class="comentario">
                                         <div class="form-group">
-
                                           <textarea class="form-control" id="message-text" placeholder="Motivo" ></textarea>
                                           <small class="d-flex justify-content-end"><p>10/300</p></small>
                                         </div>
                                       </div>
                                     </div>
+
                                     <div class="modal-footer border-0 d-flex justify-content-center">
-                                      <button type="button" class="botonModal1" (click)="confirmReport()" data-dismiss="modal" data-target="#exampleModal2" data-whatever="@getbootstrap">Reportar</button>
+                                      <button type="button" class="botonModal1" (click)="confirmReport()"  data-target="#exampleModal2" data-whatever="@getbootstrap">Reportar</button>
                                       <button type="button" class="botonModal2" data-dismiss="modal">No, cancelar</button>
-                                  
                                     </div>
+                                    }@else {
+                                      <div class="modal-header border-0 d-flex" >
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+
+                                    <div class="modal-body ">
+                                        <div class="tituloModal">
+                                          <h5 class="modal-title text-center " id="tituloModal-2" >GRACIAS</h5>
+                                        </div>
+                                        <p class="text-center">la publicación	ha sido reportada con éxito!/p>
+    
+                                      <div class="imagen-modal">
+                                        <img src="../../../assets/grupo-animales-lindos-sobre-fondo-blanco 2.png" alt="">
+                                      </div>
+                                    </div>
+                                    }
                                   </div>
                                 </div>
                               </div>
-                        }@else {
-                          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" >
-                              <div class="modal-content" id="ModalReport">
-                                <div class="modal-header border-0 d-flex">
-                                    <div class="d-flex justify-content-center">
-                                        <h5 class="modal-title text-center " id="exampleModalLabel" >GRACIAS</h5>
-                                    </div>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-
-                                </div>
-                                <div class="modal-body ">
-                                    <p class="text-center">la publicación	ha sido reportada con éxito!/p>
-
-                                  <div class="imagen-modal">
-                                    <img src="../../../assets/grupo-animales-lindos-sobre-fondo-blanco 2.png" alt="">
-                                  </div>
-                                </div>
-                               
-                              </div>
-                            </div>
-                          </div>
-                        }
-                        </div>  </div>
+                        </div>  
+                      </div>
                         <hr style="width: 90%;margin-left: 10px;" >
                 </div>
 

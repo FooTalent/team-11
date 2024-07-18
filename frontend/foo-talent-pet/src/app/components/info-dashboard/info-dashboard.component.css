@@ -1,9 +1,9 @@
 @import url('../../../styles.css');
-*{
+/* *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 #area{
     width: var(--ancho);
     height: var(--alto);
@@ -151,5 +151,8 @@ h1{
 .foto  h2{
     color: var(--colorBtnPublicaciones);
 }
-
+#ModalReport{
+    background-color: var(--colorFondoCards) !important;
+    border-radius: 15px;
+}
 

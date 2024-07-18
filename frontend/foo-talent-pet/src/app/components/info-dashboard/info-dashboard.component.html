@@ -52,8 +52,33 @@
                           <input type="text" class="form-control" id="inputPhone" [(ngModel)]="user.phone" name="phone">
                       </div>
                         <div class="btn">
-                            <button (click)="saveUser()">Guardar</button>
+                            <button  data-toggle="modal" data-target="#staticBackdrop">Guardar</button>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content" id="ModalReport">
+                              <div class="modal-header border-0">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="tituloModal">
+                                  <h5 class="modal-title text-center " id="tituloModal-1" >Editar información</h5>
+                                </div>
+                                  <p class="text-center">¿Estás seguro de querer guardar los cambios realizados en tus datos?</p>
+                                </div>
+                              <div class="modal-footer border-0">
+                                <button type="button" class="botonModal1" (click)="saveUser()" data-dismiss="modal" routerLink="/bienvenida" >Confirmar</button>
+                                <button type="button" class="botonModal2" data-dismiss="modal" >No, cancelar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Modal fin -->
+
                     </div>
                 </div>
 
@@ -63,7 +88,7 @@
                             <div class="class col-6" id="zquierdo">
                                 <h2>Foto perfil</h2>
                                 <div class="btn justify-content-start">
-                                  <button type="button">Subir</button>
+                                  <button type="button" data-toggle="modal" data-target="#staticBackdrop">Subir</button>
                                 </div>
                             </div>
                             <div class="class col-6 " id="derecho">
@@ -88,7 +113,7 @@
                             <input type="password" class="form-control" id="exampleInputPassword2" formControlName="rePassword">
                           </div>
                           <div class="btn">
-                              <button type="submit">Guardar</button>
+                              <button type="submit" data-toggle="modal" data-target="#staticBackdrop">Guardar</button>
                           </div>
                         </form>
                     </div>

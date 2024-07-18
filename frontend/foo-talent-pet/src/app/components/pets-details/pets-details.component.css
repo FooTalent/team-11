@@ -192,8 +192,19 @@ a{
     background-color: var(--colorFondoCards);
     border-radius: 15px;
 }
-.modal-header{
-    margin-bottom: 8px;
+
+.tituloModal{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: var(--colorBtnPublicaciones);
+    font-family: var(--titulo);
+    font-weight: var(--fontWeight);
+    font-size: xx-large;
+}
+.imagen-modal{
+    display: flex;
+    align-content: end;
 }
 
 @media (max-width: 991px) {

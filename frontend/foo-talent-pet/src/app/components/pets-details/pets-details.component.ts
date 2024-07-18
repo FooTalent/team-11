@@ -24,18 +24,15 @@ export class PetsDetailsComponent implements OnInit {
   btnReport: boolean = false;
   btnConfirmReport = false;
 
-
-  
- 
-
   reportComent() {
     this.btnReport = true;
     console.log('reporta comentario');
   }
 
-  confirmReport() {
-    this.btnConfirmReport = !this.btnConfirmReport;
-    console.log('confirma reporte comentario');
+  confirmReport(){
+    this.btnReport = !this.btnReport;
+    // this.btnnConfirmReportConfirmReport = !this.btnConfirmReport;
+    console.log("esto debe lanzar el modal " + this.btnReport);
   }
 
   pet: PetResponse = {

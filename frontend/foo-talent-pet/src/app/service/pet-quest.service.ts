@@ -11,7 +11,7 @@ import { Pet, PetResponse, PetWithComments } from '../interfaces/interfaces';
 })
 export class PetQuestService {
   private baseUrl = environment.apiUrl;
-  
+
 
 
 
@@ -75,7 +75,7 @@ export class PetQuestService {
     return this.http.delete(this.baseUrl+'posts/'+id,options);
   }
 
- 
+
 
 postImage(images:File [],id: string,token:string){
   const headers = new HttpHeaders({
@@ -91,10 +91,10 @@ postImage(images:File [],id: string,token:string){
     formData.append('images', image);
   });
 
-  return this.http.post(`${this.baseUrl}post/${id}/images`, formData,options);
+  return this.http.post(`${this.baseUrl}posts/${id}/images`, formData,options);
 }
 
 getPet(id:string): Observable<PetWithComments>{
-  return this.http.get<PetWithComments>(`${this.baseUrl}post/${id}/comments`);
+  return this.http.get<PetWithComments>(`${this.baseUrl}posts/${id}/comments`);
 }
 }

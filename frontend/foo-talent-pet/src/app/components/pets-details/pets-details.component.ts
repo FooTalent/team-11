@@ -16,16 +16,16 @@ import { CommonModule } from '@angular/common';
 export class PetsDetailsComponent  implements OnInit{
 
   btnReport:boolean = false;
-  btnConfirmReport:boolean = false;
+  btnConfirmReport = false;
 
   reportComent(){
     this.btnReport = true;
-    console.log(this.btnReport);
+    console.log("reporta comentario");
   }
 
   confirmReport(){
-    this.btnConfirmReport = true;
-    console.log(this.btnConfirmReport);
+    this.btnConfirmReport = !this.btnConfirmReport;
+    console.log("confirma reporte comentario");
   }
 
   pet: any;

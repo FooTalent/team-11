@@ -6,39 +6,6 @@
         <div class="container">
             <div class="row">
                 <div class="class col-12 col-md-6 ">
-                    <div id="metodoContacto">
-                        <H2>Método de contacto</H2>
-                            <div [formGroup]="metodoContacto" >
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Mail</label>
-                                    <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="exampleInputText"><b>Teléfono</b></label>
-                                    <input type="text" class="form-control" formControlName="telefono" id="exampleInputText">
-                                </div>
-        
-                                <div class="btn">
-                                    <button>Guardar</button>
-                                </div> 
-                            </div> 
-                    </div>
-
-                    <div class="imagenIzquierda">
-                        <div class="contenedorImg">
-                            <img src="../../../assets/cute-animals-group-white-background 4.png" alt="" class="imagen">
-                        </div>
-                        <div class="texto">
-                            <p>Si tenés alguna inquietud, consulta o problema no dudes en ponerte en contacto con nuestro equipo. ¡Estamos aquí para ayudarte! </p>
-                        </div>
-                        <div class="botonContactar">
-                            <button routerLink="/contact">Contactar</button>
-                        </div> 
-                    </div>
-                </div>
-
-                <div class="class col-12 col-md-6">
                     <div id="notificaciones">
                         <h2>Notificaciones</h2>
 
@@ -65,7 +32,20 @@
                                 <button>Guardar</button>
                             </div>
                         </div> 
+                    </div>    
+                </div>
 
+                <div class="class col-12 col-md-6">
+                    <div class="imagenIzquierda">
+                        <div class="contenedorImg">
+                            <img src="../../../assets/cute-animals-group-white-background 4.png" alt="" class="imagen">
+                        </div>
+                        <div class="texto text-center">
+                            <p>Si tenés alguna inquietud, consulta o problema no dudes en ponerte en contacto con nuestro equipo. ¡Estamos aquí para ayudarte! </p>
+                        </div>
+                        <div class="botonContactar">
+                            <button class="btn-pet" routerLink="/contact">Contactar</button>
+                        </div> 
                     </div>
                 </div>
             </div>

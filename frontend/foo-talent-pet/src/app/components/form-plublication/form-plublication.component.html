@@ -58,9 +58,6 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                
-                   
-                    
                   />
                   <label class="form-check-label" for="exampleCheck1"
                     >No lo sé</label
@@ -90,7 +87,7 @@
               <select id="inputState" class="form-control"[(ngModel)]="provincia" (change)="onProvinciaChange($event)">
                 <option selected >Provincia</option>
                 @for (provincia of provincias; track $index) {
-                  <option aria-placeholder="Provincia" value="{{provincia.name}}">{{provincia.name}}</option>
+                  <option value="{{provincia.name}}">{{provincia.name}}</option>
                 }
               </select>
             </div>

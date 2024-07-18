@@ -43,18 +43,18 @@ import { from } from 'rxjs';
 })
 export class FormPlublicationComponent  {
 
- provincia: string = "";
+  provincia: string = "";
   city: string = "";
-localidad: string = "";
-provincias : any;
-ciudades: any;
-localidades: any;
-value: any;
-colors: any;
-tags: any;
-isbuttonActive: boolean = false;
-tagsPressed: { [key: string]: boolean } = {};
-colorPressed: { [key: string]: boolean } = {};
+  localidad: string = "";
+  provincias : any;
+  ciudades: any;
+  localidades: any;
+  value: any;
+  colors: any;
+  tags: any;
+  isbuttonActive: boolean = false;
+  tagsPressed: { [key: string]: boolean } = {};
+  colorPressed: { [key: string]: boolean } = {};
 
   constructor(private store: Store<AppState>,private locationService: LocationService,private petquestService:PetQuestService ) {}
  
@@ -196,9 +196,11 @@ PostPet(){
   console.log(this.credentials?.token);
    console.log(this.pet);
  }
+
  selectedSpecies: string = '';
  isButtonMale=false;
  selectedGender: string = '';
+ 
  ButonGenderMale(){
   this.pet.gender = 'MASCULINO';
   this.isButtonMale = !this.isButtonMale;

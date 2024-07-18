@@ -27,3 +27,6 @@ button{
     margin-right: 3%;
     margin-bottom: 2%;
 }
+.btn-pressed {
+    background-color: #FEB941 !important;
+};

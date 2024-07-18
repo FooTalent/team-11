@@ -14,33 +14,27 @@
 .container{
     margin-top: 7%;
 }
-#metodoContacto{
-    border: 1px solid var(--colorBtnRegistrarme);
-    border-radius: 25px;
-    padding: 8%;
-    margin-right: 4%;
-}
+
 #notificaciones{
     border: 1px solid var(--colorBtnRegistrarme);
     border-radius: 25px;
     padding: 8%;
     margin-left: 4%;
 }
-.imagenIzquierda{
-    border: 1px solid var(--colorBtnRegistrarme);
-}
+
 .btn{
     display: flex;
     justify-content: end;
     margin-top: 8%;
 }
 .imagenIzquierda{
-    margin-top: 4%;
+    
     border-radius: 25px;
     margin-right: 4%;
     padding: 0;
     background-color: var(--colorFondoCards);
     box-sizing: border-box;
+    padding-bottom: 5%;
 }
 #metodoContacto h2{
     margin-bottom: 5%;
@@ -75,15 +69,18 @@
     width: 100%;
 }
 .texto{
+    
     margin: 0;
-    padding: 0;
+    padding-left: 6%;
+    padding-right: 3%;
     font-family: var(--texto);
 
 }
 .botonContactar{
     display: flex;
     justify-content: center;
-    margin-bottom: 4vh;
+    margin-top: 5%;
+
 }
 hr{
     border-color:var(--colorBtnPublicar);

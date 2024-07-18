@@ -18,6 +18,15 @@
                 <li class="nab-item"><a routerLink="/preferencias"  class="navs">Preferencias</a></li>
             </ul>
         </div>
+        <div class="pet_order z-1">
+            <p>Ordenar por fecha</p>
+            <div class="order_btn">
+              <button class="rounded-start-pill" [ngClass]="{'btn_selected': order, 'btn_unselected': !order}" (click)="onOrderChange(true)">Más reciente</button>
+              <button class="rounded-end-pill" [ngClass]="{'btn_selected': !order, 'btn_unselected': order}" (click)="onOrderChange(false)">Menos reciente</button>
+            </div>
+          </div>
+          <app-card-edit class="card" *ngFor="let post of userPosts" [pet]="post"></app-card-edit>
+        
     </div>
 </div>
 <app-footer></app-footer>

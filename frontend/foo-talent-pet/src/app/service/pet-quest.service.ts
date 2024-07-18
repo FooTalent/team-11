@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environments';
 import { Pet, PetResponse, PetWithComments } from '../interfaces/interfaces';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +24,7 @@ export class PetQuestService {
   }
 
 
-  PostPet(payload:Pet,token:string){
+  PostPet(payload:Pet,token:string) : Observable<PetResponse>{
     console.log(token);
     console.log(payload);
     const pet = {
@@ -49,7 +50,7 @@ export class PetQuestService {
     };
 
 
-    return this.http.post(this.baseUrl+'posts', pet,options);
+    return this.http.post<PetResponse>(this.baseUrl+'posts', pet,options);
   }
 
   getPostUser(token:string){
@@ -73,4 +74,27 @@ export class PetQuestService {
     };
     return this.http.delete(this.baseUrl+'posts/'+id,options);
   }
+
+ 
+
+postImage(images:File [],id: string,token:string){
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`,
+  });
+
+  const options = {
+    headers: headers,
+  };
+
+  const formData = new FormData();
+  images.forEach((image) => {
+    formData.append('images', image);
+  });
+
+  return this.http.post(`${this.baseUrl}post/${id}/images`, formData,options);
+}
+
+getPet(id:string): Observable<PetWithComments>{
+  return this.http.get<PetWithComments>(`${this.baseUrl}post/${id}/comments`);
+}
 }

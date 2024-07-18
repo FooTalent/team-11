@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public record PreferenceResponseDTO(
         UUID id,
-        PostStatus postStatus,
+        PostStatus status,
         SpeciesType speciesType,
         Gender gender,
         String province,

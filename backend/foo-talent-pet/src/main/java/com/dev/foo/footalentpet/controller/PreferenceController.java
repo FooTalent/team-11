@@ -48,7 +48,7 @@ public class PreferenceController {
     }
 
     @GetMapping("/user/preferences")
-    public ResponseEntity<List<UserResponseDTO>> getUserByPreference(@RequestParam(required = false) PostStatus postStatus,
+    public ResponseEntity<List<UserResponseDTO>> getUserByPreference(@RequestParam(required = false) PostStatus status,
                                                                      @RequestParam(required = false) SpeciesType speciesType,
                                                                      @RequestParam(required = false) Gender gender,
                                                                      @RequestParam(required = false) String province,
@@ -56,7 +56,7 @@ public class PreferenceController {
                                                                      @RequestParam(required = false) String locality,
                                                                      @RequestParam(required = false) List<UUID> tagIds,
                                                                      @RequestParam(required = false) List<UUID> colorIds) {
-        PreferenceRequestDTO preferenceRequestDTO = new PreferenceRequestDTO(postStatus, speciesType, gender, province, city, locality, colorIds, tagIds);
+        PreferenceRequestDTO preferenceRequestDTO = new PreferenceRequestDTO(status, speciesType, gender, province, city, locality, colorIds, tagIds);
         return ResponseEntity.ok(preferenceService.getUserByPreference(preferenceRequestDTO));
     }
 }

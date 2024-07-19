@@ -85,9 +85,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 }
-
+@if (isLoading) {
+  <app-spiner class="full-screen-spinner"></app-spiner>
+}
 <!-- <div #mostrarRegistro>
   <app-register></app-register>
 </div> -->

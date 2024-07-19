@@ -6,6 +6,7 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
 import { EventEmitter } from 'node:stream';
+import { SpinerComponent } from '../spiner/spiner.component';
 // ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
@@ -20,6 +21,7 @@ import { select } from '@ngrx/store';
     FiltroperdidasComponent,
     PetsCardComponent,
     CommonModule,
+    SpinerComponent,
   ],
   templateUrl: './mascotasperdidas.component.html',
   styleUrl: './mascotasperdidas.component.css',
@@ -36,7 +38,7 @@ export class MascotasperdidasComponent implements OnInit {
     colors: null,
     tags: null,
   };
-
+  isLoading = false;
   pets: any;
   order: boolean = true;
 
@@ -51,15 +53,19 @@ export class MascotasperdidasComponent implements OnInit {
   }
 
   getPets(){
+    this.isLoading=true;
     this.LostService.getPets('LOST',this.appliedFilters, this.order).subscribe({
       next: (response) => {
         this.pets = response;
+        this.isLoading=false;
       },
       error: (error) => {
         console.error(error);
+        this.isLoading=false;
       },
       complete: () => {
         console.log('Observable completado');
+        this.isLoading=false;
       },
     });
   }

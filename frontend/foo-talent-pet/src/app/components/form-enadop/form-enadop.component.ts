@@ -15,6 +15,7 @@ import { Pet ,PetResponse} from '../../interfaces/interfaces';
 import { LocationService } from '../../service/location.service';
 import { PetQuestService } from '../../service/pet-quest.service';
 import { CardEditComponent } from '../card-edit/card-edit.component';
+import { SpinerComponent } from "../spiner/spiner.component";
 //ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
@@ -22,7 +23,8 @@ import { LoginResponse } from '../../interfaces/interfaces';
 import { select } from '@ngrx/store';
 import { logIn, logOut } from '../../store/tasks.actions';
 import { from } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { CommonModule ,Location} from '@angular/common';
+import { send } from 'node:process';
 
 @Component({
   selector: 'app-form-enadop',
@@ -38,6 +40,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule,
     CardEditComponent,
+    SpinerComponent,
+
   ],
   templateUrl: './form-enadop.component.html',
   styleUrl: './form-enadop.component.css',
@@ -84,6 +88,7 @@ export class FormEnadopComponent {
   value: any;
   colors: any;
   tags: any;
+  isLoading = false;
   isButtonDog = false;
   isButtonFemale = false;
   isbuttonActive = false;
@@ -96,6 +101,7 @@ export class FormEnadopComponent {
   imagesFiles: File[] = [];
   
   credentials: LoginResponse = { token: '', user: { id: '', email: '', name: null, country: null, province: null, city: null, locality: null, phone: null, profilePicture: '' } };
+  
 
   
   constructor(
@@ -103,7 +109,8 @@ export class FormEnadopComponent {
     private locationService: LocationService,
     private petQuestService: PetQuestService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
    
   }
@@ -274,11 +281,45 @@ export class FormEnadopComponent {
   }
 
   UpdatePet() {
-    console.log(this.pet);
-    this.petQuestService.UpdatePost(this.pet.id, this.pet,this.credentials?.token).subscribe((response) => {
-      console.log(response);
-    
-  })}
+      console.log(this.credentials?.token);
+      console.log(this.pet);
+      const sendPet = {
+        id: this.pet.id || '',
+        name: this.pet.name || '',
+        description: this.pet.description || '',
+        date: this.pet.date || '',
+        status: this.pet.status   || '',
+        speciesType: this.pet.speciesType || '',
+        gender: this.pet.gender || '',
+        province: this.pet.province || '',
+        city: this.pet.city || '',
+        locality:this.pet.locality || '',
+        contact: this.pet.contact   || '',
+        createdAt: this.pet.createdAt || '',
+        tags: this.pet.tags.map(tag => tag.id),
+        colors: this.pet.colors.map(color => color.id),
+       
+      }
+      this.isLoading = true; // Paso 2: Mostrar el spinner
+      this.petQuestService.UpdatePost(this.pet.id, sendPet, this.credentials?.token)
+  .pipe()
+  .subscribe({
+    next: (response) => {
+      
+      console.log('Mascota actualizada con éxito:', response);
+      this.isLoading = false;
+    },
+    error: (error) => {
+      this.isLoading = false;
+    console.error('Error al actualizar la mascota:', error);
+    },
+    complete: () => {
+      this.isLoading = false;
+      console.log('Operación de actualización completada');
+      this.location.back(); 
+    }
+  });
+      }
   
 
  

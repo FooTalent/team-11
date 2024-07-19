@@ -126,3 +126,17 @@
     justify-content: center;
     border: none;
 }
+
+.full-screen-spinner {
+    position: fixed; /* Hace que el contenedor del spinner sea fijo y cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Asegura que el spinner esté por encima de otros elementos */
+    background-color: rgba(241, 231, 158, 0.396); /* Color de fondo con un poco de transparencia */
+    display: flex;
+    justify-content: center; /* Centra el spinner horizontalmente */
+    align-items: center; /* Centra el spinner verticalmente */
+  }
+  

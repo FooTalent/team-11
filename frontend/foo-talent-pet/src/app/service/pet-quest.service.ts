@@ -18,7 +18,7 @@ export class PetQuestService {
 
   constructor(private http: HttpClient) {}
 
-  login(payload: any) {
+  login(payload: any): Observable<any> {
     return this.http.post(this.baseUrl + 'auth/login', payload);
   }
 
@@ -151,7 +151,7 @@ export class PetQuestService {
     );
   }
 
-  UpdatePost(id: string, payload: PetResponse, token: string) {
+  UpdatePost(id: string, payload: any, token: string):Observable<any>  {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
@@ -160,6 +160,6 @@ export class PetQuestService {
       headers: headers,
     };
 
-    return this.http.patch(`${this.baseUrl}posts/${id}`, payload, options);
+    return this.http.put(`${this.baseUrl}posts/${id}`, payload, options);
   }
 }

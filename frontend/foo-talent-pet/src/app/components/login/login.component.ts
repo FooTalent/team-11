@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { RegistroService } from '../../service/registro.service';
 import { response } from 'express';
 import Modal from 'bootstrap/js/dist/modal';
+import { SpinerComponent } from "../spiner/spiner.component";
 // ngrx bullshit
 import { Store, select } from '@ngrx/store';
 import { logIn,logOut } from "../../store/tasks.actions";
@@ -26,14 +27,14 @@ import { AppState } from "../../app.state";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, NavbarComponent, RegisterComponent,CommonModule,ReactiveFormsModule],
+  imports: [RouterLink, NavbarComponent, RegisterComponent,CommonModule,ReactiveFormsModule,SpinerComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
   router = inject(Router);
-
+  isLoading = false;
   userCredentials = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
@@ -86,21 +87,28 @@ export class LoginComponent {
       password: this.userCredentials.value.password
     };
     // console.log(credenciales);
-    this.petQuestService.login(credenciales,).subscribe((response:any) => {
-      this.credentials = response;
-    // console.log(response);
-    // console.log('login');
-    localStorage.setItem('token', response.token);
-    this.router.navigate(['/mascotas-perdidas']).then(() => {
-    //   // Forzar la recarga de la página
-    //   //location.reload();
-    });
-    //ngrx
-    this.store.dispatch(logIn({ loginResponse: response }));
-   });
 
+    this.petQuestService.login(credenciales).pipe().subscribe({
+    next: (response) => {
+      localStorage.setItem('token', response.token);
+      console.log('login con éxito:', response);
+      this.store.dispatch(logIn({ loginResponse: response }));
+      this.isLoading = false;
+    },
+    error: (error) => {
+      this.isLoading = false;
+      //poner pop up de error
+    console.error('Error de login:', error);
+    },
+    complete: () => {
+      this.isLoading = false;
+      console.log('Operación de login completada');
+      this.router.navigate(['/mascotas-perdidas']).then(() => { });
+    }
+  });
    } else {
     console.log('Error en las credenciales');
+    //poner un pop up de error
 
    }
   }

@@ -70,3 +70,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
   border-radius: 50%;
   margin-right: 16px;
 }
+
+@media (max-width: 668px) {
+
+  #¨profileNavbar{
+    position: relative;;
+  }
+}

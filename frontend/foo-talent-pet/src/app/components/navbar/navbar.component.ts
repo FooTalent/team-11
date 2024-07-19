@@ -4,12 +4,14 @@ import { LoginComponent } from '../login/login.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from "../../service/user.service";
+import { User } from "../../interfaces/interfaces";
 //ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { LoginResponse } from "../../interfaces/interfaces";
 import { select } from '@ngrx/store';
 import { logIn,logOut } from "../../store/tasks.actions";
+import { get } from 'http';
 
 
 @Component({
@@ -26,9 +28,13 @@ export class NavbarComponent {
   constructor(private store: Store<AppState>,private userService:UserService) {}
 
   credentials: LoginResponse|undefined;
+  user: User | undefined;
   
 
   ngOnInit() {
+
+    this.getUser();
+
     this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
         this.credentials = response;
   });
@@ -61,6 +67,21 @@ export class NavbarComponent {
     if (this.token==="") {
       
     }
+  }
+
+  getUser() {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return;
+      }
+      this.userService.getUser(token).subscribe((data) => {
+        this.user = data
+        console.log(this.user)
+        
+      });
+    }
+
   }
 
   

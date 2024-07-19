@@ -85,7 +85,7 @@
           <div class="row">
             <div class="form-group col-md-4">
               <select id="inputState" class="form-control"[(ngModel)]="provincia" (change)="onProvinciaChange($event)">
-                <option selected >Provincia</option>
+                <option value="" disabled selected>Provincia</option>
                 @for (provincia of provincias; track $index) {
                   <option value="{{provincia.name}}">{{provincia.name}}</option>
                 }
@@ -94,10 +94,11 @@
 
             <div class="form-group col-md-4">
               @if (provincia == "" ) {<select disabled id="inputState" class="form-control">
-                <option selected>Ciudad</option>
+                <option value="" disabled selected>Ciudad</option>
+
 
               </select>}@else {<select  id="inputState" class="form-control" (change)="onCityChange($event)">
-                <option selected>Ciudad</option>
+                <option value="" disabled selected>Ciudad</option>
                 @for (ciudad of ciudades; track $index) {
                   <option>{{ciudad.name}}</option>
                 }
@@ -110,12 +111,12 @@
             <div class="form-group col-md-4">
               @if (provincia == "" && city == "") {
                 <select disabled id="inputState" class="form-control">
-                  <option selected>Localidad</option>
+                  <option value="" disabled selected>Localidad</option>
                   <option>...</option>
                 </select>
               }@else {
                 <select id="inputState" class="form-control" (change)="onLocalidadChange($event)">
-                  <option selected>Localidad</option>
+                  <option value="" disabled selected>Localidad</option>
                   @for (Localidad of localidades; track $index) {
                     <option >{{Localidad.name}}</option>
                   }

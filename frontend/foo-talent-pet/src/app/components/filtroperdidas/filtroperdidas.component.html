@@ -16,7 +16,7 @@
       <img class="iconLabel" src="../../../assets/pet.png" alt="" />
       <label for="animal">Especie de animal</label>
     </div>
-    <select id="animal">
+    <select id="animal" [(ngModel)]="filters.animal">
       <option value="" disabled selected>Seleccionar</option>
       <option value="DOG">Perro</option>
       <option value="CAT">Gato</option>
@@ -29,7 +29,7 @@
       <img class="iconLabel" src="../../../assets/gender.png" alt="" />
       <label for="genero">Sexo</label>
     </div>
-    <select id="genero">
+    <select id="genero" [(ngModel)]="filters.gender">
       <option value="" disabled selected>Seleccionar</option>
       <option value="MASCULINO">Masculino</option>
       <option value="FEMENINO">Femenino</option>
@@ -89,6 +89,7 @@
     <input type="date"
     class="form-control form-date"
     id="start"
+    [(ngModel)]="filters.date"
     aria-describedby="inputText"
     value="2024-07-08"
     min="2018-01-01"

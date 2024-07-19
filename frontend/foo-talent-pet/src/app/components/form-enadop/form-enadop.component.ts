@@ -44,7 +44,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FormEnadopComponent {
 
-   pet: PetResponse = {
+  pet: PetResponse = {
     id: '',
     name: '',
     description: '',
@@ -71,20 +71,31 @@ export class FormEnadopComponent {
     tags: [],
     colors: [],
     images: [],
-  }
-
-  provincia: string = '';
-  city: string = '';
-  localidad: string = '';
+  };
+  
+  provincia = '';
+  city = '';
+  localidad = '';
+  selectedSpecies: string = this.pet.speciesType||'';
+  selectedGender: string = this.pet.gender || '';
   provincias: any;
   ciudades: any;
   localidades: any;
   value: any;
   colors: any;
   tags: any;
-  isbuttonActive: boolean = false;
+  isButtonDog = false;
+  isButtonFemale = false;
+  isbuttonActive = false;
+  isButtonMale = false;
   tagsPressed: { [key: string]: boolean } = {};
   colorPressed: { [key: string]: boolean } = {};
+  
+  comments: Comment[] = [];
+  images: string[] = [];
+  imagesFiles: File[] = [];
+  
+  credentials: LoginResponse | undefined;
 
   
   constructor(
@@ -92,35 +103,11 @@ export class FormEnadopComponent {
     private locationService: LocationService,
     private petQuestService: PetQuestService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
-  
-  comments: Comment[] = [];
-  images: string[] = [];
-  imagesFiles: File[] = [];
-
-  // private _confirmacionService = inject(ConfirmacionService);
-
-  credentials: LoginResponse | undefined;
-
-  onFileSelected(event: any): void {
-    const files = event.target.files;
-    const filesToProcess = Array.from(files).slice(0, 3);
-    this.images = [];
-    this.imagesFiles = [];
-
-    for (const file of filesToProcess) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.images.push(e.target.result);
-      };
-      reader.readAsDataURL(file as Blob);
-      this.imagesFiles.push(file as File);
-    }
-  }
-
   ngOnInit() {
+    
     this.pet = history.state.pet;
     console.log(this.pet);
     const id = this.route.snapshot.paramMap.get('id');
@@ -147,7 +134,16 @@ export class FormEnadopComponent {
     //service tags
     this.locationService.getTags().subscribe((response: any) => {
       this.tags = response;
+
+      //initialize 
+      this.selectedGender = this.pet.gender || ''; 
+      this.selectedSpecies = this.pet.speciesType || ''; 
+    
     });
+
+    this.formatPetDate() 
+    this.initializeAndFillImages(this.pet.images);
+    console.log(this.pet.date);
   }
 
   getPet(id: string) {
@@ -156,6 +152,22 @@ export class FormEnadopComponent {
       console.log(this.pet);
       
     });
+  }
+
+  onFileSelected(event: any): void {
+    const files = event.target.files;
+    const filesToProcess = Array.from(files).slice(0, 3);
+    this.images = [];
+    this.imagesFiles = [];
+
+    for (const file of filesToProcess) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.images.push(e.target.result);
+      };
+      reader.readAsDataURL(file as Blob);
+      this.imagesFiles.push(file as File);
+    }
   }
 
   onProvinciaChange(event: any) {
@@ -201,31 +213,25 @@ export class FormEnadopComponent {
   PostPet() {
     console.log(this.pet);
   }
-
-  test() {
-    console.log(this.credentials);
-    console.log(this.credentials?.token);
-    console.log(this.pet);
-  }
-  selectedSpecies: string = '';
-  isButtonMale = false;
-  selectedGender: string = '';
+;
   ButonGenderMale() {
     this.pet.gender = 'MASCULINO';
     this.isButtonMale = !this.isButtonMale;
     this.selectedGender = 'MASCULINO';
+    this.pet.gender = 'MASCULINO'
   }
-  isButtonFemale = false;
+  
   ButonGenderFemale() {
     this.pet.gender = 'FEMENINO';
     this.selectedGender = 'FEMENINO';
   }
   ButonGenderOther() {}
-  isButtonDog = false;
+ 
   butonSpeciesDog() {
     this.pet.speciesType = 'DOG';
     this.isButtonDog = !this.isButtonDog;
     this.selectedSpecies = 'DOG';
+    
   }
   isButtonCat = false;
   butonSpeciesCat() {
@@ -239,4 +245,36 @@ export class FormEnadopComponent {
     this.isButtonOther = !this.isButtonOther;
     this.selectedSpecies = 'OTHER';
   }
+
+  formatPetDate() {
+    if (this.pet && this.pet.date) {
+      const date = new Date(this.pet.date);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      this.pet.date= `${year}-${month}-${day}`;
+    }
+
+    if (this.pet && this.pet.colors) {
+      this.pet.colors.forEach((color: any) => {
+        this.colorPressed[color.name] = true;
+      });
+          }
+    if (this.pet && this.pet.tags) {
+      this.pet.tags.forEach((tag: any) => {
+        this.tagsPressed[tag.name] = true;
+      });}
+    return '';
+  }
+
+  initializeAndFillImages(files: any[]): void {
+ 
+  }
+
+  UpdatePet() {
+    console.log(this.pet);
+  }
+  
+
+ 
 }

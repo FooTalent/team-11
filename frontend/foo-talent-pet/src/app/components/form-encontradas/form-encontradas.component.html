@@ -48,6 +48,7 @@
             <p>Seleccioná el sexo</p>
             <div class="row">
               <div class="col-12">
+                <button class="btn" (click)="test()" >test</button>
                 <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedGender === 'MASCULINO'" (click)=ButonGenderMale() >
                   Macho
                 </button>
@@ -191,6 +192,8 @@
             <img *ngFor="let image of images" [src]="image" style="width: 100px; height: 100px; margin: 5px;">
           </div>
 
+         
+
           <script>
             document.getElementById('fileInput').addEventListener('change', function(event) {
               const files = event.target.files;
@@ -256,7 +259,7 @@
       </div>
     </div>
     <div class="btn-publicar-center">
-      <!-- <button (click)="test()">test</button> -->
+      
       <button
         type="button"
         class="btn btn-light-publicar"
@@ -268,3 +271,4 @@
   </div>
 </div>
 <app-footer></app-footer>
+

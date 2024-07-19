@@ -122,6 +122,8 @@ export class FormEncontradasComponent {
     });
   }
   public cargarConfirmacion(): void {
+    console.log(this.images)
+    console.log(this.imagesFiles)
     Swal.fire({
       title: 'Ya casi....',
       text: '¿Querés subir la publicación? ',
@@ -219,8 +221,8 @@ export class FormEncontradasComponent {
   }
 
   test() {
-    console.log(this.credentials);
-    console.log(this.credentials?.token);
+    console.log(this.images);
+    console.log(this.imagesFiles);
     console.log(this.pet);
   }
   selectedSpecies: string = '';

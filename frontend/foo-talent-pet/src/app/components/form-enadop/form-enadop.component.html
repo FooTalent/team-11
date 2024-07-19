@@ -14,11 +14,12 @@
       <div class="form-check test">
         <input
           type="radio"
-          routerLink="/form-publication"
           class="form-check-input test"
           id="lost"
           name="publicationType"
+          [class.specieHover]="pet.speciesType === 'LOST'"
           (click)="pet.status = 'LOST'"
+          [checked]="pet.status === 'LOST'"
           value="lost"
         />
         <label class="form-check-label text-status" for="lost">Perdidos</label>
@@ -26,12 +27,13 @@
       <div class="form-check">
         <input
           type="radio"
-          routerLink="/form-encontradas"
           class="form-check-input"
           id="found"
           name="publicationType"
+          [class.specieHover]="pet.speciesType === 'FOUND'"
           (click)="pet.speciesType = 'FOUND'"
           value="found"
+          [checked]="pet.status === 'FOUND'"
         />
         <label class="form-check-label text-status" for="found"
           >Encontrado</label
@@ -40,12 +42,13 @@
       <div class="form-check">
         <input
           type="radio"
-          routerLink="/form-adopcion"
           class="form-check-input"
           id="adoption"
           name="publicationType"
+          [class.specieHover]="pet.speciesType === 'ADOPTION'"
           (click)="pet.speciesType = 'ADOPTION'"
           value="adoption"
+          [checked]="pet.status === 'ADOPTION'"
         />
         <label class="form-check-label text-status" for="adoption"
           >Adopcion</label
@@ -146,7 +149,7 @@
                 [(ngModel)]="provincia"
                 (change)="onProvinciaChange($event)"
               >
-                <option selected>Provincia</option>
+                <option selected>{{pet.province}}</option>
                 @for (provincia of provincias; track $index) {
                 <option
                   aria-placeholder="Provincia"
@@ -163,7 +166,7 @@
                 id="inputState"
                 class="form-control"
               >
-                <option selected>Ciudad</option></select
+                <option selected>{{pet.city}}</option></select
               >}@else {<select
                 id="inputState"
                 class="form-control"
@@ -181,7 +184,7 @@
             <div class="form-group col-md-4">
               @if (provincia == "" && city == "") {
               <select disabled id="inputState" class="form-control">
-                <option selected>Localidad</option>
+                <option selected>{{pet.province}}</option>
                 <option>...</option>
               </select>
               }@else {
@@ -210,7 +213,7 @@
               class="form-control"
               id="start"
               aria-describedby="inputText"
-              value="2024-07-08"
+              
               min="2018-01-01"
               max="2024-12-31"
               [(ngModel)]="pet.date"
@@ -271,8 +274,8 @@
           </div>
           <div id="imageContainerFix">
             <img
-              *ngFor="let image of images"
-              [src]="image"
+              *ngFor="let image of pet.images"
+              [src]="image.url"
               style="width: 100px; height: 100px; margin: 5px"
             />
           </div>
@@ -355,9 +358,10 @@
         <button
           type="button"
           class="btn btn-light-publicar"
+        (click)="UpdatePet()"
           
         >
-          Publicar
+          Guardar
         </button>
       </div>
     </div>

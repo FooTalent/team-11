@@ -113,6 +113,11 @@ option{
     
 
 }
+.specieHover{
+    padding-bottom: 0.5rem;
+    text-decoration: underline #277380 5px!important; 
+    
+}
 
  .form-check-label:hover {
     text-decoration: underline #277380 5px!important;
@@ -146,6 +151,9 @@ input[type="file"] {
 .btn-pressed {
     background-color: #FEB941 !important;
     ; /* Un color de fondo diferente para indicar que está presionado */
-   
-  
+  }
+  #imageContainerFix{
+    display: flex;
+    justify-content:start;
+    
   }

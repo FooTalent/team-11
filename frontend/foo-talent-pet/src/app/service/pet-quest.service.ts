@@ -150,4 +150,16 @@ export class PetQuestService {
       options
     );
   }
+
+  UpdatePost(id: string, payload: PetResponse, token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const options = {
+      headers: headers,
+    };
+
+    return this.http.patch(`${this.baseUrl}posts/${id}`, payload, options);
+  }
 }

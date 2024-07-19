@@ -95,7 +95,7 @@ export class FormEnadopComponent {
   images: string[] = [];
   imagesFiles: File[] = [];
   
-  credentials: LoginResponse | undefined;
+  credentials: LoginResponse = { token: '', user: { id: '', email: '', name: null, country: null, province: null, city: null, locality: null, phone: null, profilePicture: '' } };
 
   
   constructor(
@@ -104,7 +104,9 @@ export class FormEnadopComponent {
     private petQuestService: PetQuestService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+   
+  }
 
   ngOnInit() {
     
@@ -273,7 +275,10 @@ export class FormEnadopComponent {
 
   UpdatePet() {
     console.log(this.pet);
-  }
+    this.petQuestService.UpdatePost(this.pet.id, this.pet,this.credentials?.token).subscribe((response) => {
+      console.log(response);
+    
+  })}
   
 
  

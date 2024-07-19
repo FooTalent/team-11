@@ -30,9 +30,9 @@ interface TagSelected extends Tag {
 export class FiltroperdidasComponent {
 
   credentials: LoginResponse|undefined;
-  router = inject(Router); 
+  router = inject(Router);
 
-  
+
 
   provinces: Location[] = [];
   cities: Location[] = [];
@@ -142,6 +142,7 @@ export class FiltroperdidasComponent {
     };
 
     this.filtersApplied.emit(this.filters);
+
   }
 
   deleteFilters() {

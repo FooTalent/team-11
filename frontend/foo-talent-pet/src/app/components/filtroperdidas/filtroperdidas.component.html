@@ -82,12 +82,12 @@
   </div>
 
   <div class="filter-section">
-    <div class="cont cont-label">
+    <div class="cont cont-label cont-date">
       <img class="iconLabel" src="../../../assets/date.png" alt="" />
       <label for="fecha">Fecha</label>
     </div>
     <input type="date"
-    class="form-control"
+    class="form-control form-date"
     id="start"
     aria-describedby="inputText"
     value="2024-07-08"
@@ -105,8 +105,10 @@
     </div>
     <div *ngIf="isColorsDropdownVisible">
       <div *ngFor="let color of colors" class="d-flex">
+        <label class="color" [for]="color.id">{{ color.name }}</label>
+
         <input type="checkbox" [id]="color.id" [(ngModel)]="color.selected" />
-        <label [for]="color.id">{{ color.name }}</label>
+        <!-- <label class="color" [for]="color.id">{{ color.name }}</label> -->
       </div>
     </div>
   </div>
@@ -121,8 +123,8 @@
     </div>
     <div *ngIf="isTagsDropdownVisible">
       <div *ngFor="let tag of tags" class="d-flex">
-        <input type="checkbox" [id]="tag.id" [(ngModel)]="tag.selected" />
         <label [for]="tag.id">{{ tag.name }}</label>
+        <input type="checkbox" [id]="tag.id" [(ngModel)]="tag.selected" />
       </div>
     </div>
   </div>

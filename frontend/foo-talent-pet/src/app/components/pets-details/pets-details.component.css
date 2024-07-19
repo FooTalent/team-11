@@ -1,5 +1,15 @@
 @import url('../../../styles.css');
 
+.carousel-inner{
+    border-radius: 25px;
+}
+.carousel-item img{
+    width: 100%;
+    height: 677px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .container-fluid {
     background-color: var(--colorFondo);
 }

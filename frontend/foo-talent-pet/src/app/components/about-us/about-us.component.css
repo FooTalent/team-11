@@ -36,8 +36,8 @@ p {
     height: auto;
 }
 .imagen-inferior-lateral{
-    width: 50vh;
-    height: 38vh;
+    width: 80%;
+    height: auto;
     margin-left: 7vh;
 }
 
@@ -45,4 +45,10 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#contenedorImagen{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    
 }

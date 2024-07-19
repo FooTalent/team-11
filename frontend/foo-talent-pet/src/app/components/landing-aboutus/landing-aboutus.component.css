@@ -1,72 +1,46 @@
 @import url('../../../styles.css');
-
-
-.quienes-somos {
-    border-radius: 20px;
-    padding: 5px;
-    margin: 20px auto; 
-    height: auto;
-    width: 100%;
-    display: block; 
-    margin-top: 4%;
+.contenedorGeneral{
+  width: 100%;
+  height: 20%;
+  display: flex;
 }
-
-h1 {
-  font-family: var(--titulo);
-  font-weight: var(--fontWeight);
-}
-
-label, select {
-  font-family: var(--texto);
-}
-.title{
-    margin: 0 2px 39px 0;
-    display: inline-block;
-    overflow-wrap: break-word;
-    font-family: 'Poppins';
-    font-weight: 600;
-    font-size: 39.8px;
-    color: #277380;
-    
-}
-
-.full-width-container {
-    width: 101%;
-    margin: 0;
-    padding: 0;
-}
-.col.fix {
-  margin-left: -17px;
-}
-
-.full-width-container .fix img {
-  margin-top: -130px; 
-  margin-left: 0px;
-}
-.img-l{
+.imagenLateralIzq{
   position: absolute;
-  left: 0;
+  width: 12%;
+  height: 20%;
+  margin-left: 0;
 }
-
-.img-r{
+.imagenLateralDer{
   position: absolute;
-  right: 0;
+  width: 12%;
+  height: 20%;
+  margin-right: 0;
+  margin-left: 88%;
 }
-.conteiner-text { 
+img{
+  width: 100%;
+  height: auto;
+}
+.contenedorTexto{
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.titulo{
+  margin-top: 8%;
+  margin-bottom: 8%;
+  
+}
+h3{
+  font-family:'Poppins';
+  font-size: 39.8px;
+  font-weight: 600;
+  color: var(--colorNavBar);
+}
+.cuerpo{
+margin-bottom: 8%;
+font-family: var(--texto);
+font-size: larger;
+}
 
-  z-index: 10;
-  width: 100px; 
-  margin: 0 auto;
-  display: block; 
-  white-space: normal; 
-  text-align: center;
-  padding: 0 20px;
-  margin-left: 250px;
-}
-#texto{
-  margin-left: 15%;
-  margin-right: 15%;
-  font-family: var(--texto);
-  font-size: larger;
-  text-align: center;
-}
+

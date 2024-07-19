@@ -3,7 +3,6 @@
     margin-top: 0%;
     margin-bottom: 3%;
     padding-top: 3%;
-    
 }
 .title-bienvenida{
     color: var(--colorNavBar);
@@ -27,9 +26,15 @@ div#tex {margin-right: 54px;margin-left: -22px;}
     padding-left: 15%;
     
 }
+p{
+    font-family: var(--texto);
+    font-size: larger;
+}
 #btn1{
     background-color: #6DC5D1;
-
+}
+#btn1-1{
+    background-color: #6DC5D1;
 }
 #btns{
     display: flex;

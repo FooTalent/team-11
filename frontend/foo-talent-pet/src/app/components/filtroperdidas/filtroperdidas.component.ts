@@ -51,8 +51,8 @@ export class FiltroperdidasComponent {
   isTagsDropdownVisible: boolean = false
 
   filters: Filters = {
-    animal: null,
-    gender: null,
+    animal: '',
+    gender: '',
     province: null,
     city: null,
     locality: null,
@@ -105,22 +105,7 @@ export class FiltroperdidasComponent {
   }
 
   applyFilters() {
-    const animal = (document.getElementById('animal') as HTMLSelectElement)
-      .value;
-    const genero = (document.getElementById('genero') as HTMLSelectElement)
-      .value;
-    const provincia = (
-      document.getElementById('provincia') as HTMLSelectElement
-    ).value;
-    const ciudad = (document.getElementById('ciudad') as HTMLSelectElement)
-      .value;
-    const localidad = (
-      document.getElementById('localidad') as HTMLSelectElement
-    ).value;
-    let fecha = (document.getElementById('fecha') as HTMLSelectElement).value;
-    //const colors = (document.getElementById('color') as HTMLSelectElement).value;
-
-    let date = fecha ? new Date(fecha).toISOString() : null;
+    let date = this.filters.date ? new Date(this.filters.date).toISOString() : null;
 
     this.selectedColors = this.colors
       .filter((color) => color.selected)
@@ -130,16 +115,12 @@ export class FiltroperdidasComponent {
       .filter((tag) => tag.selected)
       .map((tag) => tag.id);
 
-    this.filters = {
-      animal,
-      gender: genero,
-      province: provincia,
-      city: ciudad,
-      locality: localidad,
-      date: date,
-      colors: this.selectedColors,
-      tags: this.selectedTags,
-    };
+    this.filters.date = date;
+    this.filters.province = this.selectedProvince;
+    this.filters.city = this.selectedCity;
+    this.filters.locality = this.selectedLocality;
+    this.filters.colors = this.selectedColors;
+    this.filters.tags = this.selectedTags;
 
     this.filtersApplied.emit(this.filters);
 
@@ -147,8 +128,8 @@ export class FiltroperdidasComponent {
 
   deleteFilters() {
     this.filters = {
-      animal: null,
-      gender: null,
+      animal: '',
+      gender: '',
       province: null,
       city: null,
       locality: null,
@@ -156,6 +137,13 @@ export class FiltroperdidasComponent {
       colors: null,
       tags: null,
     };
+    this.selectedProvince = '';
+    this.selectedCity = '';
+    this.selectedLocality = '';
+    this.colors.forEach((color) => (color.selected = false));
+    this.tags.forEach((tag) => (tag.selected = false));
+    this.selectedColors = [];
+    this.selectedTags = [];
 
     this.filtersApplied.emit(this.filters);
   }

@@ -7,12 +7,13 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { AdoptionpetService } from '../../service/posts/adoptionpet.service';
 import { LostpetsService } from '../../service/posts/lostpets.service';
 import { Filters } from '../../interfaces/interfaces';
+import { SpinerComponent } from "../spiner/spiner.component";
 
 
 @Component({
   selector: 'app-mascotasadopcion',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, FiltroperdidasComponent, CommonModule, PetsCardComponent],
+  imports: [NavbarComponent, FooterComponent, FiltroperdidasComponent, CommonModule, PetsCardComponent,SpinerComponent],
   templateUrl: './mascotasadopcion.component.html',
   styleUrl: './mascotasadopcion.component.css'
 })
@@ -27,7 +28,7 @@ export class MascotasadopcionComponent {
     colors: null,
     tags: null,
   };
-
+  isLoading = false;
   pets: any;
   order: boolean = true;
 
@@ -40,16 +41,20 @@ export class MascotasadopcionComponent {
 
 
   getPets() {
+    this.isLoading = true;
     this.lostService.getPets('ADOPTION', this.appliedFilters, this.order).subscribe(
       {
         next: (response) => {
           this.pets = response;
+          this.isLoading = false;
         },
         error: (error) => {
           console.error(error);
+          this.isLoading = false;
         },
         complete: () => {
           console.log('Observable completado');
+          this.isLoading = false;
         },
       }
     );

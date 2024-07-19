@@ -8,16 +8,17 @@ import { PetQuestService } from "../../service/pet-quest.service";
 import { Filters, LoginResponse } from '../../interfaces/interfaces';
 import {PetsCardComponent } from '../pets-card/pets-card.component';
 import { CardEditComponent} from '../card-edit/card-edit.component';
+import { SpinerComponent } from "../spiner/spiner.component";
 
 @Component({
   selector: 'app-bienvenida-dashboard',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule,PetsCardComponent,CardEditComponent],
+  imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule,PetsCardComponent,CardEditComponent,SpinerComponent],
   templateUrl: './bienvenida-dashboard.component.html',
   styleUrl: './bienvenida-dashboard.component.css'
 })
 export class BienvenidaDashboardComponent implements OnInit {
-
+  isLoading = false;
   appliedFilters: Filters = {
     animal: null,
     gender: null,
@@ -61,22 +62,30 @@ export class BienvenidaDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserPost();
+    this.getPets();
+  } 
+
+  getUserPost(){
+
+    this.isLoading = true;
     this.petquestservice.getPostUser(this.getToken()).subscribe({
       next: (response) => {
         
         this.userPosts = response;
         console.log(this.userPosts);
+        this.isLoading = false;
       },
       error: (error) => {
         console.error(error);
+        this.isLoading = false;
       },
       complete: () => {
-        console.log('Observable completado');
+        
+        this.isLoading = false;
       },
       
     })
-    this.getPets();
-  }
 
 
-}
+}}

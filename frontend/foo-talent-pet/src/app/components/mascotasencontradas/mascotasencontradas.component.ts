@@ -6,6 +6,7 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
 import { Filters } from '../../interfaces/interfaces';
+import {  SpinerComponent} from "../spiner/spiner.component";
 
 @Component({
   selector: 'app-mascotasencontradas',
@@ -16,6 +17,7 @@ import { Filters } from '../../interfaces/interfaces';
     FiltroperdidasComponent,
     PetsCardComponent,
     CommonModule,
+    SpinerComponent,
   ],
   templateUrl: './mascotasencontradas.component.html',
   styleUrl: './mascotasencontradas.component.css',
@@ -31,7 +33,7 @@ export class MascotasencontradasComponent implements OnInit {
     colors: null,
     tags: null,
   };
-
+  isLoading = false;
   pets: any;
   order: boolean = true;
 
@@ -43,16 +45,20 @@ export class MascotasencontradasComponent implements OnInit {
   }
 
   getPets() {
+    this.isLoading = true;
     this.lostService.getPets('FOUND', this.appliedFilters, this.order).subscribe(
       {
         next: (response) => {
+          this.isLoading = false;
           this.pets = response;
         },
         error: (error) => {
           console.error(error);
+          this.isLoading = false;
         },
         complete: () => {
           console.log('Observable completado');
+          this.isLoading = false; 
         },
       }
     );

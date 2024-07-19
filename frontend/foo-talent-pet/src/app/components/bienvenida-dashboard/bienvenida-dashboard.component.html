@@ -25,7 +25,12 @@
               <button class="rounded-end-pill" [ngClass]="{'btn_selected': !order, 'btn_unselected': order}" (click)="onOrderChange(false)">Menos reciente</button>
             </div>
           </div>
-          <app-card-edit class="card" *ngFor="let post of userPosts" [pet]="post"></app-card-edit>
+          @if (isLoading) {
+            <app-spiner></app-spiner>
+           }@else {
+            <app-card-edit class="card" *ngFor="let post of userPosts" [pet]="post"></app-card-edit>
+
+          }
         
     </div>
 </div>

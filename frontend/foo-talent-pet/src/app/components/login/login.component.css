@@ -29,16 +29,15 @@ h1 {
 
 .modal-content {
   height: 905px;
-  z-index: 100%;
-  border-radius: 0;
   padding: 0 3%;
+  border-radius: 0;
   background-color: var(--colorFondo);
 }
-
 .lupa{
-  max-width: 70px;
-  max-height: 102px;
-  margin: .5rem auto;
+  top: 0;
+  max-width: 60px;
+  max-height: 85px;
+  margin: 0.4rem auto;
 }
 
 #title{
@@ -46,28 +45,28 @@ h1 {
   margin: 1rem 0;
 }
 label {
-  font-size: .8rem;
+  font-size: .7rem;
   margin: 0;
 }
 #botones{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 4vh;
   padding: 0;
 }
 .btn{
   /* padding: 16px 20px; */
-  height: 45px;
+  height: 38px;
   font-size: 15px;
   margin: 0 .6rem;
   /* opacity: 0.5 */
 }
 .btn-go{
-  font-size: 14px;
+  font-size: 13px;
 }
 .opciones{
-  margin-top: 3vh;
+  margin-top: 2vh;
   text-align: center;
 }
 .forget-password{
@@ -85,10 +84,13 @@ label {
 }
 input{
   background-color: var(--colorInputFormProfile);
-  border-radius: 11px;
-  font-size: .9rem;
+  /* width: 80%; */
+  border-radius: 10px;
+  font-size: .7rem;
   margin: 0;
-
+}
+.campo{
+  padding: 0 5%;
 }
 .btn-go:disabled {
   background-color: #ccc; /* Color de fondo */

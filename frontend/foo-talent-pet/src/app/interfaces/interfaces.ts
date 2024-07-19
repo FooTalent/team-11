@@ -74,6 +74,7 @@ export interface Login   {
 }
 
 export interface Comment {
+    id: string,
     content: string,
     user: User,
     createdAt: string,

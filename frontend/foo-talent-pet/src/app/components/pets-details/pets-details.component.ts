@@ -4,8 +4,9 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
-import { PetResponse } from '../../interfaces/interfaces';
+import { Comment, PetResponse } from '../../interfaces/interfaces';
 import { PetQuestService } from '../../service/pet-quest.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pets-details',
@@ -16,6 +17,7 @@ import { PetQuestService } from '../../service/pet-quest.service';
     RouterLink,
     PetsCardComponent,
     CommonModule,
+    FormsModule
   ],
   templateUrl: './pets-details.component.html',
   styleUrl: './pets-details.component.css',
@@ -23,17 +25,33 @@ import { PetQuestService } from '../../service/pet-quest.service';
 export class PetsDetailsComponent implements OnInit {
   btnReport: boolean = false;
   btnConfirmReport = false;
+  reportCommentContent: string = '';
+  reportStatus: string = '';
 
   reportComent() {
+    this.reportStatus = 'comment';
     this.btnReport = true;
-    console.log('reporta comentario');
   }
 
-  confirmReport(){
-    this.btnReport = !this.btnReport;
-    // this.btnnConfirmReportConfirmReport = !this.btnConfirmReport;
-    console.log("esto debe lanzar el modal " + this.btnReport);
+  reportPost(){
+    this.reportStatus = 'post';
+    this.btnReport = true;
   }
+
+  confirmReport(id: string) {
+    this.btnReport = !this.btnReport;
+    const token = localStorage.getItem('token');
+    if(!token) return;
+    if(this.reportStatus === 'comment') this.petQuestService.reportComment(id, this.reportCommentContent, token).subscribe();
+    else this.petQuestService.reportPost(this.pet.id, this.reportCommentContent, token).subscribe();
+  }
+
+/*   confirmReportPost() {
+    this.btnReport = !this.btnReport;
+    const token = localStorage.getItem('token');
+    if(!token) return;
+    this.petQuestService.reportPost(this.pet.id, this.reportCommentContent, token).subscribe();
+  } */
 
   pet: PetResponse = {
     id: '',
@@ -64,6 +82,10 @@ export class PetsDetailsComponent implements OnInit {
     images: [],
   };
 
+  comments: Comment[] = [];
+
+  commentContent: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -71,8 +93,6 @@ export class PetsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.pet = history.state.pet;
-    console.log(this.pet);
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       this.router.navigate(['/']);
@@ -84,7 +104,22 @@ export class PetsDetailsComponent implements OnInit {
   getPet(id: string) {
     this.petQuestService.getPet(id).subscribe((pet) => {
       this.pet = pet.post;
+      this.comments = pet.comments;
     });
+  }
+
+  createComment() {
+    if (this.commentContent.trim() === '') {
+      return;
+    }
+    const token = localStorage.getItem('token');
+    if(!token) return;
+    this.petQuestService
+      .createComment(this.pet.id, this.commentContent, token)
+      .subscribe((comment) => {
+        this.comments.push(comment);
+        this.commentContent = '';
+      });
   }
 
   formatDate(dateString: string): string {
@@ -93,5 +128,14 @@ export class PetsDetailsComponent implements OnInit {
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     return `${day} / ${month} / ${year}`;
+  }
+
+  formatDateWithHour(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const hour = date.getHours().toString().padStart(2, '0');
+    return `${day} / ${month} / ${year} - ${hour}hs`;
   }
 }

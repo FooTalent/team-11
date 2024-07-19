@@ -72,21 +72,31 @@ export class CardEditComponent {
         //pop-up
         console.log("eliminado")
         console.log(response);
+        
       },
       error: (error) => {
         console.error(error);
       },
       complete: () => {
         console.log('Observable completado');
+        this.refreshPage();
       },
     });
     console.log(pet)
+    
+}
+
+refreshPage() {
+  this.router.navigate([this.router.url])
+    .then(() => {
+      window.location.reload();
+    });
 }
 
   editPost(pet: any){
     console.log(pet)
     console.log("editclick")
-    this.router.navigate(['ruta-del-componente-destino'], { state: { pet: pet } });
+    this.router.navigate(['pet-details-edit/:id'], { state: { pet: pet } });
    
   }
 }

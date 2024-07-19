@@ -54,5 +54,5 @@ export const routes: Routes = [
     {path: 'bienvenida', component: BienvenidaDashboardComponent},
     {path: 'info', component: InfoDashboardComponent},
     {path: 'preferencias', component: PreferenciasDashboardComponent},
-    {path: 'pet-details-edit/:id', component: PetDetailsEdidComponent}
+    {path: 'pet-details-edit/:id', component: FormEnadopComponent}
 ];

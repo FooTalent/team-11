@@ -38,7 +38,7 @@ export const routes: Routes = [
     {path: 'mascotas-encontradas', component: MascotasencontradasComponent},
     {path: 'mascotas-adopcion', component: MascotasadopcionComponent},
     {path: 'form-publication', component: FormPlublicationComponent},
-    {path: 'form-encontradas', component: FormEncontradasComponent},
+    {path: 'form-edit', component: FormEncontradasComponent},
     {path: 'form-adopcion', component: FormEnadopComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'filtro-perdidas', component: FiltroperdidasComponent},
@@ -54,5 +54,5 @@ export const routes: Routes = [
     {path: 'bienvenida', component: BienvenidaDashboardComponent},
     {path: 'info', component: InfoDashboardComponent},
     {path: 'preferencias', component: PreferenciasDashboardComponent},
-    {path: 'pet-details-edit', component: PetDetailsEdidComponent}
+    {path: 'pet-details-edit/:id', component: PetDetailsEdidComponent}
 ];

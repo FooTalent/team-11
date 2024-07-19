@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject ,Input} from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink ,ActivatedRoute, Router} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -11,9 +11,10 @@ import { MascotasperdidasComponent } from '../mascotasperdidas/mascotasperdidas.
 import { ModalPreguntaComponent } from '../modal-pregunta/modal-pregunta.component';
 import { ConfirmacionService } from '../../service/confirmacion.service';
 import Swal from 'sweetalert2';
-import { Pet } from '../../interfaces/interfaces';
+import { Pet ,PetResponse} from '../../interfaces/interfaces';
 import { LocationService } from '../../service/location.service';
 import { PetQuestService } from '../../service/pet-quest.service';
+import { CardEditComponent } from '../card-edit/card-edit.component';
 //ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
@@ -35,12 +36,43 @@ import { CommonModule } from '@angular/common';
     MascotasperdidasComponent,
     ModalPreguntaComponent,
     FormsModule,
-    CommonModule
+    CommonModule,
+    CardEditComponent,
   ],
   templateUrl: './form-enadop.component.html',
   styleUrl: './form-enadop.component.css',
 })
 export class FormEnadopComponent {
+
+   pet: PetResponse = {
+    id: '',
+    name: '',
+    description: '',
+    date: '',
+    status: '',
+    speciesType: '',
+    gender: '',
+    province: '',
+    city: '',
+    locality: '',
+    contact: '',
+    createdAt: '',
+    user: {
+      id: '',
+      email: '',
+      name: null,
+      country: null,
+      province: null,
+      city: null,
+      locality: null,
+      phone: null,
+      profilePicture: '',
+    },
+    tags: [],
+    colors: [],
+    images: [],
+  }
+
   provincia: string = '';
   city: string = '';
   localidad: string = '';
@@ -54,29 +86,17 @@ export class FormEnadopComponent {
   tagsPressed: { [key: string]: boolean } = {};
   colorPressed: { [key: string]: boolean } = {};
 
+  
   constructor(
     private store: Store<AppState>,
     private locationService: LocationService,
-    private petquestService: PetQuestService
+    private petQuestService: PetQuestService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
-  pet: Pet = {
-    name: '',
-    description: '',
-    date: '',
-    status: 'ADOPTION',
-    speciesType: '',
-    gender: '',
-    province: '',
-    city: '',
-    locality: '',
-    contact: '',
-
-    tags: [],
-    colors: [],
-    images: [],
-  };
-
+  
+  comments: Comment[] = [];
   images: string[] = [];
   imagesFiles: File[] = [];
 
@@ -101,6 +121,15 @@ export class FormEnadopComponent {
   }
 
   ngOnInit() {
+    this.pet = history.state.pet;
+    console.log(this.pet);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      this.router.navigate(['/']);
+      return;
+    }
+    this.getPet(id);
+
     this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
       this.credentials = response;
     });
@@ -120,56 +149,12 @@ export class FormEnadopComponent {
       this.tags = response;
     });
   }
-  public cargarConfirmacion(): void {
-    Swal.fire({
-      title: 'Ya casi....',
-      text: '¿Querés subir la publicación? ',
-      showCancelButton: true,
-      confirmButtonColor: '#feb941',
-      cancelButtonColor: '#fde49d',
-      confirmButtonText: 'Si, publicar',
-      cancelButtonText: 'No, cancelar',
-      background: '#B8E4E9',
-      customClass: {
-        popup: 'custom-popup',
-        cancelButton: 'cancelBtn-pop',
-        confirmButton: 'confirmBtn-pop',
-      },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const token = localStorage.getItem('token');
-        if (token) {
-          this.petquestService.PostPet(this.pet, token).subscribe({
-            next: (response) => {
-              console.log(response);
-              this.petquestService
-                .postImage(this.imagesFiles, response.id, token)
-                .subscribe({
-                  next: (response) => {
-                    console.log(response);
-                  },
-                });
-            },
-            error: (error) => {
-              console.log(error);
-            },
-            complete: () => {
-              Swal.fire({
-                title: 'Genial',
-                background: '#B8E4E9',
-                html: '<p>Tu publicación se ha subido con éxito</p> <img src="../../assets/grupo-animales-lindos-sobre-fondo-blanco 2.png" alt="imagen-alert" style="width: 400; height: auto">',
-                timer: 3000,
-                customClass: {
-                  popup: 'custom-popup-if',
-                  title: 'titulo-pop',
-                  image: 'img-pop',
-                },
-                showConfirmButton: false,
-              });
-            },
-          });
-        }
-      }
+
+  getPet(id: string) {
+    this.petQuestService.getPet(id).subscribe((pet) => {
+      this.pet = pet.post;
+      console.log(this.pet);
+      
     });
   }
 

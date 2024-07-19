@@ -68,4 +68,23 @@ export class UserService {
       options
     );
   }
+
+  updateProfilePicture(profilePicture: File, token: string): Observable<User> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const formData = new FormData();
+    formData.append('profilePicture', profilePicture);
+
+    const options = {
+      headers: headers,
+    };
+
+    return this.http.put<User>(
+      this.apiUrl + 'users/profile-picture',
+      formData,
+      options
+    );
+  }
 }

@@ -9,11 +9,13 @@ import { Filters, LoginResponse } from '../../interfaces/interfaces';
 import {PetsCardComponent } from '../pets-card/pets-card.component';
 import { CardEditComponent} from '../card-edit/card-edit.component';
 import { SpinerComponent } from "../spiner/spiner.component";
+import { SaludoDasboardComponent } from '../saludo-dasboard/saludo-dasboard.component';
+
 
 @Component({
   selector: 'app-bienvenida-dashboard',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule,PetsCardComponent,CardEditComponent,SpinerComponent],
+  imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule,PetsCardComponent,CardEditComponent,SpinerComponent, SaludoDasboardComponent],
   templateUrl: './bienvenida-dashboard.component.html',
   styleUrl: './bienvenida-dashboard.component.css'
 })

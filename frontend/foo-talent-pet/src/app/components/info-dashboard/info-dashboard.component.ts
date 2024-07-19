@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
@@ -30,6 +30,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './info-dashboard.component.css',
 })
 export class InfoDashboardComponent {
+  @ViewChild('fileInput') fileInput: ElementRef = new ElementRef('input');
   user: User = {
     id: '',
     email: '',
@@ -172,6 +173,30 @@ export class InfoDashboardComponent {
         }
       }
     }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.saveProfilePicture(file);
+    }
+  }
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
+  saveProfilePicture(profilePicture: File) {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    this.userService
+      .updateProfilePicture(profilePicture, token)
+      .subscribe((data) => {
+        this.user = {
+          ...this.user,
+          profilePicture: data.profilePicture,
+        };
+      });
   }
 
   ngOnInit() {

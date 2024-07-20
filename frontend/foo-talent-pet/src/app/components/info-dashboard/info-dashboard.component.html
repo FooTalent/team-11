@@ -1,0 +1,244 @@
+<app-navbar></app-navbar>
+<div id="area">
+  <div class="contenedor">
+    <div class="img-lateral-izq">
+      <img
+        src="../../../assets/izq_bienvenida.png"
+        alt=""
+        class="fixed-image"
+      />
+    </div>
+    <div class="img-lateral-der">
+      <img src="../../../assets/der_bienvenida.png" alt="" />
+    </div>
+    <div class="texto">
+      <h1>BIENVENIDO</h1>
+      <h2>Gracias por sumarte a la comunidad</h2>
+    </div>
+    <div class="navegacion">
+      <ul class="nav-list">
+        <li class="nab-item">
+          <a routerLink="/info" class="navs">Mis datos</a>
+        </li>
+        <li class="nab-item">
+          <a routerLink="/bienvenida" class="navs">Mis publicaciones</a>
+        </li>
+        <li class="nab-item">
+          <a routerLink="/preferencias" class="navs">Preferencias</a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="class col-6 col-md-6 col-sm-12">
+          <div class="info">
+            <H2>Información personal</H2>
+            <div class="form-group">
+              <label for="inputName"><b>Nombre *</b></label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                [(ngModel)]="user.name"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputProvince"><b>Provincia</b></label>
+              <select
+                class="form-control"
+                [(ngModel)]="selectedProvince"
+                name="province"
+                (change)="getCities(selectedProvince)"
+              >
+                <option value="" disabled selected>
+                  Seleccione una provincia
+                </option>
+                <option
+                  *ngFor="let province of provinces"
+                  [value]="province.name"
+                >
+                  {{ province.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select
+                class="form-control"
+                [(ngModel)]="selectedCity"
+                name="city"
+                (change)="getLocalities(selectedCity)"
+              >
+                <option value="" disabled selected>
+                  Seleccione una ciudad
+                </option>
+                <option *ngFor="let city of cities" [value]="city.name">
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select
+                class="form-control"
+                [(ngModel)]="selectedLocality"
+                name="locality"
+              >
+                <option value="" disabled selected>
+                  Seleccione una localidad / barrio
+                </option>
+                <option
+                  *ngFor="let Locality of localities"
+                  [value]="Locality.name"
+                >
+                  {{ Locality.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputPhone"><b>Teléfono</b></label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputPhone"
+                [(ngModel)]="user.phone"
+                name="phone"
+              />
+            </div>
+            <div class="btn">
+              <button data-toggle="modal" data-target="#staticBackdrop">
+                Guardar
+              </button>
+            </div>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-backdrop="static"
+              data-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content" id="ModalReport">
+                  <div class="modal-header border-0">
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="tituloModal">
+                      <h5 class="modal-title text-center" id="tituloModal-1">
+                        Editar información
+                      </h5>
+                    </div>
+                    <p class="text-center">
+                      ¿Estás seguro de querer guardar los cambios realizados en
+                      tus datos?
+                    </p>
+                  </div>
+                  <div class="modal-footer border-0">
+                    <button
+                      type="button"
+                      class="botonModal1"
+                      (click)="saveUser()"
+                      data-dismiss="modal"
+                      routerLink="/bienvenida"
+                    >
+                      Confirmar
+                    </button>
+                    <button
+                      type="button"
+                      class="botonModal2"
+                      data-dismiss="modal"
+                    >
+                      No, cancelar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal fin -->
+          </div>
+        </div>
+
+        <div class="class col-6 col-md-6 col-sm-12">
+          <div class="foto">
+            <div class="row">
+              <div class="class col-6" id="zquierdo">
+                <h2>Foto perfil</h2>
+                <div class="btn justify-content-start">
+                  <input
+                    type="file"
+                    #fileInput
+                    (change)="onFileSelected($event)"
+                    hidden
+                  />
+                  <button type="button" (click)="triggerFileInput()">
+                    Subir
+                  </button>
+                </div>
+              </div>
+              <div class="class col-6" id="derecho">
+                <img
+                  *ngIf="user.profilePicture != ''; else defaultImage"
+                  class="profilePicture"
+                  src="{{ user.profilePicture }}"
+                  alt="Profile Picture"
+                />
+                <ng-template #defaultImage>
+                  <img
+                    src="../../../assets/Rectangle 23864.png"
+                    class="profilePicture"
+                    alt=""
+                  />
+                </ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="cuenta">
+            <h2>Mi cuenta</h2>
+            <p class="mt-2 mb-4 email">{{ user.email }}</p>
+            <form [formGroup]="userPassword" (ngSubmit)="savePassword()">
+              <div class="form-group">
+                <label for="exampleInputPassword1">Nueva contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  formControlName="password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword2">Repetir contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword2"
+                  formControlName="rePassword"
+                />
+              </div>
+              <div class="btn">
+                <button
+                  type="submit"
+                  data-toggle="modal"
+                  data-target="#staticBackdrop"
+                >
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

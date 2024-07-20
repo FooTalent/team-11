@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ public class User implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -40,13 +42,18 @@ public class User implements UserDetails, Serializable {
 
     private String phone;
 
-    private String country;
+    private String locality;
 
     private String province;
 
     private String city;
 
     private Boolean enabled;
+
+    private UUID tokenSecurity;
+
+    private Date expirationTokenDate;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -54,7 +61,7 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public String getUsername() {
-        return "";
+        return email;
     }
 
     @Override

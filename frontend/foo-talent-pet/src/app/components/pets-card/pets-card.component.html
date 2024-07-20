@@ -1,0 +1,30 @@
+<div class="card">
+  @if (pet.images && pet.images.length > 0) {
+    <img class="img__card" src="{{ pet.images[0].url }}" alt="{{ pet.name }}">
+  } @else {
+    <img class="img__card" src="../../../assets/perrito.png" alt="Ciro">
+  }
+  <div class="pet">
+      <div class="name__pet">
+        @if (pet.speciesType == 'cat') {
+          <img src="../../../assets/logo gato  dets.png" alt="gato">
+      } @else {
+          <img src="../../../assets/ph_dog.png" alt="perro">
+      }
+        <h2>{{pet.name}}</h2>
+      </div>
+      <div class="info__pet">
+          <div class="name__pet">
+            <img class="img__pet" src="../../../assets/date.png" alt="">
+            <p class="text__pet">Fecha: {{formatDate(pet.date)}}</p>
+          </div>
+          <div class="name__pet">
+            <img class="img__pet img--lugar" src="../../../assets/trecard.png" alt="">
+            <p class="text__pet text--lugar">Lugar: {{pet.locality}}</p>
+          </div>
+      </div>
+      <h3>Descripcion:</h3>
+      <p class="description">{{pet.description}}</p>
+      <button (click)="viewPet(pet)">Ver más</button>
+  </div>
+</div>

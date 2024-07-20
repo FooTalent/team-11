@@ -1,0 +1,135 @@
+<div class="filter-container">
+  <div class="publicar">
+    <p class="publicar-p">¿Buscás a tu mascota perdida?</p>
+    <!-- <button class="publicar-btn" routerLink="/form-publication">Publicar</button> -->
+<!--     @if (auth) {<button type="button" class="btn-pet " id="btn1" data-bs-toggle="modal" data-bs-target="#myModal">Publicar</button>}
+    @else {<button type="button" class="btn-pet " id="btn2"  routerLink="/form-publication">Publicar</button>} -->
+    <button type="button" class="btn-pet " id="btn2"  routerLink="/form-publication">Publicar</button>
+
+  </div>
+  <div class="cont">
+    <img class="filterimg" src="../../../assets/filter2.png" alt="" />
+    <h1>Filtrar</h1>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/pet.png" alt="" />
+      <label for="animal">Especie de animal</label>
+    </div>
+    <select id="animal" [(ngModel)]="filters.animal">
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="DOG">Perro</option>
+      <option value="CAT">Gato</option>
+      <option value="OTHER">Otro</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/gender.png" alt="" />
+      <label for="genero">Sexo</label>
+    </div>
+    <select id="genero" [(ngModel)]="filters.gender">
+      <option value="" disabled selected>Seleccionar</option>
+      <option value="MASCULINO">Masculino</option>
+      <option value="FEMENINO">Femenino</option>
+      <option value="OTRO">Otro</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/ubication.png" alt="" />
+      <label for="provincia">Ubicación</label>
+    </div>
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedProvince"
+      name="province"
+      id="provincia"
+      (change)="getCities(selectedProvince)"
+    >
+      <option value="" disabled selected>Provincia</option>
+      <option *ngFor="let province of provinces" [value]="province.name">
+        {{ province.name }}
+      </option>
+    </select>
+
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedCity"
+      name="city"
+      id="ciudad"
+      (change)="getLocalities(selectedCity)"
+    >
+      <option value="" disabled selected>Ciudad</option>
+      <option *ngFor="let city of cities" [value]="city.name">
+        {{ city.name }}
+      </option>
+    </select>
+
+    <select
+      class="ubicacion"
+      [(ngModel)]="selectedLocality"
+      name="locality"
+      id="localidad"
+    >
+      <option value="" disabled selected>Localidad/Barrio</option>
+      <option *ngFor="let Locality of localities" [value]="Locality.name">
+        {{ Locality.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label cont-date">
+      <img class="iconLabel" src="../../../assets/date.png" alt="" />
+      <label for="fecha">Fecha</label>
+    </div>
+    <input type="date"
+    class="form-control form-date"
+    id="start"
+    [(ngModel)]="filters.date"
+    aria-describedby="inputText"
+    value="2024-07-08"
+    min="2018-01-01"
+    max="2024-12-31"/>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/Vector.png" alt="" />
+      <label for="color">Color</label>
+    </div>
+    <div>
+      <button (click)="toggleColorsDropdown()" class="toggle">Seleccionar</button>
+    </div>
+    <div *ngIf="isColorsDropdownVisible">
+      <div *ngFor="let color of colors" class="d-flex">
+        <label class="color" [for]="color.id">{{ color.name }}</label>
+
+        <input type="checkbox" [id]="color.id" [(ngModel)]="color.selected" />
+        <!-- <label class="color" [for]="color.id">{{ color.name }}</label> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="cont cont-label">
+      <img class="iconLabel" src="../../../assets/tag.png" alt="" />
+      <label for="color">Etiquetas</label>
+    </div>
+    <div>
+      <button (click)="toggleTagsDropdown()" class="toggle">Seleccionar</button>
+    </div>
+    <div *ngIf="isTagsDropdownVisible">
+      <div *ngFor="let tag of tags" class="d-flex">
+        <label [for]="tag.id">{{ tag.name }}</label>
+        <input type="checkbox" [id]="tag.id" [(ngModel)]="tag.selected" />
+      </div>
+    </div>
+  </div>
+  <button class="btn" (click)="applyFilters()">Aplicar filtros</button>
+  <button class="btn" (click)="deleteFilters()">Borrar filtros</button>
+</div>

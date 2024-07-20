@@ -1,0 +1,168 @@
+@import url('../../../styles.css');
+
+/* .container{
+  text-align: center;
+  padding: 0;
+} */
+.card {
+  max-width: 307px;
+  height: 415px;
+  background-color: #F4F4DC;
+  padding: 10px 0px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* margin: 0; */
+}
+.img__card{
+  /* width: 287px; */
+  border-radius: 10px;
+  height: auto;
+  margin: 0 .5rem;
+  max-height: 167px;
+}
+.pet {
+  padding: 10px 7px;
+  text-align: start;
+}
+.name__pet{
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.img__pet {
+  max-width: 22px;
+  max-height: 20px;
+  margin: 0 .5rem;
+}
+.img--lugar{
+  max-width: 18px;
+  max-height: 20px;
+  /* margin-right: 2px; */
+}
+h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 19px;
+}
+.info__pet {
+  margin: 6px 0;
+}
+
+.text__pet{
+  color: black;
+  font-family: var(--texto);
+  font-weight: 700;
+  font-size: 14.2px;
+  letter-spacing: 0.2px;
+  line-height: 18.66px;
+  margin: .6rem 0;
+}
+.text--lugar{
+  margin-left: 4px;
+}
+h3, .description{
+  margin-left: .4rem;
+}
+h3{
+  color: black;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15.55px;
+}
+.description{
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 13.45px;
+}
+.pet button {
+  font-family: var(--texto);
+  background-color: var(--colorBtnPublicaciones);
+  border: none;
+  font-weight: 600;
+  padding: 8px 23px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pet button:hover {
+  background-color: #da9928ef; /* Color de fondo al pasar el mouse */
+}
+@media (width < 700px) {
+  .card {
+    margin: 0;
+    max-width: 250px;
+    height: auto;
+    padding: 2px;
+    /* margin: 0; */
+  }
+  .img__card{
+    max-width: 240px;
+    margin:.2rem;
+
+  }
+
+}
+@media (width < 500px) {
+  .card {
+    max-width: 165px;
+    padding: 1.5px;
+  }
+  .img__card{
+    max-width: 158px;
+    max-width: 190px;
+    padding: 2px;
+    margin:.3rem;
+
+  }
+  .info__pet {
+    margin: 3px 0;
+  }
+  .text__pet{
+    font-size: 10px;
+    letter-spacing: 0.1px;
+    line-height: 12px;
+    margin: .4rem 0;
+  }
+  .img__pet {
+    margin: 0 .3rem;
+  }
+  .text--lugar{
+    margin-left: .3rem;
+  }
+  .pet button {
+    padding: 6px 19px;
+    font-size: 14px;
+
+  }
+}
+
+.btn-edit-container {
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.btn-edit img {
+    width: 50px;
+    height: auto;
+}
+.btn-delate-container {
+    z-index: 1;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.btn-delate img {
+    width: 50px;
+    height: auto;
+}
+
+a img:hover{
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}

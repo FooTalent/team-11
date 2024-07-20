@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div id="area">
+    <div class="contenedor">
+        <app-saludo-dasboard></app-saludo-dasboard>
+        
+        <div class="container">
+            <div class="row">
+                <div class="class col-12 col-md-6 ">
+                    <div id="notificaciones">
+                        <h2>Notificaciones</h2>
+
+                        <div class="toggles">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="estado" (change)="mostrarOpciones($event)">
+                                <label class="custom-control-label" for="customSwitch1">Recibir alertas de publicaciones por mail</label>
+                                <small id="emailHelp" class="form-text text-muted">Podes personalizar tus alerta usando filtros</small>
+                            </div>
+
+                            <div>@if (estado === false) {
+
+                                } @else {
+                                    <app-toggle-opciones ></app-toggle-opciones>
+                                }
+                            </div>
+
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" >
+                                <label class="custom-control-label" for="customSwitch1">Recibir notificaciones de comentarios</label>
+                            </div>
+
+                            <div class="btn">
+                                <button>Guardar</button>
+                            </div>
+                        </div> 
+                    </div>    
+                </div>
+
+                <div class="class col-12 col-md-6">
+                    <div class="imagenIzquierda">
+                        <div class="contenedorImg">
+                            <img src="../../../assets/cute-animals-group-white-background 4.png" alt="" class="imagen">
+                        </div>
+                        <div class="texto text-center">
+                            <p>Si tenés alguna inquietud, consulta o problema no dudes en ponerte en contacto con nuestro equipo. ¡Estamos aquí para ayudarte! </p>
+                        </div>
+                        <div class="botonContactar">
+                            <button class="btn-pet" routerLink="/contact">Contactar</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+

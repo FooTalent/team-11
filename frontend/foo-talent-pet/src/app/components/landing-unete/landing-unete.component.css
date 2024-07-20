@@ -1,0 +1,97 @@
+@import url('../../../styles.css');
+
+.container{
+  margin-bottom: 6%;
+  margin-top: 3%;
+}
+
+.suscribirse{
+    background: #D9D9D9;
+      border-radius: 20px;
+      padding: 5px;
+      margin: 20px;
+      margin-left: 50px;
+      margin-right: 50px;
+      height: 245px;
+      margin-top: 10%;
+  }
+  
+  h3.titulo {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  small#emailHelp {
+    margin-left: -116px;
+  }
+  
+  h1{
+font-family: Poppins;
+font-size: 39.81px;
+font-weight: 600;
+line-height: 63.7px;
+letter-spacing: -0.02em;
+text-align: center;
+color:  #DD761C;
+/* box-shadow: 1px 4px 6px 0px #C8B3A4CC; */
+
+;
+  }
+
+p{
+font-family: var(--texto);
+font-size: 19.02px;
+font-weight: 500;
+line-height: 30.43px;
+letter-spacing: -0.02em;
+text-align: center;
+}
+.parrafo{
+  margin-bottom: 10%;
+}
+button{
+    box-shadow: 3px 4px 6px 1px #BEBEB2;
+    border-radius: 50px;
+    background: #FEB941;
+    margin-right: auto; 
+    margin-left: auto;
+    display: flex;
+    padding: 14px 0;
+    width: 222px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+#imagen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-bottom: 6%;
+  margin-top: 6%;
+}
+.imagen-lateral{
+  position: absolute;
+  top: 10vh;
+  left: 0px;
+  max-width: 20vh;
+  width: auto;
+  height: auto;
+}
+.imagen-inferior-lateral{
+  width: 80%;
+  height: auto;
+  margin-left: 7vh;
+}
+
+.contenedor-imagen-inferior{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contenedorImagen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

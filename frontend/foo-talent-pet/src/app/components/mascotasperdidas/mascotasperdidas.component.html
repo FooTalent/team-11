@@ -17,7 +17,7 @@
     </div>
     <div class="border-top border-dark w-100 mt-3"></div>
     <!-- <hr> -->
-     @if (isLoading) {
+     @if (isLoading==true) {
       <app-spiner></app-spiner>
      }@else {
       <div class="contenedor" *ngIf="pets && pets.length > 0">

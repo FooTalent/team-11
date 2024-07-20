@@ -217,7 +217,7 @@ a{
     align-content: end;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
     .white-section {
         position: absolute;
         z-index: 100;
@@ -230,4 +230,4 @@ a{
     .responsive{
         height: 20rem;
     }
-}
+} */

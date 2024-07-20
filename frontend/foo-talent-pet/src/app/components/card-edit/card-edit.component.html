@@ -1,9 +1,9 @@
 <div class="card">
     <div class="btn-edit-container"><a (click)="editPost(pet)"><img src="../../../assets/edit.png"  class="btn-edit "></a></div>
     <div class="btn-delate-container"><a  (click)="delatePost(pet)"><img src="../../../assets/trash can.png" alt="btn-delate"></a></div>
-    
-    
-    <img class="img__card" src=".../../../../../assets/perrito.png" alt="Ciro">
+
+
+    <img class="img__card" src="{{pet.images[0].url}}" alt="Ciro">
     <div class="pet">
         <div class="name__pet">
           <img class="img__pet" src="../../../assets/onecard.png" alt="">
@@ -26,4 +26,3 @@
         <button (click)="viewPet(pet)">Ver más</button>
     </div>
   </div>
-  

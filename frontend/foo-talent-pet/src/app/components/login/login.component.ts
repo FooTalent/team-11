@@ -21,6 +21,7 @@ import { SpinerComponent } from "../spiner/spiner.component";
 import { Store, select } from '@ngrx/store';
 import { logIn,logOut } from "../../store/tasks.actions";
 import { AppState } from "../../app.state";
+import Swal from 'sweetalert2';
 
 
 
@@ -65,13 +66,22 @@ export class LoginComponent {
           rePassword: this.userRegister.value.rePassword,
         }
         this.registroService.register(datos).subscribe((response: any) =>{
-          console.log(response)
-          console.log('registro hecho')
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+            text: ' Por favor, Activa tu cuenta revisando tu correo.',
+          });
+
         })
         console.log(datos)
       }
 
       else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de resgistro',
+          text: ' Por favor, verifica tus credenciales.',
+        });
         console.log("error de registro")
       }
   }
@@ -91,13 +101,23 @@ export class LoginComponent {
     this.petQuestService.login(credenciales).pipe().subscribe({
     next: (response) => {
       localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify(response.user));
+      Swal.fire({
+        icon: 'success',
+        title: 'Inicio de sesión exitoso',
+        text: 'Bienvenido a FooTalent Pet',
+      });
       this.store.dispatch(logIn({ loginResponse: response }));
       this.isLoading = false;
     },
     error: (error) => {
       this.isLoading = false;
       //poner pop up de error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de login',
+        text: 'No se pudo iniciar sesión. Por favor, verifica tus credenciales.',
+      });
+
     console.error('Error de login:', error);
     },
     complete: () => {

@@ -142,6 +142,7 @@ export class InfoDashboardComponent {
 
         const newToken = data.token;
         localStorage.setItem('token', newToken);
+        localStorage.setItem('user', JSON.stringify(this.user));
       });
     }
   }
@@ -196,6 +197,7 @@ export class InfoDashboardComponent {
           ...this.user,
           profilePicture: data.profilePicture,
         };
+        localStorage.setItem('user', JSON.stringify(this.user));
       });
   }
 

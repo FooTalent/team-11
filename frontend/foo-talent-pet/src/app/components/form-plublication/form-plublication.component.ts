@@ -143,12 +143,7 @@ export class FormPlublicationComponent {
             next: (response) => {
               console.log(response);
               this.petquestService
-                .postImage(this.imagesFiles, response.id, token)
-                .subscribe({
-                  next: (response) => {
-                    console.log(response);
-                  },
-                });
+                .postImage(this.imagesFiles, response.id, token).subscribe();
             },
             error: (error) => {
               console.log(error);

@@ -17,18 +17,18 @@
         <label class="form-check-label text-status" for="lost">Perdidos</label>
       </div>
       <div class="form-check">
-        <input type="radio"  class="form-check-input" id="found" name="publicationType" (click)="pet.speciesType = 'FOUND'"value="found">
+        <input type="radio"  class="form-check-input" id="found" name="publicationType" (click)="pet.status = 'FOUND'"value="found">
         <label class="form-check-label text-status" for="found">Encontrado</label>
       </div>
       <div class="form-check">
-        <input type="radio"  class="form-check-input" id="adoption" name="publicationType" (click)="pet.speciesType = 'ADOPTION'" value="adoption">
+        <input type="radio"  class="form-check-input" id="adoption" name="publicationType" (click)="pet.status = 'ADOPTION'" value="adoption">
         <label class="form-check-label text-status" for="adoption">Adopcion</label>
       </div>
   </div>
 
     <h2 class="subtitle">Detalles Básicos</h2>
     <div class="row">
-      <div class="class col-12 col-md-6 col-sm-12"> 
+      <div class="class col-12 col-md-6 col-sm-12">
         <div class="row">
           <div class="class col-6">
             <h3>Especie de animal *</h3>
@@ -105,7 +105,7 @@
               </select>
 
               }
-              
+
             </div>
 
             <div class="form-group col-md-4">
@@ -122,7 +122,7 @@
                   }
                 </select>
               }
-              
+
             </div>
           </div>
 

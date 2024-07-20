@@ -91,7 +91,7 @@ export class LoginComponent {
     this.petQuestService.login(credenciales).pipe().subscribe({
     next: (response) => {
       localStorage.setItem('token', response.token);
-      console.log('login con éxito:', response);
+      localStorage.setItem('user', JSON.stringify(response.user));
       this.store.dispatch(logIn({ loginResponse: response }));
       this.isLoading = false;
     },

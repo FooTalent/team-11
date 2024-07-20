@@ -48,4 +48,13 @@ public class CloudinaryServiceImpl implements CloudinaryService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteFile(String publicId) {
+        try {
+            cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

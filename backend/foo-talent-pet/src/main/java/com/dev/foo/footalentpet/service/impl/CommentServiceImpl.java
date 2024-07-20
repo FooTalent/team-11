@@ -17,10 +17,16 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -39,8 +45,11 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private EmailService emailService;
 
+    @Value("${frontend.url}")
+    private String frontendUrl;
+
     @Override
-    public CommentResponseDTO createComment(CommentRequestDTO commentDTO) {
+    public CommentResponseDTO createComment(CommentRequestDTO commentDTO) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = (User) authentication.getPrincipal();
 
@@ -51,7 +60,14 @@ public class CommentServiceImpl implements CommentService {
         comment.setUser(currentUser);
         Comment savedComment = commentRepository.save(comment);
         savedComment.setCreatedAt(LocalDateTime.now());
-        emailService.sendSimpleMessage(comment.getPost().getUser().getEmail(), "New comment", "You have a new comment in your post");
+
+        ClassPathResource classPathResource = new ClassPathResource("templates/comment.html");
+        Path path = Paths.get(classPathResource.getURI());
+        String message = new String(Files.readAllBytes(path));
+        message = message.replace("{frontendUrl}", frontendUrl);
+        message = message.replace("{postId}", savedComment.getPost().getId().toString());
+
+        emailService.sendHtmlMessage(savedComment.getPost().getUser().getEmail(), "Nuevo comentario", message);
         return commentDTOMapper.toDTO(savedComment);
     }
 

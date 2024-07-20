@@ -26,6 +26,7 @@ public class User implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(unique = true)
     private String email;
 
     private String password;
@@ -41,7 +42,7 @@ public class User implements UserDetails, Serializable {
 
     private String phone;
 
-    private String country;
+    private String locality;
 
     private String province;
 

@@ -2,6 +2,7 @@ package com.dev.foo.footalentpet;
 
 import com.dev.foo.footalentpet.model.request.TagRequestDTO;
 import com.dev.foo.footalentpet.service.ColorService;
+import com.dev.foo.footalentpet.service.LocationService;
 import com.dev.foo.footalentpet.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

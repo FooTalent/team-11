@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class PostController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping
-    public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) {
+    public ResponseEntity<PostResponseDTO> create(@RequestBody PostRequestDTO postRequestDTO) throws IOException {
         PostResponseDTO post = postService.create(postRequestDTO);
         return new ResponseEntity<>(post, HttpStatus.CREATED);
     }
@@ -71,7 +72,9 @@ public class PostController {
                                                          @RequestParam(required = false) String province,
                                                          @RequestParam(required = false) String city,
                                                          @RequestParam(required = false) String locality,
-                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date) {
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date,
+                                                         @RequestParam(required = false) List<UUID> colorIds,
+                                                         @RequestParam(required = false) List<UUID> tagIds) {
         return new ResponseEntity<>(postService.findAll(
                 status,
                 recent,
@@ -80,7 +83,9 @@ public class PostController {
                 Optional.ofNullable(province),
                 Optional.ofNullable(city),
                 Optional.ofNullable(locality),
-                Optional.ofNullable(date)),
+                Optional.ofNullable(date),
+                Optional.ofNullable(colorIds),
+                Optional.ofNullable(tagIds)),
                 HttpStatus.OK);
     }
 
@@ -92,5 +97,24 @@ public class PostController {
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         postService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Operation(summary = "Update post by id", description = "Update post by id", responses = {
+            @ApiResponse(responseCode = "201", description = "Successfully update post"),
+            @ApiResponse(responseCode = "404", description = "Post not found", content = @Content(schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<PostResponseDTO> update(@PathVariable UUID id, @RequestBody PostRequestDTO postRequestDTO) {
+        return new ResponseEntity<>(postService.update(id, postRequestDTO), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Get all posts by user", description = "Get all post with data by user", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully get posts"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
+    })
+    @GetMapping("/user")
+    public ResponseEntity<List<PostResponseDTO>> findByUser() {
+        return new ResponseEntity<>(postService.findByUser(), HttpStatus.OK);
     }
 }

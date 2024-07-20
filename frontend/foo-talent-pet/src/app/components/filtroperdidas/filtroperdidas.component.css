@@ -1,0 +1,159 @@
+@import url('../../../styles.css');
+
+.filter-container {
+  margin-left:  56px;
+  width: 400px;
+  /* height: 600px; */
+}
+.btn-pet{
+  color: white;
+  font-size: 20px;
+  padding: .4rem;
+  width: 150px;
+}
+.publicar{
+  width: 400px;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:8px;
+  border-radius: 10px;
+  border: solid 1px var(--colorBtnPublicaciones);
+  margin-top: 1rem;
+}
+.publicar-p{
+  font-family: var(--texto);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+.publicar-btn{
+  width: 130px;
+  border: none;
+  padding: 8px;
+  border-radius: 40px;
+  background-color: var(--colorBtnPublicaciones);
+  color: var(--colorFondo);
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+.cont {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+
+}
+.filterimg {
+  margin: 0 .5rem 1.2rem 0;
+}
+h1 {
+  text-align: center;
+  font-family: var(--titulo);
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.filter-section{
+  margin-bottom: 0;
+}
+.cont-label{
+  margin: 0;
+  background-color: var(--colorFondoForms);
+  color: #344054;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.iconLabel{
+  margin-right: .6rem;
+}
+label {
+  line-height: 16px;
+  font-family: var(--titulo);
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0;
+  background-color: var();
+}
+/* chekbox  */
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.color {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+
+}
+
+/* input[type="checkbox"]:checked {
+
+} */
+/* fin check  */
+select {
+  font-family: var(--texto);
+  width: 100%;
+  margin-bottom: .5rem;
+  padding: 8px;
+  border-radius: 7px;
+  border: 1px solid var(--colorBtnPublicar);
+  background-color: #f9f9f9;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.toggle {
+  font-family: var(--texto);
+  width: 100%;
+  margin-bottom: .5rem;
+  padding: 8px;
+  border-radius: 7px;
+  border: 1px solid var(--colorBtnPublicar);
+  background-color: #f9f9f9;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: start;
+}
+
+.btn {
+  width: 110;
+  margin: 1rem .2rem;
+  padding: 10px;
+  gap: 10px;
+  background-color: var(--colorBtnRegistrarme);
+  color: #344054;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+@media(max-width:700px){
+  .filter-container{
+    width: 300px;
+    margin: 8px;
+    padding:0;
+  }
+  .publicar{
+  width: 400px;
+  display: none;
+  }
+}
+@media(max-width:450px) {
+  .filter-container{
+    width: 280px;
+  }
+}

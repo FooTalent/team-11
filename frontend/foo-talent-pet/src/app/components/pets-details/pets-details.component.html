@@ -1,0 +1,396 @@
+<app-navbar></app-navbar>
+<div class="container-fluid row">
+  <div class="col-lg-6 col-sm-12">
+
+    @if (pet.status == 'LOST') {
+      <h1>Mascotas perdidas</h1>
+    }
+    @else if (pet.status == 'FOUND') {
+      <h1>Mascotas encontradas</h1>
+    }
+    @else if (pet.status == 'ADOPTION') {
+      <h1>Mascotas en adopción</h1>
+    }
+    @else {
+      <h1>Mascotas perdidas</h1>
+    }
+
+    <div id="carouselPetDetails" class="carousel slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselPetDetails"
+          data-bs-slide-to="0"
+          class="active btn-testimonial"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselPetDetails"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          class="btn-testimonial"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselPetDetails"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+          class="btn-testimonial"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div
+          *ngFor="let image of pet.images; let isFirst = first"
+          class="carousel-item"
+          [class.active]="isFirst"
+        >
+          <img src="{{ image.url }}" class="d-block w-100" alt="Image pet" />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselPetDetails"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselPetDetails"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- <img src="../../../assets/perrito.png" alt="test">-->
+    <div class="container white-section">
+      <p>Si tenes información para aportar no dudes en dejar tu comentario</p>
+      <hr />
+
+      @if (auth==true) {
+      <div class="input-comentario">
+        <span class="profile-img"
+          ><img
+            src="{{ user.profilePicture }}"
+            alt="profile-img"
+            width="60"
+            height="60"
+            style="border-radius: 50%;"
+        /></span>
+        <form action="">
+          <input
+            type="text"
+            [(ngModel)]="commentContent"
+            name="commentContent"
+            placeholder="Dejar un comentario"
+          />
+        </form>
+      </div>
+      <div class="input-comentario">
+        <button
+          class="btn-pet"
+          style="background: #feb941"
+          (click)="createComment()"
+        >
+          Comentar
+        </button>
+        </div>
+        @if (isLoadingComments==true) {
+          <div >
+            <app-spiner style="display: block;"></app-spiner>
+          </div>
+          }
+      } @else {
+      <div class="input-comentario">
+        <span class="profile-img"
+          ><img
+            src="../../../assets/account_circle.png"
+            alt=""
+            style="background-color: #98a2b3;"
+        /></span>
+        <form action="">
+          <input type="text" placeholder="Dejar un comentario" />
+        </form>
+      </div>
+      <div class="input-comentario">
+        <button disabled class="btn-pet" style="background: #98a2b3">
+          Comentar
+        </button>
+        <p>*Deberás registarte o iniciar sesión para comentar</p>
+      </div>
+
+      } @if (comments.length > 0) {
+      <hr />
+      <div *ngFor="let comment of comments">
+        <div class="comentario row">
+          <div id="fix" class="col-3">
+            <span class="profile-img"
+              ><img
+                src="{{ comment.user.profilePicture }}"
+                alt="comment user profile"
+                width="60"
+                height="60"
+                style="border-radius: 50%;"
+            /></span>
+          </div>
+          <div class="col-9">
+            <div class="comentario-texto">
+              <h6>{{ comment.user.name }}</h6>
+              <p>
+                {{ comment.content }}
+              </p>
+              <span class="">{{ formatDateWithHour(comment.createdAt) }}</span>
+              <a
+                class="ml-2"
+                (click)="reportComent()"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                data-whatever="@getbootstrap"
+                >Reportar comentario</a
+              >
+
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content" id="ModalReport">
+                    @if (btnReport == true) {
+                    <div class="modal-header border-0 d-flex">
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="tituloModal">
+                        <h5 class="modal-title text-center" id="tituloModal-1">
+                          Reportar
+                        </h5>
+                      </div>
+                      <p class="text-center">
+                        Si creés que algún contenido no es adecuado, por favor
+                        reportalo para que podamos revisarlo y tomar las medidas
+                        necesarias
+                      </p>
+                      <div class="comentario">
+                        <div class="form-group">
+                          <textarea
+                            class="form-control"
+                            id="message-text"
+                            [(ngModel)]="reportCommentContent"
+                            placeholder="Motivo"
+                          ></textarea>
+                          <small class="d-flex justify-content-end"
+                            ><p>{{ reportCommentContent.length }}/300</p></small
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="modal-footer border-0 d-flex justify-content-center"
+                    >
+                      <button
+                        type="button"
+                        class="botonModal1"
+                        (click)="confirmReport(comment.id)"
+                        data-target="#exampleModal2"
+                        data-whatever="@getbootstrap"
+                      >
+                        Reportar
+                      </button>
+                      <button
+                        type="button"
+                        class="botonModal2"
+                        data-dismiss="modal"
+                      >
+                        No, cancelar
+                      </button>
+                    </div>
+                    }@else {
+                    <div class="modal-header border-0 d-flex">
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="tituloModal">
+                        <h5 class="modal-title text-center" id="tituloModal-2">
+                          GRACIAS
+                        </h5>
+                      </div>
+                      @if(reportStatus == 'comment') {
+                      <p class="text-center">
+                        El comentario ha sido reportado con éxito!
+                      </p>
+                      } @else {
+                      <p class="text-center">
+                        La publicación ha sido reportada con éxito!
+                      </p>
+                      }
+
+                      <div class="imagen-modal">
+                        <img
+                          src="../../../assets/grupo-animales-lindos-sobre-fondo-blanco 2.png"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style="width: 90%; margin-left: 10px" />
+        </div>
+      </div>
+
+      }
+    </div>
+  </div>
+  <div class="col-lg-6 col-sm-12">
+    <div class="container-name">
+      <div class="container-shadow">
+        @if (pet.speciesType == 'cat') {
+        <img src="../../../assets/logo gato  dets.png" alt="gato" />
+        } @else {
+        <img src="../../../assets/ph_dog.png" alt="perro" />
+        }
+        <h5>{{ this.pet.name }}</h5>
+      </div>
+      <div class="row-fix">
+        <img src="../../../assets/twocard.png" alt="eye" />
+        <p>
+          Visto por última vez:<span class="ml-2">{{
+            formatDate(pet.date)
+          }}</span>
+        </p>
+      </div>
+      <div class="row-fix">
+        <img src="../../../assets/ubication.png" alt="place" />
+        <p>{{ pet.province }}, {{ pet.city }}, {{ pet.locality }}</p>
+      </div>
+    </div>
+    <br />
+
+    <div class="container-details">
+      <div class="row">
+        <div class="col-3">
+          <span class="profile-img"
+            ><img
+              src="{{ pet.user.profilePicture }}"
+              width="60"
+              height="60"
+              alt=""
+              style="border-radius: 50%;"
+          /></span>
+        </div>
+        <div class="col-7">
+          <p>{{ pet.user.name }}</p>
+          <p>
+            Última Actualizacion <span>{{ formatDate(pet.createdAt) }}</span>
+          </p>
+          <hr />
+        </div>
+      </div>
+      <div class="row-fix">
+        <!-- email -->
+        <img
+          src="../../../assets/email-address-svgrepo-com 1.png"
+          alt="email"
+        />
+        <p>{{ pet.user.email }}</p>
+      </div>
+      <div class="row-fix">
+        <img src="../../../assets/cellphone.png" alt="cell" />
+        <p>{{ pet.user.phone }}</p>
+      </div>
+      <h5 class="d-flex align-content-start">Descripción</h5>
+      <hr />
+      <p>{{ this.pet.description }}</p>
+      <hr />
+      <div class="caract">
+        <h5>Sexo</h5>
+        <p>●</p>
+        <div class="caracteristic">{{ pet.gender }}</div>
+      </div>
+      <div class="caract">
+        <h5>Color</h5>
+        <p>●</p>
+        <div class="d-flex" *ngFor="let color of pet.colors">
+          <div class="caracteristic">{{ color.name }}</div>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex" *ngFor="let caracteristic of pet.tags">
+        <div class="caracteristic">{{ caracteristic.name }}</div>
+      </div>
+      <hr />
+      <div class="text-end">
+        <a
+          class="ml-2"
+          (click)="reportPost()"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-whatever="@getbootstrap"
+          >Reportar publicación</a
+        >
+      </div>
+    </div>
+
+    <div class="container-contacus">
+      <h5>Compartir</h5>
+      <hr />
+      <div class="row">
+        <div class="col">
+          ¡Comparte la publicación en tus redes para aumentar la difusión!
+        </div>
+        <div class="col d-flex">
+          <a href="https://web.whatsapp.com/"
+            ><img src="../../../assets/whatsapp.png" alt="whatsapp"
+          /></a>
+          <a href="https://www.facebook.com/"
+            ><img src="../../../assets/facebook.png" alt="facebook"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div id="fix-responsive">
+        <h1>Ver Mascotas encontradas</h1>
+      <div class="responsive">
+        @if (isLoading) {
+        <app-spiner></app-spiner>
+        } @else {
+          @for (pet of pets; track $index) {
+            <app-pets-card class="m-2 card" [pet]="pet"></app-pets-card>}
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

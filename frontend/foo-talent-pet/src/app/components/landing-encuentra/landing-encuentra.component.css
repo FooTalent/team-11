@@ -1,0 +1,53 @@
+@import url('../../../styles.css');
+.contenedor{
+    margin-top: 0%;
+    margin-bottom: 3%;
+    padding-top: 3%;
+}
+.title-bienvenida{
+    color: var(--colorNavBar);
+    font-family: var(--titulo);
+    font-weight: var(--fontWeight);
+}
+.imagen-landing{
+    width: 90%;
+    height: auto;
+}
+#img-land{
+    display: flex;
+    align-items: end;
+    align-content: end;
+    justify-content: end;
+    flex-direction: column-reverse;
+}
+div#tex {margin-right: 54px;margin-left: -22px;}
+#contenedor-bienvenida{
+    padding-top: 15%;
+    padding-left: 15%;
+    
+}
+p{
+    font-family: var(--texto);
+    font-size: larger;
+}
+#btn1{
+    background-color: #6DC5D1;
+}
+#btn1-1{
+    background-color: #6DC5D1;
+}
+#btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+@media(max-width: 650px){
+    .row{
+        display:flex ;
+        flex-direction: column-reverse;
+    }
+    img{
+        width: 80%;
+    }
+}

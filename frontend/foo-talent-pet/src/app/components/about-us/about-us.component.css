@@ -1,0 +1,54 @@
+@import url('../../../styles.css');
+
+#area{
+    width: var(--ancho);
+    height: var(--alto);
+    background-color: var(--colorFondo);
+}
+.container{
+    text-align: justify;
+    padding-bottom: 5ch;
+}
+.title{
+    margin-bottom: var(--espacioTituloAbajo);
+    padding-top: var(--espacioTituloArriba);
+    color: var(--colorNavBar);
+    font-family: var(--titulo);
+    font-weight: var(--fontWeight);
+}
+
+p {
+    font-family: var(--texto);
+}
+
+.container-img{
+    position: relative;
+    width: 20%;
+    margin-right: 80%;
+    background-color: var(--colorFondo);
+}
+.imagen-lateral{
+    position: absolute;
+    top: 10vh;
+    left: 0px;
+    max-width: 20vh;
+    width: auto;
+    height: auto;
+}
+.imagen-inferior-lateral{
+    width: 80%;
+    height: auto;
+    margin-left: 7vh;
+}
+
+.contenedor-imagen-inferior{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#contenedorImagen{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    
+}

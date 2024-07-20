@@ -1,0 +1,101 @@
+<div class="contenedor">
+  <div class="sec-1">
+    <p>Tipo de publicación</p>
+    <button type="button" class="btn btn-outline-dark">
+      Perdidos
+    </button>
+    <button type="button" class="btn btn-outline-dark">
+      Encontrados
+    </button>
+    <button type="button" class="btn btn-outline-dark">
+      Adopción
+    </button>
+  </div>
+
+  <div class="sec-2">
+    <p>Especie de animal</p>
+    <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedSpecies === 'DOG'"  (click)= butonSpeciesDog()>
+      Perro
+    </button>
+    <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedSpecies === 'CAT'" (click)=butonSpeciesCat() >
+      Gatos
+    </button>
+    <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedSpecies === 'OTHER'" (click)=butonSpeciesOther()>
+      Otro
+    </button>
+  </div>
+
+  <div class="sec-3">
+    <p>Sexo del animal</p>
+    <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedGender === 'MASCULINO'" (click)=ButonGenderMale()>
+      Macho
+    </button>
+    <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedGender === 'FEMENINO'" (click)=ButonGenderFemale() >
+      Hembra
+    </button>
+  </div>
+
+  <div class="sec-4">
+    <p>Color del animal</p>
+      @for(color of colors; track $index){
+        <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="tagsPressed[color.name]" (click)="fillTagsArray(color)">
+          {{color.name}}
+        </button>
+      }
+  </div>
+  
+  <div class="sec-5">
+    <p>Etiquetas</p>
+      @for(tag of tags; track $index){
+        <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="tagsPressed[tag.name]" (click)="fillTagsArray(tag)">
+          {{tag.name}}
+        </button>
+      }
+  </div>
+
+  <div class="ubicacion">
+    <p>Ubicación</p>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <select id="inputState" class="form-control" (change)="onProvinciaChange($event)">
+          <option selected>Provincia</option>
+          @for (provincia of provincias; track $index) {
+            <option value="{{provincia.name}}">{{provincia.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        @if (provincia == "" ) {<select disabled id="inputState" class="form-control">
+          <option selected>Ciudad</option>
+          
+        </select>}@else {<select  id="inputState" class="form-control" (change)="onCityChange($event)">
+          <option selected>Ciudad</option>
+          @for (ciudad of ciudades; track $index) {
+            <option>{{ciudad.name}}</option>
+          }
+        </select>
+        }
+      </div>
+
+      <div class="form-group col-md-4">
+        @if (provincia == "" && city == "") {
+          <select disabled id="inputState" class="form-control">
+            <option selected>Localidad</option>
+            <option>...</option>
+          </select>
+        }@else {
+          <select id="inputState" class="form-control" (change)="onLocalidadChange($event)">
+            <option selected>Localidad</option>
+            @for (Localidad of localidades; track $index) {
+              <option >{{Localidad.name}}</option>
+            }
+          </select>
+        }
+      </div>
+          
+        
+      </div>
+
+  </div>
+</div>

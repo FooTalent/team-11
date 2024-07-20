@@ -33,7 +33,8 @@ export class FiltroperdidasComponent {
   router = inject(Router);
 
 
-
+  auth:boolean = false;
+  token:string = '';
   provinces: Location[] = [];
   cities: Location[] = [];
   localities: Location[] = [];
@@ -160,9 +161,15 @@ export class FiltroperdidasComponent {
     this.getPronvinces();
     this.getColors();
     this.getTags();
+    this.token = localStorage.getItem('token') || '';
+    if(this.token != ''){
+      this.auth = true;
+    }else{
+      this.auth = false;
+    }
 
-    console.log(this.credentials)
-    console.log(this.store)
+
+
     this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
         this.credentials = response;
   });

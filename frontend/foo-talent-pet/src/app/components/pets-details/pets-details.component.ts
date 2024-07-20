@@ -4,9 +4,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
-import { Comment, PetResponse } from '../../interfaces/interfaces';
+import { Comment, PetResponse,Filters } from '../../interfaces/interfaces';
 import { PetQuestService } from '../../service/pet-quest.service';
 import { FormsModule } from '@angular/forms';
+import { LostpetsService } from "../../service/posts/lostpets.service";
+import { SpinerComponent } from "../spiner/spiner.component";
+import { UserService } from "../../service/user.service";
 
 @Component({
   selector: 'app-pets-details',
@@ -17,12 +20,29 @@ import { FormsModule } from '@angular/forms';
     RouterLink,
     PetsCardComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
+    SpinerComponent
+
   ],
   templateUrl: './pets-details.component.html',
   styleUrl: './pets-details.component.css',
 })
 export class PetsDetailsComponent implements OnInit {
+
+  appliedFilters: Filters = {
+    animal: null,
+    gender: null,
+    province: null,
+    city: null,
+    locality: null,
+    date: null,
+    colors: null,
+    tags: null,
+  };
+  user: any;
+  order: boolean = true;
+  pets: any;
+  isLoading = false;
   btnReport: boolean = false;
   btnConfirmReport = false;
   reportCommentContent: string = '';
@@ -81,15 +101,18 @@ export class PetsDetailsComponent implements OnInit {
     colors: [],
     images: [],
   };
-
+  auth: boolean = false;
   comments: Comment[] = [];
-
+  token: string = '';
   commentContent: string = '';
+  isLoadingComments = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private petQuestService: PetQuestService
+    private petQuestService: PetQuestService,
+    private LostService: LostpetsService,
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +121,14 @@ export class PetsDetailsComponent implements OnInit {
       this.router.navigate(['/']);
       return;
     }
+    this.token = localStorage.getItem('token') || '';
+    if (this.token==='') {
+      this.auth = false;
+    }else{
+      this.auth = true;
+    }
     this.getPet(id);
+    this.getPets();
   }
 
   getPet(id: string) {
@@ -109,6 +139,7 @@ export class PetsDetailsComponent implements OnInit {
   }
 
   createComment() {
+    this.isLoadingComments = true;
     if (this.commentContent.trim() === '') {
       return;
     }
@@ -117,6 +148,7 @@ export class PetsDetailsComponent implements OnInit {
     this.petQuestService
       .createComment(this.pet.id, this.commentContent, token)
       .subscribe((comment) => {
+        this.isLoadingComments = false
         this.comments.push(comment);
         this.commentContent = '';
       });
@@ -137,5 +169,32 @@ export class PetsDetailsComponent implements OnInit {
     const year = date.getFullYear();
     const hour = date.getHours().toString().padStart(2, '0');
     return `${day} / ${month} / ${year} - ${hour}hs`;
+  }
+
+  getPets(){
+    this.isLoading=true;
+    this.LostService.getPets('LOST',this.appliedFilters, this.order).subscribe({
+      next: (response) => {
+        console.log(response  );
+        this.pets = response;
+        this.isLoading=false;
+      },
+      error: (error) => {
+        console.error(error);
+        this.isLoading=false;
+      },
+      complete: () => {
+        console.log('Observable completado');
+        this.isLoading=false;
+      },
+    });
+  }
+
+
+  getUser(){
+   
+    this.userService.getUser(this.pet.user.id).subscribe((user) => {
+      this.user = user;
+    });
   }
 }

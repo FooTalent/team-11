@@ -18,8 +18,8 @@ import { logIn,logOut } from "../../store/tasks.actions";
 })
 export class LandingEncuentraComponent implements OnInit {
 
-
-  
+  token: string = ""
+  auth:boolean = false;
   credentials: LoginResponse|undefined;
   router = inject(Router); 
   constructor(private store: Store<AppState>) {}
@@ -27,6 +27,12 @@ export class LandingEncuentraComponent implements OnInit {
  ngOnInit(): void {
        console.log(this.credentials)
     console.log(this.store)
+    this.token = localStorage.getItem('token') ?? '';
+    if(this.token != ''){
+      this.auth = true;
+    }else{
+      this.auth = false;
+    }
     this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
         this.credentials = response;
   });

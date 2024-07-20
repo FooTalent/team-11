@@ -62,12 +62,15 @@
       <p>Si tenes información para aportar no dudes en dejar tu comentario</p>
       <hr />
 
-      @if (true) {
+      @if (auth==true) {
       <div class="input-comentario">
         <span class="profile-img"
           ><img
-            src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg"
-            alt=""
+            src="{{ pet.user.profilePicture }}"
+            alt="profile-img"
+            width="60"
+            height="60"
+            style="border-radius: 50%;"
         /></span>
         <form action="">
           <input
@@ -86,14 +89,19 @@
         >
           Comentar
         </button>
-        <!-- <p>*Deberás registarte o iniciar sesión para comentar</p> -->
-      </div>
+        </div>
+        @if (isLoadingComments==true) {
+          <div >
+            <app-spiner style="display: block;"></app-spiner>
+          </div>
+          }
       } @else {
       <div class="input-comentario">
         <span class="profile-img"
           ><img
-            src="../../../assets/SVG - PNG FRONT/1 - LANDING/caso de exito 1 .svg"
+            src="../../../assets/account_circle.png"
             alt=""
+            style="background-color: #98a2b3;"
         /></span>
         <form action="">
           <input type="text" placeholder="Dejar un comentario" />
@@ -117,6 +125,7 @@
                 alt="comment user profile"
                 width="60"
                 height="60"
+                style="border-radius: 50%;"
             /></span>
           </div>
           <div class="col-9">
@@ -284,6 +293,7 @@
               width="60"
               height="60"
               alt=""
+              style="border-radius: 50%;"
           /></span>
         </div>
         <div class="col-7">
@@ -361,13 +371,15 @@
     <div id="fix-responsive">
       <h1>Ver Mascotas encontradas</h1>
       <div class="responsive">
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
-        <app-pets-card class="m-2"></app-pets-card>
+        @if (isLoading) {
+        <app-spiner></app-spiner>
+        } @else {
+          @for (pet of pets; track $index) { 
+            <app-pets-card class="m-2 card" [pet]="pet"></app-pets-card>}
+        }
+       
+       
+      
       </div>
     </div>
   </div>

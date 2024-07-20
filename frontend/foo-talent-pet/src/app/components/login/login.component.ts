@@ -52,8 +52,7 @@ export class LoginComponent {
   constructor(private petQuestService: PetQuestService, private registroService: RegistroService,private store: Store<AppState>) {}
 
   Registrarse(){
-    console.log("probando registro")
-    console.log(this.userRegister.value)
+    
 
     if(typeof this.userRegister.value.name === 'string' &&
       typeof this.userRegister.value.email === 'string' &&
@@ -69,20 +68,34 @@ export class LoginComponent {
           Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
-            text: ' Por favor, Activa tu cuenta revisando tu correo.',
+            text: 'Activa tu cuenta desde tu correo electrónico,Bienvenido a  Pet Quest',
+            confirmButtonColor: '#feb941',
+            cancelButtonColor: '#fde49d',
+            background: '#B8E4E9',
+            customClass: {
+              popup: 'custom-popup',
+              cancelButton: 'cancelBtn-pop',
+              confirmButton: 'confirmBtn-pop',}
           });
 
         })
-        console.log(datos)
+       
       }
 
       else{
         Swal.fire({
           icon: 'error',
-          title: 'Error de resgistro',
-          text: ' Por favor, verifica tus credenciales.',
+          title: 'Error de registro',
+          text: 'Por favor, verifica tus datos',
+          confirmButtonColor: '#feb941',
+          cancelButtonColor: '#fde49d',
+          background: '#B8E4E9',
+          customClass: {
+            popup: 'custom-popup',
+            cancelButton: 'cancelBtn-pop',
+            confirmButton: 'confirmBtn-pop',}
         });
-        console.log("error de registro")
+        
       }
   }
 
@@ -105,6 +118,13 @@ export class LoginComponent {
         icon: 'success',
         title: 'Inicio de sesión exitoso',
         text: 'Bienvenido a FooTalent Pet',
+        confirmButtonColor: '#feb941',
+        cancelButtonColor: '#fde49d',
+        background: '#B8E4E9',
+        customClass: {
+          popup: 'custom-popup',
+          cancelButton: 'cancelBtn-pop',
+          confirmButton: 'confirmBtn-pop',}
       });
       this.store.dispatch(logIn({ loginResponse: response }));
       this.isLoading = false;
@@ -114,21 +134,38 @@ export class LoginComponent {
       //poner pop up de error
       Swal.fire({
         icon: 'error',
-        title: 'Error de login',
-        text: 'No se pudo iniciar sesión. Por favor, verifica tus credenciales.',
+        title: 'Error de inicio de sesión',
+        text: 'Por favor, verifica tus credenciales',
+        confirmButtonColor: '#feb941',
+        cancelButtonColor: '#fde49d',
+        background: '#B8E4E9',
+        customClass: {
+          popup: 'custom-popup',
+          cancelButton: 'cancelBtn-pop',
+          confirmButton: 'confirmBtn-pop',}
       });
 
-    console.error('Error de login:', error);
+
     },
     complete: () => {
       this.isLoading = false;
-      console.log('Operación de login completada');
+      
       this.router.navigate(['/mascotas-perdidas']).then(() => { });
     }
   });
    } else {
-    console.log('Error en las credenciales');
-    //poner un pop up de error
+    Swal.fire({
+      icon: 'error',
+      title: 'Error de inicio de sesión',
+      text: 'Por favor, verifica tus credenciales',
+      confirmButtonColor: '#feb941',
+      cancelButtonColor: '#fde49d',
+      background: '#B8E4E9',
+      customClass: {
+        popup: 'custom-popup',
+        cancelButton: 'cancelBtn-pop',
+        confirmButton: 'confirmBtn-pop',}
+    });
 
    }
   }
@@ -139,7 +176,7 @@ export class LoginComponent {
 
   clickRegister(){
     this.register = !this.register
-    console.log(this.register)
+    
   }
 
   cerrarTodo(){
@@ -147,7 +184,7 @@ export class LoginComponent {
     if(this.cerrar == false){
       this.clickRegister();
     }
-    console.log(this.register)
+   
   }
   redireccionLogin(){
     this.redireccion==this.redireccion

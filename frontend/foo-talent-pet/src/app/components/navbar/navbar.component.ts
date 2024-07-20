@@ -50,6 +50,7 @@ export class NavbarComponent {
 
   logOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.store.dispatch(logOut());
     this.credentials = undefined;
     this.verifyToken = false;

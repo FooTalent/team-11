@@ -8,7 +8,18 @@
     />
   </div>
   <div class="container">
-    <h1 class="encabezado">Publicá una mascota que perdiste</h1>
+    @if(pet.status == 'LOST') {
+      <h1 class="encabezado">Publicá una mascota que perdiste</h1>
+    }
+    @else if (pet.status == 'FOUND') {
+      <h1 class="encabezado">Publicá una mascota que encontraste</h1>
+    }
+    @else if(pet.status == 'ADOPTION') {
+      <h1 class="encabezado">Publicá una mascota en adopción</h1>
+    }
+    @else {
+      <h1 class="encabezado">Publicá una mascota que perdiste</h1>
+    }
 
     <div class="form-group d-flex justify-content-center ">
 

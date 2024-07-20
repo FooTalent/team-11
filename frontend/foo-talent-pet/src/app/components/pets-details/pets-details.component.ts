@@ -129,6 +129,7 @@ export class PetsDetailsComponent implements OnInit {
     }
     this.getPet(id);
     this.getPets();
+    this.getUser();
   }
 
   getPet(id: string) {
@@ -192,8 +193,8 @@ export class PetsDetailsComponent implements OnInit {
 
 
   getUser(){
-   
-    this.userService.getUser(this.pet.user.id).subscribe((user) => {
+    this.userService.getUser(this.token).subscribe((user) => {
+      console.log(user);
       this.user = user;
     });
   }

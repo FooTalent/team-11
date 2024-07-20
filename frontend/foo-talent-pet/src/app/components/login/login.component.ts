@@ -52,7 +52,7 @@ export class LoginComponent {
   constructor(private petQuestService: PetQuestService, private registroService: RegistroService,private store: Store<AppState>) {}
 
   Registrarse(){
-    
+
 
     if(typeof this.userRegister.value.name === 'string' &&
       typeof this.userRegister.value.email === 'string' &&
@@ -79,7 +79,7 @@ export class LoginComponent {
           });
 
         })
-       
+
       }
 
       else{
@@ -95,7 +95,7 @@ export class LoginComponent {
             cancelButton: 'cancelBtn-pop',
             confirmButton: 'confirmBtn-pop',}
         });
-        
+
       }
   }
 
@@ -114,6 +114,7 @@ export class LoginComponent {
     this.petQuestService.login(credenciales).pipe().subscribe({
     next: (response) => {
       localStorage.setItem('token', response.token);
+      localStorage.setItem('user', JSON.stringify(response.user));
       Swal.fire({
         icon: 'success',
         title: 'Inicio de sesión exitoso',
@@ -149,7 +150,7 @@ export class LoginComponent {
     },
     complete: () => {
       this.isLoading = false;
-      
+
       this.router.navigate(['/mascotas-perdidas']).then(() => { });
     }
   });
@@ -176,7 +177,7 @@ export class LoginComponent {
 
   clickRegister(){
     this.register = !this.register
-    
+
   }
 
   cerrarTodo(){
@@ -184,7 +185,7 @@ export class LoginComponent {
     if(this.cerrar == false){
       this.clickRegister();
     }
-   
+
   }
   redireccionLogin(){
     this.redireccion==this.redireccion

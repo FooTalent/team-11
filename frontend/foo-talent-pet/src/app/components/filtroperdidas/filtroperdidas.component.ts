@@ -28,13 +28,11 @@ interface TagSelected extends Tag {
   styleUrl: './filtroperdidas.component.css',
 })
 export class FiltroperdidasComponent {
-
-  credentials: LoginResponse|undefined;
+  credentials: LoginResponse | undefined;
   router = inject(Router);
 
-
-  auth:boolean = false;
-  token:string = '';
+  auth: boolean = false;
+  token: string = '';
   provinces: Location[] = [];
   cities: Location[] = [];
   localities: Location[] = [];
@@ -49,7 +47,7 @@ export class FiltroperdidasComponent {
   tags: TagSelected[] = [];
 
   isColorsDropdownVisible: boolean = false;
-  isTagsDropdownVisible: boolean = false
+  isTagsDropdownVisible: boolean = false;
 
   filters: Filters = {
     animal: '',
@@ -106,7 +104,9 @@ export class FiltroperdidasComponent {
   }
 
   applyFilters() {
-    let date = this.filters.date ? new Date(this.filters.date).toISOString() : null;
+    let date = this.filters.date
+      ? new Date(this.filters.date).toISOString()
+      : null;
 
     this.selectedColors = this.colors
       .filter((color) => color.selected)
@@ -124,7 +124,6 @@ export class FiltroperdidasComponent {
     this.filters.tags = this.selectedTags;
 
     this.filtersApplied.emit(this.filters);
-
   }
 
   deleteFilters() {
@@ -158,24 +157,22 @@ export class FiltroperdidasComponent {
   }
 
   ngOnInit(): void {
-    this.getPronvinces();
-    this.getColors();
-    this.getTags();
-    this.token = localStorage.getItem('token') || '';
-    if(this.token != ''){
-      this.auth = true;
-    }else{
-      this.auth = false;
+    if (typeof window !== 'undefined') {
+      this.getPronvinces();
+      this.getColors();
+      this.getTags();
+      this.token = localStorage.getItem('token') || '';
+      if (this.token != '') {
+        this.auth = true;
+      } else {
+        this.auth = false;
+      }
+
+      this.store
+        .pipe(select('loggedIn'))
+        .subscribe((response: LoginResponse) => {
+          this.credentials = response;
+        });
     }
-
-
-
-    this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
-        this.credentials = response;
-  });
-
-
-
   }
-
 }

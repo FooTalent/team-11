@@ -76,7 +76,7 @@ export class FormEnadopComponent {
     colors: [],
     images: [],
   };
-  
+
   provincia = '';
   city = '';
   localidad = '';
@@ -95,15 +95,15 @@ export class FormEnadopComponent {
   isButtonMale = false;
   tagsPressed: { [key: string]: boolean } = {};
   colorPressed: { [key: string]: boolean } = {};
-  
+
   comments: Comment[] = [];
   images: string[] = [];
   imagesFiles: File[] = [];
-  
-  credentials: LoginResponse = { token: '', user: { id: '', email: '', name: null, country: null, province: null, city: null, locality: null, phone: null, profilePicture: '' } };
-  
 
-  
+  credentials: LoginResponse = { token: '', user: { id: '', email: '', name: null, country: null, province: null, city: null, locality: null, phone: null, profilePicture: '' } };
+
+
+
   constructor(
     private store: Store<AppState>,
     private locationService: LocationService,
@@ -112,13 +112,12 @@ export class FormEnadopComponent {
     private router: Router,
     private location: Location
   ) {
-   
+
   }
 
   ngOnInit() {
-    
+
     this.pet = history.state.pet;
-    console.log(this.pet);
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) {
       this.router.navigate(['/']);
@@ -144,22 +143,19 @@ export class FormEnadopComponent {
     this.locationService.getTags().subscribe((response: any) => {
       this.tags = response;
 
-      //initialize 
-      this.selectedGender = this.pet.gender || ''; 
-      this.selectedSpecies = this.pet.speciesType || ''; 
-    
+      //initialize
+      this.selectedGender = this.pet.gender || '';
+      this.selectedSpecies = this.pet.speciesType || '';
+
     });
 
-    this.formatPetDate() 
+    this.formatPetDate()
     this.initializeAndFillImages(this.pet.images);
-    console.log(this.pet.date);
   }
 
   getPet(id: string) {
     this.petQuestService.getPet(id).subscribe((pet) => {
       this.pet = pet.post;
-      console.log(this.pet);
-      
     });
   }
 
@@ -180,7 +176,6 @@ export class FormEnadopComponent {
   }
 
   onProvinciaChange(event: any) {
-    console.log(this.provincias);
     const selectedProvincia = event.target.value;
     this.locationService
       .getCities(selectedProvincia)
@@ -188,7 +183,6 @@ export class FormEnadopComponent {
         this.ciudades = response;
       });
     this.provincia = event.target.value;
-    console.log(this.ciudades);
   }
 
   onCityChange(event: any) {
@@ -200,13 +194,11 @@ export class FormEnadopComponent {
       });
   }
   onLocalidadChange(event: any) {
-    console.log(event.target.value);
     this.localidad = event.target.value;
 
     this.pet.province = this.provincia;
     this.pet.city = this.city;
     this.pet.locality = this.localidad;
-    console.log(this.pet);
   }
 
   fillColorArray(color: any) {
@@ -229,18 +221,18 @@ export class FormEnadopComponent {
     this.selectedGender = 'MASCULINO';
     this.pet.gender = 'MASCULINO'
   }
-  
+
   ButonGenderFemale() {
     this.pet.gender = 'FEMENINO';
     this.selectedGender = 'FEMENINO';
   }
   ButonGenderOther() {}
- 
+
   butonSpeciesDog() {
     this.pet.speciesType = 'DOG';
     this.isButtonDog = !this.isButtonDog;
     this.selectedSpecies = 'DOG';
-    
+
   }
   isButtonCat = false;
   butonSpeciesCat() {
@@ -277,7 +269,7 @@ export class FormEnadopComponent {
   }
 
   initializeAndFillImages(files: any[]): void {
- 
+
   }
 
   UpdatePet() {
@@ -298,14 +290,14 @@ export class FormEnadopComponent {
         createdAt: this.pet.createdAt || '',
         tags: this.pet.tags.map(tag => tag.id),
         colors: this.pet.colors.map(color => color.id),
-       
+
       }
       this.isLoading = true; // Paso 2: Mostrar el spinner
       this.petQuestService.UpdatePost(this.pet.id, sendPet, this.credentials?.token)
   .pipe()
   .subscribe({
     next: (response) => {
-      
+
       console.log('Mascota actualizada con éxito:', response);
       this.isLoading = false;
     },
@@ -316,11 +308,11 @@ export class FormEnadopComponent {
     complete: () => {
       this.isLoading = false;
       console.log('Operación de actualización completada');
-      this.location.back(); 
+      this.location.back();
     }
   });
       }
-  
 
- 
+
+
 }

@@ -66,16 +66,15 @@ export class BienvenidaDashboardComponent implements OnInit {
   ngOnInit() {
     this.getUserPost();
     this.getPets();
-  } 
+  }
 
   getUserPost(){
 
     this.isLoading = true;
     this.petquestservice.getPostUser(this.getToken()).subscribe({
       next: (response) => {
-        
+
         this.userPosts = response;
-        console.log(this.userPosts);
         this.isLoading = false;
       },
       error: (error) => {
@@ -83,10 +82,10 @@ export class BienvenidaDashboardComponent implements OnInit {
         this.isLoading = false;
       },
       complete: () => {
-        
+
         this.isLoading = false;
       },
-      
+
     })
 
 

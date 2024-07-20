@@ -57,7 +57,6 @@ export class ContactComponent {
               console.error('Error al enviar el formulario', error);
             },
             complete: () => {
-              console.log('Envío del formulario completado');
               contactForm.reset();
             }
           });

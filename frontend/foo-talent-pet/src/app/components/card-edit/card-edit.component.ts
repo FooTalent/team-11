@@ -42,7 +42,7 @@ export class CardEditComponent {
     images: [],
   };
 ;
-  
+
   token:string = "";
 
   constructor(
@@ -52,38 +52,33 @@ export class CardEditComponent {
   ) { }
 
   ngOnInit() {
-    
+
     this.getToken();
   }
 
 
   viewPet(pet: any) {
     this.router.navigate(['pet-details-edit', pet.id], { state: { pet: pet } });
-     console.log(pet)
   }
   getToken(){
     this.token = localStorage.getItem('token') ?? '';
-    console.log(this.token)
   }
-  
+
    delatePost(pet: any){
     this.petQuestService.DelatePost(pet.id,this.token).subscribe({
       next: (response) => {
         //pop-up
         console.log("eliminado")
         console.log(response);
-        
+
       },
       error: (error) => {
         console.error(error);
       },
       complete: () => {
-        console.log('Observable completado');
         this.refreshPage();
       },
     });
-    console.log(pet)
-    
 }
 
 refreshPage() {
@@ -94,9 +89,7 @@ refreshPage() {
 }
 
   editPost(pet: any){
-    console.log(pet)
-    console.log("editclick")
     this.router.navigate(['pet-details-edit/:id'], { state: { pet: pet } });
-   
+
   }
 }

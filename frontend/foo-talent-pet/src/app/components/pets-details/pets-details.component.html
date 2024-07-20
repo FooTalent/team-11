@@ -1,7 +1,19 @@
 <app-navbar></app-navbar>
 <div class="container-fluid row">
   <div class="col-lg-6 col-sm-12">
-    <h1>Mascotas perdidas</h1>
+
+    @if (pet.status == 'LOST') {
+      <h1>Mascotas perdidas</h1>
+    }
+    @else if (pet.status == 'FOUND') {
+      <h1>Mascotas encontradas</h1>
+    }
+    @else if (pet.status == 'ADOPTION') {
+      <h1>Mascotas en adopción</h1>
+    }
+    @else {
+      <h1>Mascotas perdidas</h1>
+    }
 
     <div id="carouselPetDetails" class="carousel slide">
       <div class="carousel-indicators">
@@ -369,17 +381,14 @@
   </div>
   <div class="col-12">
     <div id="fix-responsive">
-      <h1>Ver Mascotas encontradas</h1>
+        <h1>Ver Mascotas encontradas</h1>
       <div class="responsive">
         @if (isLoading) {
         <app-spiner></app-spiner>
         } @else {
-          @for (pet of pets; track $index) { 
+          @for (pet of pets; track $index) {
             <app-pets-card class="m-2 card" [pet]="pet"></app-pets-card>}
         }
-       
-       
-      
       </div>
     </div>
   </div>

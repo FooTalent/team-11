@@ -4,12 +4,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
-import { Comment, PetResponse,Filters } from '../../interfaces/interfaces';
+import { Comment, PetResponse, Filters } from '../../interfaces/interfaces';
 import { PetQuestService } from '../../service/pet-quest.service';
 import { FormsModule } from '@angular/forms';
-import { LostpetsService } from "../../service/posts/lostpets.service";
-import { SpinerComponent } from "../spiner/spiner.component";
-import { UserService } from "../../service/user.service";
+import { LostpetsService } from '../../service/posts/lostpets.service';
+import { SpinerComponent } from '../spiner/spiner.component';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-pets-details',
@@ -21,14 +21,12 @@ import { UserService } from "../../service/user.service";
     PetsCardComponent,
     CommonModule,
     FormsModule,
-    SpinerComponent
-
+    SpinerComponent,
   ],
   templateUrl: './pets-details.component.html',
   styleUrl: './pets-details.component.css',
 })
 export class PetsDetailsComponent implements OnInit {
-
   appliedFilters: Filters = {
     animal: null,
     gender: null,
@@ -53,7 +51,7 @@ export class PetsDetailsComponent implements OnInit {
     this.btnReport = true;
   }
 
-  reportPost(){
+  reportPost() {
     this.reportStatus = 'post';
     this.btnReport = true;
   }
@@ -61,12 +59,18 @@ export class PetsDetailsComponent implements OnInit {
   confirmReport(id: string) {
     this.btnReport = !this.btnReport;
     const token = localStorage.getItem('token');
-    if(!token) return;
-    if(this.reportStatus === 'comment') this.petQuestService.reportComment(id, this.reportCommentContent, token).subscribe();
-    else this.petQuestService.reportPost(this.pet.id, this.reportCommentContent, token).subscribe();
+    if (!token) return;
+    if (this.reportStatus === 'comment')
+      this.petQuestService
+        .reportComment(id, this.reportCommentContent, token)
+        .subscribe();
+    else
+      this.petQuestService
+        .reportPost(this.pet.id, this.reportCommentContent, token)
+        .subscribe();
   }
 
-/*   confirmReportPost() {
+  /*   confirmReportPost() {
     this.btnReport = !this.btnReport;
     const token = localStorage.getItem('token');
     if(!token) return;
@@ -112,24 +116,26 @@ export class PetsDetailsComponent implements OnInit {
     private router: Router,
     private petQuestService: PetQuestService,
     private LostService: LostpetsService,
-    private userService: UserService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) {
-      this.router.navigate(['/']);
-      return;
+    if (typeof window !== 'undefined') {
+      const id = this.route.snapshot.paramMap.get('id');
+      if (!id) {
+        this.router.navigate(['/']);
+        return;
+      }
+      this.token = localStorage.getItem('token') || '';
+      if (this.token === '') {
+        this.auth = false;
+      } else {
+        this.auth = true;
+      }
+      this.getPet(id);
+      this.getPets();
+      this.getUser();
     }
-    this.token = localStorage.getItem('token') || '';
-    if (this.token==='') {
-      this.auth = false;
-    }else{
-      this.auth = true;
-    }
-    this.getPet(id);
-    this.getPets();
-    this.getUser();
   }
 
   getPet(id: string) {
@@ -145,11 +151,11 @@ export class PetsDetailsComponent implements OnInit {
       return;
     }
     const token = localStorage.getItem('token');
-    if(!token) return;
+    if (!token) return;
     this.petQuestService
       .createComment(this.pet.id, this.commentContent, token)
       .subscribe((comment) => {
-        this.isLoadingComments = false
+        this.isLoadingComments = false;
         this.comments.push(comment);
         this.commentContent = '';
       });
@@ -172,29 +178,30 @@ export class PetsDetailsComponent implements OnInit {
     return `${day} / ${month} / ${year} - ${hour}hs`;
   }
 
-  getPets(){
-    this.isLoading=true;
-    this.LostService.getPets('LOST',this.appliedFilters, this.order).subscribe({
+  getPets() {
+    this.isLoading = true;
+    this.LostService.getPets(
+      'FOUND',
+      this.appliedFilters,
+      this.order
+    ).subscribe({
       next: (response) => {
-        console.log(response  );
+        console.log(response);
         this.pets = response;
-        this.isLoading=false;
+        this.isLoading = false;
       },
       error: (error) => {
         console.error(error);
-        this.isLoading=false;
+        this.isLoading = false;
       },
       complete: () => {
-        console.log('Observable completado');
-        this.isLoading=false;
+        this.isLoading = false;
       },
     });
   }
 
-
-  getUser(){
+  getUser() {
     this.userService.getUser(this.token).subscribe((user) => {
-      console.log(user);
       this.user = user;
     });
   }

@@ -1,0 +1,274 @@
+<app-navbar></app-navbar>
+<div id="area">
+  <div class="container-img">
+    <img
+      src="../../../assets/quienes somos Der 1.png"
+      alt="imagen esquinera"
+      class="imagen-lateral"
+    />
+  </div>
+  <div class="container">
+    <h1 class="encabezado">Publicá una mascota que encontraste</h1>
+
+    <div class="form-group d-flex justify-content-center ">
+
+      <div class="form-check test">
+        <input type="radio" routerLink="/form-publication" class="form-check-input test" id="lost" name="publicationType" (click)="pet.status = 'LOST'" value="lost">
+        <label class="form-check-label text-status" for="lost">Perdidos</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" routerLink="/form-encontradas" class="form-check-input" id="found" name="publicationType" (click)="pet.speciesType = 'FOUND'"value="found">
+        <label class="form-check-label text-status" for="found">Encontrado</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" routerLink="/form-adopcion" class="form-check-input" id="adoption" name="publicationType" (click)="pet.speciesType = 'ADOPTION'" value="adoption">
+        <label class="form-check-label text-status" for="adoption">Adopcion</label>
+      </div>
+  </div>
+
+    <h2 class="subtitle">Detalles Básicos</h2>
+    <div class="row">
+      <div class="class col-6 col-md-6 col-sm-12">
+        <div class="row">
+          <div class="class col-6">
+            <h3>Especie de animal *</h3>
+            <p>Seleccioná el tipo de mascota que vas a publicar</p>
+            <div class="row">
+              <div class="col-12">
+                <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedSpecies === 'DOG'"  (click)= butonSpeciesDog() >
+                  Perro
+                </button>
+                <button type="button" class="btn btn-outline-dark"  data-value="CAT" [class.btn-pressed]="selectedSpecies === 'CAT'" (click)=butonSpeciesCat() >Gato</button>
+                <button type="button" class="btn btn-outline-dark"  data-value="OTHER" [class.btn-pressed]="selectedSpecies === 'OTHER'" (click)=butonSpeciesOther() >Otro</button>
+              </div>
+            </div>
+          </div>
+          <div class="class col-6 col-md-6 col-sm-12">
+            <h3>Sexo *</h3>
+            <p>Seleccioná el sexo</p>
+            <div class="row">
+              <div class="col-12">
+                <button class="btn" (click)="test()" >test</button>
+                <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="selectedGender === 'MASCULINO'" (click)=ButonGenderMale() >
+                  Macho
+                </button>
+                <button type="button" class="btn btn-outline-dark" data-value="FEMENINO"[class.btn-pressed]="selectedGender === 'FEMENINO'" (click)=ButonGenderFemale() >
+                  Hembra
+                </button>
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+
+
+
+                  />
+                  <label class="form-check-label" for="exampleCheck1"
+                    >No lo sé</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <h4>Nombre del animal</h4>
+            <small id="inputText" class="form-text text-muted"
+              >Indicá el nombre de la mascota, si no lo sabes puedes saltarte
+              este campo</small
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputText"
+              aria-describedby="inputText"
+              [(ngModel)]="pet.name"
+            />
+          </div>
+          <h4>Ubicación*</h4>
+          <p>Indicá la ubicación que mejor corresponda a la situación</p>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <select id="inputState" class="form-control"[(ngModel)]="provincia" (change)="onProvinciaChange($event)">
+                <option selected >Provincia</option>
+                @for (provincia of provincias; track $index) {
+                  <option aria-placeholder="Provincia" value="{{provincia.name}}">{{provincia.name}}</option>
+                }
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              @if (provincia == "" ) {<select disabled id="inputState" class="form-control">
+                <option selected>Ciudad</option>
+
+              </select>}@else {<select  id="inputState" class="form-control" (change)="onCityChange($event)">
+                <option selected>Ciudad</option>
+                @for (ciudad of ciudades; track $index) {
+                  <option>{{ciudad.name}}</option>
+                }
+              </select>
+
+              }
+
+            </div>
+
+            <div class="form-group col-md-4">
+              @if (provincia == "" && city == "") {
+                <select disabled id="inputState" class="form-control">
+                  <option selected>Localidad</option>
+                  <option>...</option>
+                </select>
+              }@else {
+                <select id="inputState" class="form-control" (change)="onLocalidadChange($event)">
+                  <option selected>Localidad</option>
+                  @for (Localidad of localidades; track $index) {
+                    <option >{{Localidad.name}}</option>
+                  }
+                </select>
+              }
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h4>Fecha*</h4>
+            <small id="inputText" class="form-text text-muted"
+              >Indicá la fecha en la que perdiste, encontraste o das en adopcion
+              a la mascota</small
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="start"
+              aria-describedby="inputText"
+              value="2024-07-08"
+              min="2018-01-01"
+              max="2024-12-31"
+              [(ngModel)]="pet.date"
+
+            />
+          </div>
+          <div class="form-group">
+            <h4>Color de animal*</h4>
+            <small id="inputText" class="form-text text-muted"
+              >Seleccioná el color que mas se adapte a la mascota</small
+            >
+            <div class="row">
+              <div class="col-12">
+                @for (color of colors ; track $index) {
+
+                  <button type="button" class="btn btn-outline-dark" [class.btn-pressed]="colorPressed[color.name]"(click)="fillColorArray(color)">
+                    {{color.name}}
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <h4>Contacto*</h4>
+            <small id="inputText" class="form-text text-muted"
+              >Indicá el medio por el cual te gustaría ser contactado, podés
+              incluir tu número o gmail</small
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputText"
+              aria-describedby="inputText"
+              [(ngModel)]="pet.contact"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="class col-12 col-md-6">
+        <h4>Agregar Fotos*</h4>
+        <p>
+          Agregá hasta 3 fotos de la mascota para brindar más detalles sobre el
+          aspecto de la misma.
+        </p>
+        <div class="row">
+          <div class="input-fix">
+            <input type="file" id="fileInput" data-multiple-caption="{count} archivos seleccionados" multiple (change)="onFileSelected($event)">
+          </div>
+          <div id="imageContainerFix">
+            <img *ngFor="let image of images" [src]="image" style="width: 100px; height: 100px; margin: 5px;">
+          </div>
+
+         
+
+          <script>
+            document.getElementById('fileInput').addEventListener('change', function(event) {
+              const files = event.target.files;
+              const imageContainer = document.getElementById('imageContainerFix');
+              imageContainer.innerHTML = '';
+
+              const filesToProcess = Array.from(files).slice(0, 3);
+
+              for (const file of filesToProcess) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  const img = document.createElement('img');
+                  img.src = e.target.result;
+                  img.style.width = '100px';
+                  img.style.height = '100px';
+                  img.style.margin = '5px';
+                  imageContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+          </script>
+
+
+          <!-- <div class="espacio-fotos">
+            <img src="../../../assets/Rectangle 23864.png" alt="" />
+          </div>
+          <div class="espacio-fotos">
+            <img src="../../../assets/Rectangle 23864.png" alt="" />
+          </div>
+          <div class="espacio-fotos">
+            <img src="../../../assets/Rectangle 23864.png" alt="" />
+          </div>
+        </div> -->
+
+        <h4>Descripción</h4>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"
+            >Escribí información adicional que consideres necesaria sobre la
+            mascota</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            [(ngModel)]="pet.description"
+          ></textarea>
+          <small id="limit-words" class="form-text text-muted">0/500</small>
+        </div>
+
+        <h4>Palabras claves*</h4>
+        <p>
+          Seleccioná algunas palabras claves con rasgos caracteristicos de la
+          mascota
+        </p>
+        <div class="row">
+          <div class="col-12">
+            @for (tag of tags; track $index) {
+              <button type="button" class="btn btn-outline-dark"  [class.btn-pressed]="tagsPressed[tag.name]" (click)="fillTagsArray(tag)">{{tag.name}} </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-publicar-center">
+      
+      <button
+        type="button"
+        class="btn btn-light-publicar"
+        (click)="cargarConfirmacion()"
+      >
+        Publicar
+      </button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+

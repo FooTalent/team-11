@@ -1,33 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink, Router } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
+// import { OnInit } from '@angular/core';
+import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
+import { LandingAboutusComponent } from '../landing-aboutus/landing-aboutus.component';
+import { LandingEncuentraComponent } from '../landing-encuentra/landing-encuentra.component';
+import { LandingUneteComponent } from '../landing-unete/landing-unete.component';
+import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-comofunciona.component";
+import { ActivateTokenService } from '../../service/activate-token.service';
+// import { Router } from 'express';
+
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink],
+  imports: [NavbarComponent, FooterComponent, RouterLink,LandingTestimonialComponent,LandingAboutusComponent, LandingEncuentraComponent,LandingComofuncionaComponent,LandingUneteComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  data: any;
+export class HomeComponent implements OnInit{
 
-  
-  constructor(private petQuestService: PetQuestService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private authService: ActivateTokenService,
+    private router: Router,
+  ) {}
 
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const token = params['token'];
+      if (token) {
+        this.authService.activateAccount(token);
+        // this.router.navigate(['/home']);
+      }
+    });
+  }
 
-  //Agregar el método ngOnInit() que se encargará de obtener los datos de la API y mostrarlos en la consola.
-// ngOnInit(): void {
-//     this.petQuestService.getEndpointData('health').subscribe({
-//       next: (data) => {
-//         this.data = data;
-//         console.log('Data:', data);
-//       },
-//       error: (error) => {
-//         console.error('There was an error!', error);
-//       }
-//     });
-//   }
 }

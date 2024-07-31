@@ -36,6 +36,7 @@ export class MascotasencontradasComponent implements OnInit {
   isLoading = false;
   pets: any;
   order: boolean = true;
+    fechalabel: string = "encontrado"
 
   constructor(private lostService: LostpetsService) {}
 
@@ -57,8 +58,7 @@ export class MascotasencontradasComponent implements OnInit {
           this.isLoading = false;
         },
         complete: () => {
-          console.log('Observable completado');
-          this.isLoading = false; 
+          this.isLoading = false;
         },
       }
     );

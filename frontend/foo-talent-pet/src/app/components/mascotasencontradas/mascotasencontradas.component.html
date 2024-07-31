@@ -15,12 +15,12 @@
         <button class="rounded-end-pill" [ngClass]="{'btn_selected': !order, 'btn_unselected': order}" (click)="onOrderChange(false)">Menos reciente</button>
       </div>
     </div>
-    <!-- <hr> -->
+
     @if (isLoading) {
       <app-spiner></app-spiner>
      }@else {
       <div class="contenedor" *ngIf="pets && pets.length > 0">
-      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet"></app-pets-card>
+      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet" [fechalabel]="fechalabel"></app-pets-card>
     </div>
     <div *ngIf="!(pets && pets.length > 0)">
       <p>No se encontraron mascotas perdidas.</p>

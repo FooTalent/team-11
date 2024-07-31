@@ -21,14 +21,14 @@ export class LandingEncuentraComponent implements OnInit {
   token: string = ""
   auth:boolean = false;
   credentials: LoginResponse|undefined;
-  router = inject(Router); 
+  router = inject(Router);
   constructor(private store: Store<AppState>) {}
 
  ngOnInit(): void {
        console.log(this.credentials)
     console.log(this.store)
     this.token = localStorage.getItem('token') ?? '';
-    if(this.token != ''){
+    if(this.token){
       this.auth = true;
     }else{
       this.auth = false;

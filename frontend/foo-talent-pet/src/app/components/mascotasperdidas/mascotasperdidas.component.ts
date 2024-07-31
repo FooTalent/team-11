@@ -5,13 +5,12 @@ import { FiltroperdidasComponent } from '../filtroperdidas/filtroperdidas.compon
 import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
-import { EventEmitter } from 'node:stream';
 import { SpinerComponent } from '../spiner/spiner.component';
 // ngrx bullshit
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { Filters, LoginResponse } from '../../interfaces/interfaces';
-import { select } from '@ngrx/store';
+import { Filters } from '../../interfaces/interfaces';
+
 @Component({
   selector: 'app-mascotasperdidas',
   standalone: true,
@@ -27,7 +26,7 @@ import { select } from '@ngrx/store';
   styleUrl: './mascotasperdidas.component.css',
 })
 export class MascotasperdidasComponent implements OnInit {
-  // todo: crear interfaz de pets
+
   appliedFilters: Filters = {
     animal: null,
     gender: null,
@@ -41,6 +40,7 @@ export class MascotasperdidasComponent implements OnInit {
   isLoading = false;
   pets: any;
   order: boolean = true;
+  fechalabel: string = "Visto ultima vez"
 
   constructor(
     private LostService: LostpetsService,
@@ -64,7 +64,7 @@ export class MascotasperdidasComponent implements OnInit {
         this.isLoading=false;
       },
       complete: () => {
-        console.log('Observable completado');
+
         this.isLoading=false;
       },
     });
@@ -80,9 +80,5 @@ export class MascotasperdidasComponent implements OnInit {
     this.getPets();
   }
 
-  // ngOnDestroy() {
-  //   if (this.subscription) {
-  //     this.subscription.unsubscribe();
-  //   }
-  // }
+
 }

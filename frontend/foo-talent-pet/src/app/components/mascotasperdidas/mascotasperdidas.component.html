@@ -16,12 +16,11 @@
       </div>
     </div>
     <div class="border-top border-dark w-100 mt-3"></div>
-    <!-- <hr> -->
      @if (isLoading==true) {
       <app-spiner></app-spiner>
      }@else {
       <div class="contenedor" *ngIf="pets && pets.length > 0">
-      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet"></app-pets-card>
+      <app-pets-card class="card" *ngFor="let pet of pets" [pet]="pet" [fechalabel]="fechalabel"></app-pets-card>
     </div>
     <div *ngIf="!(pets && pets.length > 0)">
       <p>No se encontraron mascotas perdidas.</p>

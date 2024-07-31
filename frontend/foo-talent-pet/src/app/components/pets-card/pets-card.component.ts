@@ -38,12 +38,12 @@ export class PetsCardComponent {
     colors: [],
     images: [],
   };
-
+  @Input() fechalabel: string = 'nothin';
   constructor(private router: Router) { }
 
   viewPet(pet: any) {
     this.router.navigate(['pets-details', pet.id], { state: { pet: pet } });
-    // console.log(pet)
+
   }
 
   formatDate(dateString: string): string {

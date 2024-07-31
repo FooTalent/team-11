@@ -31,6 +31,7 @@ export class MascotasadopcionComponent {
   isLoading = false;
   pets: any;
   order: boolean = true;
+    fechalabel: string = "Visto ultima vez"
 
   constructor(private lostService: LostpetsService) {}
 
@@ -53,7 +54,6 @@ export class MascotasadopcionComponent {
           this.isLoading = false;
         },
         complete: () => {
-          console.log('Observable completado');
           this.isLoading = false;
         },
       }

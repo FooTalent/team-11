@@ -40,9 +40,9 @@ export class ToggleOpcionesComponent {
     city: "",
     locality: "",
     contact: "",
-    
-    tags: [], 
-    colors: [], 
+
+    tags: [],
+    colors: [],
     images: []
   };
 
@@ -66,7 +66,7 @@ export class ToggleOpcionesComponent {
     this.pet.colors.push(color.id);
     this.colorPressed[color.name] = !this.colorPressed[color.name];
  }
- 
+
  fillTagsArray(tag: any) {
    this.pet.tags.push(tag.id);
    this.tagsPressed[tag.name] = !this.tagsPressed[tag.name];
@@ -100,7 +100,7 @@ isButtonOther=false;
     this.pet.gender = 'MASCULINO';
     this.isButtonMale = !this.isButtonMale;
     this.selectedGender = 'MASCULINO'
-  
+
    }
    isButtonFemale=false;
     ButonGenderFemale(){
@@ -108,7 +108,7 @@ isButtonOther=false;
       this.selectedGender = 'FEMENINO'
     }
 
-  
+
 
     onProvinciaChange(event: any) {
       console.log(this.provincias);
@@ -117,7 +117,7 @@ isButtonOther=false;
         this.ciudades = response;
       });
     this.provincia = event.target.value;
-     console.log(this.ciudades);
+
     }
 
     onCityChange(event: any) {
@@ -128,13 +128,13 @@ isButtonOther=false;
       }
 
       onLocalidadChange(event: any) {
-        console.log(event.target.value);  
+
         this.localidad= event.target.value;
-      
+
         this.pet.province = this.provincia;
         this.pet.city = this.city;
         this.pet.locality = this.localidad;
-        console.log(this.pet);
-      
+
+
       }
 }

@@ -3,14 +3,14 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ActivatedRoute, RouterLink, Router } from "@angular/router";
 import { PetQuestService } from '../../service/pet-quest.service';
-// import { OnInit } from '@angular/core';
+
 import { LandingTestimonialComponent } from "../landing-testimonial/landing-testimonial.component";
 import { LandingAboutusComponent } from '../landing-aboutus/landing-aboutus.component';
 import { LandingEncuentraComponent } from '../landing-encuentra/landing-encuentra.component';
 import { LandingUneteComponent } from '../landing-unete/landing-unete.component';
 import { LandingComofuncionaComponent } from "../landing-comofunciona/landing-comofunciona.component";
 import { ActivateTokenService } from '../../service/activate-token.service';
-// import { Router } from 'express';
+
 
 
 
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit{
       const token = params['token'];
       if (token) {
         this.authService.activateAccount(token);
-        // this.router.navigate(['/home']);
+        
       }
     });
   }

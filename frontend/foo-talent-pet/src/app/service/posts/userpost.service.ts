@@ -17,6 +17,6 @@ export class UserPostService {
         let query = ""
         return this.http.get<any>((`${this.apiUrl}posts/${status}?${query}`));
     }
-    // Aquí puedes agregar tus métodos y lógica para el servicio
+    
 
 }

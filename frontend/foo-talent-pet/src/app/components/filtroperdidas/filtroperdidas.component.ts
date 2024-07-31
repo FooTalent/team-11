@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { select } from '@ngrx/store';
-// import { EventEmitter } from 'node:stream';
+
 
 interface ColorSelected extends Color {
   selected: boolean;

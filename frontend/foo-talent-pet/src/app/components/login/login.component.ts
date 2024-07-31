@@ -17,7 +17,7 @@ import { RegistroService } from '../../service/registro.service';
 import { response } from 'express';
 import Modal from 'bootstrap/js/dist/modal';
 import { SpinerComponent } from "../spiner/spiner.component";
-// ngrx bullshit
+
 import { Store, select } from '@ngrx/store';
 import { logIn,logOut } from "../../store/tasks.actions";
 import { AppState } from "../../app.state";
@@ -109,7 +109,7 @@ export class LoginComponent {
       email:  this.userCredentials.value.email,
       password: this.userCredentials.value.password
     };
-    // console.log(credenciales);
+    
 
     this.petQuestService.login(credenciales).pipe().subscribe({
     next: (response) => {
@@ -132,7 +132,7 @@ export class LoginComponent {
     },
     error: (error) => {
       this.isLoading = false;
-      //poner pop up de error
+      
       Swal.fire({
         icon: 'error',
         title: 'Error de inicio de sesión',
@@ -204,25 +204,25 @@ oninit(){
 
 test(){
   console.log('test');
-// const miModal = new Modal(document.getElementsByClassName('modal-dialog')[0]);
-  // const modalElement = document.getElementById('modal-test');
-  // if (modalElement) {
-  //   const miModal = new Modal(modalElement);
-  //   miModal.hide();
-  // }
+
+  
+  
+  
+  
+  
 
 }
 
-// ngOnInit() {
-//   this.modalLoginService.modalState$.subscribe(state => {
-//     this.isOpen = state;
-//   });
-// }
 
-// closeModal() {
-//   this.modalLoginService.close();
-// }
-//   isOpen = false;
+
+
+
+
+
+
+
+
+
 
 
 

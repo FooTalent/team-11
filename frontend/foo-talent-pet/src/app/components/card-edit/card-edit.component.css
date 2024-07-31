@@ -1,9 +1,6 @@
 @import url('../../../styles.css');
 
-/* .container{
-  text-align: center;
-  padding: 0;
-} */
+
 .card {
   max-width: 307px;
   height: 415px;
@@ -13,10 +10,10 @@
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  /* margin: 0; */
+
 }
 .img__card{
-  /* width: 287px; */
+
   border-radius: 10px;
   height: auto;
   margin: 0 .5rem;
@@ -39,7 +36,7 @@
 .img--lugar{
   max-width: 18px;
   max-height: 20px;
-  /* margin-right: 2px; */
+
 }
 h2 {
   margin: 0;

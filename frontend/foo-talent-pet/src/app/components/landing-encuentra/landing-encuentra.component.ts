@@ -2,7 +2,7 @@ import { Component,inject,OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
-//ngrx bullshit
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { LoginResponse } from "../../interfaces/interfaces";
@@ -36,12 +36,6 @@ export class LandingEncuentraComponent implements OnInit {
     this.store.pipe(select('loggedIn')).subscribe((response: LoginResponse) => {
         this.credentials = response;
   });
-}
-
-  //routing(){
-  //   console.log(this.credentials)
-  //   this.router.navigate(['/form-publication'])
-  // }
-
+ }
 
 }

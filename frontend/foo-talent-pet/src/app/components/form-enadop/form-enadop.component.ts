@@ -16,7 +16,7 @@ import { LocationService } from '../../service/location.service';
 import { PetQuestService } from '../../service/pet-quest.service';
 import { CardEditComponent } from '../card-edit/card-edit.component';
 import { SpinerComponent } from "../spiner/spiner.component";
-//ngrx bullshit
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { LoginResponse } from '../../interfaces/interfaces';
@@ -129,21 +129,21 @@ export class FormEnadopComponent {
       this.credentials = response;
     });
 
-    //service location
+    
     this.locationService.getProvinces().subscribe((response: any) => {
       this.provincias = response;
     });
 
-    //service colors
+    
     this.locationService.getColors().subscribe((response: any) => {
       this.colors = response;
     });
 
-    //service tags
+    
     this.locationService.getTags().subscribe((response: any) => {
       this.tags = response;
 
-      //initialize
+      
       this.selectedGender = this.pet.gender || '';
       this.selectedSpecies = this.pet.speciesType || '';
 
@@ -292,7 +292,7 @@ export class FormEnadopComponent {
         colors: this.pet.colors.map(color => color.id),
 
       }
-      this.isLoading = true; // Paso 2: Mostrar el spinner
+      this.isLoading = true; 
       this.petQuestService.UpdatePost(this.pet.id, sendPet, this.credentials?.token)
   .pipe()
   .subscribe({

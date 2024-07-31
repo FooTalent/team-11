@@ -20,7 +20,7 @@ export const initState: LoginResponse = {
 export const tasksReducer = createReducer(
 initState,
 
-// iniciar secion
+
 on(logIn, (state, action ) => {
     return {
         user: action.loginResponse.user,

@@ -3,7 +3,7 @@
 .filter-container {
   margin-left:  56px;
   width: 400px;
-  /* height: 600px; */
+
 }
 .btn-pet{
   color: white;
@@ -77,7 +77,7 @@ label {
   margin-bottom: 0;
   background-color: var();
 }
-/* chekbox  */
+
 .d-flex {
   display: flex;
   justify-content: space-between;
@@ -98,10 +98,7 @@ input[type="checkbox"] {
 
 }
 
-/* input[type="checkbox"]:checked {
 
-} */
-/* fin check  */
 select {
   font-family: var(--texto);
   width: 100%;

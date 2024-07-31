@@ -38,7 +38,7 @@
     @if (verifyToken == true) {
 
       <div class="d-flex justify-content-center align-items-center text-white" id="¨profileNavbar">
-        <!-- <a class="nav-link p-2" routerLink="/profile">Perfil</a> -->
+        
         @if (user && user.profilePicture =="default.jpg") {
           <img src="../../../assets/account_circle.png" alt="" class="client-photo d-flex justify-content-center align-items-center" (click)="ClickProfile()" style="background-color: #EF783D;
 ;">

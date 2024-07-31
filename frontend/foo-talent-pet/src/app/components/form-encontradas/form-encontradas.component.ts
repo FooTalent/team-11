@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { Pet } from '../../interfaces/interfaces';
 import { LocationService } from '../../service/location.service';
 import { PetQuestService } from '../../service/pet-quest.service';
-//ngrx bullshit
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { LoginResponse } from '../../interfaces/interfaces';
@@ -80,7 +80,7 @@ export class FormEncontradasComponent {
   images: string[] = [];
   imagesFiles: File[] = [];
 
-  // private _confirmacionService = inject(ConfirmacionService);
+  
 
   credentials: LoginResponse | undefined;
 
@@ -106,17 +106,17 @@ export class FormEncontradasComponent {
       this.credentials = response;
     });
 
-    //service location
+    
     this.locationService.getProvinces().subscribe((response: any) => {
       this.provincias = response;
     });
 
-    //service colors
+    
     this.locationService.getColors().subscribe((response: any) => {
       this.colors = response;
     });
 
-    //service tags
+    
     this.locationService.getTags().subscribe((response: any) => {
       this.tags = response;
     });

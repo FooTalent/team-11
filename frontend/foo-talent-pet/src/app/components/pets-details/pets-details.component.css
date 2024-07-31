@@ -21,7 +21,7 @@
 
 .caracteristic {
     margin: 1rem;
-    padding: 0.5rem 1rem 0.5rem 1rem; 
+    padding: 0.5rem 1rem 0.5rem 1rem;
     border-radius: 10px;
     border: 1px solid;
 }
@@ -165,7 +165,7 @@
     border-radius: 30px;
     margin-right: 5px;
     padding-left: 5px;
-    padding-right:5px; 
+    padding-right:5px;
     padding-top: 5px;
 }
 
@@ -178,7 +178,7 @@
 .btn-testimonial {
     background-color: #dddddd !important;
     border-radius: 20px;
-    
+
     width: 10px;
     height: 10px;
 }
@@ -216,18 +216,3 @@ a{
     display: flex;
     align-content: end;
 }
-
-/* @media (max-width: 991px) {
-    .white-section {
-        position: absolute;
-        z-index: 100;
-        top: 1750px;
-    }
-
-    #fix-responsive {
-       margin-top: 500px; 
-    }
-    .responsive{
-        height: 20rem;
-    }
-} */

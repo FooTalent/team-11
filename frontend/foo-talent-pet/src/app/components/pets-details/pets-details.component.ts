@@ -70,12 +70,6 @@ export class PetsDetailsComponent implements OnInit {
         .subscribe();
   }
 
-  /*   confirmReportPost() {
-    this.btnReport = !this.btnReport;
-    const token = localStorage.getItem('token');
-    if(!token) return;
-    this.petQuestService.reportPost(this.pet.id, this.reportCommentContent, token).subscribe();
-  } */
 
   pet: PetResponse = {
     id: '',

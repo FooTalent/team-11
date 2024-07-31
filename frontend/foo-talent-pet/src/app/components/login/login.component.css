@@ -1,21 +1,15 @@
 @import url('../../../styles.css');
-/* Clase personalizada para el modal-dialog */
-/* #myRegister{
-  z-index: 10;
-} */
+
 h1 {
   font-size: 28px;
 }
-/* .title{
-  padding: 0;
-  margin: 0;
-} */
+
 .btn-close{
   top: 0;
   right: 0;
   margin: .6rem ;
   position: absolute;
-  /* margin: 0; */
+
 }
 
 .modal-dialog-right {
@@ -56,11 +50,11 @@ label {
   padding: 0;
 }
 .btn{
-  /* padding: 16px 20px; */
+
   height: 38px;
   font-size: 15px;
   margin: 0 .6rem;
-  /* opacity: 0.5 */
+
 }
 .btn-go{
   font-size: 13px;
@@ -84,7 +78,7 @@ label {
 }
 input{
   background-color: var(--colorInputFormProfile);
-  /* width: 80%; */
+
   border-radius: 10px;
   font-size: .7rem;
   margin: 0;
@@ -93,13 +87,13 @@ input{
   padding: 0 5%;
 }
 .btn-go:disabled {
-  background-color: #ccc; /* Color de fondo */
-  color: #666; /* Color del texto */
-  cursor: not-allowed; /* Cursor para indicar que está deshabilitado */
-  border: 1px solid #aaa; /* Borde del botón */
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid #aaa;
 }
 .btn:hover{
-  /* opacity: 0.8; */
+
   background-color: #dc6d35;
 }
 

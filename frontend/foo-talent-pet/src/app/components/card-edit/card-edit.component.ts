@@ -67,7 +67,7 @@ export class CardEditComponent {
    delatePost(pet: any){
     this.petQuestService.DelatePost(pet.id,this.token).subscribe({
       next: (response) => {
-        //pop-up
+        
         console.log("eliminado")
         console.log(response);
 

@@ -27,8 +27,8 @@ import { SaludoDasboardComponent } from '../saludo-dasboard/saludo-dasboard.comp
 export class PreferenciasDashboardComponent {
 
   metodoContacto = new FormGroup({
-    email: new FormControl('', Validators.required), // Asumiendo que ya tienes un campo de email
-    telefono: new FormControl('', Validators.required) // Asegúrate de agregar el campo de contraseña
+    email: new FormControl('', Validators.required), 
+    telefono: new FormControl('', Validators.required) 
   })
 
   constructor(){}

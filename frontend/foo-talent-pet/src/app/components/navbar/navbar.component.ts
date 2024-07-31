@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { User } from '../../interfaces/interfaces';
-//ngrx bullshit
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { LoginResponse } from '../../interfaces/interfaces';

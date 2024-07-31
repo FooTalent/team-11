@@ -15,7 +15,7 @@
       height: 245px;
       margin-top: 10%;
   }
-  
+
   h3.titulo {
     margin-top: 24px;
     margin-bottom: 40px;
@@ -24,7 +24,7 @@
   small#emailHelp {
     margin-left: -116px;
   }
-  
+
   h1{
 font-family: Poppins;
 font-size: 39.81px;
@@ -33,7 +33,6 @@ line-height: 63.7px;
 letter-spacing: -0.02em;
 text-align: center;
 color:  #DD761C;
-/* box-shadow: 1px 4px 6px 0px #C8B3A4CC; */
 
 ;
   }
@@ -53,7 +52,7 @@ button{
     box-shadow: 3px 4px 6px 1px #BEBEB2;
     border-radius: 50px;
     background: #FEB941;
-    margin-right: auto; 
+    margin-right: auto;
     margin-left: auto;
     display: flex;
     padding: 14px 0;
@@ -93,5 +92,5 @@ button{
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }

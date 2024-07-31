@@ -7,7 +7,7 @@
     width: 416px;
     box-sizing: border-box;
   }
-  
+
   .casos-de-exito {
       margin: 0 auto 32px;
       display: flex;
@@ -25,7 +25,7 @@
     font-size: 39.8px;
     color: #277380;
   }
-  
+
    .contents {
     box-shadow: 0px 8px 24px 0px rgba(229, 69, 69, 0.04);
     border-radius: 16px;
@@ -38,7 +38,7 @@
     overflow-wrap: break-word;
     color: var(--gray-500, #838E9E);
   }
-      
+
   .client-photo{
     z-index: 1;
     width: 64px;
@@ -47,22 +47,22 @@
     margin-right: 16px;
   }
   .carousel-indicators {
-      border: 2px solid #000; /* Añade un borde sólido de 2px de grosor y color negro */
-      background-color: #f8f9fa; /* Añade un color de fondo */
+      border: 2px solid #000;
+      background-color: #f8f9fa;
   }
   .btn-testimonial{
       background-color: #dddddd;
-      border: none; /* Quita los bordes */
-     
-    
+      border: none;
+
+
           border-radius: 8.1px;
-          
+
           margin: 16.3px;
           width: 16.3px;
           height: 16.3px;
-     
+
     }
-  
+
   .btn-testimonial:active {
       background-color: #dd7616;
   }
@@ -74,10 +74,10 @@
     background-color: #dd7616;
   }
 .comilllas {
-    width: 40px; 
-    height: 40px; 
-    display: flex; 
-    justify-content: center; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    object-fit: contain; 
+    object-fit: contain;
 }

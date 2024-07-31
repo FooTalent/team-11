@@ -6,7 +6,7 @@ import { PetsCardComponent } from '../pets-card/pets-card.component';
 import { CommonModule } from '@angular/common';
 import { LostpetsService } from '../../service/posts/lostpets.service';
 import { SpinerComponent } from '../spiner/spiner.component';
-// ngrx bullshit
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Filters } from '../../interfaces/interfaces';

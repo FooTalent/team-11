@@ -9,6 +9,7 @@ import com.dev.foo.footalentpet.model.response.PostResponseDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +17,7 @@ import java.util.UUID;
 
 @Service
 public interface PostService {
-    PostResponseDTO create(PostRequestDTO postDTO);
+    PostResponseDTO create(PostRequestDTO postDTO) throws IOException;
 
     PostResponseDTO uploadImages(UUID id, List<MultipartFile> images);
 
@@ -29,8 +30,13 @@ public interface PostService {
                                   Optional<String> province,
                                   Optional<String> city,
                                   Optional<String> locality,
-                                  Optional<Date> date);
+                                  Optional<Date> date,
+                                  Optional<List<UUID>> colorIds,
+                                  Optional<List<UUID>> tagIds);
 
     void delete(UUID id);
 
+    PostResponseDTO update(UUID id, PostRequestDTO postDTO);
+
+    List<PostResponseDTO> findByUser();
 }

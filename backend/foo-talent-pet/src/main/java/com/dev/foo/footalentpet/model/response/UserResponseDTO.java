@@ -8,7 +8,7 @@ public record UserResponseDTO(
         String id,
         String email,
         String name,
-        String country,
+        String locality,
         String province,
         String city,
         String phone,

@@ -5,9 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 public record UpdateUserRequestDTO(
         String name,
         String phone,
-        String country,
+        String locality,
         String province,
-        String city,
-        MultipartFile profilePicture
+        String city
 ) {
 }

@@ -29,4 +29,7 @@ public class Tag {
 
     @OneToMany(mappedBy = "tag")
     private Set<PostTag> postTags = new HashSet<>();
+
+    @OneToMany(mappedBy = "tag")
+    private Set<PreferenceTag> preferenceTags = new HashSet<>();
 }

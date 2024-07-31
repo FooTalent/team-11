@@ -6,7 +6,7 @@ public record UserRequestDTO(
         String password,
         String phone,
         String profilePicture,
-        String country,
+        String locality,
         String province,
         String city
 ) {

@@ -27,4 +27,7 @@ public class Color {
 
     @OneToMany(mappedBy = "color")
     private Set<PostColor> postColors = new HashSet<>();
+
+    @OneToMany(mappedBy = "color")
+    private Set<PreferenceColor> preferenceColors = new HashSet<>();
 }

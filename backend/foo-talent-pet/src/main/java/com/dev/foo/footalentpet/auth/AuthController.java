@@ -1,6 +1,7 @@
 package com.dev.foo.footalentpet.auth;
 
 import com.dev.foo.footalentpet.model.request.LoginRequestDTO;
+import com.dev.foo.footalentpet.model.request.PasswordRequestDTO;
 import com.dev.foo.footalentpet.model.request.RegisterRequestDTO;
 import com.dev.foo.footalentpet.model.response.LoginResponseDTO;
 import com.dev.foo.footalentpet.model.response.UserResponseDTO;
@@ -15,6 +16,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Tag(name = "Auth", description = "Auth operations")
 @RestController
 @RequestMapping("/auth")
@@ -28,7 +31,7 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO userRequestDTO) {
+    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO userRequestDTO) throws IOException {
         UserResponseDTO user = authService.register(userRequestDTO);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
 
@@ -63,7 +66,7 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/forgot-password")
-    public ResponseEntity<Void> forgotPassword(@RequestParam String email) {
+    public ResponseEntity<Void> forgotPassword(@RequestParam String email) throws IOException {
         authService.forgotPassword(email);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -75,8 +78,8 @@ public class AuthController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping("/reset-password/{token}")
-    public ResponseEntity<Void> resetPassword(@PathVariable String token, @RequestParam String password) {
-        authService.resetPassword(token, password);
+    public ResponseEntity<Void> resetPassword(@PathVariable String token, @RequestBody PasswordRequestDTO passwordRequestDTO) {
+        authService.resetPassword(token, passwordRequestDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

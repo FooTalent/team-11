@@ -14,6 +14,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Tag(name = "Comment", description = "Comment operations")
@@ -29,7 +30,7 @@ public class CommentController {
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ProblemDetail.class)))
     })
     @PostMapping
-    public ResponseEntity<CommentResponseDTO> createComment(@RequestBody CommentRequestDTO commentRequestDTO) {
+    public ResponseEntity<CommentResponseDTO> createComment(@RequestBody CommentRequestDTO commentRequestDTO) throws IOException {
         CommentResponseDTO comment = commentService.createComment(commentRequestDTO);
         return new ResponseEntity<>(comment, HttpStatus.CREATED);
     }

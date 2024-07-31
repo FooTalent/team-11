@@ -80,8 +80,6 @@ export class FormPlublicationComponent {
   images: string[] = [];
   imagesFiles: File[] = [];
 
-  
-
   onFileSelected(event: any): void {
     const files = event.target.files;
     const filesToProcess = Array.from(files).slice(0, 3);

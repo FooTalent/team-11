@@ -20,6 +20,13 @@
     height: auto;
 }
 .encabezado{
+    font-family: Poppins;
+    font-size: 27.65px;
+    font-weight: 700;
+    line-height: 33.18px;
+    letter-spacing: 0.02em;
+    color: #277380;
+    text-align: center;
     margin-bottom: var(--espacioTituloAbajo);
     padding-top: var(--espacioTituloAbajo);
 }
@@ -47,6 +54,7 @@
 .btn{
     background-color: var(--colorFondo);
     margin-left: 1rem;
+    margin-right: 0.5rem;
     margin-top: 1vh;
 }
 .btn:hover{
@@ -73,12 +81,9 @@
     text-align: end;
 }
 .espacio-fotos {
-
     width: auto;
     background-size: cover;
 }
-
-
 
 .custom-popup{
 color: black ;
@@ -102,6 +107,7 @@ option{
     cursor: pointer;
 }
 
+
 .form-check-input:checked + .form-check-label {
     padding-bottom: 0.5rem;
     text-decoration: underline #277380 5px!important;
@@ -117,9 +123,9 @@ option{
 
 input[type="file"] {
     opacity: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  width: 100%; 
+  height: 100%; 
+  border-radius: 10px; 
  background-color: #D9D9D9;
  background-position: center;
   cursor: pointer;
@@ -127,7 +133,7 @@ input[type="file"] {
 
 }
 .input-fix{
-    width: 200px;
+    width: 200px; 
     height: 200px;
     border-radius: 10px;
     background-image: url(../../../assets/img\ input.png);
@@ -137,8 +143,20 @@ input[type="file"] {
 
 }
 
+@media (max-width: 768px) {
+   .input-fix{
+    width: 90%; 
+    height: 300px;
+    margin: 5% 5% 5% 5%;
+   
+   }
+
+    
+}
+
 .btn-pressed {
     background-color: #FEB941 !important;
-
-
+    ; 
+   
+  
   }

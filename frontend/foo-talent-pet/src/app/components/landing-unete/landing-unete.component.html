@@ -8,9 +8,10 @@
                 <p>Tu participación ayuda a expandir nuestra red y a ofrecer más esperanza a las mascotas y sus familias. </p>
                 <br>
                 <p><b>¡Registrate hoy y forma parte de este esfuerzo colectivo!!</b></p>
-                <div>
-                    <button >Registrarme</button>
-                </div>
+
+                  <app-login [register]="true" class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static"></app-login>
+                  <button type="button" class="btnk" id="btnLogin" data-bs-toggle="modal" data-bs-target="#myModal">Registrate</button>
+
             </div>
         </div>
 

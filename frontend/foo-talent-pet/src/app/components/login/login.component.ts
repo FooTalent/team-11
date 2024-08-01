@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RegisterComponent } from '../register/register.component';
@@ -33,6 +33,7 @@ import Swal from 'sweetalert2';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  @Input() register: boolean = false
 
   router = inject(Router);
   isLoading = false;
@@ -109,7 +110,7 @@ export class LoginComponent {
       email:  this.userCredentials.value.email,
       password: this.userCredentials.value.password
     };
-    
+
 
     this.petQuestService.login(credenciales).pipe().subscribe({
     next: (response) => {
@@ -132,7 +133,7 @@ export class LoginComponent {
     },
     error: (error) => {
       this.isLoading = false;
-      
+
       Swal.fire({
         icon: 'error',
         title: 'Error de inicio de sesión',
@@ -171,7 +172,7 @@ export class LoginComponent {
    }
   }
 
-  register=true
+  // register=true
   cerrar=false
   redireccion=true
 
@@ -179,11 +180,16 @@ export class LoginComponent {
     this.register = !this.register
 
   }
+  registerfalse(){
+    this.register = false
+  }
 
   cerrarTodo(){
     this.cerrar = this.cerrar
+    this.register = false
     if(this.cerrar == false){
       this.clickRegister();
+
     }
 
   }
@@ -193,29 +199,6 @@ export class LoginComponent {
       this.clickRegister();
     }
   }
-
-
-oninit(){
-
-}
-
-
-
-
-test(){
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

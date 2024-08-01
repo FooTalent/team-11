@@ -8,7 +8,7 @@
     />
   </div>
   <div class="container">
-    <h1 class="encabezado">Publicá una mascota que vas a dar en adopción</h1>
+    <h1 class="encabezado">Publicá una mascota que está en adopción</h1>
 
     <div class="form-group d-flex justify-content-center">
       <div class="form-check test">
@@ -36,7 +36,7 @@
           [checked]="pet.status === 'FOUND'"
         />
         <label class="form-check-label text-status" for="found"
-          >Encontrado</label
+          >Encontrados</label
         >
       </div>
       <div class="form-check">
@@ -51,7 +51,7 @@
           [checked]="pet.status === 'ADOPTION'"
         />
         <label class="form-check-label text-status" for="adoption"
-          >Adopcion</label
+          >Adopción</label
         >
       </div>
     </div>
@@ -128,7 +128,7 @@
           <div class="form-group">
             <h4>Nombre del animal</h4>
             <small id="inputText" class="form-text text-muted"
-              >Indicá el nombre de la mascota, si no lo sabes puedes saltarte
+              >Indicá el nombre de la mascota, si no lo sabés podés saltarte
               este campo</small
             >
             <input
@@ -139,7 +139,7 @@
               [(ngModel)]="pet.name"
             />
           </div>
-          <h4>Ubicación*</h4>
+          <h4>Ubicación *</h4>
           <p>Indicá la ubicación que mejor corresponda a la situación</p>
           <div class="row">
             <div class="form-group col-md-4">
@@ -203,9 +203,9 @@
           </div>
 
           <div class="form-group">
-            <h4>Fecha*</h4>
+            <h4>Fecha *</h4>
             <small id="inputText" class="form-text text-muted"
-              >Indicá la fecha en la que perdiste, encontraste o das en adopcion
+              >Indicá la fecha en la que perdiste, encontraste o das en adopción
               a la mascota</small
             >
             <input
@@ -220,9 +220,9 @@
             />
           </div>
           <div class="form-group">
-            <h4>Color de animal*</h4>
+            <h4>Color del animal *</h4>
             <small id="inputText" class="form-text text-muted"
-              >Seleccioná el color que mas se adapte a la mascota</small
+              >Seleccioná el color que más se adapte a la mascota</small
             >
             <div class="row">
               <div class="col-12">
@@ -241,10 +241,10 @@
             </div>
           </div>
           <div class="form-group">
-            <h4>Contacto*</h4>
+            <h4>Contacto *</h4>
             <small id="inputText" class="form-text text-muted"
               >Indicá el medio por el cual te gustaría ser contactado, podés
-              incluir tu número o gmail</small
+              incluir tu número o correo electrónico.</small
             >
             <input
               type="text"
@@ -257,7 +257,7 @@
         </div>
       </div>
       <div class="class col-12 col-md-6">
-        <h4>Agregar Fotos*</h4>
+        <h4>Agregar Fotos *</h4>
         <p>
           Agregá hasta 3 fotos de la mascota para brindar más detalles sobre el
           aspecto de la misma.
@@ -317,7 +317,7 @@
           </div>
         </div> -->
 
-          <h4>Descripción</h4>
+          <h4>Descripción *</h4>
           <div class="form-group">
             <label for="exampleFormControlTextarea1"
               >Escribí información adicional que consideres necesaria sobre la
@@ -332,10 +332,10 @@
             <small id="limit-words" class="form-text text-muted">0/500</small>
           </div>
 
-          <h4>Palabras claves*</h4>
+          <h4>Palabras claves *</h4>
           <p>
-            Seleccioná algunas palabras claves con rasgos caracteristicos de la
-            mascota
+            Seleccioná algunas palabras claves con rasgos característicos de la
+            mascota.
           </p>
           <div class="row">
             <div class="col-12">

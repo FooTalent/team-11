@@ -20,7 +20,6 @@ import { PetsDetailsComponent } from './components/pets-details/pets-details.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormEncontradasComponent } from './components/form-encontradas/form-encontradas.component';
 import { FormEnadopComponent } from './components/form-enadop/form-enadop.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 import { BienvenidaDashboardComponent } from './components/bienvenida-dashboard/bienvenida-dashboard.component';
 import { InfoDashboardComponent } from './components/info-dashboard/info-dashboard.component';
 import { PreferenciasDashboardComponent } from './components/preferencias-dashboard/preferencias-dashboard.component';
@@ -50,7 +49,6 @@ export const routes: Routes = [
     {path: 'pets-card', component: PetsCardComponent},
     {path: 'pets-details/:id', component: PetsDetailsComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'pruebas', component: PruebaComponent},
     {path: 'bienvenida', component: BienvenidaDashboardComponent},
     {path: 'info', component: InfoDashboardComponent},
     {path: 'preferencias', component: PreferenciasDashboardComponent},

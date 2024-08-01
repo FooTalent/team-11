@@ -180,12 +180,12 @@ export class PetsDetailsComponent implements OnInit {
       this.order
     ).subscribe({
       next: (response) => {
-        console.log(response);
+
         this.pets = response;
         this.isLoading = false;
       },
       error: (error) => {
-        console.error(error);
+
         this.isLoading = false;
       },
       complete: () => {

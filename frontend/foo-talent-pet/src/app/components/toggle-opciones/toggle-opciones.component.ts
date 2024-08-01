@@ -111,7 +111,6 @@ isButtonOther=false;
 
 
     onProvinciaChange(event: any) {
-      console.log(this.provincias);
       const selectedProvincia = event.target.value;
       this.locationService.getCities(selectedProvincia).subscribe((response: any) => {
         this.ciudades = response;

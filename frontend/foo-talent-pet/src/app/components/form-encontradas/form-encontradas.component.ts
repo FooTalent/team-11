@@ -122,8 +122,6 @@ export class FormEncontradasComponent {
     });
   }
   public cargarConfirmacion(): void {
-    console.log(this.images)
-    console.log(this.imagesFiles)
     Swal.fire({
       title: 'Ya casi....',
       text: '¿Querés subir la publicación? ',
@@ -144,17 +142,14 @@ export class FormEncontradasComponent {
         if (token) {
           this.petquestService.PostPet(this.pet, token).subscribe({
             next: (response) => {
-              console.log(response);
               this.petquestService
                 .postImage(this.imagesFiles, response.id, token)
                 .subscribe({
                   next: (response) => {
-                    console.log(response);
                   },
                 });
             },
             error: (error) => {
-              console.log(error);
             },
             complete: () => {
               Swal.fire({
@@ -177,7 +172,7 @@ export class FormEncontradasComponent {
   }
 
   onProvinciaChange(event: any) {
-    console.log(this.provincias);
+   
     const selectedProvincia = event.target.value;
     this.locationService
       .getCities(selectedProvincia)
@@ -185,7 +180,7 @@ export class FormEncontradasComponent {
         this.ciudades = response;
       });
     this.provincia = event.target.value;
-    console.log(this.ciudades);
+
   }
 
   onCityChange(event: any) {
@@ -197,13 +192,13 @@ export class FormEncontradasComponent {
       });
   }
   onLocalidadChange(event: any) {
-    console.log(event.target.value);
+
     this.localidad = event.target.value;
 
     this.pet.province = this.provincia;
     this.pet.city = this.city;
     this.pet.locality = this.localidad;
-    console.log(this.pet);
+  
   }
 
   fillColorArray(color: any) {
@@ -217,13 +212,11 @@ export class FormEncontradasComponent {
   }
 
   PostPet() {
-    console.log(this.pet);
+    
   }
 
   test() {
-    console.log(this.images);
-    console.log(this.imagesFiles);
-    console.log(this.pet);
+
   }
   selectedSpecies: string = '';
   isButtonMale = false;

@@ -212,7 +212,7 @@ export class FormEnadopComponent {
   }
 
   PostPet() {
-    console.log(this.pet);
+    
   }
 ;
   ButonGenderMale() {
@@ -273,8 +273,7 @@ export class FormEnadopComponent {
   }
 
   UpdatePet() {
-      console.log(this.credentials?.token);
-      console.log(this.pet);
+
       const sendPet = {
         id: this.pet.id || '',
         name: this.pet.name || '',
@@ -298,16 +297,16 @@ export class FormEnadopComponent {
   .subscribe({
     next: (response) => {
 
-      console.log('Mascota actualizada con éxito:', response);
+     
       this.isLoading = false;
     },
     error: (error) => {
       this.isLoading = false;
-    console.error('Error al actualizar la mascota:', error);
+    
     },
     complete: () => {
       this.isLoading = false;
-      console.log('Operación de actualización completada');
+      
       this.location.back();
     }
   });

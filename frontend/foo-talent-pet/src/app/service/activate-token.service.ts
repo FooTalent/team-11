@@ -20,14 +20,14 @@ export class ActivateTokenService {
 
     this.http.post(activationUrl, {}).subscribe({
       next: (response) => {
-        console.log('Account activated successfully', response);
+        
         this.router.navigate(['/home']);
       },
       error: (error) => {
-        console.error('Activation error', error);
+       
       },
       complete: () => {
-        console.log('Activation request completed');
+      
       }
     });
   }

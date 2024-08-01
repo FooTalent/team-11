@@ -60,7 +60,6 @@ export class MascotasperdidasComponent implements OnInit {
         this.isLoading=false;
       },
       error: (error) => {
-        console.error(error);
         this.isLoading=false;
       },
       complete: () => {

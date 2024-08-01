@@ -139,12 +139,12 @@ export class FormPlublicationComponent {
         if (token) {
           this.petquestService.PostPet(this.pet, token).subscribe({
             next: (response) => {
-              console.log(response);
+       
               this.petquestService
                 .postImage(this.imagesFiles, response.id, token).subscribe();
             },
             error: (error) => {
-              console.log(error);
+
             },
             complete: () => {
               Swal.fire({
@@ -203,13 +203,9 @@ export class FormPlublicationComponent {
   }
 
   PostPet() {
-    console.log(this.pet);
   }
 
   test() {
-    console.log(this.credentials);
-    console.log(this.credentials?.token);
-    console.log(this.pet);
   }
 
   selectedSpecies: string = '';

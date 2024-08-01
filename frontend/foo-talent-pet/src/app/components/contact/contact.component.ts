@@ -65,7 +65,7 @@ export class ContactComponent implements OnInit {
         if (contactForm.valid) {
           this.contactService.sendContactForm(contactForm.value).subscribe({
             next: (response) => {
-              console.log('Enviado correctamente', response);
+              
               Swal.fire({
                 title: "GRACIAS",
                 text: "tu mensaje ha sido enviado",
@@ -73,7 +73,7 @@ export class ContactComponent implements OnInit {
               });
             },
             error: (error) => {
-              console.error('Error al enviar el formulario', error);
+              
               Swal.fire({
                 title: "Error",
                 text: "Hubo un error al enviar tu mensaje, por favor intenta nuevamente.",

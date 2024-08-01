@@ -54,7 +54,6 @@ export class MascotasencontradasComponent implements OnInit {
           this.pets = response;
         },
         error: (error) => {
-          console.error(error);
           this.isLoading = false;
         },
         complete: () => {

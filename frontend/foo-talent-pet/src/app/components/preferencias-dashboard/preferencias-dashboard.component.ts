@@ -38,9 +38,9 @@ export class PreferenciasDashboardComponent {
   mostrarOpciones(event: Event){
     const inputElement = event.target as HTMLInputElement;
     if((inputElement.checked)){
-      console.log("se activó")
+
     } else {
-      console.log("se desactivó")
+   
     }
   }
 

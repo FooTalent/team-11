@@ -50,7 +50,6 @@ export class MascotasadopcionComponent {
           this.isLoading = false;
         },
         error: (error) => {
-          console.error(error);
           this.isLoading = false;
         },
         complete: () => {

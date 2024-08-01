@@ -23,8 +23,6 @@ export class PetQuestService {
   }
 
   PostPet(payload: Pet, token: string): Observable<PetResponse> {
-    console.log(token);
-    console.log(payload);
     const pet = {
       name: payload.name,
       description: payload.description,

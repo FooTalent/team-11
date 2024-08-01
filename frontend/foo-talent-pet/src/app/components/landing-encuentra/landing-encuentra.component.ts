@@ -25,8 +25,6 @@ export class LandingEncuentraComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
  ngOnInit(): void {
-       console.log(this.credentials)
-    console.log(this.store)
     this.token = localStorage.getItem('token') ?? '';
     if(this.token){
       this.auth = true;

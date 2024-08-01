@@ -203,14 +203,6 @@ oninit(){
 
 
 test(){
-  console.log('test');
-
-  
-  
-  
-  
-  
-
 }
 
 
